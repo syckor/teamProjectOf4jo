@@ -9,3 +9,6 @@ CREATE TABLE board(
 );
 
 CREATE SEQUENCE board_seq;
+
+
+저는 나현이 입니다. 팀플 커밋 잘 되고있나여? 네? 잘되고있냐구여? 잘되고 있다면 확인이라고 해주세요.
