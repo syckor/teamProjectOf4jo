@@ -17,11 +17,11 @@ public class BoardDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	// SQL 명령어들
-	private final String BOARD_INSERT = "insert into board(seq, title, writer, content, regdate, cnt) values(board_seq.nextval,?,?,?,sysdate, 0)";
-	private final String BOARD_UPDATE = "update board set title=?, content=? where seq=?";
-	private final String BOARD_DELETE = "delete board where seq=?";
-	private final String BOARD_GET = "select * from board where seq=?";
-	private final String BOARD_LIST = "select * from board order by seq desc";
+	private final String a = "insert into board(seq, title, writer, content, regdate, cnt) values(board_seq.nextval,?,?,?,sysdate, 0)";
+	private final String b = "update board set title=?, content=? where seq=?";
+	private final String c = "delete board where seq=?";
+	private final String d = "select * from board where seq=?";
+	private final String g = "select * from board order by seq desc";
 
 	// CRUD 기능의 메소드 구현
 	// 글 등록
@@ -29,7 +29,7 @@ public class BoardDAO {
 		System.out.println("===> JDBC로 insertBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_INSERT);
+			stmt = conn.prepareStatement(a);
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getWriter());
 			stmt.setString(3, vo.getContent());
@@ -46,7 +46,7 @@ public class BoardDAO {
 		System.out.println("===> JDBC로 updateBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_UPDATE);
+			stmt = conn.prepareStatement(b);
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getContent());
 			stmt.setInt(3, vo.getSeq());
@@ -63,7 +63,7 @@ public class BoardDAO {
 		System.out.println("===> JDBC로 deleteBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_DELETE);
+			stmt = conn.prepareStatement(c);
 			stmt.setInt(1, vo.getSeq());
 			stmt.executeUpdate();
 		} catch (Exception e) {
@@ -79,7 +79,7 @@ public class BoardDAO {
 		BoardVO board = null;
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_GET);
+			stmt = conn.prepareStatement(d);
 			stmt.setInt(1, vo.getSeq());
 			rs = stmt.executeQuery();
 			if (rs.next()) {
@@ -105,7 +105,7 @@ public class BoardDAO {
 		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_LIST);
+			stmt = conn.prepareStatement(g);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				BoardVO board = new BoardVO();
