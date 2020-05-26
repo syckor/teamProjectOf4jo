@@ -17,21 +17,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> 
+<link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="resources/css/style.css" rel="stylesheet" type="text/css" media="all" /> 
 <!-- //Custom Theme files -->
 <!-- font-awesome icons -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="resources/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <!-- js -->
-<script src="js/jquery.min.js"></script> 
+<script src="resources/js/jquery.min.js"></script> 
 <!-- //js -->  
 <!-- web fonts --> 
 <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- //web fonts --> 
 <!-- for bootstrap working -->
-<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
 <!-- start-smooth-scrolling -->
 <script type="text/javascript">
@@ -94,7 +94,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</div> 			        					            	      
 								</div>	
 							</div>
-							<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+							<script src="resources/js/easyResponsiveTabs.js" type="text/javascript"></script>
 							<script type="text/javascript">
 								$(document).ready(function () {
 									$('#horizontalTab').easyResponsiveTabs({
@@ -207,7 +207,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="col-sm-4">
 										<div class="w3ls_products_pos">
 											<h4>30%<i>Off/-</i></h4>
-											<img src="images/1.jpg" alt=" " class="img-responsive" />
+											<img src="resources/images/1.jpg" alt=" " class="img-responsive" />
 										</div>
 									</div>
 									<div class="clearfix"></div>
@@ -792,7 +792,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="footer-copy">
 			<div class="footer-copy1">
 				<div class="footer-copy-pos">
-					<a href="#home1" class="scroll"><img src="images/arrow.png" alt=" " class="img-responsive" /></a>
+					<a href="#home1" class="scroll"><img src="resources/images/arrow.png" alt=" " class="img-responsive" /></a>
 				</div>
 			</div>
 			<div class="container">
@@ -802,7 +802,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!-- //footer -->  
 	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
+	<script src="resources/js/minicart.js"></script>
 	<script>
         w3ls.render();
 

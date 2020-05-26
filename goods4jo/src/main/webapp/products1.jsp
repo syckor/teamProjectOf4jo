@@ -17,20 +17,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> 
-<link href="css/fasthover.css" rel="stylesheet" type="text/css" media="all"/>  <!-- font-awesome icons -->
-<link href="css/font-awesome.css" rel="stylesheet">
+<link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="resources/css/style.css" rel="stylesheet" type="text/css" media="all" /> 
+<link href="resources/css/fasthover.css" rel="stylesheet" type="text/css" media="all"/>  <!-- font-awesome icons -->
+<link href="resources/css/font-awesome.css" rel="stylesheet">
 <!-- //Custom Theme files --> 
 <!-- js -->
-<script src="js/jquery.min.js"></script> 
+<script src="resources/js/jquery.min.js"></script> 
 <!-- //js -->  
 <!-- web fonts --> 
 <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- //web fonts --> 
 <!-- for bootstrap working -->
-<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
 <!-- start-smooth-scrolling -->
 <script type="text/javascript">
@@ -93,7 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</div> 			        					            	      
 								</div>	
 							</div>
-							<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+							<script src="resources/js/easyResponsiveTabs.js" type="text/javascript"></script>
 							<script type="text/javascript">
 								$(document).ready(function () {
 									$('#horizontalTab').easyResponsiveTabs({
@@ -206,7 +206,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="col-sm-4">
 										<div class="w3ls_products_pos">
 											<h4>30%<i>Off/-</i></h4>
-											<img src="images/1.jpg" alt=" " class="img-responsive" />
+											<img src="resources/images/1.jpg" alt=" " class="img-responsive" />
 										</div>
 									</div>
 									<div class="clearfix"></div>
@@ -334,7 +334,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col-md-8 w3ls_mobiles_grid_right">
 					<div class="col-md-6 w3ls_mobiles_grid_right_left">
 						<div class="w3ls_mobiles_grid_right_grid1">
-							<img src="images/48.jpg" alt=" " class="img-responsive" />
+							<img src="resources/images/48.jpg" alt=" " class="img-responsive" />
 							<div class="w3ls_mobiles_grid_right_grid1_pos1">
 								<h3>Attractive<span> New</span> Wrist Watches</h3>
 							</div>
@@ -342,7 +342,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="col-md-6 w3ls_mobiles_grid_right_left">
 						<div class="w3ls_mobiles_grid_right_grid1">
-							<img src="images/49.jpg" alt=" " class="img-responsive" />
+							<img src="resources/images/49.jpg" alt=" " class="img-responsive" />
 							<div class="w3ls_mobiles_grid_right_grid1_pos"> 
 								<h3>Best Prices On<span> Laptop</span>Upto 50% Off</h3>
 							</div>
@@ -370,11 +370,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<div class="hs-wrapper hs-wrapper2">
-									<img src="images/25.jpg" alt=" " class="img-responsive" />
-									<img src="images/22.jpg" alt=" " class="img-responsive" />
-									<img src="images/23.jpg" alt=" " class="img-responsive" />
-									<img src="images/24.jpg" alt=" " class="img-responsive" />
-									<img src="images/25.jpg" alt=" " class="img-responsive" /> 
+									<img src="resources/images/25.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/22.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/23.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/24.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/25.jpg" alt=" " class="img-responsive" /> 
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -402,11 +402,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<div class="hs-wrapper hs-wrapper2"> 
-									<img src="images/p8.jpg" alt=" " class="img-responsive" />
-									<img src="images/p9.jpg" alt=" " class="img-responsive" />
-									<img src="images/p10.jpg" alt=" " class="img-responsive" />
-									<img src="images/p9.jpg" alt=" " class="img-responsive" />
-									<img src="images/p8.jpg" alt=" " class="img-responsive" /> 
+									<img src="resources/images/p8.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p9.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p10.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p9.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p8.jpg" alt=" " class="img-responsive" /> 
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -431,11 +431,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<div class="hs-wrapper hs-wrapper2">
-									<img src="images/22.jpg" alt=" " class="img-responsive" />
-									<img src="images/23.jpg" alt=" " class="img-responsive" />
-									<img src="images/24.jpg" alt=" " class="img-responsive" />
-									<img src="images/25.jpg" alt=" " class="img-responsive" />
-									<img src="images/22.jpg" alt=" " class="img-responsive" /> 
+									<img src="resources/images/22.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/23.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/24.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/25.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/22.jpg" alt=" " class="img-responsive" /> 
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -463,11 +463,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<div class="hs-wrapper hs-wrapper2"> 
-									<img src="images/p10.jpg" alt=" " class="img-responsive" />
-									<img src="images/p8.jpg" alt=" " class="img-responsive" />
-									<img src="images/p9.jpg" alt=" " class="img-responsive" />
-									<img src="images/p10.jpg" alt=" " class="img-responsive" />
-									<img src="images/p8.jpg" alt=" " class="img-responsive" /> 
+									<img src="resources/images/p10.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p8.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p9.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p10.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p8.jpg" alt=" " class="img-responsive" /> 
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -492,11 +492,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<div class="hs-wrapper hs-wrapper2">
-									<img src="images/p6.jpg" alt=" " class="img-responsive" />
-									<img src="images/26.jpg" alt=" " class="img-responsive" />
-									<img src="images/31.jpg" alt=" " class="img-responsive" />
-									<img src="images/22.jpg" alt=" " class="img-responsive" />
-									<img src="images/p6.jpg" alt=" " class="img-responsive" /> 
+									<img src="resources/images/p6.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/26.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/31.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/22.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p6.jpg" alt=" " class="img-responsive" /> 
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -524,11 +524,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<div class="hs-wrapper hs-wrapper2">
-									<img src="images/p7.jpg" alt=" " class="img-responsive" />
-									<img src="images/p11.jpg" alt=" " class="img-responsive" />
-									<img src="images/p3.jpg" alt=" " class="img-responsive" />
-									<img src="images/p11.jpg" alt=" " class="img-responsive" />
-									<img src="images/p7.jpg" alt=" " class="img-responsive" /> 
+									<img src="resources/images/p7.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p11.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p3.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p11.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p7.jpg" alt=" " class="img-responsive" /> 
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -556,11 +556,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<div class="hs-wrapper hs-wrapper2">
-									<img src="images/p11.jpg" alt=" " class="img-responsive" />
-									<img src="images/p3.jpg" alt=" " class="img-responsive" />
-									<img src="images/p7.jpg" alt=" " class="img-responsive" />
-									<img src="images/p3.jpg" alt=" " class="img-responsive" />
-									<img src="images/p11.jpg" alt=" " class="img-responsive" />  
+									<img src="resources/images/p11.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p3.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p7.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p3.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p11.jpg" alt=" " class="img-responsive" />  
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -588,11 +588,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<div class="hs-wrapper hs-wrapper2">
-									<img src="images/31.jpg" alt=" " class="img-responsive" />
-									<img src="images/30.jpg" alt=" " class="img-responsive" />
-									<img src="images/p6.jpg" alt=" " class="img-responsive" />
-									<img src="images/26.jpg" alt=" " class="img-responsive" />
-									<img src="images/29.jpg" alt=" " class="img-responsive" /> 
+									<img src="resources/images/31.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/30.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/p6.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/26.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/29.jpg" alt=" " class="img-responsive" /> 
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -617,11 +617,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<div class="hs-wrapper hs-wrapper2">
-									<img src="images/26.jpg" alt=" " class="img-responsive" />
-									<img src="images/24.jpg" alt=" " class="img-responsive" />
-									<img src="images/23.jpg" alt=" " class="img-responsive" />
-									<img src="images/22.jpg" alt=" " class="img-responsive" />
-									<img src="images/26.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/26.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/24.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/23.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/22.jpg" alt=" " class="img-responsive" />
+									<img src="resources/images/26.jpg" alt=" " class="img-responsive" />
 									<div class="w3_hs_bottom w3_hs_bottom_sub1">
 										<ul>
 											<li>
@@ -659,7 +659,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<section>
 					<div class="modal-body">
 						<div class="col-md-5 modal_body_left">
-							<img src="images/27.jpg" alt=" " class="img-responsive" />
+							<img src="resources/images/27.jpg" alt=" " class="img-responsive" />
 						</div>
 						<div class="col-md-7 modal_body_right">
 							<h4>Latest Smart Phone </h4>
@@ -672,19 +672,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								deserunt mollit anim id est laborum.</p>
 							<div class="rating">
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -723,7 +723,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<section>
 					<div class="modal-body">
 						<div class="col-md-5 modal_body_left">
-							<img src="images/25.jpg" alt=" " class="img-responsive" />
+							<img src="resources/images/25.jpg" alt=" " class="img-responsive" />
 						</div>
 						<div class="col-md-7 modal_body_right">
 							<h4>Latest Asus Red Laptop</h4>
@@ -731,19 +731,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia  deserunt.</p>
 							<div class="rating">
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -782,7 +782,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<section>
 					<div class="modal-body">
 						<div class="col-md-5 modal_body_left">
-							<img src="images/p8.jpg" alt=" " class="img-responsive" />
+							<img src="resources/images/p8.jpg" alt=" " class="img-responsive" />
 						</div>
 						<div class="col-md-7 modal_body_right">
 							<h4>Fastrack Digital Watch</h4>
@@ -795,19 +795,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								deserunt mollit anim id est laborum.</p>
 							<div class="rating">
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="clearfix"> </div>
 							</div> 
@@ -846,7 +846,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<section>
 					<div class="modal-body">
 						<div class="col-md-5 modal_body_left">
-							<img src="images/34.jpg" alt=" " class="img-responsive" />
+							<img src="resources/images/34.jpg" alt=" " class="img-responsive" />
 						</div>
 						<div class="col-md-7 modal_body_right">
 							<h4>Musical Kids Toy</h4>
@@ -859,19 +859,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								deserunt mollit anim id est laborum.</p>
 							<div class="rating">
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -910,7 +910,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<section>
 					<div class="modal-body">
 						<div class="col-md-5 modal_body_left">
-							<img src="images/p7.jpg" alt=" " class="img-responsive">
+							<img src="resources/images/p7.jpg" alt=" " class="img-responsive">
 						</div>
 						<div class="col-md-7 modal_body_right">
 							<h4>Home Security Camera</h4>
@@ -918,19 +918,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 							<div class="rating">
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive">
+									<img src="resources/images/star-.png" alt=" " class="img-responsive">
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive">
+									<img src="resources/images/star-.png" alt=" " class="img-responsive">
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive">
+									<img src="resources/images/star-.png" alt=" " class="img-responsive">
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive">
+									<img src="resources/images/star-.png" alt=" " class="img-responsive">
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive">
+									<img src="resources/images/star.png" alt=" " class="img-responsive">
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -969,7 +969,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<section>
 					<div class="modal-body">
 						<div class="col-md-5 modal_body_left">
-							<img src="images/p3.jpg" alt=" " class="img-responsive" />
+							<img src="resources/images/p3.jpg" alt=" " class="img-responsive" />
 						</div>
 						<div class="col-md-7 modal_body_right">
 							<h4>Music MP3 Player </h4>
@@ -982,19 +982,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								deserunt mollit anim id est laborum.</p>
 							<div class="rating">
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -1033,7 +1033,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<section>
 					<div class="modal-body">
 						<div class="col-md-5 modal_body_left">
-							<img src="images/38.jpg" alt=" " class="img-responsive">
+							<img src="resources/images/38.jpg" alt=" " class="img-responsive">
 						</div>
 						<div class="col-md-7 modal_body_right">
 							<h4>Kitchen &amp; Dining Accessories</h4>
@@ -1046,19 +1046,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								deserunt mollit anim id est laborum.</p>
 							<div class="rating">
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive">
+									<img src="resources/images/star-.png" alt=" " class="img-responsive">
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive">
+									<img src="resources/images/star-.png" alt=" " class="img-responsive">
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive">
+									<img src="resources/images/star-.png" alt=" " class="img-responsive">
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive">
+									<img src="resources/images/star-.png" alt=" " class="img-responsive">
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive">
+									<img src="resources/images/star.png" alt=" " class="img-responsive">
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -1097,7 +1097,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<section>
 					<div class="modal-body">
 						<div class="col-md-5 modal_body_left">
-							<img src="images/p6.jpg" alt=" " class="img-responsive" />
+							<img src="resources/images/p6.jpg" alt=" " class="img-responsive" />
 						</div>
 						<div class="col-md-7 modal_body_right">
 							<h4>Latest Asus ZenPad Tablet</h4>
@@ -1110,19 +1110,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								deserunt mollit anim id est laborum.</p>
 							<div class="rating">
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star-.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="rating-left">
-									<img src="images/star.png" alt=" " class="img-responsive" />
+									<img src="resources/images/star.png" alt=" " class="img-responsive" />
 								</div>
 								<div class="clearfix"> </div>
 							</div>  
@@ -1161,11 +1161,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="w3l_related_products_grid">
 						<div class="agile_ecommerce_tab_left mobiles_grid">
 							<div class="hs-wrapper hs-wrapper3">
-								<img src="images/34.jpg" alt=" " class="img-responsive" />
-								<img src="images/35.jpg" alt=" " class="img-responsive" />
-								<img src="images/27.jpg" alt=" " class="img-responsive" />
-								<img src="images/28.jpg" alt=" " class="img-responsive" />
-								<img src="images/37.jpg" alt=" " class="img-responsive" /> 
+								<img src="resources/images/34.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/35.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/27.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/28.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/37.jpg" alt=" " class="img-responsive" /> 
 								<div class="w3_hs_bottom">
 									<div class="flex_ecommerce">
 										<a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
@@ -1190,11 +1190,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="w3l_related_products_grid">
 						<div class="agile_ecommerce_tab_left mobiles_grid">
 							<div class="hs-wrapper hs-wrapper3">
-								<img src="images/36.jpg" alt=" " class="img-responsive" />
-								<img src="images/32.jpg" alt=" " class="img-responsive" />
-								<img src="images/33.jpg" alt=" " class="img-responsive" />
-								<img src="images/32.jpg" alt=" " class="img-responsive" />
-								<img src="images/36.jpg" alt=" " class="img-responsive" /> 
+								<img src="resources/images/36.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/32.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/33.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/32.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/36.jpg" alt=" " class="img-responsive" /> 
 								<div class="w3_hs_bottom">
 									<div class="flex_ecommerce">
 										<a href="#" data-toggle="modal" data-target="#myModal5"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
@@ -1219,11 +1219,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="w3l_related_products_grid">
 						<div class="agile_ecommerce_tab_left mobiles_grid">
 							<div class="hs-wrapper hs-wrapper3">
-								<img src="images/38.jpg" alt=" " class="img-responsive" />
-								<img src="images/37.jpg" alt=" " class="img-responsive" />
-								<img src="images/27.jpg" alt=" " class="img-responsive" />
-								<img src="images/28.jpg" alt=" " class="img-responsive" />
-								<img src="images/37.jpg" alt=" " class="img-responsive" /> 
+								<img src="resources/images/38.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/37.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/27.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/28.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/37.jpg" alt=" " class="img-responsive" /> 
 								<div class="w3_hs_bottom">
 									<div class="flex_ecommerce">
 										<a href="#" data-toggle="modal" data-target="#myModal3"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
@@ -1248,11 +1248,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="w3l_related_products_grid">
 						<div class="agile_ecommerce_tab_left mobiles_grid">
 							<div class="hs-wrapper hs-wrapper3">
-								<img src="images/p3.jpg" alt=" " class="img-responsive" />
-								<img src="images/p5.jpg" alt=" " class="img-responsive" />
-								<img src="images/p4.jpg" alt=" " class="img-responsive" />
-								<img src="images/p2.jpg" alt=" " class="img-responsive" />
-								<img src="images/p1.jpg" alt=" " class="img-responsive" /> 
+								<img src="resources/images/p3.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/p5.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/p4.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/p2.jpg" alt=" " class="img-responsive" />
+								<img src="resources/images/p1.jpg" alt=" " class="img-responsive" /> 
 								<div class="w3_hs_bottom">
 									<div class="flex_ecommerce">
 										<a href="#" data-toggle="modal" data-target="#myModal4"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
@@ -1305,7 +1305,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						
 					});
 				</script>
-				<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+				<script type="text/javascript" src="resources/js/jquery.flexisel.js"></script>
 		</div>
 	</div>
 	<!-- //Related Products -->
@@ -1381,7 +1381,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="footer-copy">
 			<div class="footer-copy1">
 				<div class="footer-copy-pos">
-					<a href="#home1" class="scroll"><img src="images/arrow.png" alt=" " class="img-responsive" /></a>
+					<a href="#home1" class="scroll"><img src="resources/images/arrow.png" alt=" " class="img-responsive" /></a>
 				</div>
 			</div>
 			<div class="container">
@@ -1391,7 +1391,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!-- //footer -->  
 	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
+	<script src="resources/js/minicart.js"></script>
 	<script>
         w3ls.render();
 
