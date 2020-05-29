@@ -79,7 +79,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 										<div class="facts">
 											<div class="register">
-												<form action="../login.sajo" method="post">			
+												<form action="login.sajo" method="post">			
 													<input name="Email" placeholder="Id" type="text" required="">						
 													<input name="Password" placeholder="Password" type="password" required="">										
 													<div class="sign-up">
@@ -95,22 +95,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="member/memberInsert.sajo" method="post" name='frm'>			
+												<form action="memberInsert.sajo" method="post" name='frm'>			
 											
-													<input placeholder="아이디" name="mid" type="text" required="">
-													<input placeholder="이름" name="mname" type="text" required="">
-													<input placeholder="비밀번호" name="mpassword" type="password" required="">	
+													<input placeholder="아이디" name="Id" type="text" required="">
+													<input placeholder="이름" name="Name" type="text" required="">
+													<input placeholder="비밀번호" name="Password" type="password" required="">	
 													<input placeholder="비밀번호 확인" name="Password" type="password" required="">													
-													<input placeholder="이메일" name="email" type="email" required="">
-													<input placeholder="전화번호" name="mtel" type="text" required="">
+													<input placeholder="이메일" name="Email" type="email" required="">
+													<input placeholder="전화번호" name="tel" type="text" required="">
 													생년월일 
-													<select name="year" class="birth" id='year'>
+													<select name="year" class="birth">
 														<option value="">출생연도</option>																										
 													</select>
-													<select name="month" class="birth" id='month'>	
+													<select name="month" class="birth">	
 														<option value="">월</option>	
 													</select>																
-													<select name="day" class="birth" id='day'>
+													<select name="day" class="birth">
 														<option value="">일</option> 
 													</select>	 	
 													<br/>
@@ -120,9 +120,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<option value='여자'>여자</option>
 													</select>
 													<br/><br/><br/>
-													판매자 등록<input type="checkbox" name="seller" id='seller' value='seller'> 
+													판매자 등록<input type="checkbox" name="seller" id='seller'> 
 													<input placeholder="판매자명(회사이름)" name="sname" id='sname' type="text" required="" disabled>
-													은행선택   
+													은행선택  
 													<select  name="bank" type="text" required="" class="bank" id='bank' disabled >
 														<option value='국민은행'>국민은행</option>
 														<option value='우리은행'>우리은행</option>
