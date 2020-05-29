@@ -101,7 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<input placeholder="이름" name="mname" type="text" required="">
 													<input placeholder="비밀번호" name="mpassword" type="password" required="">	
 													<input placeholder="비밀번호 확인" name="Password" type="password" required="">													
-													<input placeholder="이메일" name="email" type="email" required="">
+													<input placeholder="이메일" name="mail" type="email" required="">
 													<input placeholder="전화번호" name="mtel" type="text" required="">
 													생년월일 
 													<select name="year" class="birth" id='year'>

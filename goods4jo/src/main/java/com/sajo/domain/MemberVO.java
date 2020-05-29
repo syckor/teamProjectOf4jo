@@ -14,7 +14,7 @@ public class MemberVO {
 	private String mail;
 	private String mtel;
 	private String mtype; 
-	private String maddr;
+	private String maddr; 
 	
 	private String birth;
 	
@@ -24,9 +24,9 @@ public class MemberVO {
 	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(String birth) {
-		birth = this.year + this.month + this.day;
-	}
+	public void setBirth(String year, String month, String day) {
+		this.birth = year+month+day; 
+	} 
 	public String getMonth() {
 		return month;
 	}
@@ -78,7 +78,7 @@ public class MemberVO {
 	}
 	public void setMail(String mail) {
 		this.mail = mail;
-	}
+	} 
 	public String getMtel() {
 		return mtel;
 	}

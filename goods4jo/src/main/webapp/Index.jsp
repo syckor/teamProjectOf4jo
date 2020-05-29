@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Start</title>
-</head>
+</head> 
 <body>
 <%response.sendRedirect("main.sajo"); %>
 </body>
-</html>
+</html>  
