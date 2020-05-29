@@ -4,10 +4,12 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<%@ page language="java" R2233W3WWWSSZZZZZZZcontentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Electronic Store a Ecommerce Online Shopping Category Bootstrap Responsive Website Template | Products1 :: w3layouts</title>
+<title>Goods SAJO a Ecommerce Online Shopping Category Bootstrap Responsive Website Template | Products1 :: w3layouts</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -133,7 +135,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
 			</div>
 			<div class="w3l_logo">
-				<h1><a href="index.html">Electronic Store<span>Your stores. Your place.</span></a></h1>
+				<h1><a href="index.html">Goods SAJO<span>Your stores. Your place.</span></a></h1>
 			</div>
 			<div class="search">
 				<input class="search_box" type="checkbox" id="search_box">
@@ -173,40 +175,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li><a href="index.html">Home</a></li>	
 						<!-- Mega Menu -->
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle act" data-toggle="dropdown" >Products <b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
 							<ul class="dropdown-menu multi-column columns-3">
 								<div class="row">
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
-											<h6>Mobiles</h6>
-											<li><a href="products.html">Mobile Phones</a></li>
-											<li><a href="products.html">Mp3 Players <span>New</span></a></li> 
-											<li><a href="products.html">Popular Models</a></li>
-											<li><a href="products.html">All Tablets<span>New</span></a></li>
+											<h6>Kakao</h6>
+											<li><a href="">라이언</a></li>
+											<li><a href="">어피치<span>New</span></a></li> 
+											<li><a href="">무지</li>
+											<li><a href="">프로도</li>
+											<li><a href="">네오<span>New</span></a></li>
+											<li><a href="">튜브</li>
+											<li><a href="">제이지</li>
+											<li><a href="">콘</li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
-											<h6>Accessories</h6>
-											<li><a href="products1.html">Laptop</a></li>
-											<li><a href="products1.html">Desktop</a></li>
-											<li><a href="products1.html">Wearables <span>New</span></a></li>
-											<li><a href="products1.html"><i>Summer Store</i></a></li>
+											<h6>Line</h6>
+											<li><a href="">브라운&프렌즈</a></li>
+											<li><a href="">BT21</a></li>
+											<li><a href="">브롤스타즈 <span>New</span></a></li>
+											<li><a href=""><i>Summer Store</i></a></li>
 										</ul>
 									</div>
 									<div class="col-sm-2">
 										<ul class="multi-column-dropdown">
-											<h6>Home</h6>
-											<li><a href="products2.html">Tv</a></li>
-											<li><a href="products2.html">Camera</a></li>
-											<li><a href="products2.html">AC</a></li>
-											<li><a href="products2.html">Grinders</a></li>
+											<h6>General</h6>
+											<li><a href="">인형</a></li>
+											<li><a href="">생필품</a></li>
+											<li><a href="">의류</a></li>
+											<li><a href="">그 외</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-4">
 										<div class="w3ls_products_pos">
-											<h4>30%<i>Off/-</i></h4>
-											<img src="resources/images/1.jpg" alt=" " class="img-responsive" />
+											<img src="resources/images/inCate1.jpg" alt=" " class="img-responsive" />
 										</div>
 									</div>
 									<div class="clearfix"></div>
@@ -214,13 +219,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</ul>
 						</li>
 						<li><a href="about.html">About Us</a></li> 
-						<li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="icons.html">Web Icons</a></li>
-								<li><a href="codes.html">Short Codes</a></li>     
-							</ul>
+						<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notice</a>
 						</li>  
-						<li><a href="mail.html">Mail Us</a></li>
+						<li><a href="mail.html">Q&A</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -255,19 +256,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							  <div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 								  <h4 class="panel-title asd">
-									<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>New Arrivals
+									<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Kakao
 									</a>
 								  </h4>
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								  <div class="panel-body panel_text">
 									<ul>
-										<li><a href="products.html">Mobiles</a></li>
-										<li><a href="products1.html">Laptop</a></li>
-										<li><a href="products2.html">Tv</a></li>
-										<li><a href="products.html">Wearables</a></li>
-										<li><a href="products2.html">Refrigerator</a></li>
+										<li><a href="">라이언</a></li>
+										<li><a href="">어피치</a></li>
+										<li><a href="">무지</a></li>
+										<li><a href="">프로도</a></li>
+										<li><a href="">네오</a></li>
+										<li><a href="">튜브</a></li>
+										<li><a href="">제이지</a></li>
+										<li><a href="">콘</a></li>
 									</ul>
 								  </div>
 								</div>
@@ -276,29 +280,40 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="panel-heading" role="tab" id="headingTwo">
 								  <h4 class="panel-title asd">
 									<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Accessories
+									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Line
 									</a>
 								  </h4>
 								</div>
 								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 								   <div class="panel-body panel_text">
 									<ul>
-										<li><a href="products2.html">Grinder</a></li>
-										<li><a href="products2.html">Heater</a></li>
-										<li><a href="products2.html">Kid's Toys</a></li>
-										<li><a href="products2.html">Filters</a></li>
-										<li><a href="products2.html">AC</a></li>
+										<li><a href="products2.html">브라운&프렌즈</a></li>
+										<li><a href="products2.html">BT21</a></li>
+										<li><a href="products2.html">브롤스타즈</a></li>
 									</ul>
 								  </div>
 								</div>
 							  </div>
 							</div>
-							<ul class="panel_bottom">
-								<li><a href="products.html">Summer Store</a></li>
-								<li><a href="products.html">Featured Brands</a></li>
-								<li><a href="products.html">Today's Deals</a></li>
-								<li><a href="products.html">Latest Watches</a></li>
-							</ul>
+							 <div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingTwo">
+								  <h4 class="panel-title asd">
+									<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>General
+									</a>
+								  </h4>
+								</div>
+								<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+								   <div class="panel-body panel_text">
+									<ul>
+										<li><a href="">인형</a></li>
+										<li><a href="">생필품</a></li>
+										<li><a href="">의류</a></li>
+									</ul>
+								  </div>
+								</div>
+							  </div>
+							</div>
 						</div>
 					</div>
 					<div class="w3ls_mobiles_grid_left_grid">
@@ -334,7 +349,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col-md-8 w3ls_mobiles_grid_right">
 					<div class="col-md-6 w3ls_mobiles_grid_right_left">
 						<div class="w3ls_mobiles_grid_right_grid1">
-							<img src="resources/images/48.jpg" alt=" " class="img-responsive" />
+							<img src="https://t1.daumcdn.net/friends/prod/product/20200526170034713_8809721501771_AW_00.jpg?type=thumb&opt=R255x255@2xa" alt=" "  class="img-responsive" />
 							<div class="w3ls_mobiles_grid_right_grid1_pos1">
 								<h3>Attractive<span> New</span> Wrist Watches</h3>
 							</div>
@@ -905,7 +920,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>						
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Ã</span></button>						
 				</div>
 				<section>
 					<div class="modal-body">
@@ -1028,7 +1043,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>						
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Ã</span></button>						
 				</div>
 				<section>
 					<div class="modal-body">
@@ -1385,7 +1400,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 			<div class="container">
-				<p>&copy; 2017 Electronic Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+				<p>&copy; 2017 Goods SAJO. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
 			</div>
 		</div>
 	</div>
