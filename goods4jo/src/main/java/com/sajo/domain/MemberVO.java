@@ -6,16 +6,17 @@ public class MemberVO {
 	
 	private String mid;
 	private String mname;
-	private String mpassword;
+	private String mpassword;	
+	private String gender;
+	private String email;
+	private String mtel;
+	private String mtype; 
+	private String maddr; 
+	
 	private String month;
 	private String year;
 	private String day;
-	private String gender;
-	private String mail;
-	private String mtel;
-	private String mtype; 
-	private String maddr;
-	
+		
 	private String birth;
 	
 	
@@ -24,9 +25,9 @@ public class MemberVO {
 	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(String birth) {
-		birth = this.year + this.month + this.day;
-	}
+	public void setBirth(String year, String month, String day) {
+		this.birth = year+month+day; 
+	} 
 	public String getMonth() {
 		return month;
 	}
@@ -73,11 +74,11 @@ public class MemberVO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getMail() {
-		return mail;
+	public String getEmail() {
+		return email;
 	}
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setEmail(String mail) {
+		this.email = mail;
 	}
 	public String getMtel() {
 		return mtel;
@@ -96,6 +97,7 @@ public class MemberVO {
 	}
 	public void setMaddr(String maddr) {
 		this.maddr = maddr;
-	}
+	} 
+	
 	
 }

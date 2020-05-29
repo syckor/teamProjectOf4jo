@@ -5,7 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!-- 에휴 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" R2233W3WWWSSZZZZZZZcontentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="resources/css/font-awesome.css" rel="stylesheet">
 <!-- //Custom Theme files --> 
 <!-- js -->
-<script src="/resources/js/jquery.min.js"></script> 
+<script src="resources/js/jquery.min.js"></script> 
 <!-- //js -->  
 <!-- web fonts --> 
 <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>

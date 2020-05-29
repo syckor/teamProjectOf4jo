@@ -8,7 +8,7 @@
 	<insert id="memberInsert" parameterType="member">
 		<![CDATA[
 		INSERT INTO member(mid, mname, mpassword, birth, gender, mail, mtel, mtype)
-		VALUES(#{mid}, #{mname}, #{mpassword}, #{birth}, #{gender}, #{mail}, #{mtel}, #{mtype})
+		VALUES(#{mid}, #{mname}, #{mpassword}, #{birth}, #{gender}, #{email}, #{mtel}, #{mtype})
 		]]>
 	</insert>
 	
