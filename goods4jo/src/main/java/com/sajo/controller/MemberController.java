@@ -9,9 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.sajo.dao.MemberDAO;
 import com.sajo.domain.MemberVO;
 import com.sajo.service.MemberService;
 
@@ -30,26 +31,23 @@ public class MemberController {
 	
 
 	  @RequestMapping("/memberInsert.sajo") 
-	  public String insert(MemberVO vo, HttpServletRequest request,
-			  			@RequestParam(value = "year") String year,
-			            @RequestParam(value = "month") String month,
-			            @RequestParam(value = "day") String day
-			          
-			  ) { 
-	  //db를 탐 서비스필요     
-	  String seller = request.getParameter("seller");
+	  public String insert(MemberVO vo, HttpServletRequest request ) {
+	  //db를 탐 서비스필요 
+
+	  int result = memberService.memberInsert(vo);  
+	   String seller = request.getParameter("seller");
+	   String year = request.getParameter("year");
+	   String month = request.getParameter("month");
+	   String day = request.getParameter("day");
 	   System.out.println(year);
-	   
-	   if(seller==null) seller="소비자";
-	   else seller="판매자";
-	   
-	   vo.setMtype(seller);  
-	   vo.setBirth(year,month,day); 
-	   
-	   int result = memberService.memberInsert(vo);  
+	   System.out.println(seller);
+	   vo.setMtype(seller);
+	   vo.setYear(year);
+	   vo.setMonth(month);
+	   vo.setDay(day);
 	  return "redirect:/index.sajo "; 
 	  }
-	 
+	
 	
 	
 	@ResponseBody//(****************비동기통신을 해주세요) AJAX통신을 하는애는 반드시 이 어노테이션이 있어야함 

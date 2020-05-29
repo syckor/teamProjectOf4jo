@@ -243,28 +243,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
 											<h6>Mobiles</h6>
-											<li><a href="products.jsp">Mobile Phones</a></li>
-											<li><a href="products.jsp">Mp3 Players <span>New</span></a></li> 
-											<li><a href="products.jsp">Popular Models</a></li>
-											<li><a href="products.jsp">All Tablets<span>New</span></a></li>
+											<li><a href="products1.sajo">Mobile Phones</a></li>
+											<li><a href="products1.sajo">Mp3 Players <span>New</span></a></li> 
+											<li><a href="products1.sajo">Popular Models</a></li>
+											<li><a href="products1.sajo">All Tablets<span>New</span></a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
 											<h6>Accessories</h6>
-											<li><a href="products1.jsp">Laptop</a></li>
-											<li><a href="products1.jsp">Desktop</a></li>
-											<li><a href="products1.jsp">Wearables <span>New</span></a></li>
-											<li><a href="products1.jsp"><i>Summer Store</i></a></li>
+											<li><a href="products1.sajo">Laptop</a></li>
+											<li><a href="products1.sajo">Desktop</a></li>
+											<li><a href="products1.sajo">Wearables <span>New</span></a></li>
+											<li><a href="products1.sajo"><i>Summer Store</i></a></li>
 										</ul>
 									</div>
 									<div class="col-sm-2">
 										<ul class="multi-column-dropdown">
 											<h6>Home</h6>
-											<li><a href="products2.jsp">Tv</a></li>
-											<li><a href="products2.jsp">Camera</a></li>
-											<li><a href="products2.jsp">AC</a></li>
-											<li><a href="products2.jsp">Grinders</a></li>
+											<li><a href="products1.sajo">Tv</a></li>
+											<li><a href="products1.sajo">Camera</a></li>
+											<li><a href="products1.sajo">AC</a></li>
+											<li><a href="products1.sajo">Grinders</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-4">
@@ -284,7 +284,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<li><a href="codes.jsp">Short Codes</a></li>     
 							</ul>
 						</li>  
-						<li><a href="mail.jsp">Mail Us</a></li>
+						<li><a href="notice.sajo">Mail Us</a></li>
 					</ul>
 				</div>
 			</nav>

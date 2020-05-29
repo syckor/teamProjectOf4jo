@@ -39,20 +39,9 @@ $(document).ready(function(){
 		
 	}
 	
-	$('#year').change(function(){
-		var year = $('#year').val();
-		$('#year').attr('value', year);
-	});
-	
-	$('#month').change(function(){
-		var month = $('#month').val();
-		$('#month').attr('value', month);
-	});
-	
-	$('#day').change(function(){
-		var day = $('#day').val();
-		$('#day').attr('value', day);
-	}); 
+	$('.year').change(function(){
+		$('#year').prop('value', this.val());			
+	}) 
 	
 	$('#seller').change(function(){
 	    if ($('#seller').is(':checked') == true){

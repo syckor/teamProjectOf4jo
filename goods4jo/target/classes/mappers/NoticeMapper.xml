@@ -14,7 +14,7 @@
 		<![CDATA[
 		SELECT *
 		FROM NOTICE
-		ORDER BY NTNO_SEQ DESC
+		ORDER BY NTNO DESC
 		]]>
 	</select>
 </mapper>
