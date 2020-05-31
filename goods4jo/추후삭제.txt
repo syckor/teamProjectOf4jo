@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 ﻿테스트
 테스트zz
 테스트
 
 
 
+=======
+﻿ㅎㅇㅌ ㅎㅇㅌ 
+
+ 
+>>>>>>> refs/remotes/origin/master
