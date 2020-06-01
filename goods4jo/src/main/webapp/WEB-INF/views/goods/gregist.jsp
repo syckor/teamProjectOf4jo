@@ -256,12 +256,15 @@
 	</div>
 	<div><br/><br/>
 	<div class="container">
-		<form class='register' id="gregist" action="">
+		<form class='register' id="gregist" action="" method='post'>
 			<table class='table'>
-			<tr><td>상품명</td><td><input type="text" placeholder="[카카오]상품명"/></td></tr>
-			<tr><td>
-			
-			
+			<tr><td>상품명</td><td><input type="text" name='gname' placeholder="[Kakao or Line or General]상품명"/></td></tr>
+			<tr><td>상품가격</td><td><input type='text' name='price' placeholder="숫자만 입력해 주세요."/>원</td></tr>
+			<tr><td>재고수량</td><td><input type='text' name='count' placeholder="숫자만 입력해 주세요."/>개</td></tr>
+			<tr><td>택배사</td><td><input type='text' name='delivery' /></td></tr>
+			<tr><td>택배비용</td><td><input type='text' name='dcost' placeholder="숫자만 입력해 주세요."/>원</td></tr>
+			<tr><td>배송예상시간</td><td><input type='text' name='dtime' placeholder="일수를 입력해주세요."/>일 
+			</td></tr>
 			</table>
 			<div class="team-bottom">
 			<input type="submit"

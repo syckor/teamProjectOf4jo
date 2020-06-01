@@ -8,8 +8,13 @@ public class ProductController {
 
 	@RequestMapping("/products1.sajo")
 	public String product() {
-		System.out.println("이겅?");
 		
 		return "goods/products1";
+	}
+	
+	@RequestMapping("/gregist.sajo")
+	public String gregist() {
+
+		return "goods/gregist";
 	}
 }

@@ -239,29 +239,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   <li><a href="index.html">Home</a></li>   
                   <!-- Mega Menu -->
                   <li class="dropdown">
-                     <a href="#" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
+                     <a href="products1.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
                      <ul class="dropdown-menu multi-column columns-3">
                         <div class="row">
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
                                  <h6>Kakao</h6>
-                                 <li><a href="">라이언</a></li>
-                                 <li><a href="">어피치<span>New</span></a></li> 
-                                 <li><a href="">무지</li>
-                                 <li><a href="">프로도</li>
-                                 <li><a href="">네오<span>New</span></a></li>
-                                 <li><a href="">튜브</li>
-                                 <li><a href="">제이지</li>
-                                 <li><a href="">콘</li>
+                                 <li><a href="products1.sajo">라이언</a></li>
+                                 <li><a href="products1.sajo">어피치<span>New</span></a></li> 
+                                 <li><a href="products1.sajo">무지</li>
+                                 <li><a href="products1.sajo">프로도</li>
+                                 <li><a href="products1.sajo">네오<span>New</span></a></li>
+                                 <li><a href="products1.sajo">튜브</li>
+                                 <li><a href="products1.sajo">제이지</li>
+                                 <li><a href="products1.sajo">콘</li>
                               </ul>
                            </div>
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
                                  <h6>Line</h6>
-                                 <li><a href="">브라운&프렌즈</a></li>
-                                 <li><a href="">BT21</a></li>
-                                 <li><a href="">브롤스타즈 <span>New</span></a></li>
-                                 <li><a href=""><i>Summer Store</i></a></li>
+                                 <li><a href="products1.sajo">브라운&프렌즈</a></li>
+                                 <li><a href="products1.sajo">BT21</a></li>
+                                 <li><a href="products1.sajo">브롤스타즈 <span>New</span></a></li>
+                                 <li><a href="products1.sajo"><i>Summer Store</i></a></li>
                               </ul>
                            </div>
                            <div class="col-sm-2">
