@@ -64,6 +64,7 @@ public class MemberController {
 		
 		return message;
 	} 
+	
 	/*
 	 * Spring에서 String을 리턴하면 뷰페이지 지정이 되버림
 	 * 무조건 뷰페이지 지어되어서 화면이 변경되어야함(페이지전환)

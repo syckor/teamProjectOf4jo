@@ -97,7 +97,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<div class="register">
 												<form action="member/memberInsert.sajo" method="post" name='frm'>			
 											  
-													<input placeholder="아이디" name="mid" type="text" required="">
+													<input placeholder="아이디" name="mid" type="text" required="" id='mid'><br/><br/> 
+													<span id="idCheckResult" style="width:150px;color:red"></span>
 													<input placeholder="이름" name="mname" type="text" required="">
 													<input placeholder="비밀번호" name="mpassword" type="password" required="">	
 													<input placeholder="비밀번호 확인" name="Password" type="password" required="">													
@@ -220,77 +221,77 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!-- //header -->
 	<!-- navigation -->
-	<div class="navigation">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header nav_2">
-					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div> 
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<ul class="nav navbar-nav">
-						<li><a href="index.jsp" class="act">Home</a></li>	
-						<!-- Mega Menu -->
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu multi-column columns-3">
-								<div class="row">
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Mobiles</h6>
-											<li><a href="products1.sajo">Mobile Phones</a></li>
-											<li><a href="products1.sajo">Mp3 Players <span>New</span></a></li> 
-											<li><a href="products1.sajo">Popular Models</a></li>
-											<li><a href="products1.sajo">All Tablets<span>New</span></a></li>
-										</ul>
-									</div>
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Accessories</h6>
-											<li><a href="products1.sajo">Laptop</a></li>
-											<li><a href="products1.sajo">Desktop</a></li>
-											<li><a href="products1.sajo">Wearables <span>New</span></a></li>
-											<li><a href="products1.sajo"><i>Summer Store</i></a></li>
-										</ul>
-									</div>
-									<div class="col-sm-2">
-										<ul class="multi-column-dropdown">
-											<h6>Home</h6>
-											<li><a href="products1.sajo">Tv</a></li>
-											<li><a href="products1.sajo">Camera</a></li>
-											<li><a href="products1.sajo">AC</a></li>
-											<li><a href="products1.sajo">Grinders</a></li>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<div class="w3ls_products_pos">
-											<h4>30%<i>Off/-</i></h4>
-											<img src="images/1.jpg" alt=" " class="img-responsive" />
-										</div>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</ul>
-						</li>
-						<li><a href="about.jsp">About Us</a></li> 
-						<li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="icons.jsp">Web Icons</a></li>
-								<li><a href="codes.jsp">Short Codes</a></li>     
-							</ul>
-						</li>  
-						<li><a href="notice.sajo">Mail Us</a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</div>
-	<!-- //navigation -->
+	<!-- navigation --> 
+   <div class="navigation">
+      <div class="container">
+         <nav class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header nav_2">
+               <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+               </button>
+            </div> 
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+               <ul class="nav navbar-nav">
+                  <li><a href="index.html">Home</a></li>   
+                  <!-- Mega Menu -->
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
+                     <ul class="dropdown-menu multi-column columns-3">
+                        <div class="row">
+                           <div class="col-sm-3">
+                              <ul class="multi-column-dropdown">
+                                 <h6>Kakao</h6>
+                                 <li><a href="">라이언</a></li>
+                                 <li><a href="">어피치<span>New</span></a></li> 
+                                 <li><a href="">무지</li>
+                                 <li><a href="">프로도</li>
+                                 <li><a href="">네오<span>New</span></a></li>
+                                 <li><a href="">튜브</li>
+                                 <li><a href="">제이지</li>
+                                 <li><a href="">콘</li>
+                              </ul>
+                           </div>
+                           <div class="col-sm-3">
+                              <ul class="multi-column-dropdown">
+                                 <h6>Line</h6>
+                                 <li><a href="">브라운&프렌즈</a></li>
+                                 <li><a href="">BT21</a></li>
+                                 <li><a href="">브롤스타즈 <span>New</span></a></li>
+                                 <li><a href=""><i>Summer Store</i></a></li>
+                              </ul>
+                           </div>
+                           <div class="col-sm-2">
+                              <ul class="multi-column-dropdown">
+                                 <h6>General</h6>
+                                 <li><a href="">인형</a></li>
+                                 <li><a href="">생필품</a></li>
+                                 <li><a href="">의류</a></li>
+                                 <li><a href="">그 외</a></li>
+                              </ul>
+                           </div>
+                           <div class="col-sm-4">
+                              <div class="w3ls_products_pos">
+                                 <img src="resources/images/inCate1.jpg" alt=" " class="img-responsive" />
+                              </div>
+                           </div>
+                           <div class="clearfix"></div>
+                        </div>
+                     </ul>
+                  </li>
+                  <li><a href="about.html">About Us</a></li> 
+                  <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notice</a>
+                  </li>  
+                  <li><a href="mail.html">Q&A</a></li>
+               </ul>
+            </div>
+         </nav>
+      </div>
+   </div>
+   <!-- //navigation -->
 	<!-- banner -->
 	<div class="banner">
 		<div class="container">
