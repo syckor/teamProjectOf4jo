@@ -79,6 +79,35 @@ $(document).ready(function(){
 		     console.log('unchecked');
 	    }
 	});
+	
+	
+	//아이디 중복체크
+	$('#mid').keyup(function(){ 
+        //비동기통신 = ajax 
+		$.ajax({
+			type : 'post', //post방식으로 통신하겠습니다.
+			async : true,
+			url : 'idCheck.sajo',  
+			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+			data: "mid=" +$('#mid').val(),
+			success : function(resultData){
+				$('#idCheckResult').html(resultData);  
+			} 
+		});
+       
+	})
+	
+	//비밀번호 두개의 입력값 일치 비교
+	if($.trim($('#userPass').val())==''){
+		$('#userPass').focus();
+		return;
+	}
+	
+	if($.trim($('#userPass').val()) != $.trim($('#userPass2').val())){
+		alert("비밀번호가 일치하지 않습니다..");
+		$('#userPass2').focus();
+		return;
+	}
 
 
 	

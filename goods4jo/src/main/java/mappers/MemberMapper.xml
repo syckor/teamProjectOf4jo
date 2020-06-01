@@ -12,5 +12,12 @@
 		]]>
 	</insert>
 	
+	<select id="idCheck" parameterType="member" resultType="member">
+	SELECT* FROM member WHERE mid=#{mid}
+	<if test="mid!=null"> 
+	AND mpassword=#{mpassword} 
+	</if> 
+</select>  
+	
 
 </mapper>
