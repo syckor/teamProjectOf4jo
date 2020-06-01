@@ -13,8 +13,12 @@
 	content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 </script>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
@@ -250,10 +254,10 @@
 								</div>
 							</ul></li>
 						<li><a href="about.html">About Us</a></li>
-						<li><a href="#" class="dropdown-toggle"
+						<li><a href="/notice.sajo" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Notice</a></li>
-						<li><a href="mail.html">Q&A</a></li>
+						<li><a href="/mail.sajo">Q&A</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -264,7 +268,7 @@
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">
-			<h2>Mail Us</h2>
+			<h2>Q&A</h2>
 		</div>
 	</div>
 	<!-- //banner -->
@@ -274,7 +278,7 @@
 			<ul>
 				<li><a href="index.html"><span
 						class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
-				<li>Mail Us</li>
+				<li>Q&A</li>
 			</ul>
 		</div>
 	</div>
@@ -282,67 +286,95 @@
 	<!-- mail -->
 	<div class="mail">
 		<div class="container">
-			<h3>Mail Us</h3>
+			<h3>우리에게 물어보세요</h3>
 			<div class="agile_mail_grids">
-				<div class="col-md-5 contact-left">
-					<h4>Address</h4>
-					<p>
-						est eligendi optio cumque nihil impedit quo minus id quod maxime <span>26
-							56D Rescue,US</span>
-					</p>
-					<ul>
-						<li>Free Phone :+1 078 4589 2456</li>
-						<li>Telephone :+1 078 4589 2456</li>
-						<li>Fax :+1 078 4589 2456</li>
-						<li><a href="mailto:info@example.com">info@example.com</a></li>
-					</ul>
-				</div>
-				<div class="col-md-7 contact-left">
+				<div class="col-md-12 contact-left">
 					<h4>Q&A 양식</h4>
-					<form action="#" method="post">
-						<select type="text" name="qtype"  required="" class="qtype" id='qtype'disabled>
+					<form action="qna.sajo" method="post">
+						<input type="hidden" name="qno" required=""> <input
+							type="hidden" name="mid" required=""> <input
+							type="hidden" name="qanswer" required=""> <input
+							type="text" name="qtitle" placeholder="Your Title" required="">
+						<input type="text" name="qpassword" placeholder="Your Password"
+							required=""> <select type="text" name="qtype" required=""
+							class="qtype" id='qtype' style="width: 380px; height: 40px;">
 							<option value='상품문의'>상품문의</option>
 							<option value='배송문의'>배송문의</option>
 							<option value='반품/교환/환불'>반품/교환/환불</option>
 							<option value='주문결제'>주문결제</option>
 							<option value='회원서비스'>회원서비스</option>
 							<option value='기타문의'>기타문의</option>
-						</select> 
-						<input type="text" name="Name" placeholder="Your Name" required=""> 
-						<input type="text" name="Title"	placeholder="Your Title" required=""> 
-						<input type="text" name="Password" placeholder="Password" required="">
-						<textarea name="content" placeholder="Message..." required=""></textarea>
+						</select>
+						<textarea name="qcontent" placeholder="물어보고 싶은 내용을 입력해주세요~"
+							required=""></textarea>
+
 						<input type="submit" value="Submit">
 					</form>
+				</div>
+				<div class="notice_bx">
+					<div class="cus_heading">
+						<h4 class="cus_tit2">공지사항</h4>
+					</div>
+					<ul id="noticeCategories" class="cus_tab">
+						<li id="notice_ALL" class="on"><a href="#"
+							onclick="callQnaList('ALL'); clickcr(this, 'not.all', '', '', event); return false;"><span>전체</span></a>
+						</li>
+						<li id="notice_GENERAL" class=""><a href="#"
+							onclick="callNoticeList('GENERAL'); clickcr(this, 'not.general', '', '', event); return false;"><span>상품문의</span></a>
+						</li>
+						<li id="notice_EVENT" class=""><a href="#"
+							onclick="callNoticeList('EVENT'); clickcr(this, 'not.event', '', '', event); return false;"><span>배송문의</span></a>
+						</li>
+						<li id="notice_PRIZE_WINNER_ANNOUNCEMENT" class=""><a
+							href="#"
+							onclick="callNoticeList('PRIZE_WINNER_ANNOUNCEMENT'); clickcr(this, 'not.winner', '', '', event); return false;"><span>반품/교환/환불</span></a>
+						</li>
+						<li id="notice_SAFETY_TRADE" class=""><a href="#"
+							onclick="callNoticeList('SAFETY_TRADE'); clickcr(this, 'not.safety', '', '', event); return false;"><span>주문결제</span></a>
+						</li>
+						<li id="notice_SYSTEM" class=""><a href="#"
+							onclick="callNoticeList('SYSTEM'); clickcr(this, 'not.system', '', '', event); return false;"><span>회원서비스</span></a>
+						</li>
+						<li id="notice_SYSTEM" class="last"><a href="#"
+							onclick="callNoticeList('SYSTEM'); clickcr(this, 'not.system', '', '', event); return false;"><span>기타문의</span></a>
+						</li>
+					</ul>
+
+					<table cellspacing="0" border="1" class="cus_tb">
+						<caption>Q&A 목록</caption>
+						<colgroup>
+							<col width="85">
+							<col>
+							<col width="84">
+						</colgroup>
+						<thead class="blind">
+							<tr>
+								<th scope="col">제목</th>
+								<th scope="col">내용</th>
+								<th scope="col">등록일</th>
+							</tr>
+						</thead>
+						<tbody id="qnaBody">
+							<tr>
+								<td class="sort">제목</td>
+								<td><a
+									href=""
+									onclick="clickcr(this, 'not*g.list', 200012883, 1, event);">내용
+										</a></td>
+								<td class="num">2020.05.28</td>
+							</tr>
+
+						</tbody>
+					</table>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 
-			<div class="contact-bottom">
-				<iframe
-					src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96908.54934770924!2d-73.74913540000001!3d40.62123259999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sanimal+rescue+service+near+Inwood%2C+New+York%2C+NY%2C+United+States!5e0!3m2!1sen!2sin!4v1436335928062"
-					frameborder="0" style="border: 0" allowfullscreen></iframe>
-			</div>
+
 		</div>
 	</div>
 	<!-- //mail -->
-	<!-- newsletter -->
-	<div class="newsletter">
-		<div class="container">
-			<div class="col-md-6 w3agile_newsletter_left">
-				<h3>Newsletter</h3>
-				<p>Excepteur sint occaecat cupidatat non proident, sunt.</p>
-			</div>
-			<div class="col-md-6 w3agile_newsletter_right">
-				<form action="#" method="post">
-					<input type="email" name="Email" placeholder="Email" required="">
-					<input type="submit" value="" />
-				</form>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	<!-- //newsletter -->
+
 	<!-- footer -->
 	<div class="footer">
 		<div class="container">

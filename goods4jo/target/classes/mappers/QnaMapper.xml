@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QnaDAO">
+
+<insert id="insertQna" parameterType="qna" >
+		<![CDATA[
+		INSERT INTO QNA(QNO, QTYPE, QTITLE, QPASSWORD, QCONTENT, MID, QDATE)
+		VALUES(QNA_SEQ.nextval,
+			#{qtype}, #{qtitle}, #{qpassword}, #{qcontent}, '16me', sysdate)
+		]]>
+</insert>
+	
+</mapper>
