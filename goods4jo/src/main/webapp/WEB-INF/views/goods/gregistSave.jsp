@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Goods Regist</title>
+<title>Goods RegistSave</title>
 <link href="resources/css/bootstrap.css" rel="stylesheet"
 	type="text/css" media="all" />
 <link href="resources/css/style.css" rel="stylesheet" type="text/css"
@@ -256,26 +256,25 @@
 	</div>
 	<div><br/><br/>
 	<div class="container">
-		<form class='register' id="gregist" action="gregistSave.sajo" method='post'>
+		<form class='register' id="gregist" action="products1.sajo" method='post'>
 			<table class='table'>
 			<tr><td><h2>상품 기본 정보</h2></td></tr>
-			<tr><td>상품명</td><td><input type="text" name='gname' placeholder="[Kakao or Line or General]상품명"/></td></tr>
-			<tr><td>상품가격</td><td><input type='text' name='price' placeholder="숫자만 입력해 주세요."/>원</td></tr>
-			<tr><td>재고수량</td><td><input type='text' name='count' placeholder="숫자만 입력해 주세요."/>개</td></tr>
-			<tr><td>택배사</td><td><input type='text' name='delivery' /></td></tr>
-			<tr><td>택배비용</td><td><input type='text' name='dcost' placeholder="숫자만 입력해 주세요."/>원</td></tr>
-			<tr><td>배송예상시간</td><td><input type='text' name='dtime' placeholder="일수를 입력해주세요."/>일 </td></tr>
-			<tr><td>상품상세정보</td><td><textarea name='detail' width='auto' height='auto'></textarea></td></tr>
+			<tr><td>상품명</td><td>${goods.gname }</td></tr>
+			<tr><td>상품가격</td><td>${goods.price }</td></tr>
+			<tr><td>재고수량</td><td>${goods.count }</td></tr>
+			<tr><td>택배사</td><td>${goods.delivery }</td></tr>
+			<tr><td>택배비용</td><td>${goods.dcost }</td></tr>
+			<tr><td>배송예상시간</td><td>${goods.dtime }</td></tr>
+			<tr><td>상품상세정보</td><td>${goods.detail }</td></tr>
 			<br/>
 			<tr><td><h2>옵션</h2></td></tr>
-			<tr><td>옵션1</td><td><input type='text' name='option1' placeholder="빨강/파랑/노랑/보라"/></td></tr>
-			<tr><td>옵션2</td><td><input type='text' name='option2' placeholder="M/L/XL/XXL"/></td></tr>
-			
+			<tr><td>옵션1</td><td>${goods.option1 }</td></tr>
+			<tr><td>옵션2</td><td>${goods.option2 }</td></tr>
 			</table>
 			<div class="team-bottom">
 			<input type="submit"
-				class="submit" value="등록하기" /></div>
-		</form>
+				class="submit" value="상품 홈" /></div>
+			</form>
 		</div>
 	</div>
 

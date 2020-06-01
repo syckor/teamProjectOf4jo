@@ -57,6 +57,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //for bootstrap working -->
 	<!-- header modal -->
 	
+	
+	<!-- 로그아웃 상태일때 뜨는 팝업 -->
 	<div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
 		aria-hidden="true">
 		<div class="modal-dialog modal-lg">
@@ -79,14 +81,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 										<div class="facts">
 											<div class="register">
-												<form action="../login.sajo" method="post">			
-													<input name="Email" placeholder="Id" type="text" required="">						
+												<form action="member/login.sajo" method="post">			
+													<input name="mid" placeholder="Id" type="text" required="">						
 													<input name="Password" placeholder="Password" type="password" required="">										
 													<div class="sign-up">
 														<input type="submit" value="로그인"/>
 													</div>
 												</form>
-											</div>
+											</div> 
 										</div> 
 									</div>
 									
@@ -95,24 +97,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="member/memberInsert.sajo" method="post" name='frm'>			
-											  
-													<input placeholder="아이디" name="mid" type="text" required="" id='mid'><br/><br/> 
-													<span id="idCheckResult" style="width:150px;color:red"></span>
-													<input placeholder="이름" name="mname" type="text" required="">
-													<input placeholder="비밀번호" name="mpassword" type="password" required="">	
-													<input placeholder="비밀번호 확인" name="Password" type="password" required="">													
-													<input placeholder="이메일" name="mail" type="email" required="">
-													<input placeholder="전화번호" name="mtel" type="text" required="">
+												<form action="member/memberInsert.sajo" method="get" name='frm'>
+															 
+											  		<span id="idCheckResult" style="width:150px;color:red"></span>
+													<input placeholder="아이디" name="mid" type="text" required="" id='mid'><br/><br/> 		
+													<input placeholder="이름" name="mname" type="text" required="" id='mname'>
+													<input placeholder="비밀번호" name="mpassword" type="password" id='mpassword' required="">	
+													<input placeholder="비밀번호 확인" name="passconf" type="password" id='passconf' required="">													
+													<input placeholder="이메일" name="mail" type="email" id='email' required="">
+													<span id="telCheckResult" style="width:150px;color:red"></span>
+													<div>
+											 			<input type = "radio" name = "phone"/> SKT
+   														<input type = "radio" name = "phone"/> KT
+   														<input type = "radio" name = "phone"/> LGU+
+   													</div>												
+													<input placeholder="전화번호" name="mtel" type="text" id='mtel' required="" >
 													생년월일 
-													<select name="year" class="birth" id='year'>
-														<option value="">출생연도</option>																										
+													<select name="year" class="birth" id='year'> 
+														<option value="출생연도">출생연도</option>																										
 													</select>
 													<select name="month" class="birth" id='month'>	
-														<option value="">월</option>	
+														<option value="월">월</option>	
 													</select>																
 													<select name="day" class="birth" id='day'>
-														<option value="">일</option> 
+														<option value="일">일</option>  
 													</select>	 	
 													<br/>
 													성별
@@ -121,18 +129,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<option value='여자'>여자</option>
 													</select>
 													<br/><br/><br/>
-													판매자 등록<input type="checkbox" name="seller" id='seller' value='seller'> 
+												 	판매자 등록<input type="checkbox" name="seller" id='seller' value='seller'> 
 													<input placeholder="판매자명(회사이름)" name="sname" id='sname' type="text" required="" disabled>
 													은행선택   
 													<select  name="bank" type="text" required="" class="bank" id='bank' disabled >
 														<option value='국민은행'>국민은행</option>
 														<option value='우리은행'>우리은행</option>
+														<option value='신한은행'>신한은행</option>
 														<option value='카카오뱅크'>카카오뱅크</option>
 														<option value='기업은행'>기업은행</option>
 														<option value='하나은행'>하나은행</option>
-														<option value='광주은행'>광주은행</option>
+														<option value='광주은행'>광주은행</option> 
 														<option value='부산은행'>부산은행</option> 
 														<option value='농협'>농협</option>
+														<option value='수협'>수협</option>
 														<option value='새마을금고'>새마을금고</option>
 													</select>
 													<input placeholder="계좌번호" name="account" id='account' type="text" required="" disabled >
@@ -140,12 +150,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
 													 <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호" disabled >
 													<input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소"  disabled>
-													<input type="text" name='oldaddr' id="sample4_jibunAddress" placeholder="지번주소" disabled >
 													<span id="guide" style="color:#999;display:none"></span> 
 													<input type="text" name='detailofaddr' id="sample4_detailAddress" placeholder="상세주소"  disabled>
+													
+													<hr/>
+													<div class="stats">
+											       		* 모든 항목에 동의해야 합니다.<br/>
+											          <input class='agree1' name="agree1" type="checkbox"/>Goods 4조 이용약관(필수)<br/>
+											          <input class='agree2' name="agree2" type="checkbox"/>전자상거래 이용약관(필수)<br />
+											          <input class='agree3' name="agree3" type="checkbox"/>제 3자 정보제공(필수)<br />
+											          <input class='agree4' name="agree4" type="checkbox"/>혜택성 정보 수신 동의(선택)<br />
+											          <hr/>
+											          <input class="check-all" name="agree" type="checkbox" /><span>위 조항 모두</span>
+											          <br/>				
+											        </div> 
+																								
 													<div class="sign-up"> 
 														<input type="submit" value="회원가입완료"/> 
-													</div>
+													</div> 
 												</form>
 											</div>
 										</div>
@@ -187,18 +209,103 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 	
+	<!-- 로그인 상태일때 뜨는 팝업 -->
+	<%String memberId = (String)session.getAttribute("memberId"); %>
+	<%String memberName = (String)session.getAttribute("memberName"); %>
+ 	<div class="modal fade" id="myModal77" tabindex="-1" role="dialog" aria-labelledby="myModal88"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content"> 
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;</button>
+						<h4 class="modal-title" id="myModalLabel"><%=memberName%>님, 환영합니다</h4>
+				</div> 
+				<div class="modal-body modal-body-sub">
+					<div class="row">
+						<div class="col-md-8 modal_body_left modal_body_left1" style="border-right: 1px dotted #C2C2C2;padding-right:3em;">
+							<div class="sap_tabs">	
+								<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+									<ul>
+										<li class="resp-tab-item" aria-controls="tab_item-0"><span>회원정보 수정하기</span></li><br/>
+										<li class="resp-tab-item" aria-controls="tab_item-1"><span>구매내역</span></li><br/>
+										<li class="resp-tab-item" aria-controls="tab_item-2"><a href='main.sajo'>로그아웃</a></li>									
+									</ul>		 
+									 
+									
+									
+										
+									 
+									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
+										<div class="facts">
+											
+										</div>
+									</div>
+									
+									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+										<div class="facts">
+											<div class="register">
+												<form action="member/login.sajo" method="post">			
+													<input name="mid" placeholder="Id" type="text" required="">						
+													<input name="Password" placeholder="Password" type="password" required="">										
+													<div class="sign-up">
+														<input type="submit" value="로그인"/>
+													</div>
+												</form>
+											</div> 
+										</div> 
+									</div> 	
+									
+									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-2">
+										<div class="facts">
+											 <%session.invalidate(); %>
+											
+										</div>  
+									</div> 	
+								
+										        					             	      
+								</div>	
+							</div>
+							<script src="resources/js/easyResponsiveTabs.js" type="text/javascript"></script>
+							<script type="text/javascript">
+								$(document).ready(function () {
+									$('#horizontalTab').easyResponsiveTabs({
+										type: 'default', //Types: default, vertical, accordion           
+										width: 'auto', //auto or any width like 600px
+										fit: true   // 100% fit in a container
+									});
+								});
+							</script>							
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ 	
 	<script>
-		$('#myModal88').modal('show');
+		<!--여기서 이거 쓰기 싫었는데 js파일안에서 세션 가져오는거 아무리 찾아도 안나와서 어쩔수없이 여기다함 ㅜ ㅋ  -->
+		<% 
+			if(memberId==null){%>
+				$('#myModal88').modal('show');
+			<%}else{%>
+				$('#myModal88').modal('hide');
+			<%}%>
+		   
 	</script>  
 	<!-- header modal -->
 	<!-- header -->
 	<div class="header" id="home1">
 		<div class="container">
 			<div class="w3l_login">
-				<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+				<%if(memberId==null){ %>
+					<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+				<%}else{ %>
+					<a href="#" data-toggle="modal" data-target="#myModal77"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+				<%}%>
 			</div>
 			<div class="w3l_logo">
-				<h1><a href="index.jsp">Electronic Store<span>Your stores. Your place.</span></a></h1>
+				<h1><a href="index.jsp">Goods 4jo<span>Your stores. Your place.</span></a></h1>
 			</div>
 			<div class="search">
 				<input class="search_box" type="checkbox" id="search_box">
@@ -220,7 +327,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 	<!-- //header -->
-	<!-- navigation -->
 	<!-- navigation --> 
    <div class="navigation">
       <div class="container">
@@ -260,8 +366,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                  <h6>Line</h6>
                                  <li><a href="products1.sajo">브라운&프렌즈</a></li>
                                  <li><a href="products1.sajo">BT21</a></li>
-                                 <li><a href="products1.sajo">브롤스타즈 <span>New</span></a></li>
-                                 <li><a href="products1.sajo"><i>Summer Store</i></a></li>
+                                 <li><a href="">브롤스타즈 <span>New</span></a></li>
+								<li><a href="gregist.sajo"><i>상품 등록</i></a></li>
                               </ul>
                            </div>
                            <div class="col-sm-2">
@@ -280,11 +386,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                            </div>
                            <div class="clearfix"></div>
                         </div>
-                     </ul>
-                  </li>
-                  <li><a href="about.html">About Us</a></li> 
-                  <li><a href="notice.sajo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notice</a>
-                  </li>  
+                     </ul></li>
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="#" class="dropdown-toggle"
+                     data-toggle="dropdown" role="button" aria-haspopup="true"
+                     aria-expanded="false">Notice</a></li>
                   <li><a href="mail.sajo">Q&A</a></li>
                </ul>
             </div>

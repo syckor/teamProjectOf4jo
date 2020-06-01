@@ -10,7 +10,7 @@ public class GoodsVO {
 	private String option1;
 	private String option2;
 	private String delivery;
-	private String dcost;
+	private int dcost;
 	private int dtime;
 	private String detail;
 	private String sid;
@@ -62,10 +62,10 @@ public class GoodsVO {
 	public void setDelivery(String delivery) {
 		this.delivery = delivery;
 	}
-	public String getDcost() {
+	public int getDcost() {
 		return dcost;
 	}
-	public void setDcost(String dcost) {
+	public void setDcost(int dcost) {
 		this.dcost = dcost;
 	}
 	public int getDtime() {
