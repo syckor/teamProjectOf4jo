@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.sajo.dao.MemberDAOImpl;
 import com.sajo.domain.MemberVO;
+import com.sajo.domain.SellerVO;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService{
@@ -22,6 +23,11 @@ public class MemberServiceImpl implements MemberService{
 		  return memberDAO.idCheck(vo);
 	  }
 	  
+	  public MemberVO telCheck_Login( MemberVO vo) 
+	  {
+		  return memberDAO.telCheck(vo);
+	  }
+	  
 	  
 	  /** 
 	   * 회원가입 sql 
@@ -29,5 +35,12 @@ public class MemberServiceImpl implements MemberService{
 	
 	public int memberInsert(MemberVO vo) {
 		return memberDAO.memberInsert(vo);
+	}
+
+
+
+	public int sellerInsert(SellerVO svo) { 
+		return memberDAO.sellerInsert(svo);
+		
 	}
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sajo.domain.MemberVO;
+import com.sajo.domain.SellerVO;
 import com.sajo.service.MemberService;
 
 @Controller
@@ -21,36 +22,48 @@ public class MemberController {
 
 	@RequestMapping("/{url}.sajo")
 	public String regist(@PathVariable String url) {
-		return "/member/" + url;
+		return "/member/main.sajo" + url;
 
 	}// WEB-INF/views/member+url+.jsp
-
+ 
 	@Autowired
 	private MemberService memberService;
 
 	@RequestMapping("/memberInsert.sajo")
-	public String insert(MemberVO vo, HttpServletRequest request, 
+	public String insert(MemberVO vo, SellerVO svo, HttpServletRequest request, 
 			@RequestParam(value = "year") String year,
 			@RequestParam(value = "month") String month, 
-			@RequestParam(value = "day") String day) 
+			@RequestParam(value = "day") String day,  
+			@RequestParam(value = "loadaddr") String loadaddr,  
+			@RequestParam(value = "postnumber") String postnumber,
+			@RequestParam(value = "detailofaddr") String detailofaddr
+			)  
 	{
 		//db를 탐 서비스필요     
 		String seller = request.getParameter("seller");
-		System.out.println(year);
-		System.out.println(seller);
 		vo.setMtype(seller);
-		vo.setBirth(year, month, day);
+		vo.setBirth(year, month, day); 
 		
-
+		
 		if (seller == null) {
 			seller = "소비자";
 		}else {
 			seller = "판매자";
+					
+			System.out.println(loadaddr);
+			System.out.println(postnumber);
+			System.out.println(detailofaddr);
+			svo.setMid(vo.getMid()); 
+			svo.setSaddr(loadaddr, detailofaddr);
+			
 		}
 		vo.setMtype(seller);
 		
 		int result = memberService.memberInsert(vo);
-		return "redirect:/index.sajo ";
+		memberService.sellerInsert(svo);
+		return "redirect:/main.sajo ";  
+		
+		
 	}
 	
 	
@@ -61,7 +74,17 @@ public class MemberController {
 		MemberVO result = memberService.idCheck_Login(vo);
 		String message = "중복된 아이디입니다";
 		if(result==null) message="사용가능한 아이디입니다";
-		
+		 
+		return message;
+	} 
+	
+	@ResponseBody//(****************비동기통신을 해주세요) AJAX통신을 하는애는 반드시 이 어노테이션이 있어야함 
+	@RequestMapping(value = "/telCheck.sajo", produces="application/test; charset=UTF-8")
+	public String telcheck(MemberVO vo) {
+		MemberVO result = memberService.telCheck_Login(vo);
+		String message = "중복된 전화번호입니다";
+		if(result==null) message="사용가능한 전화번호입니다";
+		 
 		return message;
 	} 
 	
@@ -75,13 +98,14 @@ public class MemberController {
 	public String login(MemberVO vo, HttpSession session) {//spring에서의 세션 사용법
 		MemberVO result = memberService.idCheck_Login(vo);
 		if(result==null||result.getMid()==null) {
-			return "/member/memberLogin";
+			return "redirect:/main.sajo"; 
 		}else { 
 			session.setAttribute("sessionTime", new Date().toLocaleString());
 			session.setAttribute("memberName", result.getMname());
 			session.setAttribute("memberId", result.getMid());
 		}
-		return "/index"; 
+		System.out.println(session.getAttribute("memberId"));
+		return "redirect:/main.sajo";  
 	} 
 	
 }
