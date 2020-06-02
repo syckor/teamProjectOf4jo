@@ -3,12 +3,30 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="QnaDAO">
 
+	<resultMap id="qnaResult" type="qna">
+		<!-- <id property="seq" column="SEQ" />  -->
+		<result property="qtype" column="QTYPE" />
+		<result property="qtitle" column="QTITLE" />
+		<result property="qpassword" column="QPASSWORD" />
+		<result property="qcontent" column="QCONTENT" />
+		<result property="qanswer" column="QANSWER" />
+		<result property="mId" column="MID" />
+		<result property="qdate" column="QDATE" />
+	</resultMap>
+
 <insert id="insertQna" parameterType="qna" >
 		<![CDATA[
-		INSERT INTO QNA(QNO, QTYPE, QTITLE, QPASSWORD, QCONTENT, MID, QDATE)
-		VALUES(QNA_SEQ.nextval,
-			#{qtype}, #{qtitle}, #{qpassword}, #{qcontent}, '16me', sysdate)
+		INSERT INTO QNA(QNO, QTYPE, QTITLE, QPASSWORD, QCONTENT,  MID, QDATE)
+		VALUES(QNO_SEQ.nextval, #{qtype}, #{qtitle}, #{qpassword}, #{qcontent}, #{mId}, sysdate)
 		]]>
 </insert>
+	
+<select id="getQnaList" parameterType="qna" resultType="qna">
+		<![CDATA[
+		SELECT *
+		FROM QNA
+		ORDER BY QDATE DESC 
+		]]>
+</select>	
 	
 </mapper>

@@ -1,5 +1,7 @@
 package com.sajo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,12 @@ public class QnaServiceImpl implements QnaService{
 	@Autowired
 	private QnaDAOImpl qnaDAO;
 
-	public int insertQna(QnaVO vo) {
-		return qnaDAO.insertQna(vo);
+	public void insertQna(QnaVO vo) {
+		qnaDAO.insertQna(vo);
 			}
-
+	
+	public List<QnaVO> getQnaList(QnaVO vo){
+		System.out.println("service 호출");
+		return qnaDAO.getQnaList(vo);
+	}
 }

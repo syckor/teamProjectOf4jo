@@ -258,9 +258,9 @@
                      </ul>
                   </li>
                   <li><a href="about.html">About Us</a></li> 
-                  <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notice</a>
+                  <li><a href="notise.sajo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notice</a>
                   </li>  
-                  <li><a href="mail.html">Q&A</a></li>
+                  <li><a href="mail.sajo">Q&A</a></li>
                </ul>
             </div>
          </nav>
@@ -287,7 +287,7 @@
 	</div>
 	<!-- //breadcrumbs -->
 	<section id="choose" class="choose">
-		<div class="container">
+		<div class="container" id="hoTab">
 			<div class="row">
 				<div class="main_choose sections">
 					<div class="col-sm-12">
@@ -306,6 +306,18 @@
 				</div>
 			</div>
 		</div>
+		<script src="resources/js/easyResponsiveTabs.js"
+								type="text/javascript"></script>
+							<script type="text/javascript">
+								$(document).ready(function() {
+									$('#hoTab').easyResponsiveTabs({
+										type : ' accordion', //Types: default, vertical, accordion           
+										width : 'auto', //auto or any width like 600px
+										fit : true
+									// 100% fit in a container
+									});
+								});
+							</script>
 	</section>
 
 	<!-- footer -->

@@ -4,7 +4,7 @@
 <mapper namespace="NoticeDAO">
 
 	<resultMap id="notice" type="notice">
-		<id property="seq" column="SEQ" />
+		<!--  <id property="seq" column="SEQ" /> -->
 		<result property="ntnotitle" column="ntno" />
 		<result property="ntitle" column="ntitle" />
 		<result property="ncontent" column="ncontent" />

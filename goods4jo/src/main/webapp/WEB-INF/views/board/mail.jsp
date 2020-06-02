@@ -1,6 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +15,56 @@
 	content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
+		
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } 
-
-
 </script>
+
+<style>
+#container {
+	width: 960px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.tab {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+/* Float the list items side by side */
+.tab li {
+	float: left;
+}
+/* Style the links inside the list items */
+.tab li a {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	padding: 14px 16px;
+	font-size: 17px;
+	transition: 0.3s;
+}
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	background-color: rgb(0, 154, 200);
+	padding: 6px 12px;
+	color: #fff;
+}
+
+ul.tab li.current {
+	background-color: rgb(0, 154, 200);
+	color: #222;
+}
+
+.tabcontent.current {
+	display: block;
+}
+</style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
 <link href="resources/css/bootstrap.css" rel="stylesheet"
@@ -46,7 +91,7 @@
 <!-- start-smooth-scrolling -->
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event) {
+		$(".scroll").click(function() {
 			event.preventDefault();
 			$('html,body').animate({
 				scrollTop : $(this.hash).offset().top
@@ -254,10 +299,10 @@
 								</div>
 							</ul></li>
 						<li><a href="about.html">About Us</a></li>
-						<li><a href="/notice.sajo" class="dropdown-toggle"
+						<li><a href="notice.sajo" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Notice</a></li>
-						<li><a href="/mail.sajo">Q&A</a></li>
+						<li><a href="mail.sajo">Q&A</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -284,16 +329,22 @@
 	</div>
 	<!-- //breadcrumbs -->
 	<!-- mail -->
+	<%String memberId = (String)session.getAttribute("memberId"); %>
+	
 	<div class="mail">
 		<div class="container">
 			<h3>우리에게 물어보세요</h3>
 			<div class="agile_mail_grids">
 				<div class="col-md-12 contact-left">
 					<h4>Q&A 양식</h4>
-					<form action="qna.sajo" method="post">
-						<input type="hidden" name="qno" required=""> <input
-							type="hidden" name="mid" required=""> <input
-							type="hidden" name="qanswer" required=""> <input
+					<form action="saveQna.sajo" method="post"> 
+					<!-- 
+						<input type="hidden" name="qno" required=""value=""> <input
+							type="hidden" name="mid" required=""value=""> <input
+							type="hidden" name="qanswer" required="" value="">  -->
+							<input
+							type="hidden" name="mId" required=""value="<%=memberId%>">
+							<input 
 							type="text" name="qtitle" placeholder="Your Title" required="">
 						<input type="text" name="qpassword" placeholder="Your Password"
 							required=""> <select type="text" name="qtype" required=""
@@ -304,42 +355,91 @@
 							<option value='주문결제'>주문결제</option>
 							<option value='회원서비스'>회원서비스</option>
 							<option value='기타문의'>기타문의</option>
-						</select>
-						<textarea name="qcontent" placeholder="물어보고 싶은 내용을 입력해주세요~"
-							required=""></textarea>
-
-						<input type="submit" value="Submit">
+						</select> 
+						<textarea name="qcontent" placeholder="물어보고 싶은 내용을 입력해주세요~"required="">
+						</textarea>
+						<input type="submit" value="보내기">
 					</form>
-				</div>
-				<div class="notice_bx">
-					<div class="cus_heading">
-						<h4 class="cus_tit2">공지사항</h4>
-					</div>
-					<ul id="noticeCategories" class="cus_tab">
-						<li id="notice_ALL" class="on"><a href="#"
-							onclick="callQnaList('ALL'); clickcr(this, 'not.all', '', '', event); return false;"><span>전체</span></a>
-						</li>
-						<li id="notice_GENERAL" class=""><a href="#"
-							onclick="callNoticeList('GENERAL'); clickcr(this, 'not.general', '', '', event); return false;"><span>상품문의</span></a>
-						</li>
-						<li id="notice_EVENT" class=""><a href="#"
-							onclick="callNoticeList('EVENT'); clickcr(this, 'not.event', '', '', event); return false;"><span>배송문의</span></a>
-						</li>
-						<li id="notice_PRIZE_WINNER_ANNOUNCEMENT" class=""><a
-							href="#"
-							onclick="callNoticeList('PRIZE_WINNER_ANNOUNCEMENT'); clickcr(this, 'not.winner', '', '', event); return false;"><span>반품/교환/환불</span></a>
-						</li>
-						<li id="notice_SAFETY_TRADE" class=""><a href="#"
-							onclick="callNoticeList('SAFETY_TRADE'); clickcr(this, 'not.safety', '', '', event); return false;"><span>주문결제</span></a>
-						</li>
-						<li id="notice_SYSTEM" class=""><a href="#"
-							onclick="callNoticeList('SYSTEM'); clickcr(this, 'not.system', '', '', event); return false;"><span>회원서비스</span></a>
-						</li>
-						<li id="notice_SYSTEM" class="last"><a href="#"
-							onclick="callNoticeList('SYSTEM'); clickcr(this, 'not.system', '', '', event); return false;"><span>기타문의</span></a>
-						</li>
-					</ul>
+					<br /> <br />
 
+
+					<div id="container2">
+						<ul class="tab">
+							<li class="current" data-tab="tab1"><a href="#">상품문의</a></li>
+							<li data-tab="tab2"><a href="#">배송문의</a></li>
+							<li data-tab="tab3"><a href="#">반품/교환/환불</a></li>
+							<li data-tab="tab4"><a href="#">주문결제</a></li>
+							<li data-tab="tab5"><a href="#">회원서비스</a></li>
+							<li data-tab="tab6"><a href="#">기타문의</a></li>
+
+						</ul>
+
+						<div id="tab1" class="tabcontent current">
+							<h3>상품문의</h3>
+							<p>
+								상품구매는 어떻게 하나요?<br /> 구매 가능 쇼핑몰의 상품 상세 페이지 에서 옵션 및 기타 선택사항을 선택한
+								후 <br /> '[장바구니]' 버튼(혹은 구매하기 버튼)을 클릭해 주세요.
+							</p>
+						</div>
+
+						<div id="tab2" class="tabcontent">
+							<h3>배송문의</h3>
+							<p>
+								배송이 지연되는 사유는 아래와 같습니다.<br /> 1) 구매자의 주문정보 입력오류: 주문 시 수령자의 연락처,
+								주소를 잘못 기재한 경우<br /> 2) 판매자 배송처리 지연<br /> - 재고파악 또는 재고확보에 시일이
+								걸리는 경우<br /> - 연휴 및 휴가로 인해 처리가 지연되는 경우<br /> - 판매자 실수로 인한 택배
+								오발송 <br /> 3) 택배사 배송지연<br /> - 연휴로 인한 택배 물량 과다로 택배 운송이 지연되는 경우<br />
+								- 배송물품의 분실, 파손으로 배송이 지연되는 경우
+							</p>
+						</div>
+
+						<div id="tab3" class="tabcontent">
+							<h3>반품/교환/환불</h3>
+							<p>
+								I반품 상품을 판매자에게 발송하였으나 환불이 지연되는 경우에는<br /> 판매자에게 직접 연락하여 반품상품 수령
+								여부를 확인 후 환불승인 처리를 요청하시면 됩니다.
+							</p>
+						</div>
+
+						<div id="tab4" class="tabcontent">
+							<h3>주문결제</h3>
+							<p>
+								결제 하고 환불은 어떻게 받나요? 신용카드로 결제한 주문내역은 취소 즉시 자동으로 카드 승인취소 처리됩니다.<br />
+
+								단, 카드사에서의 승인취소 확인은 카드사와 VAN사의 확인 절차를 거치는 관계로 주문 취소일로부터<br />
+								3~5영업일 후 해당 카드사에서 취소내역을 확인하실 수 있습니다.
+							</p>
+						</div>
+						<div id="tab5" class="tabcontent">
+							<h3>회원서비스</h3>
+							<p>
+								재가입은 어떻게 하나요?<br /> 네이버페이 이용약관 철회 후, 30일간 재가입에 제한이 있습니다.<br />
+								30일이 지난 뒤에는 네이버페이 이용약관에 동의하시면 이용하실 수 있으니 참고해 주세요.
+							</p>
+						</div>
+						<div id="tab6" class="tabcontent">
+							<h3>기타문의</h3>
+							<p>
+								굿즈사조는 무엇인가요?<br /> 굿즈사조는 대한민국 대표 쇼핑 서비스로 온/오프라인을 아우르는 다양한 쇼핑
+								정보를<br /> 한 번에 제공하고 있습니다.<br /> 1. 세상의 모든 상품정보와 최신의 핫한 쇼핑트렌드
+								정보를 알려드립니다.<br /> 백화점, 아울렛, 홍대, 가로수길 최신 상품부터 핸드메이드, 산지직송, 지역명물
+								상품까지 오프라인과 온라인을<br /> 아우르는 굿즈의 모든 상품을 한 공간에서 탐색할 수 있습니다.
+							</p>
+						</div>
+
+					</div>
+
+					<script>
+						$(function() {
+							$('ul.tab li').click(function() {
+								var activeTab = $(this).attr('data-tab');
+								$('ul.tab li').removeClass('current');
+								$('.tabcontent').removeClass('current');
+								$(this).addClass('current');
+								$('#' + activeTab).addClass('current');
+							})
+						});
+					</script>
 					<table cellspacing="0" border="1" class="cus_tb">
 						<caption>Q&A 목록</caption>
 						<colgroup>
@@ -349,28 +449,29 @@
 						</colgroup>
 						<thead class="blind">
 							<tr>
+								<th scope="col">구분</th>
 								<th scope="col">제목</th>
-								<th scope="col">내용</th>
+								<th scope="col">작성자</th>
 								<th scope="col">등록일</th>
 							</tr>
 						</thead>
+						<c:forEach items="${qna }" var="qna" >
 						<tbody id="qnaBody">
+							<tbody>
 							<tr>
-								<td class="sort">제목</td>
-								<td><a
-									href=""
-									onclick="clickcr(this, 'not*g.list', 200012883, 1, event);">내용
-										</a></td>
-								<td class="num">2020.05.28</td>
-							</tr>
+								<td>${qna.qtype }</td>								
+								<td><a href=""
+									onclick="clickcr(this, 'not*g.list', 200012883, 1, event);">${qna.qtitle }
+								</a></td>
+								<td>${qna.mid }</td>
+								<td >${qna.qdate }</td>
+								</tr>
+							</tbody>
+						</c:forEach>
 
-						</tbody>
 					</table>
 				</div>
-				<div class="clearfix"></div>
 			</div>
-
-
 		</div>
 	</div>
 	<!-- //mail -->
