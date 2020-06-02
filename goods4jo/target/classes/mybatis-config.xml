@@ -12,7 +12,8 @@
 		<typeAlias alias="notice" type="com.sajo.domain.NoticeVO" />
 		<typeAlias alias="qna" type="com.sajo.domain.QnaVO" />
 		<typeAlias alias="review" type="com.sajo.domain.ReviewVO" />
-		<typeAlias alias="seller" type="com.sajo.domain.SellerVO" />		
+		<typeAlias alias="seller" type="com.sajo.domain.SellerVO" />
+		<typeAlias alias="image" type="com.sajo.domain.ImageVO" />		
 	</typeAliases>
 
 

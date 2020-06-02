@@ -15,6 +15,7 @@
 <!-- //font-awesome icons -->
 <!-- js -->
 <script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/goods.js"></script>
 <!-- //js -->
 <!-- web fonts -->
 <link href='//fonts.googleapis.com/css?family=Glegoo:400,700'
@@ -256,9 +257,11 @@
 	</div>
 	<div><br/><br/>
 	<div class="container">
-		<form class='register' id="gregist" action="gregistSave.sajo" method='post'>
+		<form class='register' id="gregist" action="insertGoods.sajo" method='post'>
 			<table class='table'>
 			<tr><td><h2>상품 기본 정보</h2></td></tr>
+			<tr><td>브랜드분류</td><td><select id="brend" name="brend"><option value="">브랜드 분류를 선택해 주세요</option><option value="k">Kakao</option><option value="l">Line</option><option value="g">General</option></select></td></tr>
+			<tr><td>캐릭터븐류</td><td><select id="characters" name="characters"><option>캐릭터를 선택해 주세요</option></select></td></tr>
 			<tr><td>상품명</td><td><input type="text" name='gname' placeholder="[Kakao or Line or General]상품명"/></td></tr>
 			<tr><td>상품가격</td><td><input type='text' name='price' placeholder="숫자만 입력해 주세요."/>원</td></tr>
 			<tr><td>재고수량</td><td><input type='text' name='count' placeholder="숫자만 입력해 주세요."/>개</td></tr>
@@ -278,6 +281,7 @@
 		</form>
 		</div>
 	</div>
-
+<hr/>
+<a href="alertImg.sajo">테이블 만들기</a>
 </body>
 </html>

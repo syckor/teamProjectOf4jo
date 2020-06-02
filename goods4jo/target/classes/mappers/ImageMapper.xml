@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ImageDAO">
+
+<insert id="insertImg" parameterType="image">
+	insert into image 
+	(imageno,gid,source1,source2,source3,source4,source5
+	<if test='fname1 !=null'>
+	,fname1,fsize1
+	</if>
+	<if test='fname2 !=null'>
+	,fname2,fsize2
+	</if>
+	<if test='fname3 !=null'>
+	,fname3,fsize3
+	</if>
+	<if test='fname4 !=null'>
+	,fname4,fsize4
+	</if>
+	<if test='fname5 !=null'>
+	,fname5,fsize5
+	</if>
+	) 
+	values(IMAGENO_SEQ.nextval,#{gid},#{source1},#{source2},#{source3},#{source4},#{source5}
+	<if test='fname1 !=null'>
+	,#{fname1},#{fsize1}
+	</if>
+	<if test='fname2 !=null'>
+	,#{fname2},#{fsize2}
+	</if>
+	<if test='fname3 !=null'>
+	,#{fname3},#{fsize3}
+	</if>
+	<if test='fname4 !=null'>
+	,#{fname4},#{fsize4}
+	</if>
+	<if test='fname5 !=null'>
+	,#{fname5},#{fsize5}
+	</if>
+	)
+	</insert>
+	<select id="selectByGid" parameterType="image" resultType="image">
+	select *
+	from image
+	where gid=#{gid}
+	</select>	
+	
+
+</mapper>

@@ -7,11 +7,20 @@
 <!-- 	sid+img 추후 추가  + gid 설정-->
 	<insert id="insertGoods" parameterType="goods">
 		<![CDATA[
-		INSERT INTO goods(gid,gname,state,count,price,option1,option2,delivery,dcost,dtime,detail)
-		VALUES(GID_SEQ.nextval, #{gname},'판매가능', #{count}, #{price}, #{option1}, #{option2}, #{delivery},#{dcost},#{dtime},#{detail})
+		INSERT INTO goods(gid,gname,state,count,price,option1,option2,delivery,dcost,dtime,detail,gdate)
+		VALUES(#{brend}||#{characters}||GID_SEQ.nextval, #{gname},'판매가능', #{count}, #{price}, #{option1}, #{option2}, #{delivery},#{dcost},#{dtime},#{detail},sysdate)
 		]]>
 	</insert>
-	
+	<select id="selectByGdate" resultType="goods">
+	select *
+	from goods
+	where gdate=(select max(gdate) from goods)
+	</select>
+	<select id="selectByGid" parameterType="goods" resultType="goods">
+	select *
+	from goods
+	where gid=#{gid}
+	</select>
 	
 
 </mapper>

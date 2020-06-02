@@ -1,4 +1,7 @@
 package com.sajo.domain;
+
+import org.springframework.web.multipart.MultipartFile;
+
 //상품(Goods table)VO
 //멤버 변수는 private 데이터type 변수명; 로 설정
 public class GoodsVO {
@@ -14,6 +17,32 @@ public class GoodsVO {
 	private int dtime;
 	private String detail;
 	private String sid;
+	private String gdate;
+	
+	public String getGdate() {
+		return gdate;
+	}
+	public void setGdate(String gdate) {
+		this.gdate = gdate;
+	}
+	private String brend;
+	private String characters;
+	
+
+	public String getBrend() {
+		return brend;
+	}
+	public void setBrend(String brend) {
+		this.brend = brend;
+	}
+	public String getCharacters() {
+		return characters;
+	}
+	public void setCharacters(String characters) {
+		this.characters = characters;
+	}
+
+	
 	public String getGid() {
 		return gid;
 	}

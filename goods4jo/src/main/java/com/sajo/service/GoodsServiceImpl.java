@@ -13,8 +13,18 @@ public class GoodsServiceImpl  implements GoodsService{
 
 	@Override
 	public int insertGoods(GoodsVO goods) {
-		System.out.println(goods.getCount()+"11111111111111111111111111111111111111111111111111111111111111111111111111111");
 		return dao.insertGoods(goods);
+	}
+
+	
+	@Override
+	public GoodsVO selectByGdate() {
+		return dao.selectByGdate();
+	}
+
+	@Override
+	public GoodsVO selectByGid(GoodsVO goods) {
+		return dao.selectByGid(goods);
 	}
 
 	

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Goods RegistSave</title>
+<title>Goods Regist</title>
 <link href="resources/css/bootstrap.css" rel="stylesheet"
 	type="text/css" media="all" />
 <link href="resources/css/style.css" rel="stylesheet" type="text/css"
@@ -15,6 +15,7 @@
 <!-- //font-awesome icons -->
 <!-- js -->
 <script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/goods.js"></script>
 <!-- //js -->
 <!-- web fonts -->
 <link href='//fonts.googleapis.com/css?family=Glegoo:400,700'
@@ -250,75 +251,33 @@
 			<ul>
 				<li><a href="index.html"><span
 						class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
-				<li>Goods Regist</li>
+				<li>Image Regist</li>
 			</ul>
 		</div>
 	</div>
 	<div><br/><br/>
 	<div class="container">
-		<form class='register' id="gregist" action="products1.sajo" method='post'>
+		<form class='register' id="iregist" action="insertImage.sajo" method='post' enctype='multipart/form-data'>
 			<table class='table'>
-			<tr><td><h2>상품 기본 정보</h2></td></tr>
-			<tr><td>상품명</td><td>${goods.gname }</td></tr>
-			<tr><td>상품가격</td><td>${goods.price }</td></tr>
-			<tr><td>재고수량</td><td>${goods.count }</td></tr>
-			<tr><td>택배사</td><td>${goods.delivery }</td></tr>
-			<tr><td>택배비용</td><td>${goods.dcost }</td></tr>
-			<tr><td>배송예상시간</td><td>${goods.dtime }</td></tr>
-			<tr><td>상품상세정보</td><td>${goods.detail }</td></tr>
-			<br/>
-			<tr><td><h2>옵션</h2></td></tr>
-			<tr><td>옵션1</td><td>${goods.option1 }</td></tr>
-			<tr><td>옵션2</td><td>${goods.option2 }</td></tr>
-		
-			<tr><td><h2>이미지</h2></td></tr>
-			<tr><td>이미지 파일1</td><td> <c:choose>
-					    <c:when test="${img.fsize1}==0">첨부파일 없음</c:when>
-					    <c:otherwise>
-					    <a href='resources/upload/${img.fname1}'>
-					    		<img src="resources/images/disk.gif">${img.fname1}
-					    	</a> 
-					    </c:otherwise>
-					 </c:choose>	</td></tr>
-			<tr><td>이미지 파일2</td><td><c:choose>
-					    <c:when test="${img.fsize2}==0">첨부파일 없음</c:when>
-					    <c:otherwise>
-					    		<img src="resources/upload/"+${img.fname2}+".jpg">
-					    </c:otherwise>
-					 </c:choose></td></tr>
-			<tr><td>이미지 파일3</td><td><c:choose>
-					    <c:when test="${img.fsize3}==0">첨부파일 없음</c:when>
-					    <c:otherwise>
-					    		<img src="resources/upload/"+${img.fname3}+".jpg">
-					    </c:otherwise>
-					 </c:choose></td></tr>
-			<tr><td>이미지 파일4</td><td><c:choose>
-					    <c:when test="${img.fsize4}==0">첨부파일 없음</c:when>
-					    <c:otherwise>
-					    		<img src="resources/upload/"+${img.fname4}+".jpg">
-					    </c:otherwise>
-					 </c:choose></td></tr>
-			<tr><td>이미지 파일5</td><td><c:choose>
-					    <c:when test="${img.fsize5}==0">첨부파일 없음</c:when>
-					    <c:otherwise>
-					    		<img src="/resources/upload/"+${img.fname5}+".jpg">
-					    </c:otherwise>
-					 </c:choose></tr><br/>
+			<input type="hidden" name="gid" value='${goods.gid }'/>
+			<tr><td><h2>이미지 파일 저장</h2></td></tr>
+			<tr><td>이미지 파일1</td><td><input type="file" name="file1"/></td></tr>
+			<tr><td>이미지 파일2</td><td><input type="file" name="file2"/></td></tr>
+			<tr><td>이미지 파일3</td><td><input type="file" name="file3"/></td></tr>
+			<tr><td>이미지 파일4</td><td><input type="file" name="file4"/></td></tr>
+			<tr><td>이미지 파일5</td><td><input type="file" name="file5"/></td></tr><br/>
 			<tr><td><h2>이미지 소스 저장</h2></td></tr>
-			<tr><td>이미지 소스1</td><td>
-						<img src=${img.source1}>			  
-					</td></tr>
-			<tr><td>이미지 소스2</td><td><img src=${img.source2}></td></tr>
-			<tr><td>이미지 소스3</td><td><img src=${img.source3}></td></tr>
-			<tr><td>이미지 소스4</td><td><img src=${img.source4}></td></tr>
-			<tr><td>이미지 소스5</td><td><img src=${img.source5}></td></tr>
+			<tr><td>이미지 소스1</td><td><input type="text" name="source1"/></td></tr>
+			<tr><td>이미지 소스2</td><td><input type="text" name="source2"/></td></tr>
+			<tr><td>이미지 소스3</td><td><input type="text" name="source3"/></td></tr>
+			<tr><td>이미지 소스4</td><td><input type="text" name="source4"/></td></tr>
+			<tr><td>이미지 소스5</td><td><input type="text" name="source5"/></td></tr>
 			</table>
 			<div class="team-bottom">
 			<input type="submit"
-				class="submit" value="상품 홈" /></div>
-			</form>
-		</div>
+				class="submit" value="등록하기" /></div>
+		</form>
 	</div>
-
+	</div>
 </body>
 </html>

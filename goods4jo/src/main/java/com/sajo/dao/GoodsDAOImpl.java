@@ -17,6 +17,19 @@ public class GoodsDAOImpl implements GoodsDAO{
 		System.out.println("===> GoodsMapper insertGoods 호출");
 		return mybatis.insert("GoodsDAO.insertGoods", goods); 
 	}
+
+	@Override
+	public GoodsVO selectByGdate() {
+		System.out.println("===> GoodsMapper selectByGdate 호출");
+		return mybatis.selectOne("GoodsDAO.selectByGdate");
+	}
+
+
+	@Override
+	public GoodsVO selectByGid(GoodsVO goods) {
+		System.out.println("===> GoodsMapper selectByGid 호출");
+		return mybatis.selectOne("GoodsDAO.selectByGid",goods);
+	}
 	
 	
 

@@ -6,12 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sajo.domain.GoodsVO;
+import com.sajo.domain.ImageVO;
 import com.sajo.service.GoodsService;
+import com.sajo.service.ImageService;
 
 @Controller
 public class ProductController {
 	@Autowired
 	private GoodsService service;
+	@Autowired
+	private ImageService imgservice;
 	
 	@RequestMapping("/products1.sajo")
 	public String product() {
@@ -26,12 +30,28 @@ public class ProductController {
 		return "goods/gregist";
 
 	}
-	//상품등록 페이지 작성후 확인 화면으로
-	@RequestMapping("/gregistSave.sajo")
-	public String gregistSave(GoodsVO vo, Model model) {
+	//상품등록 페이지 작성을 db 저장 => 이미지 등록 페이지로 이동
+	@RequestMapping("/insertGoods.sajo")
+	public String insertGoods(GoodsVO vo, Model model) {
 		//Mybatis로 판매상품 insert하기
 		service.insertGoods(vo);
-		model.addAttribute("goods", vo);
+		//현재 시퀀스로 gid 검색하기(브랜드+캐릭터+시퀀스)
+		GoodsVO goodsvo=service.selectByGdate();
+		model.addAttribute("goods", goodsvo);
+		return "goods/iregist";
+	}
+	
+	//이미지 db에 저장하기
+	@RequestMapping("/insertImage.sajo")
+	public String insertImage(ImageVO vo,Model model) {
+		imgservice.insertImage(vo);
+		//gid로 집어넣은 이미지 정보랑 goods 정보 select해서 model로 보내기
+		ImageVO imgvo=imgservice.selectByGid(vo);
+		//goods정보는 최근 바로 그 정보
+		GoodsVO goodsvo=service.selectByGdate();
+		
+		model.addAttribute("goods",goodsvo);
+		model.addAttribute("img",imgvo);
 		return "goods/gregistSave";
 	}
 }
