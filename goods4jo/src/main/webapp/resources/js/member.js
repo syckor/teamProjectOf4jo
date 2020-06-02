@@ -1,29 +1,23 @@
 
-
 $(document).ready(function(){
-
+	
 
 	var lastDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-
+	
 	window.onload = function(){
 		
-		var frm = document.frm;
+		var frm = document.frm;	
 		
 		// 년 구하기
-		for( var j=1920;  j<= 2020; j++){
-			frm.year.add( new Option(j, j));				// 만들고 브라우저 F12에서 Elements로 확인 : Option(j)와 Option(j,j) 차이
-		}
-		 
+		for( var j=2020;  j>= 1920; j--){
+			frm.year.add( new Option(j, j));	 		
+			// 만들고 브라우저 F12에서 Elements로 확인 : Option(j)와 Option(j,j) 차이
+		} 
 		//월 구하기
 		for( var j=1;  j<= 12; j++){
 			frm.month.add( new Option(j, j));				
-		}
-		
-		
-		
-		calc();
-		
+		}		 
+		calc();	
 		frm.year.onchange = calc;
 		frm.month.onchange = calc;
 		
@@ -34,27 +28,25 @@ $(document).ready(function(){
 			for( var j=1;  j <= lastDays[monthday-1]; j++){
 				frm.day.add( new Option(j, j));				
 			}
-		}
+		}	
 		
-		 
+		//year가 바꼈을때 선택된 year의 value를 붙여준다.
+		$('#year').change(function(){
+			var year = $('#year').val();
+			$('#year').attr('value', year);
+		});	
+		$('#month').change(function(){
+			var month = $('#month').val();
+			$('#month').attr('value', month);
+		});
 		
+		$('#day').change(function(){
+			var day = $('#day').val();
+			$('#day').attr('value', day);
+		}); 
 	}
 	
-	$('#year').change(function(){
-		var year = $('#year').val();
-		$('#year').attr('value', year);
-	});
-	
-	$('#month').change(function(){
-		var month = $('#month').val();
-		$('#month').attr('value', month);
-	});
-	
-	$('#day').change(function(){
-		var day = $('#day').val();
-		$('#day').attr('value', day);
-	}); 
-	
+	//셀러 체크박스 체크유무에 따라 셀러 가입양식 활성화/비활성화
 	$('#seller').change(function(){
 	    if ($('#seller').is(':checked') == true){
 	    	 $('#sname').removeAttr('disabled');
@@ -62,52 +54,100 @@ $(document).ready(function(){
 	    	 $('#account').removeAttr('disabled');
 	    	 $('#sample4_execDaumPostcode').removeAttr('disabled');
 	    	 $('#sample4_postcode').removeAttr('disabled');
-	    	 $('#sample4_roadAddress').removeAttr('disabled');
+	    	 $('#sample4_roadAddress').removeAttr('disabled'); 
 	    	 $('#sample4_jibunAddress').removeAttr('disabled');
 	    	 $('#sample4_detailAddress').removeAttr('disabled');
-		     console.log('unchecked'); 
-	    } else {
-	       
+	    } else if($('#seller').is(':checked') == false){	       
 	    	 $('#sname').val('').prop('disabled', true);
 	    	 $('#bank').val('').prop('disabled', true);
-	    	 $('#account').val('').prop('disabled', true);
-	    	 $('#saddrbutton').val('').prop('disabled', true);
-	    	 $('#postnumber').val('').prop('disabled', true);
+	    	 $('#account').val('').prop('disabled', true); 
+	    	 $('#sample4_execDaumPostcode').val('').prop('disabled', true);
+	    	 $('#postnumber').val('').prop('disabled', true);  
 	    	 $('#loadaddr').val('').prop('disabled', true);
 	    	 $('#oldaddr').val('').prop('disabled', true);
 	    	 $('#detailofaddr').val('').prop('disabled', true);
-		     console.log('unchecked');
 	    }
 	});
-	
-	
+
 	//아이디 중복체크
 	$('#mid').keyup(function(){ 
         //비동기통신 = ajax 
 		$.ajax({
 			type : 'post', //post방식으로 통신하겠습니다.
 			async : true,
-			url : 'idCheck.sajo',  
+			url : 'member/idCheck.sajo',  
 			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
 			data: "mid=" +$('#mid').val(),
 			success : function(resultData){
 				$('#idCheckResult').html(resultData);  
 			} 
-		});
+		});  
        
 	})
+	//전화번호 중복체크
+	$('#mtel').keyup(function(){ 
+        //비동기통신 = ajax 
+		$.ajax({
+			type : 'post', //post방식으로 통신하겠습니다.
+			async : true,
+			url : 'member/telCheck.sajo',  
+			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+			data: "mtel=" +$('#mtel').val(),
+			success : function(resultData){
+				$('#telCheckResult').html(resultData);  
+			} 
+		}); 
+       
+	})
+
+	//약관 전체 체크하기 	
+	$('.check-all').change(function(){		
+		//$('.agree').prop("checked", this.checked);
+		$('[class^=agree]').prop("checked", $(this).is(':checked'));
+	});
 	
-	//비밀번호 두개의 입력값 일치 비교
-	if($.trim($('#userPass').val())==''){
-		$('#userPass').focus();
-		return;
-	}
+	//유효성 검사	 
+	$('#frm').validate({  
+		rules:{ 
+			mid :{
+				  required:true, 
+				  minlength:6
+				  },
+			mname:{required:true,
+				   minlength:2
+				   },
+			email:{required:true,
+					email:true}, 
+			mpassword : {
+				required:true, 
+				minlength:8,
+			},
+			passconf : {equalTo:'#mpassword'}  
+		},
+		success:function(label){
+			
+		}  
+	});
+	$.extend($.validator.messages, { 
+		required: "필수 항목입니다.",
+		remote: "항목을 수정하세요.",
+		email: "유효하지 않은 E-Mail주소입니다." +"<br/>", 
+		url: "유효하지 않은 URL입니다.",
+		date: "올바른 날짜를 입력하세요.",
+		dateISO: "올바른 날짜(ISO)를 입력하세요.", 
+		number: "유효한 숫자가 아닙니다.",
+		digits: "숫자만 입력 가능합니다.",
+		creditcard: "신용카드 번호가 바르지 않습니다.",
+		equalTo: "같은 값을 다시 입력하세요.",
+		extension: "올바른 확장자가 아닙니다.",
+		maxlength: $.validator.format( "{0}자를 넘을 수 없습니다. " ),
+		minlength: $.validator.format( "{0}자 이상 입력하세요." ),
+		rangelength: $.validator.format( "문자 길이가 {0} 에서 {1} 사이의 값을 입력하세요." ),
+		range: $.validator.format( "{0} 에서 {1} 사이의 값을 입력하세요." ),
+		max: $.validator.format( "{0} 이하의 값을 입력하세요." ),
+		min: $.validator.format( "{0} 이상의 값을 입력하세요." ) } );
+
 	
-	if($.trim($('#userPass').val()) != $.trim($('#userPass2').val())){
-		alert("비밀번호가 일치하지 않습니다..");
-		$('#userPass2').focus();
-		return;
-	}
 
 
 	
@@ -165,7 +205,6 @@ $(document).ready(function(){
 	                }
 	            }
 	        }).open();
-	    		
 		
 	}
 	 

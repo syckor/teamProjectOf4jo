@@ -12,12 +12,25 @@
 		]]>
 	</insert>
 	
+	
+	<insert id="sellerInsert" parameterType="seller">
+		<![CDATA[
+		INSERT INTO seller(sid, sname, account, saddr, mid, bank, postno)
+		VALUES(SID_SEQ.nextval, #{sname}, #{account}, #{saddr}, #{mid}, #{bank}, #{postnumber})
+		]]>
+		
+	
+	</insert>  
+	
 	<select id="idCheck" parameterType="member" resultType="member">
-	SELECT* FROM member WHERE mid=#{mid}
-	<if test="mid!=null"> 
-	AND mpassword=#{mpassword} 
-	</if> 
-</select>  
+		SELECT* FROM member WHERE mid=#{mid}
+		<!-- <if test="mid!=null"> 
+			AND mpassword=#{mpassword} 
+		</if>--> 
+	</select>
+	<select id="telCheck" parameterType="member" resultType="member">
+		SELECT* FROM member WHERE mtel=#{mtel}		
+	</select>     
 	
 
 </mapper>

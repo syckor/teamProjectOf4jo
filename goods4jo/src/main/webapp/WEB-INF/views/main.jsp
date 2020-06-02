@@ -23,20 +23,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="resources/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
 <link href="resources/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //Custom Theme files -->
+<!-- //Custom Theme files --> 
 <!-- font-awesome icons -->
 <link href="resources/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <!-- js -->
 <script src="resources/js/jquery.min.js"></script>
 <script src='resources/js/member.js' type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <link rel="stylesheet" href="resources/css/jquery.countdown.css" /> <!-- countdown --> 
-<!-- //js -->  
+<!-- //js -->   
 <!-- web fonts --> 
 <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- //web fonts -->  
 <!-- start-smooth-scrolling -->
+<!-- post검색  -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script type="text/javascript"> 
@@ -85,7 +87,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<input name="mid" placeholder="Id" type="text" required="">						
 													<input name="Password" placeholder="Password" type="password" required="">										
 													<div class="sign-up">
-														<input type="submit" value="로그인"/>
+	 													<input type="submit" value="로그인"/>
 													</div>
 												</form>
 											</div> 
@@ -97,21 +99,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="member/memberInsert.sajo" method="get" name='frm'>
-															 
-											  		<span id="idCheckResult" style="width:150px;color:red"></span>
-													<input placeholder="아이디" name="mid" type="text" required="" id='mid'><br/><br/> 		
-													<input placeholder="이름" name="mname" type="text" required="" id='mname'>
-													<input placeholder="비밀번호" name="mpassword" type="password" id='mpassword' required="">	
-													<input placeholder="비밀번호 확인" name="passconf" type="password" id='passconf' required="">													
-													<input placeholder="이메일" name="mail" type="email" id='email' required="">
-													<span id="telCheckResult" style="width:150px;color:red"></span>
+												<form action="member/memberInsert.sajo" method="get" name='frm' id='frm'>
+										  		
+													<input placeholder="아이디" name="mid" type="text" required="" id='mid'><label for="mid"></label>
+													<span id="idCheckResult" style="width:150px;color:red"></span>
+													<br/><br/> 														
+													<input placeholder="이름" name="mname" type="text" required="" id='mname'><label for="mname"></label>
+													<input placeholder="비밀번호" name="mpassword" type="password" id='mpassword' required=""><label for="mpassword"></label>	
+													<input placeholder="비밀번호 확인" name="passconf" type="password" id='passconf' required=""><label for="passconf"></label>													
+													<input placeholder="이메일" name="mail" type="email" id='email' required=""><label for="email"></label>
+													
 													<div>
 											 			<input type = "radio" name = "phone"/> SKT
-   														<input type = "radio" name = "phone"/> KT
+   														<input type = "radio" name = "phone"/> KT 
    														<input type = "radio" name = "phone"/> LGU+
    													</div>												
-													<input placeholder="전화번호" name="mtel" type="text" id='mtel' required="" >
+													<input placeholder="전화번호" name="mtel" type="text" id='mtel' required="" ><label for="email"></label>
+													<span id="telCheckResult" style="width:150px;color:red"></span>
 													생년월일 
 													<select name="year" class="birth" id='year'> 
 														<option value="출생연도">출생연도</option>																										
@@ -388,10 +392,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                      </ul></li>
                   <li><a href="about.html">About Us</a></li>
-                  <li><a href="#" class="dropdown-toggle"
+                  <li><a href="notice.sajo" class="dropdown-toggle"
                      data-toggle="dropdown" role="button" aria-haspopup="true"
                      aria-expanded="false">Notice</a></li>
-                  <li><a href="mail.sajo">Q&A</a></li>
+                  <li><a href="mail.sajo">Q&A</a></li> 
                </ul>
             </div>
          </nav>
