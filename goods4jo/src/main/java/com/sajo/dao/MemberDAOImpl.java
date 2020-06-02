@@ -13,30 +13,31 @@ public class MemberDAOImpl implements MemberDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	@Override
+	//아이디 중복체크
 	public MemberVO idCheck(MemberVO vo) {
 		System.out.println("===> MemberMapper idCheck 호출");
 		return mybatis.selectOne("MemberDAO.idCheck", vo); 
 	} 
 	   
-	@Override
+	//전화번호 중복체크
 	public MemberVO telCheck(MemberVO vo) {
 		System.out.println("===> MemberMapper telCheck 호출");
 		return mybatis.selectOne("MemberDAO.telCheck", vo); 
 	} 
     
-	@Override  
+	//회원가입  
 	public int memberInsert(MemberVO vo) {
 		System.out.println("===>  MemberMapper memberInsert() 호출");
 		return mybatis.insert("MemberDAO.memberInsert", vo);
 	}
 
-	@Override
+	//로그인시 멤버체크
 	public MemberVO memberLogin(MemberVO vo) {
 		System.out.println("===> MemberMapper idCheck 호출");
 		return mybatis.selectOne("MemberDAO.idCheck", vo);
 	}
-
+	
+	//회원가입시 판매자 회원등록
 	public int sellerInsert(SellerVO svo) {
 		System.out.println("===>  MemberMapper sellerInsert() 호출");
 		return mybatis.insert("MemberDAO.sellerInsert", svo);

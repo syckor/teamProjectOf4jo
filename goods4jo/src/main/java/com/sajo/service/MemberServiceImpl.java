@@ -32,13 +32,11 @@ public class MemberServiceImpl implements MemberService{
 	  /** 
 	   * 회원가입 sql 
 	   */ 
-	
+	//일반회원
 	public int memberInsert(MemberVO vo) {
 		return memberDAO.memberInsert(vo);
 	}
-
-
-
+	//판매자회원
 	public int sellerInsert(SellerVO svo) { 
 		return memberDAO.sellerInsert(svo);
 		

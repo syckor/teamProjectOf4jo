@@ -62,11 +62,12 @@ $(document).ready(function(){
 	    	 $('#bank').val('').prop('disabled', true);
 	    	 $('#account').val('').prop('disabled', true); 
 	    	 $('#sample4_execDaumPostcode').val('').prop('disabled', true);
-	    	 $('#postnumber').val('').prop('disabled', true);  
-	    	 $('#loadaddr').val('').prop('disabled', true);
-	    	 $('#oldaddr').val('').prop('disabled', true);
-	    	 $('#detailofaddr').val('').prop('disabled', true);
-	    }
+	    	 $('#sample4_execDaumPostcode').val('').prop('value', '우편번호찾기');
+	    	 $('#sample4_postcode').val('').prop('disabled', true);  
+	    	 $('#sample4_roadAddress').val('').prop('disabled', true); 
+	    	 $('#sample4_jibunAddress').val('').prop('disabled', true);
+	    	 $('#sample4_detailAddress').val('').prop('disabled', true);
+	    } 
 	});
 
 	//아이디 중복체크
@@ -95,39 +96,120 @@ $(document).ready(function(){
 			data: "mtel=" +$('#mtel').val(),
 			success : function(resultData){
 				$('#telCheckResult').html(resultData);  
-			} 
+			}  
 		}); 
        
 	})
 
-	//약관 전체 체크하기 	
+	//약관 전체 체크하기 	(체크시  submit버튼 봉인해제)
 	$('.check-all').change(function(){		
 		//$('.agree').prop("checked", this.checked);
 		$('[class^=agree]').prop("checked", $(this).is(':checked'));
+		if ($('#agree1').is(':checked') == true&&
+				$('#agree2').is(':checked') == true&&
+				$('#agree3').is(':checked') == true)
+		{			
+			$('#msubmit').prop('disabled', false);
+			$('#msubmit').prop('value', '회원가입완료');
+		}else{
+			$('#msubmit').prop('disabled', true);
+			$('#msubmit').prop('value', '회원가입완료');
+		} 
 	});
+	
+	  	
+	//필수약관 체크시 submit버튼 봉인해제	
+	$('.agree').change(function(){ 
+		if ($('#agree1').is(':checked') == true&&
+				$('#agree2').is(':checked') == true&&
+				$('#agree3').is(':checked') == true)
+		{			
+			$('#msubmit').val('').prop('disabled', false);
+			$('#msubmit').val('').prop('value', '회원가입완료');
+		}else{
+			$('#msubmit').val('').prop('disabled', true);
+			$('#msubmit').val('').prop('value', '회원가입완료');
+		}		
+	});
+
 	
 	//유효성 검사	 
 	$('#frm').validate({  
 		rules:{ 
 			mid :{
 				  required:true, 
-				  minlength:6
+				  minlength:6,
+				  maxlength:10 
 				  },
 			mname:{required:true,
-				   minlength:2
+				   minlength:2,
+				   hangul:true
 				   },
 			email:{required:true,
-					email:true}, 
+					email:true
+					}, 
 			mpassword : {
 				required:true, 
 				minlength:8,
+				maxlength:16,
+				regx:/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@@@#$%^&+=]).*$/
+				},
+			passconf : {equalTo:'#mpassword'}   
 			},
-			passconf : {equalTo:'#mpassword'}  
-		},
-		success:function(label){
-			
+			mtel :{
+				required:true, 
+				maxlength:11,
+				number:true 
+			},
+			account:{
+				required:true, 
+				number:true  
+			},		
+		success:function(label){			
 		}  
 	});
+	//이름 입력시 한글만 입력받기
+	$('#mname').keyup(function(event){
+		regexp = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g;
+        v = $(this).val();
+        if (regexp.test(v)) {
+            alert("실명을 입력하여 주세요\n한글만 입력가능 합니다.");
+            $(this).val(v.replace(regexp, '')); 
+        }
+	});
+	
+	//숫자만 입력받기
+	$('#mtel').keyup(function(event){
+		regexp = /[^0-9]/gi; 
+        v = $(this).val(); 
+        if (regexp.test(v)) {
+            alert("숫자만 입력 가능합니다.");
+            $(this).val(v.replace(regexp, ''));  
+        }
+	}); 
+	$('#account').keyup(function(event){
+		regexp = /[^0-9]/gi;  
+        v = $(this).val(); 
+        if (regexp.test(v)) {
+            alert("숫자만 입력 가능합니다.");
+            $(this).val(v.replace(regexp, ''));  
+        }
+	}); 
+	
+	
+	// 비밀번호 패턴 체크 (8자 이상, 문자, 숫자, 특수문자 포함여부 체크) 
+	function checkPassword(str) { 
+		var pattern1 = /[0-9]/; // 숫자 
+		var pattern2 = /[a-zA-Z]/; // 문자 
+		var pattern3 = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자 
+		if(!pattern1.test(str) || !pattern2.test(str) || !pattern3.test(str) || str.length < 8) { 
+				alert("비밀번호는 8자리 이상 문자, 숫자, 특수문자로 구성하여야 합니다."); 
+				return false; 
+			} else { 
+				return true;
+			} 
+	}
+
 	$.extend($.validator.messages, { 
 		required: "필수 항목입니다.",
 		remote: "항목을 수정하세요.",
@@ -135,7 +217,7 @@ $(document).ready(function(){
 		url: "유효하지 않은 URL입니다.",
 		date: "올바른 날짜를 입력하세요.",
 		dateISO: "올바른 날짜(ISO)를 입력하세요.", 
-		number: "유효한 숫자가 아닙니다.",
+		number: "숫자만 입력 가능합니다.",
 		digits: "숫자만 입력 가능합니다.",
 		creditcard: "신용카드 번호가 바르지 않습니다.",
 		equalTo: "같은 값을 다시 입력하세요.",
@@ -145,7 +227,9 @@ $(document).ready(function(){
 		rangelength: $.validator.format( "문자 길이가 {0} 에서 {1} 사이의 값을 입력하세요." ),
 		range: $.validator.format( "{0} 에서 {1} 사이의 값을 입력하세요." ),
 		max: $.validator.format( "{0} 이하의 값을 입력하세요." ),
-		min: $.validator.format( "{0} 이상의 값을 입력하세요." ) } );
+		min: $.validator.format( "{0} 이상의 값을 입력하세요." ), 
+		hangul : "한글만 입력 가능합니다"
+	} );
 
 	
 
@@ -204,10 +288,17 @@ $(document).ready(function(){
 	                    guideTextBox.style.display = 'none';
 	                }
 	            }
-	        }).open();
-		
+	        }).open();		
 	}
 	 
-
+	
+	//약관 클릭시 윈도우 팝업
+	$('#private').click(function(){
+		window.open('member/private.sajo',' ', 'width = 600, height = 500');		 
+	});
+	
+	 
+		
+	
 
 });

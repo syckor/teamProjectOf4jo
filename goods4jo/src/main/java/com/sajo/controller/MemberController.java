@@ -33,10 +33,10 @@ public class MemberController {
 	public String insert(MemberVO vo, SellerVO svo, HttpServletRequest request, 
 			@RequestParam(value = "year") String year,
 			@RequestParam(value = "month") String month, 
-			@RequestParam(value = "day") String day,  
-			@RequestParam(value = "loadaddr") String loadaddr,  
-			@RequestParam(value = "postnumber") String postnumber,
-			@RequestParam(value = "detailofaddr") String detailofaddr
+			@RequestParam(value = "day") String day,
+			@RequestParam(value = "loadaddr", required=false) String loadaddr,  
+			@RequestParam(value = "postnumber", required=false) String postnumber,
+			@RequestParam(value = "detailofaddr", required=false) String detailofaddr
 			)  
 	{
 		//db를 탐 서비스필요     
@@ -45,23 +45,23 @@ public class MemberController {
 		vo.setBirth(year, month, day); 
 		
 		
-		if (seller == null) {
+		if (seller == null) { 
 			seller = "소비자";
 		}else {
-			seller = "판매자";
-					
-			System.out.println(loadaddr);
-			System.out.println(postnumber);
-			System.out.println(detailofaddr);
-			svo.setMid(vo.getMid()); 
-			svo.setSaddr(loadaddr, detailofaddr);
-			
+			seller = "판매자";			
+			  System.out.println(loadaddr);
+			  System.out.println(postnumber);
+			  System.out.println(detailofaddr);
+			  svo.setMid(vo.getMid());
+			  svo.setSaddr(loadaddr, detailofaddr);		
 		}
 		vo.setMtype(seller);
 		
-		int result = memberService.memberInsert(vo);
-		memberService.sellerInsert(svo);
-		return "redirect:/main.sajo ";  
+		memberService.memberInsert(vo);
+		if(seller.equals("판매자")) {
+			memberService.sellerInsert(svo);
+		}	
+		return "redirect:/main.sajo ";   
 		
 		
 	}
@@ -98,14 +98,29 @@ public class MemberController {
 	public String login(MemberVO vo, HttpSession session) {//spring에서의 세션 사용법
 		MemberVO result = memberService.idCheck_Login(vo);
 		if(result==null||result.getMid()==null) {
-			return "redirect:/main.sajo"; 
+			return "redirect:/main.sajo";  
 		}else { 
 			session.setAttribute("sessionTime", new Date().toLocaleString());
 			session.setAttribute("memberName", result.getMname());
 			session.setAttribute("memberId", result.getMid());
 		}
-		System.out.println(session.getAttribute("memberId"));
+		System.out.println(session.getAttribute("memberId")+"님 로그인 성공");
+		return "redirect:/main.sajo";  
+	} 	
+	/*
+	 * Logout 메쏘드
+	 * 세션삭제 후 메인페이지로 돌림
+	 */
+	
+	@RequestMapping("/logout.sajo") 
+	public String logout(HttpSession session) {//spring에서의 세션 사용법		
+			session.invalidate();	
 		return "redirect:/main.sajo";  
 	} 
 	
+	@RequestMapping("/private.sajo") 
+	public String privateContract(HttpSession session) {	
+				
+		return "redirect:/member/private.sajo";    
+	} 
 }

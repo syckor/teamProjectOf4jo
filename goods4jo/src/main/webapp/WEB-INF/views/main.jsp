@@ -99,7 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="member/memberInsert.sajo" method="get" name='frm' id='frm'>
+												<form action="member/memberInsert.sajo" method="post" name='frm' id='frm'>
 										  		
 													<input placeholder="아이디" name="mid" type="text" required="" id='mid'><label for="mid"></label>
 													<span id="idCheckResult" style="width:150px;color:red"></span>
@@ -114,8 +114,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    														<input type = "radio" name = "phone"/> KT 
    														<input type = "radio" name = "phone"/> LGU+
    													</div>												
-													<input placeholder="전화번호" name="mtel" type="text" id='mtel' required="" ><label for="email"></label>
+													<input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='mtel' required="" ><label for="email"></label>
 													<span id="telCheckResult" style="width:150px;color:red"></span>
+													<br/>
 													생년월일 
 													<select name="year" class="birth" id='year'> 
 														<option value="출생연도">출생연도</option>																										
@@ -135,7 +136,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<br/><br/><br/>
 												 	판매자 등록<input type="checkbox" name="seller" id='seller' value='seller'> 
 													<input placeholder="판매자명(회사이름)" name="sname" id='sname' type="text" required="" disabled>
-													은행선택   
+													<br/>은행선택   
 													<select  name="bank" type="text" required="" class="bank" id='bank' disabled >
 														<option value='국민은행'>국민은행</option>
 														<option value='우리은행'>우리은행</option>
@@ -149,28 +150,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<option value='수협'>수협</option>
 														<option value='새마을금고'>새마을금고</option>
 													</select>
-													<input placeholder="계좌번호" name="account" id='account' type="text" required="" disabled >
-													판매자주소
+													<input placeholder="계좌번호 (-)없이 입력" name="account" id='account' type="text" required="" disabled >
+													판매자주소<br/>
 													<input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
 													 <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호" disabled >
 													<input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소"  disabled>
 													<span id="guide" style="color:#999;display:none"></span> 
 													<input type="text" name='detailofaddr' id="sample4_detailAddress" placeholder="상세주소"  disabled>
-													
+													 
 													<hr/>
 													<div class="stats">
 											       		* 모든 항목에 동의해야 합니다.<br/>
-											          <input class='agree1' name="agree1" type="checkbox"/>Goods 4조 이용약관(필수)<br/>
-											          <input class='agree2' name="agree2" type="checkbox"/>전자상거래 이용약관(필수)<br />
-											          <input class='agree3' name="agree3" type="checkbox"/>제 3자 정보제공(필수)<br />
-											          <input class='agree4' name="agree4" type="checkbox"/>혜택성 정보 수신 동의(선택)<br />
+											          <input class='agree' id='agree1' name="agree1" type="checkbox"/>Goods 4조 이용약관(필수)<br/>
+											          <input class='agree' id='agree2' name="agree2" type="checkbox"/><a href='' id='shoppingmall'>전자상거래 이용약관(필수)</a><br />
+											          <input class='agree' id='agree3' name="agree3" type="checkbox"/><a href='' id='private'>제 3자 정보제공(필수)</a><br />
+											          <input class='agree' id='agree4' name="agree4" type="checkbox"/>혜택성 정보 수신 동의(선택)<br />
 											          <hr/>
-											          <input class="check-all" name="agree" type="checkbox" /><span>위 조항 모두</span>
+											          <input class="check-all" name="agree" type="checkbox" /><span>위 조항 모두 체크하기</span> 
 											          <br/>				
-											        </div> 
+											        </div>  
 																								
 													<div class="sign-up"> 
-														<input type="submit" value="회원가입완료"/> 
+														<input type="submit" value="회원가입완료" disabled id='msubmit'/>  
 													</div> 
 												</form>
 											</div>
@@ -233,8 +234,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<ul>
 										<li class="resp-tab-item" aria-controls="tab_item-0"><span>회원정보 수정하기</span></li><br/>
 										<li class="resp-tab-item" aria-controls="tab_item-1"><span>구매내역</span></li><br/>
-										<li class="resp-tab-item" aria-controls="tab_item-2"><a href='main.sajo'>로그아웃</a></li>									
-									</ul>		 
+										<li class="resp-tab-item" aria-controls="tab_item-2"><a href='member/logout.sajo'>로그아웃</a></li>									
+									</ul>		  
 									 
 									
 									
@@ -259,15 +260,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											</div> 
 										</div> 
 									</div> 	
-									
-									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-2">
-										<div class="facts">
-											 <%session.invalidate(); %>
-											
-										</div>  
-									</div> 	
-								
-										        					             	      
+        					             	      
 								</div>	
 							</div>
 							<script src="resources/js/easyResponsiveTabs.js" type="text/javascript"></script>

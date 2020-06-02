@@ -4,7 +4,7 @@
 <mapper namespace="MemberDAO">
 
 
-	
+	 
 	<insert id="memberInsert" parameterType="member">
 		<![CDATA[
 		INSERT INTO member(mid, mname, mpassword, birth, gender, mail, mtel, mtype)
@@ -26,7 +26,7 @@
 		SELECT* FROM member WHERE mid=#{mid}
 		<!-- <if test="mid!=null"> 
 			AND mpassword=#{mpassword} 
-		</if>--> 
+		</if>-->  
 	</select>
 	<select id="telCheck" parameterType="member" resultType="member">
 		SELECT* FROM member WHERE mtel=#{mtel}		
