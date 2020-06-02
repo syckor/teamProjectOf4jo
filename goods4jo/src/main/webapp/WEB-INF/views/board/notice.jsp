@@ -104,7 +104,7 @@
 										aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="#" method="post">
+												<form action="qna.sajo" method="post">
 													<input placeholder="Name" name="Name" type="text"
 														required=""> <input placeholder="Email Address"
 														name="Email" type="email" required=""> <input
@@ -258,9 +258,9 @@
                      </ul>
                   </li>
                   <li><a href="about.html">About Us</a></li> 
-                  <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notice</a>
+                  <li><a href="/notice.sajo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notice</a>
                   </li>  
-                  <li><a href="mail.html">Q&A</a></li>
+                  <li><a href="/mail.sajo">Q&A</a></li>
                </ul>
             </div>
          </nav>

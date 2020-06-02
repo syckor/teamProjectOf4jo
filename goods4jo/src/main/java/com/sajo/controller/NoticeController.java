@@ -13,6 +13,7 @@ import com.sajo.service.NoticeService;
 
 @Controller
 public class NoticeController {
+	
 	@Autowired
 	private NoticeService service;
 	

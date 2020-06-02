@@ -2,14 +2,14 @@ package com.sajo.domain;
 //Qna(Qna table)VO
 //멤버 변수는 private 데이터type 변수명; 로 설정
 public class QnaVO {
-	int qno;
-	String qtype;
-	String qtitle;
-	int qpassword;
-	String qcontent;
-	String qanswer;
-	String mid;
-	
+	private int qno;
+	private String qtype;
+	private String qtitle;
+	private int qpassword;
+	private String qcontent;
+	private String qanswer;
+	private String mid;
+	private String qdate;
 	public int getQno() {
 		return qno;
 	}
@@ -28,10 +28,10 @@ public class QnaVO {
 	public void setQtitle(String qtitle) {
 		this.qtitle = qtitle;
 	}
-	public int getPassword() {
+	public int getQpassword() {
 		return qpassword;
 	}
-	public void setPassword(int qpassword) {
+	public void setQpassword(int qpassword) {
 		this.qpassword = qpassword;
 	}
 	public String getQcontent() {
@@ -52,4 +52,11 @@ public class QnaVO {
 	public void setMid(String mid) {
 		this.mid = mid;
 	}
+	public String getQdate() {
+		return qdate;
+	}
+	public void setQdate(String qdate) {
+		this.qdate = qdate;
+	}
+	
 }

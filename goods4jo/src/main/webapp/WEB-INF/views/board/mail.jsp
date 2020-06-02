@@ -1,6 +1,9 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>	
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +16,53 @@
 	content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		
+	addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } 
+	</script>
 
-
-</script>
+<style>
+#container {
+			width:960px;
+			margin:0 auto;
+			text-align:center;
+		}
+		.tab {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		/* Float the list items side by side */
+		.tab li {
+			float: left;
+		}
+		/* Style the links inside the list items */
+		.tab li a {
+			display: inline-block;
+			color: #000;
+			text-align: center;
+			text-decoration: none;
+			padding: 14px 16px;
+			font-size: 17px;
+			transition:0.3s;
+		}
+		/* Style the tab content */
+		.tabcontent {
+			display: none;
+			background-color:rgb(0,154,200);
+			padding: 6px 12px;
+			color:#fff;
+		}
+		ul.tab li.current{
+			background-color: rgb(0,154,200);
+			color: #222;
+		}
+		.tabcontent.current {
+			display: block;
+		}
+</style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
 <link href="resources/css/bootstrap.css" rel="stylesheet"
@@ -291,13 +334,13 @@
 				<div class="col-md-12 contact-left">
 					<h4>Q&A 양식</h4>
 					<form action="qna.sajo" method="post">
-						<input type="hidden" name="qno" required=""> <input
-							type="hidden" name="mid" required=""> <input
-							type="hidden" name="qanswer" required=""> <input
-							type="text" name="qtitle" placeholder="Your Title" required="">
-						<input type="text" name="qpassword" placeholder="Your Password"
-							required=""> <select type="text" name="qtype" required=""
-							class="qtype" id='qtype' style="width: 380px; height: 40px;">
+						<input type="hidden" name="qno" required=""> 
+						<input type="hidden" name="mid" required="" > 			
+						<input type="hidden" name="qanswer" required=""> 
+						<input type="hidden" name="qdate" required=""> 
+						<input type="text" name="qtitle" placeholder="Your Title" required="">
+						<input type="text" name="qpassword" placeholder="Your Password"	required=""> 
+						<select type="text" name="qtype" required="" class="qtype" id='qtype' style="width: 380px; height: 40px;">
 							<option value='상품문의'>상품문의</option>
 							<option value='배송문의'>배송문의</option>
 							<option value='반품/교환/환불'>반품/교환/환불</option>
@@ -305,40 +348,50 @@
 							<option value='회원서비스'>회원서비스</option>
 							<option value='기타문의'>기타문의</option>
 						</select>
-						<textarea name="qcontent" placeholder="물어보고 싶은 내용을 입력해주세요~"
-							required=""></textarea>
-
+							<textarea name="qcontent" placeholder="물어보고 싶은 내용을 입력해주세요~" required="">
+							</textarea>
 						<input type="submit" value="Submit">
 					</form>
+					<br/>
 				</div>
-				<div class="notice_bx">
-					<div class="cus_heading">
-						<h4 class="cus_tit2">공지사항</h4>
-					</div>
-					<ul id="noticeCategories" class="cus_tab">
-						<li id="notice_ALL" class="on"><a href="#"
-							onclick="callQnaList('ALL'); clickcr(this, 'not.all', '', '', event); return false;"><span>전체</span></a>
-						</li>
-						<li id="notice_GENERAL" class=""><a href="#"
-							onclick="callNoticeList('GENERAL'); clickcr(this, 'not.general', '', '', event); return false;"><span>상품문의</span></a>
-						</li>
-						<li id="notice_EVENT" class=""><a href="#"
-							onclick="callNoticeList('EVENT'); clickcr(this, 'not.event', '', '', event); return false;"><span>배송문의</span></a>
-						</li>
-						<li id="notice_PRIZE_WINNER_ANNOUNCEMENT" class=""><a
-							href="#"
-							onclick="callNoticeList('PRIZE_WINNER_ANNOUNCEMENT'); clickcr(this, 'not.winner', '', '', event); return false;"><span>반품/교환/환불</span></a>
-						</li>
-						<li id="notice_SAFETY_TRADE" class=""><a href="#"
-							onclick="callNoticeList('SAFETY_TRADE'); clickcr(this, 'not.safety', '', '', event); return false;"><span>주문결제</span></a>
-						</li>
-						<li id="notice_SYSTEM" class=""><a href="#"
-							onclick="callNoticeList('SYSTEM'); clickcr(this, 'not.system', '', '', event); return false;"><span>회원서비스</span></a>
-						</li>
-						<li id="notice_SYSTEM" class="last"><a href="#"
-							onclick="callNoticeList('SYSTEM'); clickcr(this, 'not.system', '', '', event); return false;"><span>기타문의</span></a>
-						</li>
-					</ul>
+			<ul class="tab">
+			<li class="current" data-tab="tab1"><a href="#">About</a></li>
+			<li data-tab="tab2"><a href="#">Portfolio</a></li>
+			<li data-tab="tab3"><a href="#">Contact</a></li>
+			<li data-tab="tab4"><a href="#">Travel</a></li>
+		</ul>
+
+		<div id="tab1" class="tabcontent current">
+			<h3>About</h3>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		</div>
+
+		<div id="tab2" class="tabcontent">
+			<h3>Portfolio</h3>
+			<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+		</div>
+
+		<div id="tab3" class="tabcontent">
+			<h3>Contact</h3>
+			<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+		</div>
+
+		<div id="tab4" class="tabcontent">
+			<h3>Travel</h3>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		</div>
+	</div>
+	<script>
+		$(function() {
+			$('ul.tab li').click(function() {
+				var activeTab = $(this).attr('data-tab');
+				$('ul.tab li').removeClass('current');
+				$('.tabcontent').removeClass('current');
+				$(this).addClass('current');
+				$('#' + activeTab).addClass('current');
+			})
+		});
+	</script>
 
 					<table cellspacing="0" border="1" class="cus_tb">
 						<caption>Q&A 목록</caption>
@@ -370,9 +423,6 @@
 				<div class="clearfix"></div>
 			</div>
 
-
-		</div>
-	</div>
 	<!-- //mail -->
 
 	<!-- footer -->

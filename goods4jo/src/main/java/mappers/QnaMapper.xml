@@ -6,8 +6,7 @@
 <insert id="insertQna" parameterType="qna" >
 		<![CDATA[
 		INSERT INTO QNA(QNO, QTYPE, QTITLE, QPASSWORD, QCONTENT, MID, QDATE)
-		VALUES(QNA_SEQ.nextval,
-			#{qtype}, #{qtitle}, #{qpassword}, #{qcontent}, '16me', sysdate)
+		VALUES(QNO_SEQ.nextval,	#{qtype}, #{qtitle}, #{qpassword}, #{qcontent}, #{mid}, sysdate)
 		]]>
 </insert>
 	

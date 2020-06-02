@@ -1,7 +1,7 @@
 package com.sajo.controller;
 
 
-import java.io.IOException;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,6 @@ import com.sajo.domain.QnaVO;
 import com.sajo.service.QnaService;
 
 @Controller
-@RequestMapping("board")
 public class QnaController {
 	
 	@Autowired
@@ -19,16 +18,19 @@ public class QnaController {
 	
 	@RequestMapping("/mail.sajo")
 	public String mail() {
-		
-		return "/board/mail";
+		System.out.println("#######################");
+		return "board/mail";
 	}
 	
 	
-	@RequestMapping("qna.sajo")
-	public String insertQna(QnaVO vo) throws IOException{
-		int result=qnaService.insertQna(vo);
-		System.out.println("===================================================================================");
-		return "/board/qna";
+	@RequestMapping("/qna.sajo")
+	public String insertQna(QnaVO vo, HttpSession session){
+		System.out.println(" insert ==================================================================================="+vo.getQno());
+		String mid = (String)session.getAttribute("memberId");
+		vo.setMid(mid);
+		
+		qnaService.insertQna(vo);
+		return "board/mail";
 	} 
 
 }
