@@ -26,38 +26,41 @@ public class MemberController {
 
 	}// WEB-INF/views/member+url+.jsp
  
+	
 	@Autowired
 	private MemberService memberService;
 
+	
 	@RequestMapping("/memberInsert.sajo")
 	public String insert(MemberVO vo, SellerVO svo, HttpServletRequest request, 
 			@RequestParam(value = "year") String year,
 			@RequestParam(value = "month") String month, 
 			@RequestParam(value = "day") String day,
-			@RequestParam(value = "loadaddr", required=false) String loadaddr,  
-			@RequestParam(value = "postnumber", required=false) String postnumber,
-			@RequestParam(value = "detailofaddr", required=false) String detailofaddr
-			)  
-	{
-		//db를 탐 서비스필요     
+			@RequestParam(value = "loadaddr") String loadaddr,  
+			@RequestParam(value = "postnumber") String postnumber,
+			@RequestParam(value = "detailofaddr"/*, required=false, defaultValue="0"*/) String detailofaddr
+			)   
+	{ 
+		
 		String seller = request.getParameter("seller");
-		vo.setMtype(seller);
-		vo.setBirth(year, month, day); 
-		
-		
+
 		if (seller == null) { 
-			seller = "소비자";
+			seller = "소비자"; 
 		}else {
 			seller = "판매자";			
 			  System.out.println(loadaddr);
 			  System.out.println(postnumber);
 			  System.out.println(detailofaddr);
 			  svo.setMid(vo.getMid());
-			  svo.setSaddr(loadaddr, detailofaddr);		
+			  svo.setSaddr(loadaddr, detailofaddr);
+			  System.out.println(svo.getSaddr());
 		}
+		
 		vo.setMtype(seller);
+		vo.setBirth(year, month, day);
 		
 		memberService.memberInsert(vo);
+		//seller가 판매자일 경우에만 seller테이블에 Insert실행
 		if(seller.equals("판매자")) {
 			memberService.sellerInsert(svo);
 		}	
@@ -77,6 +80,7 @@ public class MemberController {
 		 
 		return message;
 	} 
+	
 	
 	@ResponseBody//(****************비동기통신을 해주세요) AJAX통신을 하는애는 반드시 이 어노테이션이 있어야함 
 	@RequestMapping(value = "/telCheck.sajo", produces="application/test; charset=UTF-8")
@@ -101,10 +105,14 @@ public class MemberController {
 			return "redirect:/main.sajo";  
 		}else { 
 			session.setAttribute("sessionTime", new Date().toLocaleString());
-			session.setAttribute("memberName", result.getMname());
-			session.setAttribute("memberId", result.getMid());
+			session.setAttribute("member", result); 
+			 
+			if(result.getMtype().equals("판매자")) {
+				session.setAttribute("seller", result.getMtype());
+			} 			 
 		}
 		System.out.println(session.getAttribute("memberId")+"님 로그인 성공");
+		System.out.println(result.getMtype()); 
 		return "redirect:/main.sajo";  
 	} 	
 	/*
@@ -117,10 +125,24 @@ public class MemberController {
 			session.invalidate();	
 		return "redirect:/main.sajo";  
 	} 
-	
-	@RequestMapping("/private.sajo") 
-	public String privateContract(HttpSession session) {	
-				
-		return "redirect:/member/private.sajo";    
-	} 
+ 
+	/*
+	 * 팝업창에서 받은 비밀번호를 확인 후 같으면 셀러회원 탈퇴
+	 */
+	@RequestMapping("/checkPass.sajo") 
+	public String checkPass( HttpServletRequest request, HttpSession session, MemberVO vo,
+			@RequestParam(value = "checkpassword") String pass) {
+		vo = (MemberVO)session.getAttribute("member");
+		System.out.println(pass); 
+		System.out.println(vo.getMpassword()); 
+		System.out.println(vo.getMid());
+		
+		//비밀번호 비교 
+		if(pass.equals(vo.getMpassword())){
+			 memberService.deleteSeller(vo);
+			 memberService.changeMtype(vo);
+			 
+		} 
+		return "redirect:/main.sajo";        
+	}  
 }

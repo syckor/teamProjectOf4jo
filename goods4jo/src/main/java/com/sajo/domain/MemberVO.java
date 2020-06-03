@@ -25,8 +25,8 @@ public class MemberVO {
 		return birth;
 	}
 	public void setBirth(String year, String month, String day) {
-		this.birth = year+month+day; 
-	} 
+		this.birth = year+"/"+month+"/"+day;  
+	}  
 	public String getMonth() {
 		return month;
 	}

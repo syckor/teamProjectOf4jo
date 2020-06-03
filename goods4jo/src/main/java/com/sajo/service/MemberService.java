@@ -8,6 +8,8 @@ public interface MemberService {
 	public MemberVO telCheck_Login( MemberVO vo);
 	public int memberInsert(MemberVO vo);
 	public int sellerInsert(SellerVO svo);
+	public int deleteSeller(MemberVO vo);
+	public int changeMtype(MemberVO vo);
 	
 }
- 
+  

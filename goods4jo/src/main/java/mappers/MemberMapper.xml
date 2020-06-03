@@ -18,19 +18,25 @@
 		INSERT INTO seller(sid, sname, account, saddr, mid, bank, postno)
 		VALUES(SID_SEQ.nextval, #{sname}, #{account}, #{saddr}, #{mid}, #{bank}, #{postnumber})
 		]]>
-		
-	
 	</insert>  
 	
 	<select id="idCheck" parameterType="member" resultType="member">
 		SELECT* FROM member WHERE mid=#{mid}
-		<!-- <if test="mid!=null"> 
+		<if test="mpassword!=null"> 
 			AND mpassword=#{mpassword} 
-		</if>-->  
+		</if>  
 	</select>
+	
 	<select id="telCheck" parameterType="member" resultType="member">
 		SELECT* FROM member WHERE mtel=#{mtel}		
+	</select>   
+	  
+	<select id="sellerDelete" parameterType="member" resultType="integer">
+		DELETE FROM seller WHERE mid=#{mid} 		
 	</select>     
 	
+	<update id="changeMtype" parameterType="member">
+		UPDATE MEMBER SET MTYPE='소비자' WHERE mid=#{mid}		 
+	</update>      
 
 </mapper>

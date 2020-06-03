@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Start</title>
+<title>Start</title> 
 </head> 
-<body>
+<body> 
 <%response.sendRedirect("main.sajo"); %>
 </body>
 </html>   

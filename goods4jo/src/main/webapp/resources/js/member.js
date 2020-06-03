@@ -228,7 +228,6 @@ $(document).ready(function(){
 		range: $.validator.format( "{0} 에서 {1} 사이의 값을 입력하세요." ),
 		max: $.validator.format( "{0} 이하의 값을 입력하세요." ),
 		min: $.validator.format( "{0} 이상의 값을 입력하세요." ), 
-		hangul : "한글만 입력 가능합니다"
 	} );
 
 	
@@ -291,14 +290,12 @@ $(document).ready(function(){
 	        }).open();		
 	}
 	 
-	
-	//약관 클릭시 윈도우 팝업
+	//약관 클릭시 팝업창 띄워서 보이기 
 	$('#private').click(function(){
-		window.open('member/private.sajo',' ', 'width = 600, height = 500');		 
-	});
+		window.open('resources/html/memberPrivate.html',' ', 'width = 900, height = 500');
+	}); 
+	$('#shopContract').click(function(){
+		window.open('resources/html/shopContract.html',' ', 'width = 900, height = 500');
+	}); 
 	
-	 
-		
-	
-
 });

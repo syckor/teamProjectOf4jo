@@ -32,7 +32,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	//로그인시 멤버체크
-	public MemberVO memberLogin(MemberVO vo) {
+	public MemberVO memberLogin(MemberVO vo) { 
 		System.out.println("===> MemberMapper idCheck 호출");
 		return mybatis.selectOne("MemberDAO.idCheck", vo);
 	}
@@ -42,5 +42,16 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println("===>  MemberMapper sellerInsert() 호출");
 		return mybatis.insert("MemberDAO.sellerInsert", svo);
 	}
+
+	//셀러회원 탈퇴
+	public int sellerDelete(MemberVO vo) {
+		System.out.println("===>  MemberMapper sellerDelete() 호출");
+		return mybatis.delete("MemberDAO.sellerDelete", vo); 
+	} 
+	
+	public int changeMtype(MemberVO vo) {
+		System.out.println("===>  MemberMapper sellerDelete() 호출");
+		return mybatis.update("MemberDAO.changeMtype", vo); 
+	};
 
 }

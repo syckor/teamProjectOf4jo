@@ -12,7 +12,7 @@ public interface MemberDAO {
 	 
 	/**
 	 * tel 중복체트 기능 구현
-	 */	
+	 */	 
 	MemberVO  telCheck( MemberVO vo );
 	
 	
@@ -29,7 +29,17 @@ public interface MemberDAO {
 	/**
 	 * 로그인 확인 기능 구현
 	 */
+	
 	MemberVO memberLogin(MemberVO vo);
+	/**
+	 * 셀러회원 취소
+	 */
+	int sellerDelete(MemberVO vo);
+	
+	/**
+	 * 셀러회원 취소시 타입을 소비자로 변경
+	 */
+	int changeMtype(MemberVO vo);
 	
 	
 	

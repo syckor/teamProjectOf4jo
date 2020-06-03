@@ -5,7 +5,7 @@ public class SellerVO {
 	 
 	private int sid;
 	private String sname;
-	private int account;
+	private String account;
 	private String bank;
 	private String saddr;
 	private String mid;
@@ -32,11 +32,11 @@ public class SellerVO {
 	public void setSname(String sname) {
 		this.sname = sname;
 	}
-	public int getAccount() {
+	public String getAccount() {
 		return account;
 	}
-	public void setAccount(int account) {
-		this.account = account;
+	public void setAccount(String account) {
+		this.account = account; 
 	}
 	public String getSaddr() {
 		return saddr;

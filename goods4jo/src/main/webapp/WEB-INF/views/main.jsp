@@ -7,8 +7,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE jsp> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp lang="en"> 
-<head> 
+<%@ page import="com.sajo.domain.MemberVO" %>
+<jsp lang="en">    
+<head>  
 <title>Electronic Store a Ecommerce Online Shopping Category Bootstrap Responsive Website Template | Home :: w3layouts</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,17 +24,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="resources/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
 <link href="resources/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //Custom Theme files --> 
-<!-- font-awesome icons -->
+<!-- //Custom Theme files -->   
+<!-- font-awesome icons --> 
 <link href="resources/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
-<!-- js -->
-<script src="resources/js/jquery.min.js"></script>
+<!-- js --> 
+<script src="resources/js/jquery.min.js"></script>  
 <script src='resources/js/member.js' type="text/javascript"></script>
+
+<script src='resources/js/jquery.validate.min.js' type="text/javascript"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <link rel="stylesheet" href="resources/css/jquery.countdown.css" /> <!-- countdown --> 
 <!-- //js -->   
-<!-- web fonts --> 
+<!-- web fonts -->  
 <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- //web fonts -->  
@@ -85,8 +88,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<div class="register">
 												<form action="member/login.sajo" method="post">			
 													<input name="mid" placeholder="Id" type="text" required="">						
-													<input name="Password" placeholder="Password" type="password" required="">										
-													<div class="sign-up">
+													<input name="mpassword" placeholder="Password" type="password" required="">										
+													<div class="sign-up"> 
 	 													<input type="submit" value="로그인"/>
 													</div>
 												</form>
@@ -99,8 +102,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="member/memberInsert.sajo" method="post" name='frm' id='frm'>
-										  		
+												<form action="member/memberInsert.sajo" method="get" name='frm' id='frm'>
+										  		 
 													<input placeholder="아이디" name="mid" type="text" required="" id='mid'><label for="mid"></label>
 													<span id="idCheckResult" style="width:150px;color:red"></span>
 													<br/><br/> 														
@@ -162,11 +165,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<div class="stats">
 											       		* 모든 항목에 동의해야 합니다.<br/>
 											          <input class='agree' id='agree1' name="agree1" type="checkbox"/>Goods 4조 이용약관(필수)<br/>
-											          <input class='agree' id='agree2' name="agree2" type="checkbox"/><a href='' id='shoppingmall'>전자상거래 이용약관(필수)</a><br />
-											          <input class='agree' id='agree3' name="agree3" type="checkbox"/><a href='' id='private'>제 3자 정보제공(필수)</a><br />
-											          <input class='agree' id='agree4' name="agree4" type="checkbox"/>혜택성 정보 수신 동의(선택)<br />
-											          <hr/>
-											          <input class="check-all" name="agree" type="checkbox" /><span>위 조항 모두 체크하기</span> 
+											          <input class='agree' id='agree2' name="agree2" type="checkbox"/><a href="#" id="shopContract">전자상거래 이용약관(필수)</a><br/>
+											          <input class='agree' id='agree3' name="agree3" type="checkbox"/><a href="#" id='private'>제 3자 정보제공(필수)</a><br/>  
+											          <input class='agree' id='agree4' name="agree4" type="checkbox"/>혜택성 정보 수신 동의(선택)<br />   
+											          <hr/> 
+											          <input class="check-all" name="agree" type="checkbox" /><span>위 조항 모두 체크하기</span>  
 											          <br/>				
 											        </div>  
 																								
@@ -215,79 +218,138 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	
 	<!-- 로그인 상태일때 뜨는 팝업 -->
-	<%String memberId = (String)session.getAttribute("memberId"); %>
-	<%String memberName = (String)session.getAttribute("memberName"); %>
- 	<div class="modal fade" id="myModal77" tabindex="-1" role="dialog" aria-labelledby="myModal88"
+	<!-- 로그인상태가 아니면 이 창이 뜨지않게 막아준다 -->
+	<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
+	<%if(vo!=null){ %>
+ 	<div class="modal fade" id="myModal77" tabindex="-1" role="dialog" aria-labelledby="myModal77"
 		aria-hidden="true">
 		<div class="modal-dialog modal-lg">
-			<div class="modal-content"> 
-				<div class="modal-header">
+			<div class="modal-content">
+				<div class="modal-header"> 
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 						&times;</button>
-						<h4 class="modal-title" id="myModalLabel"><%=memberName%>님, 환영합니다</h4>
-				</div> 
+						<h4 class="modal-title" id="myModalLabel1"><%=vo.getMname()%>님, 환영합니다</h4>
+				</div>
 				<div class="modal-body modal-body-sub">
 					<div class="row">
 						<div class="col-md-8 modal_body_left modal_body_left1" style="border-right: 1px dotted #C2C2C2;padding-right:3em;">
 							<div class="sap_tabs">	
-								<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+								<div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
 									<ul>
-										<li class="resp-tab-item" aria-controls="tab_item-0"><span>회원정보 수정하기</span></li><br/>
-										<li class="resp-tab-item" aria-controls="tab_item-1"><span>구매내역</span></li><br/>
-										<li class="resp-tab-item" aria-controls="tab_item-2"><a href='member/logout.sajo'>로그아웃</a></li>									
-									</ul>		  
-									 
-									
-									
-										
-									 
+										<li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
+										<li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
+										<%if(vo.getMtype().equals("판매자")){%> 
+											<li class="resp-tab-item" aria-controls="tab_item-2"><span>판매물품 등록</span></li>
+											<li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
+										<%}%>  
+										<li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>									
+									</ul>		
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
 										<div class="facts">
-											
+											<div class="register">
+												<form action="member/memberInsert.sajo" method="get" name='f' id='f'>
+										  		  
+												</form>
+											</div>
 										</div>
-									</div>
+									</div> 	
 									
 									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="member/login.sajo" method="post">			
-													<input name="mid" placeholder="Id" type="text" required="">						
-													<input name="Password" placeholder="Password" type="password" required="">										
-													<div class="sign-up">
-														<input type="submit" value="로그인"/>
-													</div>
+												<form action="member/memberModify.sajo" method="post" name='frmModify' id='frmModify'>										  		
+													<input placeholder="아이디" name="mid" type="text" required="" id='modifyid' value='<%=vo.getMid() %>' disabled>											
+													<input placeholder="이름" name="mname" type="text" required="" id='modifyname' value='<%=vo.getMname()%>' disabled>
+													<input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' required="">
+													<input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' required="">												
+													<input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">									
+													<div>
+											 			<input type = "radio" name = "phone"/> SKT 
+   														<input type = "radio" name = "phone"/> KT 
+   														<input type = "radio" name = "phone"/> LGU+
+   													</div>												
+													<input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >													
+													<br/>
+													<%if(vo.getMtype().equals("판매자")){%> 
+														<input type="button" value="사업자회원 탈퇴" id='dropoutseller'/> 	
+													<%}%> 						 				 	 																	
+													<div class="modify">  
+														<input type="submit" value="정보수정하기" id='modifysubmit'/>  
+													</div> 
+													
 												</form>
 											</div> 
 										</div> 
+									</div>
+									
+									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-2">
+										<div class="facts">
+											<div class="register">
+												 
+											</div>
+										</div>
+									</div> 
+									
+										
+									 
+									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-3">
+										<div class="facts">
+											<div class="register">
+												<form action="member/checkPass.sajo" method="post" name='frmdropseller' id='frmdropseller'>
+													비밀번호를 입력하세요<br/> 
+														<input type='hidden' name='mid' value='<%=vo.getMid()%>'></input>
+														<input type='password' name='checkpassword' id='checkpassword'></input>
+														<input type="submit" value="확인" id='checkPass'/>
+													</form>  
+											</div> 
+										</div>
 									</div> 	
-        					             	      
+								
+										        					            	      
 								</div>	
 							</div>
 							<script src="resources/js/easyResponsiveTabs.js" type="text/javascript"></script>
 							<script type="text/javascript">
 								$(document).ready(function () {
-									$('#horizontalTab').easyResponsiveTabs({
+									$('#horizontalTab1').easyResponsiveTabs({
 										type: 'default', //Types: default, vertical, accordion           
 										width: 'auto', //auto or any width like 600px
 										fit: true   // 100% fit in a container
-									});
+									}); 
 								});
-							</script>							
-						</div>						
+							</script>
+							<div id="OR" class="hidden-xs">OR</div>
+						</div>
+						<div class="col-md-4 modal_body_right modal_body_right1">
+							<div class="row text-center sign-with">
+								<div class="col-md-12">
+									<h3 class="other-nw">Sign in with</h3>
+								</div>
+								<div class="col-md-12">
+									<ul class="social">
+										<li class="social_facebook"><a href="#" class="entypo-facebook"></a></li>
+										<li class="social_dribbble"><a href="#" class="entypo-dribbble"></a></li>
+										<li class="social_twitter"><a href="#" class="entypo-twitter"></a></li>
+										<li class="social_behance"><a href="#" class="entypo-behance"></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<%} %>
  	
 	<script>
 		<!--여기서 이거 쓰기 싫었는데 js파일안에서 세션 가져오는거 아무리 찾아도 안나와서 어쩔수없이 여기다함 ㅜ ㅋ  -->
-		<% 
-			if(memberId==null){%>
+		<% 	//vo가 null이면 로그인화면 띄우고 null이 아니면 로그인이 있다는 얘기임 	
+			if(vo==null){%>
 				$('#myModal88').modal('show');
 			<%}else{%>
 				$('#myModal88').modal('hide');
-			<%}%>
+			<%}%> 
 		   
 	</script>  
 	<!-- header modal -->
@@ -295,7 +357,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header" id="home1">
 		<div class="container">
 			<div class="w3l_login">
-				<%if(memberId==null){ %>
+				<%if(vo==null){ %> 
 					<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
 				<%}else{ %>
 					<a href="#" data-toggle="modal" data-target="#myModal77"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
@@ -412,11 +474,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</a>
 				</div> 
 					<!-- pop-up-box -->     
-					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+					<script src="resources/js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!--//pop-up-box -->
 					<div id="small-dialog" class="mfp-hide">
 						<iframe src="https://www.youtube.com/embed/ZQa6GUVnbNM"></iframe>
-					</div>
+					</div> 
 					<script>
 						$(document).ready(function() {
 						$('.popup-with-zoom-anim').magnificPopup({
@@ -1424,7 +1486,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</article>
 						</div>
 					</div>
-						<script src="js/jquery.wmuSlider.js"></script> 
+						<script src="resources/js/jquery.wmuSlider.js"></script> 
 						<script>
 							$('.example1').wmuSlider();         
 						</script> 
@@ -1617,7 +1679,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						
 					});
 			</script>
-			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+			<script type="text/javascript" src="resources/js/jquery.flexisel.js"></script>
 		</div>
 	</div>
 	<!-- //top-brands --> 
@@ -1669,7 +1731,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li><a href="#" class="google"> </a></li>
 							<li><a href="#" class="pinterest"> </a></li>
 						</ul>
-					</div>
+					</div> 
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -1679,8 +1741,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="footer-copy-pos">
 					<a href="#home1" class="scroll"><img src="resources/images/arrow.png" alt=" " class="img-responsive" /></a>
 				</div>
-			</div>
-			<div class="container">
+			</div> 
+			<div class="container"> 
 				<p>&copy; 2017 Electronic Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
 			</div>
 		</div>
@@ -1688,7 +1750,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //footer --> 
 	<!-- cart-js -->
 	<script src="resources/js/minicart.js"></script>
-	<script>
+	<script>  
         w3ls.render();
 
         w3ls.cart.on('w3sb_checkout', function (evt) {
@@ -1699,9 +1761,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         		for (i = 0, len = items.length; i < len; i++) { 
         		}
-        	}
+        	} 
         });
-    </script>  
+    </script> 
 	<!-- //cart-js -->   
 </body>
 </jsp>
