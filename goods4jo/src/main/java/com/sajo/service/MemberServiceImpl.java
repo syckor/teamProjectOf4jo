@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService{
 	  public MemberVO telCheck_Login( MemberVO vo) 
 	  {
 		  return memberDAO.telCheck(vo);
-	  }
+	  } 
 	  
 	  
 	  /** 
@@ -41,4 +41,13 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.sellerInsert(svo);
 		
 	}
+
+	//판매자 회원 탈퇴 
+	public int deleteSeller(MemberVO vo) {
+		return memberDAO.sellerDelete(vo);		
+	}
+	
+	public int changeMtype(MemberVO vo) {
+		return memberDAO.changeMtype(vo);
+	};
 }
