@@ -6,5 +6,5 @@ public interface GoodsDAO {
 	
 	int insertGoods(GoodsVO goods);
 	GoodsVO selectByGdate();
-	GoodsVO selectByGid(GoodsVO goods);
+	GoodsVO selectByGid(String gid);
 }

@@ -16,7 +16,7 @@
 	from goods
 	where gdate=(select max(gdate) from goods)
 	</select>
-	<select id="selectByGid" parameterType="goods" resultType="goods">
+	<select id="selectByGid" parameterType="String" resultType="goods">
 	select *
 	from goods
 	where gid=#{gid}

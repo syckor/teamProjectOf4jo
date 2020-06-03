@@ -259,22 +259,27 @@
 	<div class="container">
 		<form class='register' id="iregist" action="insertImage.sajo" method='post' enctype='multipart/form-data'>
 			<table class='table'>
-			<input type="hidden" name="gid" value='${goods.gid }'/>
+			<input type="hidden" name="gid" value="${goods.gid }">
 			<tr><td><h2>이미지 파일 저장</h2></td></tr>
-			<tr><td>이미지 파일1</td><td><input type="file" name="file1"/></td></tr>
-			<tr><td>이미지 파일2</td><td><input type="file" name="file2"/></td></tr>
-			<tr><td>이미지 파일3</td><td><input type="file" name="file3"/></td></tr>
-			<tr><td>이미지 파일4</td><td><input type="file" name="file4"/></td></tr>
-			<tr><td>이미지 파일5</td><td><input type="file" name="file5"/></td></tr><br/>
+			<tr><td>대표 이미지 파일1</td><td><input type="file" name="file1"/></td></tr>
+			<tr><td>추가 이미지1 파일</td><td><input type="file" name="file2"/></td></tr>
+			<tr><td>추가 이미지2 파일</td><td><input type="file" name="file3"/></td></tr>
+			<tr><td>상세설명1 이미지 파일</td><td><input type="file" name="file4"/></td></tr>
+			<tr><td>상세설명2 이미지 파일</td><td><input type="file" name="file5"/></td></tr><br/>
 			<tr><td><h2>이미지 소스 저장</h2></td></tr>
-			<tr><td>이미지 소스1</td><td><input type="text" name="source1"/></td></tr>
-			<tr><td>이미지 소스2</td><td><input type="text" name="source2"/></td></tr>
-			<tr><td>이미지 소스3</td><td><input type="text" name="source3"/></td></tr>
-			<tr><td>이미지 소스4</td><td><input type="text" name="source4"/></td></tr>
-			<tr><td>이미지 소스5</td><td><input type="text" name="source5"/></td></tr>
+			<tr><td>대표 이미지</td><td><input type="text" name="source1" placeholder="https://t1.kakaocdn.net/friends/prod/product/20200526170004063_8809721501771_BW_02_(1).jpg
+			"/></td></tr>
+			<tr><td>추가 이미지1</td><td><input type="text" name="source2" placeholder="https://t1.kakaocdn.net/friends/prod/product/20200526170004063_8809721501771_BW_02_(1).jpg
+			"/></td></tr>
+			<tr><td>추가 이미지2</td><td><input type="text" name="source3" placeholder="https://t1.kakaocdn.net/friends/prod/product/20200526170004063_8809721501771_BW_02_(1).jpg
+			"/></td></tr>
+			<tr><td>상세설명1</td><td><input type="text" name="source4" placeholder="https://t1.kakaocdn.net/friends/prod/product/20200526170004063_8809721501771_BW_02_(1).jpg
+			"/></td></tr>
+			<tr><td>상세설명2</td><td><input type="text" name="source5" placeholder="https://t1.kakaocdn.net/friends/prod/product/20200526170004063_8809721501771_BW_02_(1).jpg
+			"/></td></tr>
 			</table>
 			<div class="team-bottom">
-			<input type="submit"
+			<input type="submit" 
 				class="submit" value="등록하기" /></div>
 		</form>
 	</div>

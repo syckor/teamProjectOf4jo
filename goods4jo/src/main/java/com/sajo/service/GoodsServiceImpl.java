@@ -23,8 +23,8 @@ public class GoodsServiceImpl  implements GoodsService{
 	}
 
 	@Override
-	public GoodsVO selectByGid(GoodsVO goods) {
-		return dao.selectByGid(goods);
+	public GoodsVO selectByGid(String gid) {
+		return dao.selectByGid(gid);
 	}
 
 	

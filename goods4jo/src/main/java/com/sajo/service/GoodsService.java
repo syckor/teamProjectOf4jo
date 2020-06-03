@@ -6,5 +6,5 @@ public interface GoodsService {
 
 	public int insertGoods(GoodsVO goods);
 	public GoodsVO selectByGdate();
-	public GoodsVO selectByGid(GoodsVO goods);
+	public GoodsVO selectByGid(String gid);
 }

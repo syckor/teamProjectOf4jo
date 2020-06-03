@@ -18,10 +18,10 @@ public class ImageDAOImpl implements ImageDAO {
 	}
 
 	@Override
-	public ImageVO selectByGid(ImageVO vo) {
+	public ImageVO selectByGid(String gid) {
 		System.out.println("===> ImageMapper SelectByGid 호출");
 
-		return mybatis.selectOne("ImageDAO.selectByGid",vo);
+		return mybatis.selectOne("ImageDAO.selectByGid",gid);
 	}
 
 }

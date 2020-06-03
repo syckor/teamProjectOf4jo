@@ -18,8 +18,8 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public ImageVO selectByGid(ImageVO vo) {
-		return dao.selectByGid(vo);
+	public ImageVO selectByGid(String gid) {
+		return dao.selectByGid(gid);
 	}
 
 }

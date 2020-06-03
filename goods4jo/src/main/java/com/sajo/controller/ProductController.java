@@ -1,5 +1,9 @@
 package com.sajo.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +31,7 @@ public class ProductController {
 	@RequestMapping("/gregist.sajo")
 	public String gregist() {
 
+		
 		return "goods/gregist";
 
 	}
@@ -41,17 +46,29 @@ public class ProductController {
 		return "goods/iregist";
 	}
 	
-	//이미지 db에 저장하기
+	//이미지 db에 저장하기 +상품상세페이지로 이동(gid parameter로 전달)
 	@RequestMapping("/insertImage.sajo")
-	public String insertImage(ImageVO vo,Model model) {
+	public String insertImage(ImageVO vo) {
 		imgservice.insertImage(vo);
-		//gid로 집어넣은 이미지 정보랑 goods 정보 select해서 model로 보내기
-		ImageVO imgvo=imgservice.selectByGid(vo);
-		//goods정보는 최근 바로 그 정보
+		//gid가져오기 (최근 insert된 데이터 gid)
 		GoodsVO goodsvo=service.selectByGdate();
+		String gid =goodsvo.getGid();
+		
+		return "redirect:/detailGoods.sajo?gid="+gid;
+	}
+	
+	//상품 상세페이지로 이동
+	@RequestMapping("/detailGoods.sajo")
+	public String detailGoods(String gid,Model model) {
+		//gid로 집어넣은 이미지 정보랑 goods 정보 select해서 model로 보내기
+		ImageVO imgvo=imgservice.selectByGid(gid);
+		//goods정보는 최근 바로 그 정보
+		GoodsVO goodsvo=service.selectByGid(gid);
 		
 		model.addAttribute("goods",goodsvo);
 		model.addAttribute("img",imgvo);
-		return "goods/gregistSave";
+		
+		
+		return "goods/gdetail";
 	}
 }

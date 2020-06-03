@@ -273,35 +273,35 @@
 		
 			<tr><td><h2>이미지</h2></td></tr>
 			<tr><td>이미지 파일1</td><td> <c:choose>
-					    <c:when test="${img.fsize1}==0">첨부파일 없음</c:when>
+					    <c:when test=${img.fsize1 eq 0}>첨부파일 없음</c:when>
 					    <c:otherwise>
 					    <a href='resources/upload/${img.fname1}'>
-					    		<img src="resources/images/disk.gif">${img.fname1}
+					    		<img src="resources/upload/${img.fname1}">
 					    	</a> 
 					    </c:otherwise>
 					 </c:choose>	</td></tr>
 			<tr><td>이미지 파일2</td><td><c:choose>
-					    <c:when test="${img.fsize2}==0">첨부파일 없음</c:when>
+					    <c:when test=${img.fsize2 eq 0}>첨부파일 없음</c:when>
 					    <c:otherwise>
-					    		<img src="resources/upload/"+${img.fname2}+".jpg">
+					    		<img src="resources/upload/${img.fname2}">
 					    </c:otherwise>
 					 </c:choose></td></tr>
 			<tr><td>이미지 파일3</td><td><c:choose>
-					    <c:when test="${img.fsize3}==0">첨부파일 없음</c:when>
+					    <c:when test=${img.fsize3 eq 0}>첨부파일 없음</c:when>
 					    <c:otherwise>
-					    		<img src="resources/upload/"+${img.fname3}+".jpg">
+					    		<img src="resources/upload/${img.fname3}">
 					    </c:otherwise>
 					 </c:choose></td></tr>
 			<tr><td>이미지 파일4</td><td><c:choose>
-					    <c:when test="${img.fsize4}==0">첨부파일 없음</c:when>
+					    <c:when test=${img.fsize4 eq 0}>첨부파일 없음</c:when>
 					    <c:otherwise>
-					    		<img src="resources/upload/"+${img.fname4}+".jpg">
+					    		<img src="resources/upload/${img.fname4}">
 					    </c:otherwise>
 					 </c:choose></td></tr>
 			<tr><td>이미지 파일5</td><td><c:choose>
-					    <c:when test="${img.fsize5}==0">첨부파일 없음</c:when>
+					    <c:when test=${img.fsize5 eq 0}>첨부파일 없음</c:when>
 					    <c:otherwise>
-					    		<img src="/resources/upload/"+${img.fname5}+".jpg">
+					    		<img src="resources/upload/${img.fname5}">
 					    </c:otherwise>
 					 </c:choose></tr><br/>
 			<tr><td><h2>이미지 소스 저장</h2></td></tr>

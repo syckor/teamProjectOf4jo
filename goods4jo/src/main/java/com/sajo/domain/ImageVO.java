@@ -177,7 +177,7 @@ public class ImageVO {
 				//실제 파일 업로드 할 풀더를 "" 안에 입력 +f_name
 				//파일 명까지 갈려면 풀더와 f_name 사이에 \\가 필요하다 즉 "경로\\"+f_name
 				try {
-					file1.transferTo(f2);
+					file2.transferTo(f2);
 				} catch (Exception e) {
 					System.out.println("파일2 전송 실패: +e.getMessage");
 					e.printStackTrace();
@@ -202,7 +202,7 @@ public class ImageVO {
 				//실제 파일 업로드 할 풀더를 "" 안에 입력 +f_name
 				//파일 명까지 갈려면 풀더와 f_name 사이에 \\가 필요하다 즉 "경로\\"+f_name
 				try {
-					file1.transferTo(f3);
+					file3.transferTo(f3);
 				} catch (Exception e) {
 					System.out.println("파일1 전송 실패: +e.getMessage");
 					e.printStackTrace();
@@ -252,7 +252,7 @@ public class ImageVO {
 				//실제 파일 업로드 할 풀더를 "" 안에 입력 +f_name
 				//파일 명까지 갈려면 풀더와 f_name 사이에 \\가 필요하다 즉 "경로\\"+f_name
 				try {
-					file1.transferTo(f5);
+					file5.transferTo(f5);
 				} catch (Exception e) {
 					System.out.println("파일5 전송 실패: +e.getMessage");
 					e.printStackTrace();

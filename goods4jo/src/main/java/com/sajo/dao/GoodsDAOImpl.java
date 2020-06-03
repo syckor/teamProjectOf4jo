@@ -26,9 +26,9 @@ public class GoodsDAOImpl implements GoodsDAO{
 
 
 	@Override
-	public GoodsVO selectByGid(GoodsVO goods) {
+	public GoodsVO selectByGid(String gid) {
 		System.out.println("===> GoodsMapper selectByGid 호출");
-		return mybatis.selectOne("GoodsDAO.selectByGid",goods);
+		return mybatis.selectOne("GoodsDAO.selectByGid",gid);
 	}
 	
 	

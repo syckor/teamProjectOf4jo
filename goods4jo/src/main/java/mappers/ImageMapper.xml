@@ -40,7 +40,7 @@
 	</if>
 	)
 	</insert>
-	<select id="selectByGid" parameterType="image" resultType="image">
+	<select id="selectByGid" parameterType="String" resultType="image">
 	select *
 	from image
 	where gid=#{gid}
