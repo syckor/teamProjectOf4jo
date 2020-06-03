@@ -4,20 +4,20 @@
 <mapper namespace="QnaDAO">
 
 	<resultMap id="qnaResult" type="qna">
-		<!-- <id property="seq" column="SEQ" />  -->
+		<result property="qno" column="QNO" />
 		<result property="qtype" column="QTYPE" />
 		<result property="qtitle" column="QTITLE" />
 		<result property="qpassword" column="QPASSWORD" />
 		<result property="qcontent" column="QCONTENT" />
 		<result property="qanswer" column="QANSWER" />
-		<result property="mId" column="MID" />
+		<result property="mid" column="MID" />
 		<result property="qdate" column="QDATE" />
 	</resultMap>
 
 <insert id="insertQna" parameterType="qna" >
 		<![CDATA[
 		INSERT INTO QNA(QNO, QTYPE, QTITLE, QPASSWORD, QCONTENT,  MID, QDATE)
-		VALUES(QNO_SEQ.nextval, #{qtype}, #{qtitle}, #{qpassword}, #{qcontent}, #{mId}, sysdate)
+		VALUES(QNO_SEQ.nextval, #{qtype}, #{qtitle}, #{qpassword}, #{qcontent}, #{mid}, sysdate)
 		]]>
 </insert>
 	
@@ -28,5 +28,29 @@
 		ORDER BY QDATE DESC 
 		]]>
 </select>	
+
+	<select id="getQna" parameterType="qna" resultType="qna">
+		<![CDATA[
+		SELECT *
+		FROM QNA
+		WHERE QNO = #{qno}
+		]]>
+	</select>
+	
+	<delete id="deleteQna" parameterType="hashmap">
+		<![CDATA[
+		DELETE 
+		FROM QNA
+		WHERE QNO = #{qno} and qpassword=#{qpassword}
+		]]>
+	</delete>
+	
+	<update id="answerQna" parameterType="qna">
+		<![CDATA[
+		UPDATE QNA 
+		SET QANSWER=#{qanswer}		
+		WHERE QNO = #{qno}
+		]]>
+	</update>
 	
 </mapper>

@@ -19,7 +19,22 @@ public class QnaServiceImpl implements QnaService{
 			}
 	
 	public List<QnaVO> getQnaList(QnaVO vo){
-		System.out.println("service 호출");
+		System.out.println("getQnaList service 호출");
 		return qnaDAO.getQnaList(vo);
+	}
+	
+	public QnaVO getQna(QnaVO vo) {
+		System.out.println("getQna service 호출");
+		return qnaDAO.getQna(vo);
+	}
+	
+	public void deleteQna(int qno,int qpassword) {
+		System.out.println("deleteQna service 호출");
+		qnaDAO.deleteQna(qno,qpassword);
+	}
+	
+	public void answerQna(QnaVO vo) {
+		System.out.println("answerQna service 호출");
+		qnaDAO.answerQna(vo);
 	}
 }

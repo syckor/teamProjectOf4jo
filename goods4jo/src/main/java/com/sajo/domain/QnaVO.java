@@ -8,8 +8,9 @@ public class QnaVO {
 	private int qpassword;
 	private String qcontent;
 	private String qanswer;
-	private String mId;
+	private String mid;
 	private String qdate;
+	
 	public int getQno() {
 		return qno;
 	}
@@ -28,6 +29,7 @@ public class QnaVO {
 	public void setQtitle(String qtitle) {
 		this.qtitle = qtitle;
 	}
+
 	public int getQpassword() {
 		return qpassword;
 	}
@@ -46,12 +48,13 @@ public class QnaVO {
 	public void setQanswer(String qanswer) {
 		this.qanswer = qanswer;
 	}
-	public String getMId() {
-		return mId;
+
+	public String getMid() {
+		return mid;
 	}
-	public void setMId(String mId) {
-		this.mId = mId;
-	} 
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
 	public String getQdate() {
 		return qdate;
 	}

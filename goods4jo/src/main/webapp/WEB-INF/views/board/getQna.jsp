@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,10 +15,29 @@
 	content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 		
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } 
+
 </script>
+<!-- CSS -->
+
+<!-- google fonts -->
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700'
+	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700'
+	rel='stylesheet' type='text/css'>
+
+<!-- files -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/magnific-popup.css" rel="stylesheet">
+<link href="assets/css/owl.carousel.css" rel="stylesheet">
+<link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
+<link href="assets/css/ionicons.css" rel="stylesheet">
+<link href="assets/css/main.css" rel="stylesheet">
+
 
 <style>
 #container {
@@ -329,40 +348,28 @@ ul.tab li.current {
 	</div>
 	<!-- //breadcrumbs -->
 	<!-- mail -->
-	<%String memberId = (String)session.getAttribute("memberId"); %>
-	
 	<div class="mail">
 		<div class="container">
-			<h3>우리에게 물어보세요</h3>
+			<h3>우리가 답해드릴게요</h3>
 			<div class="agile_mail_grids">
 				<div class="col-md-12 contact-left">
-					<h4>Q&A 양식</h4>
-					<form action="saveQna.sajo" method="post"> 
-					<!-- 
-						<input type="hidden" name="qno" required=""value=""> <input
-							type="hidden" name="mid" required=""value=""> <input
-							type="hidden" name="qanswer" required="" value="">  -->
-							<input
-							type="hidden" name="mId" required=""value="<%=memberId%>">
-							<input 
-							type="text" name="qtitle" placeholder="Your Title" required="">
-						<input type="text" name="qpassword" placeholder="Your Password"
-							required=""> <select type="text" name="qtype" required=""
-							class="qtype" id='qtype' style="width: 380px; height: 40px;">
-							<option value='상품문의'>상품문의</option>
-							<option value='배송문의'>배송문의</option>
-							<option value='반품/교환/환불'>반품/교환/환불</option>
-							<option value='주문결제'>주문결제</option>
-							<option value='회원서비스'>회원서비스</option>
-							<option value='기타문의'>기타문의</option>
-						</select> 
-						<textarea name="qcontent" placeholder="물어보고 싶은 내용을 입력해주세요~"required="">
-						</textarea>
-						<input type="submit" value="보내기">
+					<h4>Q&A 내용</h4>
+					<form action="deleteQna.sajo?qno=${qna.qno }&qpassword=${qna.qpassword}" method="post">
+						<input type="hidden" name="qno" value="${qna.qno }">
+						<input type="text"  name="qtitle" value="${qna.qtitle }" style="width: 1000px; height: 40px;"/> 						 
+						<textarea name="qcontent">${qna.qcontent }</textarea>						
+						<input type="text" name="qpassword" placeholder="Your Password" required=""/> 
+						<input type="submit" value="삭제하기" style="width: 500px; height: 40px;">
 					</form>
-					<br /> <br />
-
-
+					<br />
+					<br />	
+					<h4>답변을 달아보아요</h4>
+						<form action="answerQna.sajo?qno=${qna.qno }" method="post">
+						<textarea name="qanswer" required=""> </textarea>
+						<input type="submit" value="답변달기" style="width: 500px; height: 40px;">
+						</form>
+					<br /> 
+					<br />
 					<div id="container2">
 						<ul class="tab">
 							<li class="current" data-tab="tab1"><a href="#">상품문의</a></li>
@@ -371,7 +378,6 @@ ul.tab li.current {
 							<li data-tab="tab4"><a href="#">주문결제</a></li>
 							<li data-tab="tab5"><a href="#">회원서비스</a></li>
 							<li data-tab="tab6"><a href="#">기타문의</a></li>
-
 						</ul>
 
 						<div id="tab1" class="tabcontent current">
@@ -426,50 +432,9 @@ ul.tab li.current {
 								상품까지 오프라인과 온라인을<br /> 아우르는 굿즈의 모든 상품을 한 공간에서 탐색할 수 있습니다.
 							</p>
 						</div>
-
+</div>
 					</div>
-
-					<script>
-						$(function() {
-							$('ul.tab li').click(function() {
-								var activeTab = $(this).attr('data-tab');
-								$('ul.tab li').removeClass('current');
-								$('.tabcontent').removeClass('current');
-								$(this).addClass('current');
-								$('#' + activeTab).addClass('current');
-							})
-						});
-					</script>
-					<table cellspacing="0" border="1" class="cus_tb">
-						<caption>Q&A 목록</caption>
-						<colgroup>
-							<col width="85">
-							<col>
-							<col width="84">
-						</colgroup>
-						<thead class="blind">
-							<tr>
-								<th scope="col">구분</th>
-								<th scope="col">제목</th>
-								<th scope="col">작성자</th>
-								<th scope="col">등록일</th>
-							</tr>
-						</thead>
-						<c:forEach items="${qna }" var="qna" >
-						<tbody id="qnaBody">
-							<tbody>
-							<tr>
-								<td>${qna.qtype }</td>								
-								<td><a href=""
-									onclick="clickcr(this, 'not*g.list', 200012883, 1, event);">${qna.qtitle }
-								</a></td>
-								<td>${qna.mid }</td>
-								<td >${qna.qdate }</td>
-								</tr>
-							</tbody>
-						</c:forEach>
-
-					</table>
+</div>
 				</div>
 			</div>
 		</div>
@@ -566,5 +531,13 @@ ul.tab li.current {
 		});
 	</script>
 	<!-- //cart-js -->
+	<!-- Scripts -->
+	<script src="resources/js/jquery-1.12.3.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="resources/js/owl.carousel.min.js"></script>
+	<script src="resources/js/script.js"></script>
+
+
 </body>
 </html>

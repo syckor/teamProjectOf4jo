@@ -11,4 +11,13 @@ public interface QnaService {
 	
 	// 글 목록 조회
 	List<QnaVO> getQnaList(QnaVO vo);
+	
+	// 글 상세 조회
+	QnaVO getQna(QnaVO vo);
+	
+	// 글 삭제
+	void deleteQna(int qno,int qpassword);
+	
+	// 답변 작성
+	void answerQna(QnaVO vo);
 }
