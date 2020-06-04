@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+/* add to cart 버튼 스타일 */
+#add_cart{
+width: 300px;
+height:80px;
+font-size: 20px;
+
+}
+/* goods이름 스타일  */
+#goods_name{
+    font-size: 40px;
+    font-weight: bold;
+    color:black;
+/*     width: 380px; */
+}
+/* goods가격 스타일 */
+#goods_price{
+	font-size: 30px;
+	color: grey;
+	font-weight: bold;
+	float: right;
+}
+/* goods 자세히 보기 이미지 배열스타일 */
+#detail-image{
+	text-align: center;
+}
+/* 별로 안중요한거 스타일 */
+.not_import{
+	color: BLACK;
+}
+/* 보통 중요한거 스타일 */
+.middle_import{
+	font-size : 30px;
+	color: black;
+}
+/* 보통 스타일 */
+.small_import{
+	font-size : 20px;
+	color: black;
+}
+/* 버튼 스타일  */
+.button1 {
+    outline: none;
+    color: #ffffff;
+    font-size: 1em;
+    padding: 10px 0;
+    width: 35%;
+    background: #eba823;
+    border: none;
+    transition: .5s all;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+    float: right;
+}
+.button1:hover {
+    background: #3975ed;
+}
+.writing{
+	background: none;
+    border: 1px solid #999;
+    border-top: none;
+    color: #424341;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+}
+

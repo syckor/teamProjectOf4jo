@@ -1,3 +1,5 @@
+
+//판매 상품등록 할 때 캐릭터, 카테고리 분류를 정하는 select 설정 
 $(function(){
 	$('#brend').change(function(){
 		var first=$('#brend').val();//Gid의 첫글자라서 first
@@ -34,5 +36,22 @@ $(function(){
 		}
 	});
 	
-	
+});
+
+//리뷰에서 별 눌렀을 때 별 색깔 바뀌고 score에 값 입력하기 
+$(function(){
+	var index;
+	for(var i=1; i<=5 ;i++){
+		$('#star'+i).click(function(){
+			index=$(this).attr("value");
+			for(var j=1;j<=5;j++){
+				$('#img'+j).attr("src","resources/images/review_star_0.jpg");
+			}
+			for(var j=1;j<=index;j++)
+				{
+				 $('#img'+j).attr("src","resources/images/review_star_1.jpg");
+				}
+			$('#score').val(index);
+		});
+	}
 });
