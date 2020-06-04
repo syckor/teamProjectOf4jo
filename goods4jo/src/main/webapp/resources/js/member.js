@@ -69,6 +69,14 @@ $(document).ready(function(){
 	    	 $('#sample4_detailAddress').val('').prop('disabled', true);
 	    } 
 	});
+	
+	$('#seller').change(function(){
+	    if ($('#seller').is(':checked') == true){
+	    	 $('#addseller').val('판매자');   
+	    } else if($('#seller').is(':checked') == false){	       	    	
+	    	 $('#addseller').val('소비자'); 
+	    } 
+	});
 
 	//아이디 중복체크
 	$('#mid').keyup(function(){ 
@@ -100,6 +108,8 @@ $(document).ready(function(){
 		}); 
        
 	})
+	
+	
 
 	//약관 전체 체크하기 	(체크시  submit버튼 봉인해제)
 	$('.check-all').change(function(){		
@@ -131,6 +141,8 @@ $(document).ready(function(){
 			$('#msubmit').val('').prop('value', '회원가입완료');
 		}		
 	});
+	
+	
 
 	
 	//유효성 검사	 
@@ -168,6 +180,43 @@ $(document).ready(function(){
 		success:function(label){			
 		}  
 	});
+	$('#frmModify').validate({  
+		rules:{ 
+			mid :{
+				required:true, 
+				minlength:6,
+				maxlength:10 
+			},
+			mname:{required:true,
+				minlength:2,
+				hangul:true 
+			},
+			email:{required:true,
+				email:true
+			}, 
+			mpassword : {
+				required:true, 
+				minlength:8,
+				maxlength:16,
+				regx:/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@@@#$%^&+=]).*$/
+			},
+			passconf : {equalTo:'#mpassword'}   
+			},
+			mtel :{
+				required:true, 
+				maxlength:11,
+				number:true 
+			},
+			account:{
+				required:true, 
+				number:true  
+			},		
+			success:function(label){			
+			}  
+		});
+	
+	
+	
 	//이름 입력시 한글만 입력받기
 	$('#mname').keyup(function(event){
 		regexp = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g;
@@ -234,11 +283,11 @@ $(document).ready(function(){
 
 
 	
-	document.getElementById('sample4_execDaumPostcode').onclick=function(){
+	$('.sample4_execDaumPostcode').click(function(){
 	    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	        new daum.Postcode({
-	            oncomplete: function(data) {
-	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	            oncomplete: function(data) { 
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분. 
 
 	                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
 	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
@@ -246,7 +295,7 @@ $(document).ready(function(){
 	                var extraRoadAddr = ''; // 참고 항목 변수
 
 	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다. 
 	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
 	                    extraRoadAddr += data.bname;
 	                }
@@ -260,10 +309,15 @@ $(document).ready(function(){
 	                }
 
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-	                document.getElementById('sample4_postcode').value = data.zonecode;
-	                document.getElementById("sample4_roadAddress").value = roadAddr;
-	                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-	                
+	                if ($('#addseller').is(':checked') == true){
+	                	document.getElementById('sample4_postcode1').value = data.zonecode;
+	                	document.getElementById("sample4_roadAddress1").value = roadAddr;
+	                	document.getElementById("sample4_jibunAddress1").value = data.jibunAddress;
+	                }else{
+	                	document.getElementById('sample4_postcode').value = data.zonecode;
+	                	document.getElementById("sample4_roadAddress").value = roadAddr;
+	                	document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+	                } 
 	                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
 	                if(roadAddr !== ''){
 	                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
@@ -271,7 +325,7 @@ $(document).ready(function(){
 	                    document.getElementById("sample4_extraAddress").value = '';
 	                }
 
-	                var guideTextBox = document.getElementById("guide");
+	                var guideTextBox = document.getElementsByClassName("guide");
 	                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
 	                if(data.autoRoadAddress) {
 	                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
@@ -287,8 +341,8 @@ $(document).ready(function(){
 	                    guideTextBox.style.display = 'none';
 	                }
 	            }
-	        }).open();		
-	}
+	        }).open(); 		
+	});
 	 
 	//약관 클릭시 팝업창 띄워서 보이기 
 	$('#private').click(function(){
@@ -385,13 +439,4 @@ $(document).ready(function(){
 	    	$('#sellerfrm').hide();	      	
 	    }  
 	});
-	
-	
-	
-	function openWindowPop(url, name){
-	    var options = 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no';
-	    window.open(url, name, options);
-	}
-	
-
 });

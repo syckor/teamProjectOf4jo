@@ -50,9 +50,20 @@ public class MemberServiceImpl implements MemberService{
 	public int changeMtype(MemberVO vo) {
 		return memberDAO.changeMtype(vo);
 	};
-	
+	 
 	//일반 회원 탈퇴 
 	public int deleteMember(MemberVO vo) {
 		return memberDAO.memberDelete(vo);		
+	}
+	
+	// 회원 정보 수정
+	public int memberUpdate(MemberVO vo) {
+		return memberDAO.memberUpdate(vo);
+	}
+	public int changeMtypeToSeller(MemberVO vo) {
+		return memberDAO.changeMtypeToSeller(vo);
+	}
+	public SellerVO getSellerInfo(SellerVO svo) {
+		return memberDAO.getSellerInfo(svo);
 	}
 }

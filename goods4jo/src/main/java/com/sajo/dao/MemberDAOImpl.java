@@ -49,8 +49,8 @@ public class MemberDAOImpl implements MemberDAO{
 		return mybatis.delete("MemberDAO.sellerDelete", vo); 
 	} 
 	
-	public int changeMtype(MemberVO vo) {
-		System.out.println("===>  MemberMapper sellerDelete() 호출");
+	public int changeMtype(MemberVO vo) { 
+		System.out.println("===>  MemberMapper sellerDelete() 호출"); 
 		return mybatis.update("MemberDAO.changeMtype", vo); 
 	}
 	
@@ -59,5 +59,17 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println("===>  MemberMapper memberDelete() 호출");
 		return mybatis.delete("MemberDAO.memberDelete", vo);   
 	} 
-
+	
+	public int memberUpdate(MemberVO vo) {
+		System.out.println("===>  MemberMapper memberUpdate() 호출");
+		return mybatis.update("MemberDAO.memberUpdate", vo);    
+	}
+	public int changeMtypeToSeller(MemberVO vo) {
+		System.out.println("===>  MemberMapper changeMtypeToSeller() 호출");
+		return mybatis.update("MemberDAO.changeMtypeToSeller", vo);    
+	}
+	public SellerVO getSellerInfo(SellerVO svo) {
+		System.out.println("===> MemberMapper idCheck 호출");
+		return mybatis.selectOne("MemberDAO.getSellerInfo", svo);
+	}
 }

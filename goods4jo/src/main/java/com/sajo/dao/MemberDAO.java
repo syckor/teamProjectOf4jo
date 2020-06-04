@@ -6,7 +6,7 @@ import com.sajo.domain.SellerVO;
 public interface MemberDAO {
 	/**
 	 * id 중복체트 기능 구현
-	 */	
+	 */	 
 	MemberVO  idCheck( MemberVO vo );
 	
 	 
@@ -27,10 +27,11 @@ public interface MemberDAO {
 	int sellerInsert(SellerVO svo);
 	
 	/** 
-	 * 로그인 확인 기능 구현
+	 * 로그인 확인 기능 구현 
 	 */
 	
 	MemberVO memberLogin(MemberVO vo);
+	SellerVO getSellerInfo(SellerVO svo);
 	/**
 	 * 셀러회원 취소
 	 */
@@ -42,6 +43,14 @@ public interface MemberDAO {
 	int changeMtype(MemberVO vo);
 	
 	int memberDelete(MemberVO vo);
+	
+	/**
+	 * 회원가입 변경사항
+	 */
+	int memberUpdate(MemberVO vo);
+	int changeMtypeToSeller(MemberVO vo);
+	
+	
 	
 	
 	

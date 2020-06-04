@@ -8,6 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.sajo.domain.MemberVO" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp lang="en">    
 <head>  
 <title>Goods4jo, All thing of goods!!!</title>
@@ -172,7 +173,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<div class="sign-up"> 
 														<input type="submit" value="회원가입완료" disabled id='msubmit'/>  
 													</div> 
+													${sessionScope.loginresult}
+													
+													<c:if test="${sessionScope.insertresult != null}"> 												 
+														<script type="text/javascript"> 
+															alert("회원가입이 완료되었습니다. \n로그인해주세요");
+														</script> 
+														<%session.removeAttribute("insertresult"); %>   
+													</c:if>
 												</form>
+												
 											</div>
 										</div>
 									</div> 	
@@ -235,14 +245,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
 										<li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
 										<%if(vo.getMtype().equals("판매자")){%> 
-											<li class="resp-tab-item" aria-controls="tab_item-2"><span>판매물품 등록</span></li>
+											<li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
 											<li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
 										<%}%>  
 										<li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>									
 									</ul>		
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
 										<div class="facts">
-											<div class="register">
+											<div class="register"> 
 												
 											</div>
 										</div>
@@ -254,22 +264,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												<form action="member/memberModify.sajo" method="post" name='frmModify' id='frmModify'>										  		
 													<input placeholder="아이디" name="mid" type="text" required="" id='modifyid' value='<%=vo.getMid() %>' disabled>											
 													<input placeholder="이름" name="mname" type="text" required="" id='modifyname' value='<%=vo.getMname()%>' disabled>
-													<input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' required="">
-													<input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' required="">												
-													<input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">									
-													<div id='telbrand'>
-											 			<input type = "radio" name = "phone"/> SKT 
+													<input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' value=<%=vo.getMpassword() %> required="">
+													<input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' value=<%=vo.getMpassword() %> required="">												
+													<input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">		 							
+													<div id='telbrand'> 
+											 			<input type = "radio" name = "phone"/> SKT  
    														<input type = "radio" name = "phone"/> KT 
    														<input type = "radio" name = "phone"/> LGU+
    													</div>												
 													<input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >													
 													<br/>
-													
-													판매자 등록하기<input type="checkbox" name="addseller" id='addseller' value='addseller'>
-													<div id='sellerfrm' style="display: none;"> 
-														<input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text" required="">
+													<%if(vo.getMtype().equals("소비자")){%> 
+														<div>판매자 등록하기</div><input type="checkbox" name="addseller" id='addseller'>
+													<%}%>   
+													<div id='sellerfrm' style="display: none;"> 											
+														<input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text">
 														<br/>은행선택   
-														<select  name="bank" type="text" class="bank" required='' id='bank1'>
+														<select  name="bank" type="text" class="bank" id='bank1'>
 															<option value='국민은행'>국민은행</option>
 															<option value='우리은행'>우리은행</option>
 															<option value='신한은행'>신한은행</option>
@@ -278,29 +289,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 															<option value='하나은행'>하나은행</option> 
 															<option value='광주은행'>광주은행</option> 
 															<option value='부산은행'>부산은행</option> 
-															<option value='농협'>농협</option>
+															<option value='농협'>농협</option> 
 															<option value='수협'>수협</option>
 															<option value='새마을금고'>새마을금고</option>
 														</select>
-														<input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text" required="">
+														<input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text">
 														판매자주소<br/> 
-														<input type="button" name='saddrbutton' id ='sample4_execDaumPostcode' class='sample4_execDaumPostcode' value="우편번호 찾기"><br>
-														 <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호">
-														<input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소">
-														<span id="guide" style="color:#999;display:none"></span>  
-														<input type="text" name='detailofaddr' id="sample4_detailAddress" placeholder="상세주소">
+														<input type="button" name='saddrbutton' id ='sample4_execDaumPostcode1' class='sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+														 <input type="text" name='postnumber' id="sample4_postcode1" class='sample4_postcode' placeholder="우편번호">
+														<input type="text" name='loadaddr' id="sample4_roadAddress1" class='sample4_roadAddress' placeholder="도로명주소">
+														<span id="guide" style="color:#999;display:none"></span>    
+														<input type="text" name='detailofaddr' id="sample4_detailAddress1" class='sample4_detailAddress' placeholder="상세주소">
 													</div>
 													<br/>
 													<br/> 
+													<div class="modify" id='hiddenbybutton'> 
+														<input type="submit" value="정보수정하기"/>  
+													</div> 	
+												</form>	
 													<input type="button" value="회원탈퇴" id='dropoutmember'/>
-																	 				 	 																	
-													<div class="modify" id='hiddenbybutton'>  
-														<input type="submit" value="정보수정하기" id='modifysubmit'/>  
-													</div> 		
-												</form>
+													<br/> 
+													
+												<c:if test="${sessionScope.updateresult != null}"> 												 
+														<script type="text/javascript"> 
+															alert("회원정보가 수정 되었습니다"); 
+														</script>
+														<%session.removeAttribute("updateresult"); %>    
+												</c:if>	
+												
 												<form action='member/deleteMember.sajo' name='deleteMember'>
 													<span id="idAttach"></span>   
 												</form>
+												<c:if test="${sessionScope.mdeleteresult != null}"> 												 
+														<script type="text/javascript"> 
+															alert("회원탈퇴 되셨습니다."); 
+														</script>
+														<%session.removeAttribute("mdeleteresult"); %>        
+												</c:if>	
 											</div> 
 										</div> 
 									</div>
@@ -323,7 +348,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<input type='hidden' name='mid' value='<%=vo.getMid()%>'></input>
 														<input type='password' name='checkpassword' id='checkpassword'></input>
 														<input type="submit" value="확인" id='checkPass'/>
-													</form>  
+													</form> 
+													<c:if test="${sessionScope.sdeleteresult != null}"> 												 
+														<script type="text/javascript"> 
+															alert("회원탈퇴 되셨습니다."); 
+														</script>   
+												</c:if>	 
 											</div> 
 										</div>
 									</div> 	
@@ -385,7 +415,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<%}else{ %>
 					<a href="#" data-toggle="modal" data-target="#myModal77"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>				
 				<%}%>
-			</div>
+			</div> 
 			<div class="w3l_logo">
 				<h1><a href="member/main.sajo">Goods 4jo<span>All of goods, in this world!</span></a></h1>
 			</div>  
