@@ -151,7 +151,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													</select>
 													<input placeholder="계좌번호 (-)없이 입력" name="account" id='account' type="text" required="" disabled >
 													판매자주소<br/>
-													<input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
+													<input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' class='sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
 													 <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호" disabled >
 													<input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소"  disabled>
 													<span id="guide" style="color:#999;display:none"></span> 
@@ -284,10 +284,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														</select>
 														<input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text" required="">
 														판매자주소<br/> 
-														<input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+														<input type="button" name='saddrbutton' id ='sample4_execDaumPostcode' class='sample4_execDaumPostcode' value="우편번호 찾기"><br>
 														 <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호">
 														<input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소">
-														<span id="guide" style="color:#999;display:none"></span> 
+														<span id="guide" style="color:#999;display:none"></span>  
 														<input type="text" name='detailofaddr' id="sample4_detailAddress" placeholder="상세주소">
 													</div>
 													<br/>
@@ -387,8 +387,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<%}%>
 			</div>
 			<div class="w3l_logo">
-				<h1><a href="index.jsp">Goods 4jo<span>All of goods, in this world!</span></a></h1>
-			</div>
+				<h1><a href="member/main.sajo">Goods 4jo<span>All of goods, in this world!</span></a></h1>
+			</div>  
 			<div class="search">
 				<input class="search_box" type="checkbox" id="search_box">
 				<label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
@@ -424,7 +424,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div> 
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                <ul class="nav navbar-nav">
-                  <li><a href="index.html">Home</a></li>   
+                  <li><a href="main.sajo">Home</a></li>   
                   <!-- Mega Menu -->
                   <li class="dropdown">
                      <a href="products1.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
@@ -469,11 +469,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                            <div class="clearfix"></div>
                         </div>
                      </ul></li>
-                  <li><a href="about.html">About Us</a></li>
-                  <li><a href="notice.sajo" class="dropdown-toggle"
-                     data-toggle="dropdown" role="button" aria-haspopup="true"
-                     aria-expanded="false">Notice</a></li>
-                  <li><a href="mail.sajo">Q&A</a></li> 
+                  <li><a href="about.sajo">About Us</a></li>
+                  <li><a href="notice.sajo">Notice</a></li>
+                  <li><a href="mail.sajo">Q&A</a></li>  
                </ul>
             </div>
          </nav>
