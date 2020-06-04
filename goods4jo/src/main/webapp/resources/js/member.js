@@ -25,7 +25,7 @@ $(document).ready(function(){
 		function calc(){
 			var monthday = frm.month.value;
 			frm.day.options.length = 0;
-			for( var j=1;  j <= lastDays[monthday-1]; j++){
+			for( var j=0;  j <= lastDays[monthday-1]; j++){
 				frm.day.add( new Option(j, j));				
 			}
 		}	
@@ -88,7 +88,7 @@ $(document).ready(function(){
 	//전화번호 중복체크
 	$('#mtel').keyup(function(){ 
         //비동기통신 = ajax 
-		$.ajax({
+		$.ajax({ 
 			type : 'post', //post방식으로 통신하겠습니다.
 			async : true,
 			url : 'member/telCheck.sajo',  
@@ -297,5 +297,101 @@ $(document).ready(function(){
 	$('#shopContract').click(function(){
 		window.open('resources/html/shopContract.html',' ', 'width = 900, height = 500');
 	}); 
+	var count=0;
 	
+	//회원탈퇴 클릭시 inputbox 동적 생성
+	$('#dropoutmember').click(function(){
+		count++;
+		if(count==1){
+			$('#hiddenbybutton').hide();	
+			$('#dropoutmember').hide();	
+			$('#modifyid').hide();	
+			$('#modifyname').hide();	
+			$('#modifypassword').hide();	
+			$('#modifypassconf').hide();	
+			$('#modifymail').hide();	
+			$('#modifytel').hide();	
+			$('#telbrand').hide();	
+	  
+			var resultSpan = document.getElementById("idAttach");             
+	  
+	        var inputTag = document.createElement("INPUT");           
+	        var deletemember = document.createElement("INPUT");           
+	        var cancelout = document.createElement("INPUT");            
+	        var brTag = document.createElement("BR"); 
+	        
+	        inputTag.type = "password";
+	        inputTag.name = "pwfordelete";
+	        inputTag.id = "pwfordelete"; 
+	        inputTag.required='true';
+	        inputTag.placeholder='탈퇴하려면 비밀번호를 입력하세요';
+	        
+	        deletemember.type = "submit";
+	        deletemember.name = "deletemember";
+	        deletemember.id = "deletemember"; 
+	        deletemember.value="탈퇴하기";  
+	        
+	        cancelout.type = "button";
+	        cancelout.name = "cancelout"; 
+	        cancelout.id = "cancelout"; 
+	        cancelout.value="탈퇴취소";
+	        
+	        resultSpan.appendChild(inputTag); 
+	        resultSpan.appendChild(brTag);
+	        resultSpan.appendChild(brTag);
+	        resultSpan.appendChild(deletemember); 
+	        resultSpan.appendChild(cancelout);
+	        resultSpan.appendChild(brTag);                
+		}else{
+			
+			$('#hiddenbybutton').hide();	
+			$('#dropoutmember').hide();	
+			$('#modifyid').hide();	
+			$('#modifyname').hide();	
+			$('#modifypassword').hide();	
+			$('#modifypassconf').hide();	
+			$('#modifymail').hide();	
+			$('#modifytel').hide();	
+			$('#telbrand').hide();	
+			
+			
+			$('#pwfordelete').show();	
+			$('#deletemember').show();	
+			$('#cancelout').show();	
+		}
+	}); 
+ 
+	$(document).on("click","#cancelout",function(){
+		$('#hiddenbybutton').show();	
+		$('#dropoutmember').show();	 
+		$('#modifyid').show();	
+		$('#modifyname').show();	
+		$('#modifypassword').show();	
+		$('#modifypassconf').show();	
+		$('#modifymail').show();	
+		$('#modifytel').show();	 
+		$('#telbrand').show();	
+		 
+		$('#pwfordelete').hide();	
+		$('#deletemember').hide();	 
+		$('#cancelout').hide();	
+	}) 
+	
+	//수정폼에서 셀러회원 등록시 폼 보이고 숨기기
+	$('#addseller').change(function(){
+	    if ($('#addseller').is(':checked') == true){
+	    	 $('#sellerfrm').show();	    	
+	    } else if($('#addseller').is(':checked') == false){	       
+	    	$('#sellerfrm').hide();	      	
+	    }  
+	});
+	
+	
+	
+	function openWindowPop(url, name){
+	    var options = 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no';
+	    window.open(url, name, options);
+	}
+	
+
 });

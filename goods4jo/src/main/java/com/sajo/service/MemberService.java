@@ -10,6 +10,7 @@ public interface MemberService {
 	public int sellerInsert(SellerVO svo);
 	public int deleteSeller(MemberVO vo);
 	public int changeMtype(MemberVO vo);
-	
+	public int deleteMember(MemberVO vo);
+	 
 }
   

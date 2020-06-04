@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService{
 	   */ 
 	//일반회원
 	public int memberInsert(MemberVO vo) {
-		return memberDAO.memberInsert(vo);
+		return memberDAO.memberInsert(vo); 
 	}
 	//판매자회원
 	public int sellerInsert(SellerVO svo) { 
@@ -50,4 +50,9 @@ public class MemberServiceImpl implements MemberService{
 	public int changeMtype(MemberVO vo) {
 		return memberDAO.changeMtype(vo);
 	};
+	
+	//일반 회원 탈퇴 
+	public int deleteMember(MemberVO vo) {
+		return memberDAO.memberDelete(vo);		
+	}
 }

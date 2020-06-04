@@ -38,7 +38,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	
 	//회원가입시 판매자 회원등록
-	public int sellerInsert(SellerVO svo) {
+	public int sellerInsert(SellerVO svo) { 
 		System.out.println("===>  MemberMapper sellerInsert() 호출");
 		return mybatis.insert("MemberDAO.sellerInsert", svo);
 	}
@@ -52,6 +52,12 @@ public class MemberDAOImpl implements MemberDAO{
 	public int changeMtype(MemberVO vo) {
 		System.out.println("===>  MemberMapper sellerDelete() 호출");
 		return mybatis.update("MemberDAO.changeMtype", vo); 
-	};
+	}
+	
+	//셀러회원 탈퇴
+	public int memberDelete(MemberVO vo) {
+		System.out.println("===>  MemberMapper memberDelete() 호출");
+		return mybatis.delete("MemberDAO.memberDelete", vo);   
+	} 
 
 }

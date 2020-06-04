@@ -17,14 +17,20 @@ import com.sajo.domain.SellerVO;
 import com.sajo.service.MemberService;
 
 @Controller
-@RequestMapping("/member")
+@RequestMapping("/member") 
 public class MemberController {
 
 	@RequestMapping("/{url}.sajo")
 	public String regist(@PathVariable String url) {
-		return "/member/main.sajo" + url;
+		return "/main.sajo" + url;
 
-	}// WEB-INF/views/member+url+.jsp
+	}// WEB-INF/views/member+url+.jsp 
+	
+	@RequestMapping("/loginpopup.sajo")
+	public String loginpopup() {
+		return "/loginpopup.sajo"; 
+   
+	} 
  
 	
 	@Autowired
@@ -36,11 +42,11 @@ public class MemberController {
 			@RequestParam(value = "year") String year,
 			@RequestParam(value = "month") String month, 
 			@RequestParam(value = "day") String day,
-			@RequestParam(value = "loadaddr") String loadaddr,  
-			@RequestParam(value = "postnumber") String postnumber,
-			@RequestParam(value = "detailofaddr"/*, required=false, defaultValue="0"*/) String detailofaddr
+			@RequestParam(value = "loadaddr", required=false, defaultValue="0") String loadaddr,  
+			@RequestParam(value = "postnumber", required=false, defaultValue="0") String postnumber,
+			@RequestParam(value = "detailofaddr", required=false, defaultValue="0") String detailofaddr
 			)   
-	{ 
+	{  
 		
 		String seller = request.getParameter("seller");
 
@@ -139,10 +145,36 @@ public class MemberController {
 		
 		//비밀번호 비교 
 		if(pass.equals(vo.getMpassword())){
-			 memberService.deleteSeller(vo);
-			 memberService.changeMtype(vo);
+			 int result = memberService.deleteSeller(vo);
+			 int result2 = memberService.changeMtype(vo);
+			 session.setAttribute("rsOfDeleteSeller", result);
+			 session.setAttribute("rsOfChangeMtype", result2);
 			 
 		} 
+		return "redirect:/main.sajo";        
+	}  
+	
+	 
+	@RequestMapping("/deleteMember.sajo") 
+	public String deleteMember( HttpServletRequest request, HttpSession session, MemberVO vo,
+			@RequestParam(value = "pwfordelete") String pass) {
+		vo = (MemberVO)session.getAttribute("member");
+		System.out.println(pass); 
+		System.out.println(vo.getMpassword()); 
+		System.out.println(vo.getMid());
+		
+		//비밀번호 비교 
+		if(pass.equals(vo.getMpassword())){
+			 int result = memberService.deleteSeller(vo);
+			 int result1 = memberService.deleteMember(vo);
+			 System.out.println(result);
+			 System.out.println(result1); 
+			 if(result1==0) {
+				 session.setAttribute("rsOfDelete", result1);
+			 }else {
+				 session.invalidate(); 
+			 } 	 
+		}  
 		return "redirect:/main.sajo";        
 	}  
 }

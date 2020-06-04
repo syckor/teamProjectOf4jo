@@ -10,7 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%@ page import="com.sajo.domain.MemberVO" %>
 <jsp lang="en">    
 <head>  
-<title>Electronic Store a Ecommerce Online Shopping Category Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<title>Goods4jo, All thing of goods!!!</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/jsp; charset=utf-8" />
@@ -34,6 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <script src='resources/js/jquery.validate.min.js' type="text/javascript"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <link rel="stylesheet" href="resources/css/jquery.countdown.css" /> <!-- countdown --> 
 <!-- //js -->   
 <!-- web fonts -->  
@@ -60,9 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- for bootstrap working -->
 	<script type="text/javascript" src="resources/js/bootstrap-3.1.1.min.js"></script>
 	<!-- //for bootstrap working -->
-	<!-- header modal -->
-	
-	
+	<!-- header modal -->	
 	<!-- 로그아웃 상태일때 뜨는 팝업 -->
 	<div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
 		aria-hidden="true">
@@ -96,10 +95,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											</div> 
 										</div> 
 									</div>
-									
-										
-									 
-									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
+								<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
 												<form action="member/memberInsert.sajo" method="get" name='frm' id='frm'>
@@ -206,9 +202,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<li class="social_facebook"><a href="#" class="entypo-facebook"></a></li>
 										<li class="social_dribbble"><a href="#" class="entypo-dribbble"></a></li>
 										<li class="social_twitter"><a href="#" class="entypo-twitter"></a></li>
-										<li class="social_behance"><a href="#" class="entypo-behance"></a></li>
-									</ul>
-								</div>
+										<li class="social_behance"><a href="member/loginpopup.sajo" class="entypo-behance"></a></li>
+									</ul>  
+								</div> 
 							</div>
 						</div>
 					</div>
@@ -247,9 +243,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
 										<div class="facts">
 											<div class="register">
-												<form action="member/memberInsert.sajo" method="get" name='f' id='f'>
-										  		  
-												</form>
+												
 											</div>
 										</div>
 									</div> 	
@@ -263,20 +257,49 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' required="">
 													<input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' required="">												
 													<input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">									
-													<div>
+													<div id='telbrand'>
 											 			<input type = "radio" name = "phone"/> SKT 
    														<input type = "radio" name = "phone"/> KT 
    														<input type = "radio" name = "phone"/> LGU+
    													</div>												
 													<input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >													
 													<br/>
-													<%if(vo.getMtype().equals("판매자")){%> 
-														<input type="button" value="사업자회원 탈퇴" id='dropoutseller'/> 	
-													<%}%> 						 				 	 																	
-													<div class="modify">  
-														<input type="submit" value="정보수정하기" id='modifysubmit'/>  
-													</div> 
 													
+													판매자 등록하기<input type="checkbox" name="addseller" id='addseller' value='addseller'>
+													<div id='sellerfrm' style="display: none;"> 
+														<input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text" required="">
+														<br/>은행선택   
+														<select  name="bank" type="text" class="bank" required='' id='bank1'>
+															<option value='국민은행'>국민은행</option>
+															<option value='우리은행'>우리은행</option>
+															<option value='신한은행'>신한은행</option>
+															<option value='카카오뱅크'>카카오뱅크</option>
+															<option value='기업은행'>기업은행</option>
+															<option value='하나은행'>하나은행</option> 
+															<option value='광주은행'>광주은행</option> 
+															<option value='부산은행'>부산은행</option> 
+															<option value='농협'>농협</option>
+															<option value='수협'>수협</option>
+															<option value='새마을금고'>새마을금고</option>
+														</select>
+														<input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text" required="">
+														판매자주소<br/> 
+														<input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+														 <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호">
+														<input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소">
+														<span id="guide" style="color:#999;display:none"></span> 
+														<input type="text" name='detailofaddr' id="sample4_detailAddress" placeholder="상세주소">
+													</div>
+													<br/>
+													<br/> 
+													<input type="button" value="회원탈퇴" id='dropoutmember'/>
+																	 				 	 																	
+													<div class="modify" id='hiddenbybutton'>  
+														<input type="submit" value="정보수정하기" id='modifysubmit'/>  
+													</div> 		
+												</form>
+												<form action='member/deleteMember.sajo' name='deleteMember'>
+													<span id="idAttach"></span>   
 												</form>
 											</div> 
 										</div> 
@@ -360,11 +383,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<%if(vo==null){ %> 
 					<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
 				<%}else{ %>
-					<a href="#" data-toggle="modal" data-target="#myModal77"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+					<a href="#" data-toggle="modal" data-target="#myModal77"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>				
 				<%}%>
 			</div>
 			<div class="w3l_logo">
-				<h1><a href="index.jsp">Goods 4jo<span>Your stores. Your place.</span></a></h1>
+				<h1><a href="index.jsp">Goods 4jo<span>All of goods, in this world!</span></a></h1>
 			</div>
 			<div class="search">
 				<input class="search_box" type="checkbox" id="search_box">
@@ -459,10 +482,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    <!-- //navigation -->
 	<!-- banner -->
 	<div class="banner">
-		<div class="container">
-			<h3>Electronic Store, <span>Special Offers</span></h3>
-		</div>
-	</div>
+	
+	</div> 
 	<!-- //banner --> 
 	<!-- banner-bottom -->
 	<div class="banner-bottom">
@@ -477,9 +498,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<script src="resources/js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!--//pop-up-box -->
 					<div id="small-dialog" class="mfp-hide">
-						<iframe src="https://www.youtube.com/embed/ZQa6GUVnbNM"></iframe>
-					</div> 
-					<script>
+						<iframe src="https://www.youtube.com/watch?v=PdtRWL6SRzE"></iframe>
+					</div>  
+					<script>  
 						$(document).ready(function() {
 						$('.popup-with-zoom-anim').magnificPopup({
 							type: 'inline',
@@ -1684,70 +1705,74 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!-- //top-brands --> 
 
-	<!-- footer -->
-	<div class="footer">
-		<div class="container">
-			<div class="w3_footer_grids">
-				<div class="col-md-3 w3_footer_grid">
-					<h3>Contact</h3>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-					<ul class="address">
-						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
-					</ul>
-				</div>
-				<div class="col-md-3 w3_footer_grid">
-					<h3>Information</h3>
-					<ul class="info"> 
-						<li><a href="about.jsp">About Us</a></li>
-						<li><a href="mail.jsp">Contact Us</a></li>
-						<li><a href="codes.jsp">Short Codes</a></li>
-						<li><a href="faq.jsp">FAQ's</a></li>
-						<li><a href="products.jsp">Special Products</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 w3_footer_grid">
-					<h3>Category</h3>
-					<ul class="info"> 
-						<li><a href="products.jsp">Mobiles</a></li>
-						<li><a href="products1.jsp">Laptops</a></li>
-						<li><a href="products.jsp">Purifiers</a></li>
-						<li><a href="products1.jsp">Wearables</a></li>
-						<li><a href="products2.jsp">Kitchen</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 w3_footer_grid">
-					<h3>Profile</h3>
-					<ul class="info"> 
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="products.jsp">Today's Deals</a></li>
-					</ul>
-					<h4>Follow Us</h4>
-					<div class="agileits_social_button">
-						<ul>
-							<li><a href="#" class="facebook"> </a></li>
-							<li><a href="#" class="twitter"> </a></li>
-							<li><a href="#" class="google"> </a></li>
-							<li><a href="#" class="pinterest"> </a></li>
-						</ul>
-					</div> 
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="footer-copy">
-			<div class="footer-copy1">
-				<div class="footer-copy-pos">
-					<a href="#home1" class="scroll"><img src="resources/images/arrow.png" alt=" " class="img-responsive" /></a>
-				</div>
-			</div> 
-			<div class="container"> 
-				<p>&copy; 2017 Electronic Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-			</div>
-		</div>
-	</div>
-	<!-- //footer --> 
+	 <!-- footer -->
+   <div class="footer">
+      <div class="container">
+         <div class="w3_footer_grids">
+            <div class="col-md-3 w3_footer_grid">
+               <h3>Contact</h3>
+               <p>굿즈4조는 보다 나은 굿즈를 제공하기 위해 노력합니다.</p>
+               <ul class="address">
+                  <li><i class="glyphicon glyphicon-map-marker"
+                     aria-hidden="true"></i>서울시 금천구 가산동 426-5 <span>대한민국</span></li>
+                  <li><i class="glyphicon glyphicon-envelope"
+                     aria-hidden="true"></i><a href="mailto:info@example.com">admin@goods4jo.com</a></li>
+                  <li><i class="glyphicon glyphicon-earphone"
+                     aria-hidden="true"></i>+82 4444 4444</li>
+               </ul>
+            </div>
+            <div class="col-md-3 w3_footer_grid">
+               <h3>Information</h3>
+               <ul class="info">
+                  <li><a href="about.sajo">About Us</a></li>
+                  <li><a href="notice.sajo">Notice</a></li>
+                  <li><a href="mail.sajo">FAQ's</a></li>
+                  <li><a href="products1.sajo">Special Products</a></li>
+               </ul>
+            </div>
+            <div class="col-md-3 w3_footer_grid">
+               <h3>Category</h3>
+               <ul class="info">
+                  <li><a href="products1.sajo">KaKao</a></li>
+                  <li><a href="">Line</a></li>
+                  <li><a href="">General</a></li>
+               </ul>
+            </div>
+            <div class="col-md-3 w3_footer_grid">
+               <h3>Profile</h3>
+               <ul class="info">
+                  <li><a href="main.sajo">Home</a></li>
+                  <li><a href="products1.sajo">Today's NEW</a></li>
+               </ul>
+               <h4>For Share </h4>
+               <div class="agileits_social_button">
+                  <ul>
+                     <li><a href="http://www.facebook.com" class="facebook"> </a></li>
+                     <li><a href="http://www.twitter.com" class="twitter"> </a></li>
+                     <li><a href="http://www.google.com" class="google"> </a></li>
+                     <li><a href="http://www.pinterest.co.kr" class="pinterest"> </a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+         </div>
+      </div>
+      <div class="footer-copy">
+         <div class="footer-copy1">
+            <div class="footer-copy-pos">
+               <a href="#home1" class="scroll"><img
+                  src="resources/images/arrow.png" alt=" " class="img-responsive" /></a>
+            </div>
+         </div>
+         <div class="container">
+            <p>
+               &copy; 2020 Goods Store. All rights reserved | Design by <a
+                  href="http://w3layouts.com/">16me</a>
+            </p>
+         </div>
+      </div>
+   </div>
+   <!-- //footer -->
 	<!-- cart-js -->
 	<script src="resources/js/minicart.js"></script>
 	<script>  
