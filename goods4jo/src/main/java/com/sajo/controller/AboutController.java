@@ -12,7 +12,7 @@ public class AboutController {
 	@RequestMapping("about.sajo")
 	public String about() {
 		
-		return "about";
+		return "board/about";
 	}
 }
 

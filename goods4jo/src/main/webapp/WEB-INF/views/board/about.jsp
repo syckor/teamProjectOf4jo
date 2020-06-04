@@ -134,7 +134,7 @@
                                        </select>
                                        <input placeholder="계좌번호 (-)없이 입력" name="account" id='account' type="text" required="" disabled >
                                        판매자주소<br/>
-                                       <input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
+                                       <input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' class='sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
                                         <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호" disabled >
                                        <input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소"  disabled>
                                        <span id="guide" style="color:#999;display:none"></span> 
@@ -155,7 +155,16 @@
                                        <div class="sign-up"> 
                                           <input type="submit" value="회원가입완료" disabled id='msubmit'/>  
                                        </div> 
+                                       ${sessionScope.loginresult}
+                                       
+                                       <c:if test="${sessionScope.insertresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원가입이 완료되었습니다. \n로그인해주세요");
+                                          </script> 
+                                          <%session.removeAttribute("insertresult"); %>   
+                                       </c:if>
                                     </form>
+                                    
                                  </div>
                               </div>
                            </div>    
@@ -218,14 +227,14 @@
                               <li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
                               <%if(vo.getMtype().equals("판매자")){%> 
-                                 <li class="resp-tab-item" aria-controls="tab_item-2"><span>판매물품 등록</span></li>
+                                 <li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
                                  <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
                               <%}%>  
                               <li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>                           
                            </ul>      
                            <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
                               <div class="facts">
-                                 <div class="register">
+                                 <div class="register"> 
                                     
                                  </div>
                               </div>
@@ -237,22 +246,23 @@
                                     <form action="member/memberModify.sajo" method="post" name='frmModify' id='frmModify'>                                      
                                        <input placeholder="아이디" name="mid" type="text" required="" id='modifyid' value='<%=vo.getMid() %>' disabled>                                 
                                        <input placeholder="이름" name="mname" type="text" required="" id='modifyname' value='<%=vo.getMname()%>' disabled>
-                                       <input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' required="">
-                                       <input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' required="">                                    
-                                       <input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">                           
-                                       <div id='telbrand'>
-                                           <input type = "radio" name = "phone"/> SKT 
+                                       <input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' value=<%=vo.getMpassword() %> required="">
+                                       <input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' value=<%=vo.getMpassword() %> required="">                                    
+                                       <input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">                            
+                                       <div id='telbrand'> 
+                                           <input type = "radio" name = "phone"/> SKT  
                                              <input type = "radio" name = "phone"/> KT 
                                              <input type = "radio" name = "phone"/> LGU+
                                           </div>                                    
                                        <input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >                                       
                                        <br/>
-                                       
-                                       판매자 등록하기<input type="checkbox" name="addseller" id='addseller' value='addseller'>
-                                       <div id='sellerfrm' style="display: none;"> 
-                                          <input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text" required="">
+                                       <%if(vo.getMtype().equals("소비자")){%> 
+                                          <div>판매자 등록하기</div><input type="checkbox" name="addseller" id='addseller'>
+                                       <%}%>   
+                                       <div id='sellerfrm' style="display: none;">                                  
+                                          <input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text">
                                           <br/>은행선택   
-                                          <select  name="bank" type="text" class="bank" required='' id='bank1'>
+                                          <select  name="bank" type="text" class="bank" id='bank1'>
                                              <option value='국민은행'>국민은행</option>
                                              <option value='우리은행'>우리은행</option>
                                              <option value='신한은행'>신한은행</option>
@@ -261,29 +271,43 @@
                                              <option value='하나은행'>하나은행</option> 
                                              <option value='광주은행'>광주은행</option> 
                                              <option value='부산은행'>부산은행</option> 
-                                             <option value='농협'>농협</option>
+                                             <option value='농협'>농협</option> 
                                              <option value='수협'>수협</option>
                                              <option value='새마을금고'>새마을금고</option>
                                           </select>
-                                          <input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text" required="">
+                                          <input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text">
                                           판매자주소<br/> 
-                                          <input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                                           <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호">
-                                          <input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소">
-                                          <span id="guide" style="color:#999;display:none"></span> 
-                                          <input type="text" name='detailofaddr' id="sample4_detailAddress" placeholder="상세주소">
+                                          <input type="button" name='saddrbutton' id ='sample4_execDaumPostcode1' class='sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                                           <input type="text" name='postnumber' id="sample4_postcode1" class='sample4_postcode' placeholder="우편번호">
+                                          <input type="text" name='loadaddr' id="sample4_roadAddress1" class='sample4_roadAddress' placeholder="도로명주소">
+                                          <span id="guide" style="color:#999;display:none"></span>    
+                                          <input type="text" name='detailofaddr' id="sample4_detailAddress1" class='sample4_detailAddress' placeholder="상세주소">
                                        </div>
                                        <br/>
                                        <br/> 
+                                       <div class="modify" id='hiddenbybutton'> 
+                                          <input type="submit" value="정보수정하기"/>  
+                                       </div>    
+                                    </form>   
                                        <input type="button" value="회원탈퇴" id='dropoutmember'/>
-                                                                                                                        
-                                       <div class="modify" id='hiddenbybutton'>  
-                                          <input type="submit" value="정보수정하기" id='modifysubmit'/>  
-                                       </div>       
-                                    </form>
+                                       <br/> 
+                                       
+                                    <c:if test="${sessionScope.updateresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원정보가 수정 되었습니다"); 
+                                          </script>
+                                          <%session.removeAttribute("updateresult"); %>    
+                                    </c:if>   
+                                    
                                     <form action='member/deleteMember.sajo' name='deleteMember'>
                                        <span id="idAttach"></span>   
                                     </form>
+                                    <c:if test="${sessionScope.mdeleteresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원탈퇴 되셨습니다."); 
+                                          </script>
+                                          <%session.removeAttribute("mdeleteresult"); %>        
+                                    </c:if>   
                                  </div> 
                               </div> 
                            </div>
@@ -306,7 +330,12 @@
                                           <input type='hidden' name='mid' value='<%=vo.getMid()%>'></input>
                                           <input type='password' name='checkpassword' id='checkpassword'></input>
                                           <input type="submit" value="확인" id='checkPass'/>
-                                       </form>  
+                                       </form> 
+                                       <c:if test="${sessionScope.sdeleteresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원탈퇴 되셨습니다."); 
+                                          </script>   
+                                    </c:if>    
                                  </div> 
                               </div>
                            </div>    
@@ -368,10 +397,10 @@
             <%}else{ %>
                <a href="#" data-toggle="modal" data-target="#myModal77"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>            
             <%}%>
-         </div>
+         </div> 
          <div class="w3l_logo">
-            <h1><a href="index.jsp">Goods 4jo<span>All of goods, in this world!</span></a></h1>
-         </div>
+            <h1><a href="member/main.sajo">Goods 4jo<span>All of goods, in this world!</span></a></h1>
+         </div>  
          <div class="search">
             <input class="search_box" type="checkbox" id="search_box">
             <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
@@ -392,78 +421,76 @@
       </div>
    </div>
    <!-- //header -->
-	<!-- navigation -->
-	<div class="navigation">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header nav_2">
-					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div> 
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<ul class="nav navbar-nav">
-						<li><a href="index.html">Home</a></li>	
-						<!-- Mega Menu -->
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu multi-column columns-3">
-								<div class="row">
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Mobiles</h6>
-											<li><a href="products.html">Mobile Phones</a></li>
-											<li><a href="products.html">Mp3 Players <span>New</span></a></li> 
-											<li><a href="products.html">Popular Models</a></li>
-											<li><a href="products.html">All Tablets<span>New</span></a></li>
-										</ul>
-									</div>
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Accessories</h6>
-											<li><a href="products1.html">Laptop</a></li>
-											<li><a href="products1.html">Desktop</a></li>
-											<li><a href="products1.html">Wearables <span>New</span></a></li>
-											<li><a href="products1.html"><i>Summer Store</i></a></li>
-										</ul>
-									</div>
-									<div class="col-sm-2">
-										<ul class="multi-column-dropdown">
-											<h6>Home</h6>
-											<li><a href="products2.html">Tv</a></li>
-											<li><a href="products2.html">Camera</a></li>
-											<li><a href="products2.html">AC</a></li>
-											<li><a href="products2.html">Grinders</a></li>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<div class="w3ls_products_pos">
-											<h4>30%<i>Off/-</i></h4>
-											<img src="resources/images/1.jpg" alt=" " class="img-responsive" />
-										</div>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</ul>
-						</li>
-						<li><a href="about.html" class="act">About Us</a></li> 
-						<li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="icons.html">Web Icons</a></li>
-								<li><a href="codes.html">Short Codes</a></li>     
-							</ul>
-						</li>  
-						<li><a href="mail.html">Mail Us</a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</div>
-	<!-- //navigation -->
+   <!-- navigation --> 
+   <div class="navigation">
+      <div class="container">
+         <nav class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header nav_2">
+               <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+               </button>
+            </div> 
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+               <ul class="nav navbar-nav">
+                  <li><a href="main.sajo">Home</a></li>   
+                  <!-- Mega Menu -->
+                  <li class="dropdown">
+                     <a href="products1.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
+                     <ul class="dropdown-menu multi-column columns-3">
+                        <div class="row">
+                           <div class="col-sm-3">
+                              <ul class="multi-column-dropdown">
+                                 <h6>Kakao</h6>
+                                 <li><a href="products1.sajo">라이언</a></li>
+                                 <li><a href="products1.sajo">어피치<span>New</span></a></li> 
+                                 <li><a href="products1.sajo">무지</li>
+                                 <li><a href="products1.sajo">프로도</li>
+                                 <li><a href="products1.sajo">네오<span>New</span></a></li>
+                                 <li><a href="products1.sajo">튜브</li>
+                                 <li><a href="products1.sajo">제이지</li>
+                                 <li><a href="products1.sajo">콘</li>
+                              </ul>
+                           </div>
+                           <div class="col-sm-3">
+                              <ul class="multi-column-dropdown">
+                                 <h6>Line</h6>
+                                 <li><a href="products1.sajo">브라운&프렌즈</a></li>
+                                 <li><a href="products1.sajo">BT21</a></li>
+                                 <li><a href="">브롤스타즈 <span>New</span></a></li>
+                        <li><a href="gregist.sajo"><i>상품 등록</i></a></li>
+                              </ul>
+                           </div>
+                           <div class="col-sm-2">
+                              <ul class="multi-column-dropdown">
+                                 <h6>General</h6>
+                                 <li><a href="">인형</a></li>
+                                 <li><a href="">생필품</a></li>
+                                 <li><a href="">의류</a></li>
+                                 <li><a href="">그 외</a></li>
+                              </ul>
+                           </div>
+                           <div class="col-sm-4">
+                              <div class="w3ls_products_pos">
+                                 <img src="resources/images/inCate1.jpg" alt=" " class="img-responsive" />
+                              </div>
+                           </div>
+                           <div class="clearfix"></div>
+                        </div>
+                     </ul></li>
+                  <li><a href="about.sajo">About Us</a></li>
+                  <li><a href="notice.sajo">Notice</a></li>
+                  <li><a href="mail.sajo">Q&A</a></li>  
+               </ul>
+            </div>
+         </nav>
+      </div>
+   </div>
+   <!-- //navigation -->
+
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">
@@ -475,56 +502,99 @@
 	<div class="breadcrumb_dress">
 		<div class="container">
 			<ul>
-				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
+				<li><a href="main.sajo"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
 				<li>About Us</li>
 			</ul>
 		</div>
 	</div>
 	<!-- //breadcrumbs --> 
 	<!-- about -->
+	<br/>
 	<div class="about">
 		<div class="container">	
 			<div class="w3ls_about_grids">
-				<div class="col-md-6 w3ls_about_grid_left">
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse 
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-						cupidatat non proident, sunt in culpa qui officia deserunt mollit 
-						anim id est laborum.</p>
+				<div class="col-md-5 w3ls_about_grid_left">
 					<div class="col-xs-2 w3ls_about_grid_left1">
 						<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
 					</div>
 					<div class="col-xs-10 w3ls_about_grid_left2">
-						<p>Sunt in culpa qui officia deserunt mollit 
-							anim id est laborum.Duis aute irure dolor in reprehenderit in voluptate velit esse 
-						cillum dolore eu fugiat nulla pariatur.</p>
+						<p>요즘들어 부쩍 ‘나는 어떤 개발자가 될 것인가?’</p>
+						<p>하는 질문을 우리 자신에게 많이 한다.</p>
+						<p>원래 같았으면 며칠정도 쉬는 시간에 잠깐 생각하다가 </p>
+						<p>스쳐지나갈 생각이었겠지만, </p>
+						<p>요즈음 내가 일하고 있는 굿즈사조에서의 많은 경험을 </p>
+						<p>토대로 점점 구체화 되어가는 것을 느낀다.</p>
+						<p> 2020년 6월의 어느날</p>
 					</div>
 					<div class="clearfix"> </div>
-					<div class="col-xs-2 w3ls_about_grid_left1">
-						<span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
-					</div>
-					<div class="col-xs-10 w3ls_about_grid_left2">
-						<p>Sunt in culpa qui officia deserunt mollit 
-							anim id est laborum.Duis aute irure dolor in reprehenderit in voluptate velit esse 
-						cillum dolore eu fugiat nulla pariatur.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-6 w3ls_about_grid_right">
-					<img src="resources/images/52.jpg" alt=" " class="img-responsive" />
+									</div>
+				<div class="col-md-7 w3ls_about_grid_right">
+	
+					<img src="resources/images/uri.jpg" alt=" " class="img-responsive" />
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
 	<!-- //about --> 
+	<!-- history -->
+	<div class="history1">
+		<div class="container">	
+			<div class="w3ls_about_grids">
+				<div class="col-md-5 w3ls_about_grid_left">
+					<h3>우리 호흡의 청사진</h3>
+					<br/>
+					<div class="col-xs-2 w3ls_about_grid_left1">
+						<span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
+					</div>
+					<div class="col-xs-10 w3ls_about_grid_left2">
+					<p>첫 시작은 미미했지만, </p>
+					<p>서로 머리를 맞댄 아이디어를 차곡차곡 쌓아 다음 단계를 맞이하지 위한 도약이였다. </p>
+
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-7 w3ls_about_grid_right">
+				<h3></h3>
+					<img src="resources/images/past.jpg" alt=" " class="img-responsive" />
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //history1 -->
+	<!-- history2 -->
+	<div class="history2">
+		<div class="container">	
+			<div class="w3ls_about_grids">
+				<div class="col-md-5 w3ls_about_grid_left">
+					<h3>지금의 호흡</h3>
+					<br/>
+					<div class="col-xs-2 w3ls_about_grid_left1">
+						<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+					</div>
+					<div class="col-xs-10 w3ls_about_grid_left2">
+						<p>이렇게 다른 좋은 팀원들과의 상호작용을 통해 굿즈사조가 나올 수 있었습니다.</p> 
+						<p>다소 산만하고 맞지 않은 호흡일지라도 함께 하는 것, 같이의 가치!</p>
+					</div>
+							</div>
+				<div class="col-md-7 w3ls_about_grid_right">
+				<h3></h3>
+					<img src="resources/images/we_are.jpg" alt=" " class="img-responsive" />
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div> 
+		<!--// history2 -->
 	<!-- team -->
 	<div class="team">
 		<div class="container">
 			<h3>Meet Our Team</h3>
 			<div class="wthree_team_grids">
 				<div class="col-md-3 wthree_team_grid">
-					<img src="resources/images/t4.png" alt=" " class="img-responsive" />
-					<h4>Smith Allen <span>Manager</span></h4>
+					<img src="resources/images/young.jpg" alt=" " class="img-responsive" />
+					<h4>YOUNG <span>Manager</span></h4>
 					<div class="agileits_social_button">
 						<ul>
 							<li><a href="#" class="facebook"> </a></li>
@@ -535,8 +605,8 @@
 					</div>
 				</div>
 				<div class="col-md-3 wthree_team_grid">
-					<img src="resources/images/t5.png" alt=" " class="img-responsive" />
-					<h4>Laura James <span>Designer</span></h4>
+					<img src="resources/images/16me.jpg" alt=" " class="img-responsive" />
+					<h4>16me <span>Designer</span></h4>
 					<div class="agileits_social_button">
 						<ul>
 							<li><a href="#" class="facebook"> </a></li>
@@ -547,8 +617,8 @@
 					</div>
 				</div>
 				<div class="col-md-3 wthree_team_grid">
-					<img src="resources/images/t6.png" alt=" " class="img-responsive" />
-					<h4>Crisp Doe <span>Director</span></h4>
+					<img src="resources/images/na.jpg" alt=" " class="img-responsive" />
+					<h4>NA <span>President</span></h4>
 					<div class="agileits_social_button">
 						<ul>
 							<li><a href="#" class="facebook"> </a></li>
@@ -559,8 +629,8 @@
 					</div>
 				</div>
 				<div class="col-md-3 wthree_team_grid">
-					<img src="resources/images/t7.png" alt=" " class="img-responsive" />
-					<h4>Linda Rosy <span>Quality Checker</span></h4>
+					<img src="resources/images/server.jpg" alt=" " class="img-responsive" />
+					<h4>SERVER <span>Quality Checker</span></h4>
 					<div class="agileits_social_button">
 						<ul>
 							<li><a href="#" class="facebook"> </a></li>
@@ -571,25 +641,12 @@
 					</div>
 				</div>
 				<div class="clearfix"> </div>
-				<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis 
-					voluptatibus maiores alias consequatur aut perferendis doloribus asperiores 
-					repellat.</p>
+				<p>한걸음을 걸어도 뛰지 않고 함께 맞추어 걷는 것 </p>
 			</div>
 		</div>
 	</div>
 	<!-- //team -->
-	<!-- team-bottom -->
-	<div class="team-bottom">
-		<div class="container">
-			<h3>Are You Ready For Deals? Flat <span>30% Offer </span>on Mobiles</h3>
-			<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis 
-				voluptatibus maiores alias consequatur aut perferendis doloribus asperiores 
-				repellat.</p>
-			<a href="products.html">Shop Now</a>
-		</div>
-	</div>
-	<!-- //team-bottom -->
-
+	
 	<!-- footer -->
 	<div class="footer">
 		<div class="container">
@@ -601,7 +658,7 @@
 						<li><i class="glyphicon glyphicon-map-marker"
 							aria-hidden="true"></i>서울시 금천구 가산동 426-5 <span>대한민국</span></li>
 						<li><i class="glyphicon glyphicon-envelope"
-							aria-hidden="true"></i><a href="mailto:info@example.com">admin@goods4jo.com</a></li>
+							aria-hidden="true"></i><a href="mailto:admin@goods4jo.com">admin@goods4jo.com</a></li>
 						<li><i class="glyphicon glyphicon-earphone"
 							aria-hidden="true"></i>+82 4444 4444</li>
 					</ul>
@@ -628,6 +685,7 @@
 					<ul class="info">
 						<li><a href="main.sajo">Home</a></li>
 						<li><a href="products1.sajo">Today's NEW</a></li>
+						<li><a href="sellList.sajo">SellList</a></li>
 					</ul>
 					<h4>For Share </h4>
 					<div class="agileits_social_button">

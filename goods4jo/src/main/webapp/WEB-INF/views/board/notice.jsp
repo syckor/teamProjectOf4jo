@@ -62,7 +62,7 @@
 <!-- //end-smooth-scrolling -->
 </head>
 <body>
-	 <!-- header modal -->   
+	  <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
       aria-hidden="true">
@@ -152,7 +152,7 @@
                                        </select>
                                        <input placeholder="계좌번호 (-)없이 입력" name="account" id='account' type="text" required="" disabled >
                                        판매자주소<br/>
-                                       <input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
+                                       <input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' class='sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
                                         <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호" disabled >
                                        <input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소"  disabled>
                                        <span id="guide" style="color:#999;display:none"></span> 
@@ -173,7 +173,16 @@
                                        <div class="sign-up"> 
                                           <input type="submit" value="회원가입완료" disabled id='msubmit'/>  
                                        </div> 
+                                       ${sessionScope.loginresult}
+                                       
+                                       <c:if test="${sessionScope.insertresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원가입이 완료되었습니다. \n로그인해주세요");
+                                          </script> 
+                                          <%session.removeAttribute("insertresult"); %>   
+                                       </c:if>
                                     </form>
+                                    
                                  </div>
                               </div>
                            </div>    
@@ -236,14 +245,14 @@
                               <li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
                               <%if(vo.getMtype().equals("판매자")){%> 
-                                 <li class="resp-tab-item" aria-controls="tab_item-2"><span>판매물품 등록</span></li>
+                                 <li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
                                  <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
                               <%}%>  
                               <li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>                           
                            </ul>      
                            <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
                               <div class="facts">
-                                 <div class="register">
+                                 <div class="register"> 
                                     
                                  </div>
                               </div>
@@ -255,22 +264,23 @@
                                     <form action="member/memberModify.sajo" method="post" name='frmModify' id='frmModify'>                                      
                                        <input placeholder="아이디" name="mid" type="text" required="" id='modifyid' value='<%=vo.getMid() %>' disabled>                                 
                                        <input placeholder="이름" name="mname" type="text" required="" id='modifyname' value='<%=vo.getMname()%>' disabled>
-                                       <input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' required="">
-                                       <input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' required="">                                    
-                                       <input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">                           
-                                       <div id='telbrand'>
-                                           <input type = "radio" name = "phone"/> SKT 
+                                       <input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' value=<%=vo.getMpassword() %> required="">
+                                       <input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' value=<%=vo.getMpassword() %> required="">                                    
+                                       <input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">                            
+                                       <div id='telbrand'> 
+                                           <input type = "radio" name = "phone"/> SKT  
                                              <input type = "radio" name = "phone"/> KT 
                                              <input type = "radio" name = "phone"/> LGU+
                                           </div>                                    
                                        <input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >                                       
                                        <br/>
-                                       
-                                       판매자 등록하기<input type="checkbox" name="addseller" id='addseller' value='addseller'>
-                                       <div id='sellerfrm' style="display: none;"> 
-                                          <input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text" required="">
+                                       <%if(vo.getMtype().equals("소비자")){%> 
+                                          <div>판매자 등록하기</div><input type="checkbox" name="addseller" id='addseller'>
+                                       <%}%>   
+                                       <div id='sellerfrm' style="display: none;">                                  
+                                          <input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text">
                                           <br/>은행선택   
-                                          <select  name="bank" type="text" class="bank" required='' id='bank1'>
+                                          <select  name="bank" type="text" class="bank" id='bank1'>
                                              <option value='국민은행'>국민은행</option>
                                              <option value='우리은행'>우리은행</option>
                                              <option value='신한은행'>신한은행</option>
@@ -279,29 +289,43 @@
                                              <option value='하나은행'>하나은행</option> 
                                              <option value='광주은행'>광주은행</option> 
                                              <option value='부산은행'>부산은행</option> 
-                                             <option value='농협'>농협</option>
+                                             <option value='농협'>농협</option> 
                                              <option value='수협'>수협</option>
                                              <option value='새마을금고'>새마을금고</option>
                                           </select>
-                                          <input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text" required="">
+                                          <input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text">
                                           판매자주소<br/> 
-                                          <input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                                           <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호">
-                                          <input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소">
-                                          <span id="guide" style="color:#999;display:none"></span> 
-                                          <input type="text" name='detailofaddr' id="sample4_detailAddress" placeholder="상세주소">
+                                          <input type="button" name='saddrbutton' id ='sample4_execDaumPostcode1' class='sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                                           <input type="text" name='postnumber' id="sample4_postcode1" class='sample4_postcode' placeholder="우편번호">
+                                          <input type="text" name='loadaddr' id="sample4_roadAddress1" class='sample4_roadAddress' placeholder="도로명주소">
+                                          <span id="guide" style="color:#999;display:none"></span>    
+                                          <input type="text" name='detailofaddr' id="sample4_detailAddress1" class='sample4_detailAddress' placeholder="상세주소">
                                        </div>
                                        <br/>
                                        <br/> 
+                                       <div class="modify" id='hiddenbybutton'> 
+                                          <input type="submit" value="정보수정하기"/>  
+                                       </div>    
+                                    </form>   
                                        <input type="button" value="회원탈퇴" id='dropoutmember'/>
-                                                                                                                        
-                                       <div class="modify" id='hiddenbybutton'>  
-                                          <input type="submit" value="정보수정하기" id='modifysubmit'/>  
-                                       </div>       
-                                    </form>
+                                       <br/> 
+                                       
+                                    <c:if test="${sessionScope.updateresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원정보가 수정 되었습니다"); 
+                                          </script>
+                                          <%session.removeAttribute("updateresult"); %>    
+                                    </c:if>   
+                                    
                                     <form action='member/deleteMember.sajo' name='deleteMember'>
                                        <span id="idAttach"></span>   
                                     </form>
+                                    <c:if test="${sessionScope.mdeleteresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원탈퇴 되셨습니다."); 
+                                          </script>
+                                          <%session.removeAttribute("mdeleteresult"); %>        
+                                    </c:if>   
                                  </div> 
                               </div> 
                            </div>
@@ -324,7 +348,12 @@
                                           <input type='hidden' name='mid' value='<%=vo.getMid()%>'></input>
                                           <input type='password' name='checkpassword' id='checkpassword'></input>
                                           <input type="submit" value="확인" id='checkPass'/>
-                                       </form>  
+                                       </form> 
+                                       <c:if test="${sessionScope.sdeleteresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원탈퇴 되셨습니다."); 
+                                          </script>   
+                                    </c:if>    
                                  </div> 
                               </div>
                            </div>    
@@ -386,10 +415,10 @@
             <%}else{ %>
                <a href="#" data-toggle="modal" data-target="#myModal77"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>            
             <%}%>
-         </div>
+         </div> 
          <div class="w3l_logo">
-            <h1><a href="index.jsp">Goods 4jo<span>All of goods, in this world!</span></a></h1>
-         </div>
+            <h1><a href="member/main.sajo">Goods 4jo<span>All of goods, in this world!</span></a></h1>
+         </div>  
          <div class="search">
             <input class="search_box" type="checkbox" id="search_box">
             <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
@@ -410,8 +439,7 @@
       </div>
    </div>
    <!-- //header -->
-	<!-- navigation -->
-<!-- navigation -->
+   <!-- navigation --> 
    <div class="navigation">
       <div class="container">
          <nav class="navbar navbar-default">
@@ -426,32 +454,32 @@
             </div> 
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                <ul class="nav navbar-nav">
-                  <li><a href="index.html">Home</a></li>   
+                  <li><a href="main.sajo">Home</a></li>   
                   <!-- Mega Menu -->
                   <li class="dropdown">
-                     <a href="#" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
+                     <a href="products1.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
                      <ul class="dropdown-menu multi-column columns-3">
                         <div class="row">
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
                                  <h6>Kakao</h6>
-                                 <li><a href="">라이언</a></li>
-                                 <li><a href="">어피치<span>New</span></a></li> 
-                                 <li><a href="">무지</li>
-                                 <li><a href="">프로도</li>
-                                 <li><a href="">네오<span>New</span></a></li>
-                                 <li><a href="">튜브</li>
-                                 <li><a href="">제이지</li>
-                                 <li><a href="">콘</li>
+                                 <li><a href="products1.sajo">라이언</a></li>
+                                 <li><a href="products1.sajo">어피치<span>New</span></a></li> 
+                                 <li><a href="products1.sajo">무지</li>
+                                 <li><a href="products1.sajo">프로도</li>
+                                 <li><a href="products1.sajo">네오<span>New</span></a></li>
+                                 <li><a href="products1.sajo">튜브</li>
+                                 <li><a href="products1.sajo">제이지</li>
+                                 <li><a href="products1.sajo">콘</li>
                               </ul>
                            </div>
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
                                  <h6>Line</h6>
-                                 <li><a href="">브라운&프렌즈</a></li>
-                                 <li><a href="">BT21</a></li>
+                                 <li><a href="products1.sajo">브라운&프렌즈</a></li>
+                                 <li><a href="products1.sajo">BT21</a></li>
                                  <li><a href="">브롤스타즈 <span>New</span></a></li>
-                                 <li><a href=""><i>Summer Store</i></a></li>
+                        <li><a href="gregist.sajo"><i>상품 등록</i></a></li>
                               </ul>
                            </div>
                            <div class="col-sm-2">
@@ -470,19 +498,18 @@
                            </div>
                            <div class="clearfix"></div>
                         </div>
-                     </ul>
-                  </li>
-                  <li><a href="about.sajo">About Us</a></li> 
-                  <li><a href="notice.sajo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notice</a>
-                  </li>  
-                  <li><a href="mail.sajo">Q&A</a></li>
+                     </ul></li>
+                  <li><a href="about.sajo">About Us</a></li>
+                  <li><a href="notice.sajo">Notice</a></li>
+                  <li><a href="mail.sajo">Q&A</a></li>  
                </ul>
             </div>
          </nav>
       </div>
    </div>
    <!-- //navigation -->
-	<!-- //navigation -->
+  
+   <!-- //banner --> 
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">

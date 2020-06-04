@@ -1,7 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="com.sajo.domain.MemberVO" %>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ page import="com.sajo.domain.MemberVO"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,41 +10,112 @@
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+<meta name="keywords"
+	content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-	function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
-<link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="resources/css/style.css" rel="stylesheet" type="text/css" media="all" /> 
+<link href="resources/css/bootstrap.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="resources/css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
 <!-- //Custom Theme files -->
 <!-- font-awesome icons -->
-<link href="resources/css/font-awesome.css" rel="stylesheet"> 
+<link href="resources/css/font-awesome.css" rel="stylesheet">
 <!-- //font-awesome icons -->
 <!-- js -->
-<script src="resources/js/jquery.min.js"></script> 
-<!-- //js -->  
-<!-- web fonts --> 
-<link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- //web fonts --> 
+<script src="resources/js/jquery.min.js"></script>
+<!-- //js -->
+<!-- web fonts -->
+<link href='//fonts.googleapis.com/css?family=Glegoo:400,700'
+	rel='stylesheet' type='text/css'>
+<link
+	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+	rel='stylesheet' type='text/css'>
+<!-- //web fonts -->
 <!-- for bootstrap working -->
 <script type="text/javascript" src="resources/js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
 <!-- start-smooth-scrolling -->
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
+		$(".scroll").click(function(event) {
 			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);
 		});
 	});
 </script>
-<!-- //end-smooth-scrolling --> 
-</head> 
-<body> 
-	 <!-- header modal -->   
+<!-- //end-smooth-scrolling -->
+<style>
+table.redTable {
+	border: 2px solid #EBA823;
+	background-color: #EEE7DB;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+table.redTable td, table.redTable th {
+	border: 1px solid #AAAAAA;
+	padding: 3px 2px;
+}
+
+table.redTable tbody td {
+	font-size: 15px;
+}
+
+table.redTable tr:nth-child(even) {
+	background: #F5C8BF;
+}
+
+table.redTable thead {
+	background: #EBA823;
+}
+
+table.redTable thead th {
+	font-size: 19px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	border-left: 2px solid #EBA823;
+}
+
+table.redTable thead th:first-child {
+	border-left: none;
+}
+
+table.redTable tfoot {
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: #EBA823;
+}
+
+table.redTable tfoot td {
+	font-size: 13px;
+}
+
+table.redTable tfoot .links {
+	text-align: right;
+}
+
+table.redTable tfoot .links a {
+	display: inline-block;
+	background: #FFFFFF;
+	color: #3975ED;
+	padding: 2px 8px;
+	border-radius: 5px;
+}
+</style>
+</head>
+<body>
+	  <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
       aria-hidden="true">
@@ -133,7 +205,7 @@
                                        </select>
                                        <input placeholder="계좌번호 (-)없이 입력" name="account" id='account' type="text" required="" disabled >
                                        판매자주소<br/>
-                                       <input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
+                                       <input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' class='sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기" disabled ><br>
                                         <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호" disabled >
                                        <input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소"  disabled>
                                        <span id="guide" style="color:#999;display:none"></span> 
@@ -154,7 +226,16 @@
                                        <div class="sign-up"> 
                                           <input type="submit" value="회원가입완료" disabled id='msubmit'/>  
                                        </div> 
+                                       ${sessionScope.loginresult}
+                                       
+                                       <c:if test="${sessionScope.insertresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원가입이 완료되었습니다. \n로그인해주세요");
+                                          </script> 
+                                          <%session.removeAttribute("insertresult"); %>   
+                                       </c:if>
                                     </form>
+                                    
                                  </div>
                               </div>
                            </div>    
@@ -217,14 +298,14 @@
                               <li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
                               <%if(vo.getMtype().equals("판매자")){%> 
-                                 <li class="resp-tab-item" aria-controls="tab_item-2"><span>판매물품 등록</span></li>
+                                 <li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
                                  <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
                               <%}%>  
                               <li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>                           
                            </ul>      
                            <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
                               <div class="facts">
-                                 <div class="register">
+                                 <div class="register"> 
                                     
                                  </div>
                               </div>
@@ -236,22 +317,23 @@
                                     <form action="member/memberModify.sajo" method="post" name='frmModify' id='frmModify'>                                      
                                        <input placeholder="아이디" name="mid" type="text" required="" id='modifyid' value='<%=vo.getMid() %>' disabled>                                 
                                        <input placeholder="이름" name="mname" type="text" required="" id='modifyname' value='<%=vo.getMname()%>' disabled>
-                                       <input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' required="">
-                                       <input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' required="">                                    
-                                       <input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">                           
-                                       <div id='telbrand'>
-                                           <input type = "radio" name = "phone"/> SKT 
+                                       <input placeholder="비밀번호" name="mpassword" type="password" id='modifypassword' value=<%=vo.getMpassword() %> required="">
+                                       <input placeholder="비밀번호 확인" name="passconf" type="password" id='modifypassconf' value=<%=vo.getMpassword() %> required="">                                    
+                                       <input placeholder="이메일" name="mail" type="email" id='modifymail' value='<%=vo.getMail()%>' required="">                            
+                                       <div id='telbrand'> 
+                                           <input type = "radio" name = "phone"/> SKT  
                                              <input type = "radio" name = "phone"/> KT 
                                              <input type = "radio" name = "phone"/> LGU+
                                           </div>                                    
                                        <input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >                                       
                                        <br/>
-                                       
-                                       판매자 등록하기<input type="checkbox" name="addseller" id='addseller' value='addseller'>
-                                       <div id='sellerfrm' style="display: none;"> 
-                                          <input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text" required="">
+                                       <%if(vo.getMtype().equals("소비자")){%> 
+                                          <div>판매자 등록하기</div><input type="checkbox" name="addseller" id='addseller'>
+                                       <%}%>   
+                                       <div id='sellerfrm' style="display: none;">                                  
+                                          <input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text">
                                           <br/>은행선택   
-                                          <select  name="bank" type="text" class="bank" required='' id='bank1'>
+                                          <select  name="bank" type="text" class="bank" id='bank1'>
                                              <option value='국민은행'>국민은행</option>
                                              <option value='우리은행'>우리은행</option>
                                              <option value='신한은행'>신한은행</option>
@@ -260,29 +342,43 @@
                                              <option value='하나은행'>하나은행</option> 
                                              <option value='광주은행'>광주은행</option> 
                                              <option value='부산은행'>부산은행</option> 
-                                             <option value='농협'>농협</option>
+                                             <option value='농협'>농협</option> 
                                              <option value='수협'>수협</option>
                                              <option value='새마을금고'>새마을금고</option>
                                           </select>
-                                          <input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text" required="">
+                                          <input placeholder="계좌번호 (-)없이 입력" name="account" id='account1' type="text">
                                           판매자주소<br/> 
-                                          <input type="button" name='saddrbutton' id = 'sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                                           <input type="text" name='postnumber' id="sample4_postcode" placeholder="우편번호">
-                                          <input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소">
-                                          <span id="guide" style="color:#999;display:none"></span> 
-                                          <input type="text" name='detailofaddr' id="sample4_detailAddress" placeholder="상세주소">
+                                          <input type="button" name='saddrbutton' id ='sample4_execDaumPostcode1' class='sample4_execDaumPostcode' onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                                           <input type="text" name='postnumber' id="sample4_postcode1" class='sample4_postcode' placeholder="우편번호">
+                                          <input type="text" name='loadaddr' id="sample4_roadAddress1" class='sample4_roadAddress' placeholder="도로명주소">
+                                          <span id="guide" style="color:#999;display:none"></span>    
+                                          <input type="text" name='detailofaddr' id="sample4_detailAddress1" class='sample4_detailAddress' placeholder="상세주소">
                                        </div>
                                        <br/>
                                        <br/> 
+                                       <div class="modify" id='hiddenbybutton'> 
+                                          <input type="submit" value="정보수정하기"/>  
+                                       </div>    
+                                    </form>   
                                        <input type="button" value="회원탈퇴" id='dropoutmember'/>
-                                                                                                                        
-                                       <div class="modify" id='hiddenbybutton'>  
-                                          <input type="submit" value="정보수정하기" id='modifysubmit'/>  
-                                       </div>       
-                                    </form>
+                                       <br/> 
+                                       
+                                    <c:if test="${sessionScope.updateresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원정보가 수정 되었습니다"); 
+                                          </script>
+                                          <%session.removeAttribute("updateresult"); %>    
+                                    </c:if>   
+                                    
                                     <form action='member/deleteMember.sajo' name='deleteMember'>
                                        <span id="idAttach"></span>   
                                     </form>
+                                    <c:if test="${sessionScope.mdeleteresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원탈퇴 되셨습니다."); 
+                                          </script>
+                                          <%session.removeAttribute("mdeleteresult"); %>        
+                                    </c:if>   
                                  </div> 
                               </div> 
                            </div>
@@ -305,7 +401,12 @@
                                           <input type='hidden' name='mid' value='<%=vo.getMid()%>'></input>
                                           <input type='password' name='checkpassword' id='checkpassword'></input>
                                           <input type="submit" value="확인" id='checkPass'/>
-                                       </form>  
+                                       </form> 
+                                       <c:if test="${sessionScope.sdeleteresult != null}">                                      
+                                          <script type="text/javascript"> 
+                                             alert("회원탈퇴 되셨습니다."); 
+                                          </script>   
+                                    </c:if>    
                                  </div> 
                               </div>
                            </div>    
@@ -367,10 +468,10 @@
             <%}else{ %>
                <a href="#" data-toggle="modal" data-target="#myModal77"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>            
             <%}%>
-         </div>
+         </div> 
          <div class="w3l_logo">
-            <h1><a href="index.jsp">Goods 4jo<span>All of goods, in this world!</span></a></h1>
-         </div>
+            <h1><a href="member/main.sajo">Goods 4jo<span>All of goods, in this world!</span></a></h1>
+         </div>  
          <div class="search">
             <input class="search_box" type="checkbox" id="search_box">
             <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
@@ -391,8 +492,7 @@
       </div>
    </div>
    <!-- //header -->
-	<!-- navigation -->
-<!-- navigation -->
+   <!-- navigation --> 
    <div class="navigation">
       <div class="container">
          <nav class="navbar navbar-default">
@@ -407,32 +507,32 @@
             </div> 
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                <ul class="nav navbar-nav">
-                  <li><a href="index.html">Home</a></li>   
+                  <li><a href="main.sajo">Home</a></li>   
                   <!-- Mega Menu -->
                   <li class="dropdown">
-                     <a href="#" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
+                     <a href="products1.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
                      <ul class="dropdown-menu multi-column columns-3">
                         <div class="row">
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
                                  <h6>Kakao</h6>
-                                 <li><a href="">라이언</a></li>
-                                 <li><a href="">어피치<span>New</span></a></li> 
-                                 <li><a href="">무지</li>
-                                 <li><a href="">프로도</li>
-                                 <li><a href="">네오<span>New</span></a></li>
-                                 <li><a href="">튜브</li>
-                                 <li><a href="">제이지</li>
-                                 <li><a href="">콘</li>
+                                 <li><a href="products1.sajo">라이언</a></li>
+                                 <li><a href="products1.sajo">어피치<span>New</span></a></li> 
+                                 <li><a href="products1.sajo">무지</li>
+                                 <li><a href="products1.sajo">프로도</li>
+                                 <li><a href="products1.sajo">네오<span>New</span></a></li>
+                                 <li><a href="products1.sajo">튜브</li>
+                                 <li><a href="products1.sajo">제이지</li>
+                                 <li><a href="products1.sajo">콘</li>
                               </ul>
                            </div>
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
                                  <h6>Line</h6>
-                                 <li><a href="">브라운&프렌즈</a></li>
-                                 <li><a href="">BT21</a></li>
+                                 <li><a href="products1.sajo">브라운&프렌즈</a></li>
+                                 <li><a href="products1.sajo">BT21</a></li>
                                  <li><a href="">브롤스타즈 <span>New</span></a></li>
-                                 <li><a href=""><i>Summer Store</i></a></li>
+                        <li><a href="gregist.sajo"><i>상품 등록</i></a></li>
                               </ul>
                            </div>
                            <div class="col-sm-2">
@@ -451,144 +551,74 @@
                            </div>
                            <div class="clearfix"></div>
                         </div>
-                     </ul>
-                  </li>
-                  <li><a href="about.sajo">About Us</a></li> 
-                  <li><a href="notice.sajo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notice</a>
-                  </li>  
-                  <li><a href="mail.sajo">Q&A</a></li>
+                     </ul></li>
+                  <li><a href="about.sajo">About Us</a></li>
+                  <li><a href="notice.sajo">Notice</a></li>
+                  <li><a href="mail.sajo">Q&A</a></li>  
                </ul>
             </div>
          </nav>
       </div>
    </div>
    <!-- //navigation -->
-	<!-- //navigation -->
+
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">
-			<h2>FAQ's</h2>
+			<h2>Sell List</h2>
 		</div>
 	</div>
-	<!-- //banner -->    
+	<!-- //banner -->
 	<!-- breadcrumbs -->
 	<div class="breadcrumb_dress">
 		<div class="container">
 			<ul>
-				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
-				<li>FAQ's</li>
+				<li><a href="main.sajo"><span
+						class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
+				<li>Sell List</li>
 			</ul>
 		</div>
 	</div>
-	<!-- //breadcrumbs --> 
-	<!-- faq -->
-	<div class="faq">
-		<div class="container">	
-			<div class="w3l_faq_grids">
-				<div class="w3l_faq_grid">
-					<h3>1. Excepteur sint occaecat cupidatat non proident ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-
-				<div class="w3l_faq_grid">
-					<h3>2. Quis nostrum exercitationem ullam corporis suscipit ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-				<div class="w3l_faq_grid">
-					<h3>3. Nemo enim ipsam voluptatem quia voluptas sit ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-				<div class="w3l_faq_grid">
-					<h3>4. Ut enim ad minima veniam, quis nostrum exercitationem ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-				<div class="w3l_faq_grid">
-					<h3>5. Quis autem vel eum iure reprehenderit qui ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-				<div class="w3l_faq_grid">
-					<h3>6. Sed ut perspiciatis unde omnis iste natus error sit ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-				<div class="w3l_faq_grid">
-					<h3>7. Nam libero tempore, cum soluta nobis est ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-				<div class="w3l_faq_grid">
-					<h3>8. At vero eos et accusamus et iusto odio dignissimos ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-				<div class="w3l_faq_grid">
-					<h3>9. Itaque earum rerum hic tenetur a sapiente delectus ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-				<div class="w3l_faq_grid">
-					<h3>10. vel illum qui dolorem eum fugiat quo voluptas nulla ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-				<div class="w3l_faq_grid">
-					<h3>11. Ut enim ad minima veniam, quis nostrum exercitationem ?</h3>
-					<p><b>Ans.</b> But I must explain to you how all this mistaken idea of 
-						denouncing pleasure and praising pain was born and I will give 
-						you a complete account of the system, and expound the actual 
-						teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure 
-						itself, because it is pleasure.</p>
-				</div>
-			</div>
+	<!-- //breadcrumbs -->
+	<!-- sellList -->
+	<!-- short codes -->
+	<div class="typo codes">
+		<div class="container">
+		<h3 class="agileits-title">Sell List</h3>			
+			<table class="redTable">
+				<thead>
+					<tr>
+						<th>등록일자</th>
+						<th>상품명</th>
+						<th>구매자</th>
+						<th>구매수량</th>
+						<th>구매수단</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="3">
+							<div class="links">
+								<a href="#">&laquo;</a> <a class="active" href="#">1</a> <a
+									href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+				<tbody>
+				<c:forEach items="${sellList }" var="sellList">
+					<tr>
+						<td>${sellList.bdate }</td>
+						<td>${sellList.gname }</td>
+						<td>${sellList.mid }</td>
+						<td>${sellList.bcount }</td>
+						<td>${sellList.pay }</td>
+					</tr>
+					</c:forEach>
+					</tbody>
+			</table>
 		</div>
 	</div>
-	<!-- //faq -->
 
 	<!-- footer -->
 	<div class="footer">
@@ -629,13 +659,15 @@
 						<li><a href="main.sajo">Home</a></li>
 						<li><a href="products1.sajo">Today's NEW</a></li>
 					</ul>
-					<h4>For Share </h4>
+					<h4>For Share</h4>
 					<div class="agileits_social_button">
 						<ul>
-							<li><a href="http://www.facebook.com" class="facebook"> </a></li>
+							<li><a href="http://www.facebook.com" class="facebook">
+							</a></li>
 							<li><a href="http://www.twitter.com" class="twitter"> </a></li>
 							<li><a href="http://www.google.com" class="google"> </a></li>
-							<li><a href="http://www.pinterest.co.kr" class="pinterest"> </a></li>
+							<li><a href="http://www.pinterest.co.kr" class="pinterest">
+							</a></li>
 						</ul>
 					</div>
 				</div>
@@ -657,23 +689,23 @@
 			</div>
 		</div>
 	</div>
-	<!-- //footer --> 
+	<!-- //footer -->
 	<!-- cart-js -->
 	<script src="resources/js/minicart.js"></script>
 	<script>
-        w3ls.render();
+		w3ls.render();
 
-        w3ls.cart.on('w3sb_checkout', function (evt) {
-        	var items, len, i;
+		w3ls.cart.on('w3sb_checkout', function(evt) {
+			var items, len, i;
 
-        	if (this.subtotal() > 0) {
-        		items = this.items();
+			if (this.subtotal() > 0) {
+				items = this.items();
 
-        		for (i = 0, len = items.length; i < len; i++) { 
-        		}
-        	}
-        });
-    </script>  
-	<!-- //cart-js --> 
+				for (i = 0, len = items.length; i < len; i++) {
+				}
+			}
+		});
+	</script>
+	<!-- //cart-js -->
 </body>
 </html>
