@@ -568,9 +568,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- banner -->
 	<div class="banner banner2">
 		<div class="container">
-			<h2>
-				Top Selling <span>Gadgets</span> Flat <i>25% Discount</i>
-			</h2>
 		</div>
 	</div>
 	<!-- breadcrumbs -->
