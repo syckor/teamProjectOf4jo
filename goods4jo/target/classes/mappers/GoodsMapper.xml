@@ -7,20 +7,41 @@
 <!-- 	sid+img 추후 추가  + gid 설정-->
 	<insert id="insertGoods" parameterType="goods">
 		<![CDATA[
-		INSERT INTO goods(gid,gname,state,count,price,option1,option2,delivery,dcost,dtime,detail,gdate)
-		VALUES(#{brend}||#{characters}||GID_SEQ.nextval, #{gname},'판매가능', #{count}, #{price}, #{option1}, #{option2}, #{delivery},#{dcost},#{dtime},#{detail},sysdate)
+		INSERT INTO goods(gid,gname,state,count,price,option1,option2,delivery,dcost,dtime,detail,gdate,sid)
+		VALUES(#{brend}||#{characters}||GID_SEQ.nextval, #{gname},'판매가능', #{count}, #{price}, #{option1}, #{option2}, #{delivery},#{dcost},#{dtime},#{detail},sysdate,#{sid})
 		]]>
 	</insert>
+	
 	<select id="selectByGdate" resultType="goods">
 	select *
 	from goods
 	where gdate=(select max(gdate) from goods)
 	</select>
+	
 	<select id="selectByGid" parameterType="String" resultType="goods">
 	select *
 	from goods
 	where gid=#{gid}
 	</select>
 	
+	<select id="selectKakao" resultType="goods">
+	<![CDATA[
+	select * from goods where rownum<=3 and gid like 'k%'
+	]]>
+	</select>
+	
+	<select id="selectLine" resultType="goods">
+	<![CDATA[
+	select * from goods where rownum<=3 and gid like 'l%'
+	]]>
+	</select>
+	
+	<select id="selectGeneral" resultType="goods">
+	<![CDATA[
+	select * from goods where rownum<=3 and gid like 'g%'
+	]]>
+	</select>
+	
+	<select id="selectAll" resultType="goods"></select>
 
 </mapper>

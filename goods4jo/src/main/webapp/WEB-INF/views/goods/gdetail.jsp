@@ -568,17 +568,16 @@ ul.tab li.current {
 				<input class="button1" type="button" value="리뷰 작성하기"/><br/>
 				<div class="review_write">
 				<!-- 리뷰 작성 하는 부분 -->
-				<form action="" method="post"> 
+				<form action="insertReview.sajo" method="post"> 
 				<div class="writing">
 				<c:forEach var="star" begin="1" end="5" step="1" varStatus="status">
 				<a id="star${status.count }" value=${status.count }><img id="img${status.count }" src="resources/images/review_star_0.jpg"></a>
 				</c:forEach>
 				</div>
-				<%--<input	type="hidden" name="mid" required=""value="${sessionScope.memberId }"> --%>
-						<input type="hidden" name="gid" value=${goods.gid } >
+<%-- 						<input type="hidden" name="bno" value=${param.bno }/> --%>
+						<input type="hidden" name="gid" value=${goods.gid } />
 						<input type="hidden" id="score" name="score" value=""/>
-						<textarea name="rcontent" required="">
-						</textarea>
+						<textarea name="rcontent" required=""></textarea>
 						<input  type="submit" placeholder="리뷰를 작성해주세요~" value="리뷰등록">
 					</form>
 					</div>
