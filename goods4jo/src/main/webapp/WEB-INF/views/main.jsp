@@ -58,9 +58,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </script>
 <!-- //end-smooth-scrolling --> 
 </head> 
-<body>
+<body> 
 	<!-- for bootstrap working -->
 	<script type="text/javascript" src="resources/js/bootstrap-3.1.1.min.js"></script>
+	<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
 	<!-- //for bootstrap working -->
 	<!-- header modal -->	
 	<!-- 로그아웃 상태일때 뜨는 팝업 -->
@@ -83,17 +84,47 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<li class="resp-tab-item" aria-controls="tab_item-1"><span>회원가입</span></li>									
 									</ul>		
 									
+									
 									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 										<div class="facts">
 											<div class="register">
 												<form action="member/login.sajo" method="post">			
 													<input name="mid" placeholder="Id" type="text" required="">						
-													<input name="mpassword" placeholder="Password" type="password" required="">										
+													<input name="mpassword" placeholder="Password" type="password" required="">	
+													<span id="loginResult" style="width:150px;color:red"></span>									
 													<div class="sign-up"> 
-	 													<input type="submit" value="로그인"/>
-													</div>
-												</form>
-											</div> 
+	 													<input type="submit" value="로그인" id='loginto'/>
+													</div> 
+													
+												</form>	
+																							
+										 		<script type="text/javascript">  
+													//로그인 버튼 클릭시
+													$('#loginto').click(function(){ 
+														//처음 누를때는 왜 무조건 null값인지
+														var loginfail = "<%=(String)session.getAttribute("loginfail")%>";
+														<%System.out.println("세션값:"+(String)session.getAttribute("loginfail"));%>
+														
+														alert("javascript loginfail값 " + loginfail);
+														
+														if(loginfail=="fail"){    
+															alert("올바른 아이디와 비밀번호를 입력해주세요");  
+															<%String test1 = (String)session.getAttribute("loginfail");%>																	 												
+															<%session.removeAttribute("loginfail");%> 
+																
+															<%System.out.println("세션값:"+(String)session.getAttribute("loginfail"));%>															
+														}	
+
+														loginfail = null; 
+														 
+														alert("javascript loginfail값 " + loginfail); 
+															  								    
+													});	  
+				  
+												</script> 
+													
+								 
+											</div>  
 										</div> 
 									</div>
 								<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
@@ -173,16 +204,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<div class="sign-up"> 
 														<input type="submit" value="회원가입완료" disabled id='msubmit'/>  
 													</div> 
-													${sessionScope.loginresult}
-													
-													<c:if test="${sessionScope.insertresult != null}"> 												 
-														<script type="text/javascript"> 
-															alert("회원가입이 완료되었습니다. \n로그인해주세요");
-														</script> 
-														<%session.removeAttribute("insertresult"); %>   
-													</c:if>
+													 
 												</form>
-												
+												<script type="text/javascript"> 
+													$('#msubmit').click(function(){ 
+														var mregist = "<%=(String)session.getAttribute("mregist")%>";
+														if(mregist=="가입"){ 
+															alert("가입을 축하드립니다. \n로그인해주세요"); 
+														}
+														<%session.removeAttribute("mregist");%>  	  
+													});		 			
+												</script> 
 											</div>
 										</div>
 									</div> 	
@@ -225,7 +257,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	
 	<!-- 로그인 상태일때 뜨는 팝업 -->
 	<!-- 로그인상태가 아니면 이 창이 뜨지않게 막아준다 -->
-	<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
+	
 	<%if(vo!=null){ %>
  	<div class="modal fade" id="myModal77" tabindex="-1" role="dialog" aria-labelledby="myModal77"
 		aria-hidden="true">
@@ -239,7 +271,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="modal-body modal-body-sub">
 					<div class="row">
 						<div class="col-md-8 modal_body_left modal_body_left1" style="border-right: 1px dotted #C2C2C2;padding-right:3em;">
-							<div class="sap_tabs">	
+			 				<div class="sap_tabs">	
 								<div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
 									<ul>
 										<li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
@@ -274,9 +306,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    													</div>												
 													<input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >													
 													<br/>
+													<div id='sellerbutton'>
 													<%if(vo.getMtype().equals("소비자")){%> 
 														<div>판매자 등록하기</div><input type="checkbox" name="addseller" id='addseller'>
-													<%}%>   
+													<%}%>    
+													</div>
 													<div id='sellerfrm' style="display: none;"> 											
 														<input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text">
 														<br/>은행선택   
@@ -304,28 +338,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<br/>
 													<br/> 
 													<div class="modify" id='hiddenbybutton'> 
-														<input type="submit" value="정보수정하기"/>  
+														<input type="submit" value="정보수정하기" id='mmodify'/>  
 													</div> 	
 												</form>	
-													<input type="button" value="회원탈퇴" id='dropoutmember'/>
-													<br/> 
-													
-												<c:if test="${sessionScope.updateresult != null}"> 												 
-														<script type="text/javascript"> 
-															alert("회원정보가 수정 되었습니다"); 
-														</script>
-														<%session.removeAttribute("updateresult"); %>    
-												</c:if>	
 												
-												<form action='member/deleteMember.sajo' name='deleteMember'>
+												<script type="text/javascript"> 
+													$('#mmodify').click(function(){ 
+														var mmodify = "<%=(String)session.getAttribute("mmodify")%>";
+														if(mmodify=="수정"){ 
+															alert("회원정보 수정 완료"); 
+														}
+														<%session.removeAttribute("mmodify");%>  	  
+													});		 			
+												</script> 
+													<input type="button" value="회원탈퇴" id='dropoutmember'/>
+													<br/> 												
+												<form action='member/deleteMember.sajo' name='deleteMember' id='mdelete'>
 													<span id="idAttach"></span>   
-												</form>
-												<c:if test="${sessionScope.mdeleteresult != null}"> 												 
-														<script type="text/javascript"> 
-															alert("회원탈퇴 되셨습니다."); 
-														</script>
-														<%session.removeAttribute("mdeleteresult"); %>        
-												</c:if>	
+												</form>		
+												<script type="text/javascript"> 
+													$('#mdelete').click(function(){ 
+														var mdelete = "<%=(String)session.getAttribute("mdelete")%>";
+														if(mdelete=="수정"){ 
+															alert("회원정보 수정 완료"); 
+														}
+														<%session.removeAttribute("mdelete");%>  	  
+													});	
+												</script>
+																			
 											</div> 
 										</div> 
 									</div>
@@ -349,11 +389,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<input type='password' name='checkpassword' id='checkpassword'></input>
 														<input type="submit" value="확인" id='checkPass'/>
 													</form> 
-													<c:if test="${sessionScope.sdeleteresult != null}"> 												 
-														<script type="text/javascript"> 
-															alert("회원탈퇴 되셨습니다."); 
-														</script>   
-												</c:if>	 
+													
+												<script type="text/javascript"> 
+													$('#sdelete').click(function(){ 
+														var sdelete = "<%=(String)session.getAttribute("sdelete")%>";
+														if(sdelete=="수정"){ 
+															alert("회원정보 수정 완료"); 
+														}
+														<%session.removeAttribute("sdelete");%>  	  
+													});	 
+												</script>
+													 
 											</div> 
 										</div>
 									</div> 	
@@ -501,8 +547,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                      </ul></li>
                   <li><a href="about.sajo">About Us</a></li>
                   <li><a href="notice.sajo">Notice</a></li>
-                  <li><a href="mail.sajo">Q&A</a></li>  
-               </ul>
+                  <li><a href="mail.sajo" id = 'qna'>Q&A</a></li>
+						
+					</ul>
             </div>
          </nav>
       </div>
@@ -514,59 +561,78 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div> 
 	<!-- //banner --> 
 	<!-- banner-bottom -->
-	<div class="banner-bottom">
+
+	<div class="special-deals">
 		<div class="container">
+			<h2>Main</h2>
+			<div class="w3agile_special_deals_grids">
+
 			<div class="col-md-5 wthree_banner_bottom_left">
-				<div class="video-img">
-					<a class="play-icon popup-with-zoom-anim" href="#small-dialog">
-						<span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
-					</a>
-				</div> 
-					<!-- pop-up-box -->     
-					<script src="resources/js/jquery.magnific-popup.js" type="text/javascript"></script>
-					<!--//pop-up-box -->
-					<div id="small-dialog" class="mfp-hide">
-						<iframe src="https://www.youtube.com/watch?v=PdtRWL6SRzE"></iframe>
-					</div>  
-					<script>  
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
-					</script>
+				<div class="container"> 
+		 
+    	<br/><br/><br/>
+    	<!-- 1.캐러셀 슬라이드 지정 -->
+        <div id="carousel-example-generic" class='carousel slide'>
+        	
+            <!-- Indicators -->
+            <ol class='carousel-indicators'>
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2" ></li>
+               <li data-target="#carousel-example-generic" data-slide-to="3" ></li>
+            </ol>
+             
+             <!-- Carousel items -->
+             <div class="carousel-inner" role="listbox">
+                <div class="item active"> 
+                   <img src="resources/images/maingoods1.jpg" alt="First slide">
+                </div>
+                <div class="item">
+                   <img src="resources/images/maingoods2.jpg" alt="Second slide">               
+                </div>
+                <div class="item"> 
+                   <img src="resources/images/maingoods3.jpg" alt="Third slide">                 
+                </div>
+                <div class="item"> 
+                   <img src="resources/images/maingoods4.jpg" alt="Fourth slide">                 
+                </div>
+             </div>
+             
+            <!-- Controls -->
+              <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="icon-prev"></span>
+              </a>
+              <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="icon-next"></span>
+              </a>
+          </div>
+  </div>
+  <script>
+      $('.carousel').carousel({
+    	  interval:2000 
+    	  
+      })
+    </script>
+					
 			</div>
 			<div class="col-md-7 wthree_banner_bottom_right">
 				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 					<ul id="myTab" class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home">Mobiles</a></li>
-						<li role="presentation"><a href="#audio" role="tab" id="audio-tab" data-toggle="tab" aria-controls="audio">Audio</a></li>
-						<li role="presentation"><a href="#video" role="tab" id="video-tab" data-toggle="tab" aria-controls="video">Computer</a></li>
-						<li role="presentation"><a href="#tv" role="tab" id="tv-tab" data-toggle="tab" aria-controls="tv">Household</a></li>
-						<li role="presentation"><a href="#kitchen" role="tab" id="kitchen-tab" data-toggle="tab" aria-controls="kitchen">Kitchen</a></li>
+						<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home">Kakao Friends</a></li>
+						<li role="presentation"><a href="#audio" role="tab" id="audio-tab" data-toggle="tab" aria-controls="audio">Line Friends</a></li>
+						<li role="presentation"><a href="#video" role="tab" id="video-tab" data-toggle="tab" aria-controls="video">General</a></li>
+						
 					</ul>
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
 							<div class="agile_ecommerce_tabs">
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="images/3.jpg" alt=" " class="img-responsive" />
-										<img src="images/4.jpg" alt=" " class="img-responsive" />
-										<img src="images/5.jpg" alt=" " class="img-responsive" />
-										<img src="images/6.jpg" alt=" " class="img-responsive" />
-										<img src="images/7.jpg" alt=" " class="img-responsive" />
-										<img src="images/3.jpg" alt=" " class="img-responsive" />
-										<img src="images/4.jpg" alt=" " class="img-responsive" />
-										<img src="images/5.jpg" alt=" " class="img-responsive" />
+										<img src="resources/upload/폰케이스_스티커_라이언1.jpg" alt=" " class="img-responsive" />
+										<img src="resources/upload/폰케이스_스티커_라이언2.jpg"  alt=" " class="img-responsive" />
+										<img src="resources/upload/폰케이스_스티커_라이언3.jpg"  alt=" " class="img-responsive" />
+										<img src="resources/upload/폰케이스_스티커_라이언4.jpg"  alt=" " class="img-responsive" />
+						
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -575,7 +641,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											</ul>
 										</div>
 									</div> 
-									<h5><a href="single.jsp">Mobile Phone1</a></h5>
+									<h5><a href="single.jsp">뽄케이스 스티커 라이언</a></h5>
 									<div class="simpleCart_shelfItem">
 										<p><span>$380</span> <i class="item_price">$350</i></p>
 										<form action="#" method="post">
@@ -589,14 +655,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="images/4.jpg" alt=" " class="img-responsive" />
-										<img src="images/5.jpg" alt=" " class="img-responsive" />
-										<img src="images/6.jpg" alt=" " class="img-responsive" />
-										<img src="images/7.jpg" alt=" " class="img-responsive" />
-										<img src="images/3.jpg" alt=" " class="img-responsive" />
-										<img src="images/4.jpg" alt=" " class="img-responsive" />
-										<img src="images/5.jpg" alt=" " class="img-responsive" />
-										<img src="images/6.jpg" alt=" " class="img-responsive" />
+										<img src="resources/upload/product_K0_1_front.jpg" alt=" " class="img-responsive" />
+										<img src="resources/upload/product_K0_1_beside.jpg" alt=" " class="img-responsive" />
+								
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -605,7 +666,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											</ul>
 										</div>
 									</div>
-									<h5><a href="single.jsp">Mobile Phone2</a></h5>
+									<h5><a href="single.jsp">프로덕트</a></h5>
 									<div class="simpleCart_shelfItem">
 										<p><span>$330</span> <i class="item_price">$302</i></p>
 										<form action="#" method="post">
@@ -840,196 +901,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="clearfix"> </div>
 							</div>
 						</div>
-						<div role="tabpanel" class="tab-pane fade" id="tv" aria-labelledby="tv-tab">
-							<div class="agile_ecommerce_tabs">
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="resources/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/15.jpg" alt=" " class="img-responsive" />
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal3"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.jsp">Refrigerator</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$950</span> <i class="item_price">$820</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Refrigerator" /> 
-											<input type="hidden" name="amount" value="820.00" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="resources/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/15.jpg" alt=" " class="img-responsive" />
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal3"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.jsp">LED Tv</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$700</span> <i class="item_price">$680</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="LED Tv"/> 
-											<input type="hidden" name="amount" value="680.00"/>   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="resources/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/15.jpg" alt=" " class="img-responsive" />
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal3"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.jsp">Washing Machine</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$520</span> <i class="item_price">$510</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Washing Machine" /> 
-											<input type="hidden" name="amount" value="510.00" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane fade" id="kitchen" aria-labelledby="kitchen-tab">
-							<div class="agile_ecommerce_tabs">
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="resources/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/18.jpg" alt=" " class="img-responsive" />
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal4"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.jsp">Grinder</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$460</span> <i class="item_price">$450</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Grinder" /> 
-											<input type="hidden" name="amount" value="450.00" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="resources/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/18.jpg" alt=" " class="img-responsive" />
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal4"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.jsp">Water Purifier</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$390</span> <i class="item_price">$350</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Water Purifier" /> 
-											<input type="hidden" name="amount" value="350.00" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="resources/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="resources/images/18.jpg" alt=" " class="img-responsive" />
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal4"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.jsp">Coffee Maker</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$250</span> <i class="item_price">$220</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Coffee Maker" /> 
-											<input type="hidden" name="amount" value="220.00" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
+
+						
 					</div>
 				</div> 
 			</div>
@@ -1463,95 +1336,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 	</div>
-	<!-- //modal-video -->
-	<!-- banner-bottom1 -->
-	<div class="banner-bottom1">
-		<div class="agileinfo_banner_bottom1_grids">
-			<div class="col-md-7 agileinfo_banner_bottom1_grid_left">
-				<h3>Grand Opening Event With flat<span>20% <i>Discount</i></span></h3>
-				<a href="products.jsp">Shop Now</a>
-			</div>
-			<div class="col-md-5 agileinfo_banner_bottom1_grid_right">
-				<h4>hot deal</h4>
-				<div class="timer_wrap">
-					<div id="counter"> </div>
-				</div>
-				<script src="resources/js/jquery.countdown.js"></script>
-				<script src="resources/js/script.js"></script>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-	<!-- //banner-bottom1 --> 
-	<!-- special-deals -->
-	<div class="special-deals">
-		<div class="container">
-			<h2>Special Deals</h2>
-			<div class="w3agile_special_deals_grids">
-				<div class="col-md-7 w3agile_special_deals_grid_left">
-					<div class="w3agile_special_deals_grid_left_grid">
-						<img src="resources/images/21.jpg" alt=" " class="img-responsive" />
-						<div class="w3agile_special_deals_grid_left_grid_pos1">
-							<h5>30%<span>Off/-</span></h5>
-						</div>
-						<div class="w3agile_special_deals_grid_left_grid_pos">
-							<h4>We Offer <span>Best Products</span></h4>
-						</div>
-					</div>
-					<div class="wmuSlider example1">
-						<div class="wmuSliderWrapper">
-							<article style="position: absolute; width: 100%; opacity: 0;"> 
-								<div class="banner-wrap">
-									<div class="w3agile_special_deals_grid_left_grid1">
-										<img src="resources/images/t1.png" alt=" " class="img-responsive" />
-										<p>Quis autem vel eum iure reprehenderit qui in ea voluptate 
-											velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
-											eum fugiat quo voluptas nulla pariatur</p>
-										<h4>Laura</h4>
-									</div>
-								</div>
-							</article>
-							<article style="position: absolute; width: 100%; opacity: 0;"> 
-								<div class="banner-wrap">
-									<div class="w3agile_special_deals_grid_left_grid1">
-										<img src="resources/images/t2.png" alt=" " class="img-responsive" />
-										<p>Quis autem vel eum iure reprehenderit qui in ea voluptate 
-											velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
-											eum fugiat quo voluptas nulla pariatur</p>
-										<h4>Michael</h4>
-									</div>
-								</div>
-							</article>
-							<article style="position: absolute; width: 100%; opacity: 0;"> 
-								<div class="banner-wrap">
-									<div class="w3agile_special_deals_grid_left_grid1">
-										<img src="resources/images/t3.png" alt=" " class="img-responsive" />
-										<p>Quis autem vel eum iure reprehenderit qui in ea voluptate 
-											velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
-											eum fugiat quo voluptas nulla pariatur</p>
-										<h4>Rosy</h4>
-									</div>
-								</div>
-							</article>
-						</div>
-					</div>
-						<script src="resources/js/jquery.wmuSlider.js"></script> 
-						<script>
-							$('.example1').wmuSlider();         
-						</script> 
-				</div>
-				<div class="col-md-5 w3agile_special_deals_grid_right">
-					<img src="images/20.jpg" alt=" " class="img-responsive" />
-					<div class="w3agile_special_deals_grid_right_pos">
-						<h4>Women's <span>Special</span></h4>
-						<h5>save up <span>to</span> 30%</h5>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-	<!-- //special-deals -->
+	<!-- //modal-video --> 
 	<!-- new-products -->
 	<div class="new-products">
 		<div class="container">

@@ -19,7 +19,7 @@
 		VALUES(SID_SEQ.nextval, #{sname}, #{account}, #{saddr}, #{mid}, #{bank}, #{postnumber})
 		]]>
 	</insert>  
-	
+	 
 	<select id="idCheck" parameterType="member" resultType="member">
 		SELECT* FROM member WHERE mid=#{mid}
 		<if test="mpassword!=null"> 
@@ -40,7 +40,7 @@
 	
 	<update id="changeMtype" parameterType="member">
 		UPDATE MEMBER SET MTYPE='소비자' WHERE mid=#{mid}		 
-	</update>  
+	</update>   
 	<update id="changeMtypeToSeller" parameterType="member">
 		UPDATE MEMBER SET MTYPE='판매자' WHERE mid=#{mid}		 
 	</update>   

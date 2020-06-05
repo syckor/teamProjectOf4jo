@@ -17,7 +17,7 @@ $(document).ready(function(){
 		for( var j=1;  j<= 12; j++){
 			frm.month.add( new Option(j, j));				
 		}		 
-		calc();	
+		calc();	 
 		frm.year.onchange = calc;
 		frm.month.onchange = calc;
 		
@@ -28,7 +28,7 @@ $(document).ready(function(){
 			for( var j=0;  j <= lastDays[monthday-1]; j++){
 				frm.day.add( new Option(j, j));				
 			}
-		}	
+		}	 
 		
 		//year가 바꼈을때 선택된 year의 value를 붙여준다.
 		$('#year').change(function(){
@@ -366,6 +366,7 @@ $(document).ready(function(){
 			$('#modifymail').hide();	
 			$('#modifytel').hide();	
 			$('#telbrand').hide();	
+	    	$('#sellerbutton').hide();
 	  
 			var resultSpan = document.getElementById("idAttach");             
 	  
@@ -419,13 +420,14 @@ $(document).ready(function(){
 		$('#hiddenbybutton').show();	
 		$('#dropoutmember').show();	 
 		$('#modifyid').show();	
-		$('#modifyname').show();	
+		$('#modifyname').show();	 
 		$('#modifypassword').show();	
 		$('#modifypassconf').show();	
 		$('#modifymail').show();	
 		$('#modifytel').show();	 
 		$('#telbrand').show();	
-		 
+		$('#sellerbutton').show();  
+		
 		$('#pwfordelete').hide();	
 		$('#deletemember').hide();	 
 		$('#cancelout').hide();	
@@ -436,7 +438,8 @@ $(document).ready(function(){
 	    if ($('#addseller').is(':checked') == true){
 	    	 $('#sellerfrm').show();	    	
 	    } else if($('#addseller').is(':checked') == false){	       
-	    	$('#sellerfrm').hide();	      	
+	    	$('#sellerfrm').hide();	 
+
 	    }  
 	});
 });
