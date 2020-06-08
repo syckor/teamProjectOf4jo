@@ -4,67 +4,73 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<!DOCTYPE jsp> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.sajo.domain.MemberVO" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp lang="en">    
-<head>  
-<title>Goods4jo, All thing of goods!!!</title>
+<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Goods SAJO a Ecommerce Online Shopping Category Bootstrap
+	Responsive Website Template | Products1 :: w3layouts</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/jsp; charset=utf-8" />
-<meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-	function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<!-- Custom Theme files -->
-<link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="resources/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
-<link href="resources/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //Custom Theme files -->   
-<!-- font-awesome icons --> 
-<link href="resources/css/font-awesome.css" rel="stylesheet"> 
-<!-- //font-awesome icons -->
-<!-- js --> 
-<script src="resources/js/jquery.min.js"></script>  
-<script src='resources/js/member.js' type="text/javascript"></script>
-
- 
-<script src='resources/js/jquery.validate.min.js' type="text/javascript"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<link rel="stylesheet" href="resources/css/jquery.countdown.css" /> <!-- countdown --> 
-<!-- //js -->   
-<!-- web fonts -->  
-<link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- //web fonts -->  
-<!-- start-smooth-scrolling -->
-<!-- post검색  -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-<script type="text/javascript"> 
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('jsp,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
+<script type="application/x-javascript">
 	
-	});
+	
+	
+	
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
 
 </script>
-<!-- //end-smooth-scrolling --> 
-</head> 
-<body> 
-	<!-- for bootstrap working -->
-	<script type="text/javascript" src="resources/js/bootstrap-3.1.1.min.js"></script>
-	<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
-	<!-- //for bootstrap working -->
-<!-- header modal -->   
+<!-- //for-mobile-apps -->
+<!-- Custom Theme files -->
+<link href="resources/css/bootstrap.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="resources/css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="resources/css/fasthover.css" rel="stylesheet"
+	type="text/css" media="all" />
+<!-- font-awesome icons -->
+<link href="resources/css/font-awesome.css" rel="stylesheet">
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src="resources/js/jquery.min.js"></script>
+<!-- //js -->
+<!-- web fonts -->
+<link href='//fonts.googleapis.com/css?family=Glegoo:400,700'
+	rel='stylesheet' type='text/css'>
+<link
+	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+	rel='stylesheet' type='text/css'>
+<!-- //web fonts -->
+<!-- for bootstrap working -->
+<script type="text/javascript" src="resources/js/bootstrap-3.1.1.min.js"></script>
+<!-- //for bootstrap working -->
+<!-- start-smooth-scrolling -->
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);
+		});
+	});
+</script>
+<!-- //end-smooth-scrolling -->
+</head>
+<body>
+	   <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
       aria-hidden="true">
@@ -252,7 +258,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                       <div class="sap_tabs">   
                         <div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;"> 
                            <ul>
-                              <li class="resp-tab-item" aria-controls="tab_item-0"><a href='buylist.sajo?pageno=1' id='clicktobuylist'><span id='buylistcss' class='buylistcss'>구매내역</span></a></li>
+                              <li class="resp-tab-item" aria-controls="tab_item-0"><a href='buylist.sajo' id='clicktobuylist'><span id='buylistcss' class='buylistcss'>구매내역</span></a></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
                               <%if(vo.getMtype().equals("판매자")){%>  
                               
@@ -319,8 +325,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                        <br/> 
                                        <div class="modify" id='hiddenbybutton'> 
                                           <input type="submit" value="정보수정하기" id='mmodify'/>  
-                                          <input type="button" value="회원탈퇴" id='dropoutmember'/>
-                                       <br/>    
                                        </div>    
                                     </form>   
                                     
@@ -329,7 +333,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                           alert("회원정보가 수정되었습니다.");
                                         </script>
                                      </c:if> 
-                                                                        
+                                       <input type="button" value="회원탈퇴" id='dropoutmember'/>
+                                       <br/>                                     
                                     <form action='member/deleteMember.sajo' name='deleteMember' id='mdelete'>
                                        <span id="idAttach"></span>   
                                     </form>      
@@ -463,8 +468,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    </div>
    <!-- //header -->
 
-	<!-- navigation --> 
-   <div class="navigation">
+<!--    navigation -->
+	 <div class="navigation">
       <div class="container">
          <nav class="navbar navbar-default">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -481,12 +486,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   <li><a href="main.sajo">Home</a></li>   
                   <!-- Mega Menu -->
                   <li class="dropdown">
-                     <a href="products.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
+                     <a href="products1.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
                      <ul class="dropdown-menu multi-column columns-3">
                         <div class="row">
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
-                                 <h6><a href="kakao.sajo">Kakao</a></h6>
+                                 <h6>Kakao</h6>
                                  <li><a href="products.sajo">라이언</a></li>
                                  <li><a href="products.sajo">어피치<span>New</span></a></li> 
                                  <li><a href="products.sajo">무지</li>
@@ -499,7 +504,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                            </div>
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
-                                 <h6><a href="line.sajo">Line</a></h6>
+                                 <h6>Line</h6>
                                  <li><a href="products.sajo">브라운&프렌즈</a></li>
                                  <li><a href="products.sajo">BT21</a></li>
                                  <li><a href="products.sajo">브롤스타즈 <span>New</span></a></li>
@@ -508,7 +513,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                            </div>
                            <div class="col-sm-2">
                               <ul class="multi-column-dropdown">
-                                 <h6><a href="general.sajo">General</a></h6>
+                                 <h6>General</h6>
                                  <li><a href="products.sajo">인형</a></li>
                                  <li><a href="products.sajo">생필품</a></li>
                                  <li><a href="products.sajo">의류</a></li>
@@ -534,310 +539,179 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    </div>
 <!--    navigation 끝 -->
 	<!-- banner -->
-	<div class="banner">
-	
-	</div> 
-	<!-- //banner --> 
-	<!-- banner-bottom -->
-
-	<div class="special-deals">
+	<!-- banner -->
+	<div class="banner banner10">
 		<div class="container">
-			<h2>Main</h2>
-			<div class="w3agile_special_deals_grids">
+			<h2>Goods 판매 </h2>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!-- breadcrumbs -->
+	<div class="breadcrumb_dress">
+		<div class="container">
+			<ul>
+				<li><a href="index.html"><span
+						class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
+				<li>Products1</li>
+			</ul>
+		</div>
+	</div>
+	<!-- //breadcrumbs -->
+	<!-- mobiles -->
+	<div class="mobiles">
+		<div class="container">
+			<div class="w3ls_mobiles_grids">
+				<div class="col-md-4 w3ls_mobiles_grid_left">
+					<div class="w3ls_mobiles_grid_left_grid">
+						<h3>Categories</h3>
+						<div class="w3ls_mobiles_grid_left_grid_sub">
+							<div class="panel-group" id="accordion" role="tablist"
+								aria-multiselectable="true">
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingOne">
+										<h4 class="panel-title asd">
+											<a class="pa_italic" role="button" data-toggle="collapse"
+												data-parent="#accordion" href="#collapseOne"
+												aria-expanded="false" aria-controls="collapseOne"> <span
+												class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
+												class="glyphicon glyphicon-minus" aria-hidden="true"></i>Kakao
+											</a>
+										</h4>
+									</div>
+									<div id="collapseOne" class="panel-collapse collapse in"
+										role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body panel_text">
+											<ul>
+												<li><a href="#">라이언</a></li>
+												<li><a href="#">어피치</a></li>
+												<li><a href="#">무지</a></li>
+												<li><a href="#">프로도</a></li>
+												<li><a href="#">네오</a></li>
+												<li><a href="#">튜브</a></li>
+												<li><a href="#">제이지</a></li>
+												<li><a href="#">콘</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingTwo">
+										<h4 class="panel-title asd">
+											<a class="pa_italic collapsed" role="button"
+												data-toggle="collapse" data-parent="#accordion"
+												href="#collapseTwo" aria-expanded="false"
+												aria-controls="collapseTwo"> <span
+												class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
+												class="glyphicon glyphicon-minus" aria-hidden="true"></i>Line
+											</a>
+										</h4>
+									</div>
+									<div id="collapseTwo" class="panel-collapse collapse"
+										role="tabpanel" aria-labelledby="headingTwo">
+										<div class="panel-body panel_text">
+											<ul>
+												<li><a href="#">브라운&프렌즈</a></li>
+												<li><a href="#">BT21</a></li>
+												<li><a href="#">브롤스타즈</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!--  -->
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingThree">
+										<h4 class="panel-title asd">
+											<a class="pa_italic collapsed" role="button"
+												data-toggle="collapse" data-parent="#accordion"
+												href="#collapseThree" aria-expanded="false"
+												aria-controls="collapseThree"> <span
+												class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
+												class="glyphicon glyphicon-minus" aria-hidden="true"></i>General
+											</a>
+										</h4>
+									</div>
+									<div id="collapseThree" class="panel-collapse collapse"
+										role="tabpanel" aria-labelledby="headingThree">
+										<div class="panel-body panel_text">
+											<ul>
+												<li><a href="#">생필품</a></li>
+												<li><a href="#">의류</a></li>
+												<li><a href="#">그 외</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
 
-			<div class="col-md-5 wthree_banner_bottom_left">
-				<div class="container"> 
-		 
-    	<br/><br/><br/>
-    	<!-- 1.캐러셀 슬라이드 지정 -->
-        <div id="carousel-example-generic" class='carousel slide'>
-        	
-            <!-- Indicators -->
-            <ol class='carousel-indicators'>
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2" ></li>
-               <li data-target="#carousel-example-generic" data-slide-to="3" ></li>
-            </ol>
-             
-             <!-- Carousel items -->
-             <div class="carousel-inner" role="listbox">
-                <div class="item active"> 
-                   <img src="resources/images/maingoods1.jpg" alt="First slide">
-                </div>
-                <div class="item">
-                   <img src="resources/images/maingoods2.jpg" alt="Second slide">               
-                </div>
-                <div class="item"> 
-                   <img src="resources/images/maingoods3.jpg" alt="Third slide">                 
-                </div>
-                <div class="item"> 
-                   <img src="resources/images/maingoods4.jpg" alt="Fourth slide">                 
-                </div>
-             </div>
-             
-            <!-- Controls -->
-              <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="icon-prev"></span>
-              </a>
-              <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="icon-next"></span>
-              </a>
-          </div>
-  </div>
-  <script>
-      $('.carousel').carousel({
-    	  interval:2000 
-    	  
-      })
-    </script>
-			</div>
-			<div class="col-md-7 wthree_banner_bottom_right">
-				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-					<ul id="myTab" class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home">Kakao Friends</a></li>
-						<li role="presentation"><a href="#audio" role="tab" id="audio-tab" data-toggle="tab" aria-controls="audio">Line Friends</a></li>
-						<li role="presentation"><a href="#video" role="tab" id="video-tab" data-toggle="tab" aria-controls="video">General</a></li>
-					</ul>
-<!-- 					카카오탭 -->
-					<div id="myTabContent" class="tab-content">
-						<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
-							<div class="agile_ecommerce_tabs">
-								<c:forEach items="${kakao }" var="kakao" varStatus="status">
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<c:choose>
-											<c:when test="${status.count eq 1}">
-												<c:forEach items="${k_file1 }" var="k_file">
-													<c:if test="${not empty k_file }">
-													<img src="resources/upload/${k_file}" width="500px" height="500px" alt=" "class="img-responsive">
-													</c:if>
-												</c:forEach>
-												<c:forEach items="${k_src1 }" var="k_src">
-													<img src="${k_src}" alt=" " class="img-responsive">
-												</c:forEach>
-											</c:when>
-											<c:when test="${status.count eq 2}">
-												<c:forEach items="${k_file2 }" var="k_file">
-												<c:if test="${not empty k_file }">
-													<img src="resources/upload/${k_file}" alt=" "class="img-responsive">
-												</c:if>
-												</c:forEach>
-												<c:forEach items="${k_src2 }" var="k_src">
-													<img src="${k_src}" alt=" " class="img-responsive">
-												</c:forEach>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${k_file3 }" var="k_file">
-												<c:if test="${not empty k_file }">
-													<img src="resources/upload/${k_file}" alt=" "class="img-responsive">
-														</c:if>
-												</c:forEach>
-												<c:forEach items="${k_src3 }" var="k_src">
-													<img src="${k_src}" alt=" " class="img-responsive">
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
-									</div> 
-									<h5><a href="detailGoods.sajo?gid=${kakao.gid }">${kakao.gname }</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><i class="item_price">${kakao.price }원</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="${kakao.gname }" /> 
-											<input type="hidden" name="amount" value="${kakao.price }" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>  
-									</div>
-								</div>
-								</c:forEach>
-						<div class="clearfix"> </div>
 						</div>
-						</div>
-<!-- 						라인 탭 -->
-						<div role="tabpanel" class="tab-pane fade" id="audio" aria-labelledby="audio-tab">
-							<div class="agile_ecommerce_tabs">
-							<c:forEach items="${line }" var="line" varStatus="status">
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<c:choose>
-											<c:when test="${status.count eq 1}">
-												<c:forEach items="${l_file1 }" var="l_file">
-												<c:if test="${not empty l_file }">
-													<img src="resources/upload/${l_file}" alt=" "
-														class="img-responsive">
-														</c:if>
-												</c:forEach>
-												<c:forEach items="${l_src1}" var="l_src">
-													<img src="${l_src}" alt=" " class="img-responsive">
-													</c:forEach>
-											</c:when>
-											<c:when test="${status.count eq 2}">
-												<c:forEach items="${l_file2 }" var="l_file">
-												<c:if test="${not empty l_file }">
-													<img src="resources/upload/${l_file}" alt=" "
-														class="img-responsive">
-														</c:if>
-												</c:forEach>
-												<c:forEach items="${l_src2 }" var="l_src">
-													<img src="${l_src}" alt=" " class="img-responsive">
-												</c:forEach>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${l_file3 }" var="l_file">
-												<c:if test="${not empty l_file }">
-													<img src="resources/upload/${l_file}" alt=" "
-														class="img-responsive">
-														</c:if>
-												</c:forEach>
-												<c:forEach items="${l_src3 }" var="l_src">
-														<c:if test="${not empty l_src }">
-													<img src="${l_src}" alt=" " class="img-responsive">
-													</c:if>
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
-									</div>
-									<h5><a href="detailGoods.sajo?gid=${line.gid }">${line.gname }</a></h5>
-										<p><i class="item_price">${line.price }</i></p>
-									<div class="simpleCart_shelfItem">
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="${line.gname }" /> 
-											<input type="hidden" name="amount" value="${line.price }" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								</c:forEach>
-							<div class="clearfix"> </div>
-						</div>
-						</div>
-<!-- 								일반 -->
-						<div role="tabpanel" class="tab-pane fade" id="video" aria-labelledby="video-tab">
-							<div class="agile_ecommerce_tabs">
-							<c:forEach items="${general }" var="general" varStatus="status">
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<c:choose>
-											<c:when test="${status.count eq 1}">
-												<c:forEach items="${g_file1 }" var="g_file">
-												<c:if test="${not empty g_file }">
-													<img src="resources/upload/${g_file}" alt=" "class="img-responsive">
-														</c:if>
-												</c:forEach>
-												<c:forEach items="${g_src1 }" var="g_src">
-													<c:if test="${not empty g_src }">
-													<img src="${g_src}" alt=" " class="img-responsive">
-													</c:if>
-												</c:forEach>
-											</c:when>
-											<c:when test="${status.count eq 2}">
-												<c:forEach items="${g_file2 }" var="g_file">
-												<c:if test="${not empty g_file }">
-													<img src="resources/upload/${g_file}" alt=" "class="img-responsive">
-														</c:if>
-												</c:forEach>
-												<c:forEach items="${g_src2 }" var="g_src">
-												<c:if test="${not empty g_src }">
-													<img src="${g_src}" alt=" " class="img-responsive">
-													</c:if>
-												</c:forEach>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${g_file3 }" var="g_file">
-												<c:if test="${not empty g_file }">
-													<img src="resources/upload/${g_file}" alt=" "class="img-responsive">
-														</c:if>
-												</c:forEach>
-												<c:forEach items="${g_src3 }" var="g_src">
-												<c:if test="${not empty g_src }">
-													<img src="${g_src}" alt=" " class="img-responsive">
-													</c:if>
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
-									</div>
-									<h5><a href="detailGoods.sajo?gid=${general.gid }">${general.gname }</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><i class="item_price">${general.price }</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="${general.gname }" /> 
-											<input type="hidden" name="amount" value="${general.price }" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								</c:forEach>
-								<div class="clearfix">
+					</div>
+					<div class="w3ls_mobiles_grid_left_grid">
+						<h3>Color</h3>
+						<div class="w3ls_mobiles_grid_left_grid_sub">
+							<div class="ecommerce_color">
+								<ul>
+									<li><a href="#"><i></i> Red(5)</a></li>
+									<li><a href="#"><i></i> Brown(2)</a></li>
+									<li><a href="#"><i></i> Yellow(3)</a></li>
+									<li><a href="#"><i></i> Violet(6)</a></li>
+									<li><a href="#"><i></i> Orange(2)</a></li>
+									<li><a href="#"><i></i> Blue(1)</a></li>
+								</ul>
 							</div>
 						</div>
 					</div>
+					<div class="w3ls_mobiles_grid_left_grid">
+						<h3>Price</h3>
+						<div class="w3ls_mobiles_grid_left_grid_sub">
+							<div class="ecommerce_color ecommerce_size">
+								<ul>
+									<li><a href="#">10,000 이하</a></li>
+									<li><a href="#">10,000~20,000</a></li>
+									<li><a href="#">20,000이상</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-	<!-- top-brands -->
-	<div class="top-brands">
-		<div class="container">
-			<h3>Top Brands</h3>
-			<div class="sliderfig">
-				<ul id="flexiselDemo1">			
-					<li>
-						<img src="resources/images/tb1.jpg" alt=" " class="img-responsive" />
-					</li>
-					<li>
-						<img src="resources/images/tb2.jpg" alt=" " class="img-responsive" />
-					</li>
-					<li>
-						<img src="resources/images/tb3.jpg" alt=" " class="img-responsive" />
-					</li>
-					<li>
-						<img src="resources/images/tb4.jpg" alt=" " class="img-responsive" />
-					</li>
-					<li>
-						<img src="images/tb5.jpg" alt=" " class="img-responsive" />
-					</li>
-				</ul>
-			</div>
-			<script type="text/javascript">
-					$(window).load(function() {
-						$("#flexiselDemo1").flexisel({
-							visibleItems: 4,
-							animationSpeed: 1000,
-							autoPlay: true,
-							autoPlaySpeed: 3000,    		
-							pauseOnHover: true,
-							enableResponsiveBreakpoints: true,
-							responsiveBreakpoints: { 
-								portrait: { 
-									changePoint:480,
-									visibleItems: 1
-								}, 
-								landscape: { 
-									changePoint:640,
-									visibleItems:2
-								},
-								tablet: { 
-									changePoint:768,
-									visibleItems: 3
-								}
-							}
-						});
-						
-					});
-			</script>
-			<script type="text/javascript" src="resources/js/jquery.flexisel.js"></script>
-		</div>
-	</div>
-	<!-- //top-brands --> 
+				<!-- 맨위 배너 두개 -->
+				<div class="col-md-8 w3ls_mobiles_grid_right">
+					<div class="col-md-6 w3ls_mobiles_grid_right_left">
+						<div class="w3ls_mobiles_grid_right_grid1">
+							<img
+								src="https://i.pinimg.com/originals/2c/6f/1d/2c6f1d8e95a29af72be34fa3b21dbdb0.gif"
+								alt=" " class="img-responsive" />
+							<div class="w3ls_mobiles_grid_right_grid1_pos1">
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
 
-	 <!-- footer -->
+					<!-- 상품 보여주기 -->
+					<h1>Kakao Friends</h1><br/>
+					</div>
+				<form>
+				<c:forEach items="${list }" var="goods">
+				<h4><a href="detailGoods.sajo?gid=${goods.GID }">${goods.GNAME }</a></h4><br/>
+				<c:if test="${empty goods.FNAME1 }"><a><img src="${goods.SOURCE1 }" alt="" width="300px" height="300px"></a></c:if>
+				<c:if test="${empty goods.SOURCE1 }"><a><img src="resources/upload/${goods.FNAME1 }" alt="" width="300px" height="300px"></a></c:if><br/>
+				<h4>${goods.PRICE }</h4>
+				</c:forEach>
+				</form>
+<!-- 					페이징 부분 -->
+					<c:forEach var="i" begin="1" end="${total }">
+					<a href="kakao.sajo?pNum=${i }">[${i }]</a>
+					</c:forEach>
+<!-- 					col-md-8 부분 닫기 -->
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+		   <!-- footer -->
    <div class="footer">
       <div class="container">
          <div class="w3_footer_grids">
@@ -904,23 +778,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
          </div>
       </div>
    </div>
-   <!-- //footer -->
-	<!-- cart-js -->
-	<script src="resources/js/minicart.js"></script>
-	<script>  
-        w3ls.render();
+   <!-- //footer -->			
+					
+		<!-- cart-js -->
+		<script src="resources/js/minicart.js"></script>
+		<script>
+			w3ls.render();
 
-        w3ls.cart.on('w3sb_checkout', function (evt) {
-        	var items, len, i;
+			w3ls.cart.on('w3sb_checkout', function(evt) {
+				var items, len, i;
 
-        	if (this.subtotal() > 0) {
-        		items = this.items();
+				if (this.subtotal() > 0) {
+					items = this.items();
 
-        		for (i = 0, len = items.length; i < len; i++) { 
-        		}
-        	} 
-        });
-    </script> 
-	<!-- //cart-js -->   
+					for (i = 0, len = items.length; i < len; i++) {
+					}
+				}
+			});
+		</script>
+		<!-- //cart-js -->
 </body>
-</jsp>
+</html>

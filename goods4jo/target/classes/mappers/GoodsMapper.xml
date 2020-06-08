@@ -42,6 +42,15 @@
 	]]>
 	</select>
 	
-	<select id="selectAll" resultType="goods"></select>
+	<select id="selectAll" resultType="goods" ></select>
 
+	<select id="getTotalCount" resultType="int" parameterType="hashmap">
+	select count(*) from goods where gid like #{brend}||'%'
+	</select>
+	
+	<select id="getBrendList" resultType="hashmap" parameterType="hashmap">
+	select gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1 
+	from (select rownum as rnum,g.gid gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1 from goods g,image i  where g.gid=i.gid and g.gid like #{brend}||'%') 
+	where <![CDATA[rnum>=#{first} and rnum<=#{end}]]>
+	</select>
 </mapper>

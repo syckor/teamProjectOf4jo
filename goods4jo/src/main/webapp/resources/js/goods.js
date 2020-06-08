@@ -40,6 +40,11 @@ $(function(){
 
 //리뷰에서 별 눌렀을 때 별 색깔 바뀌고 score에 값 입력하기 
 $(function(){
+	if($('#bno').val()==""){
+		$('#writing').hide();}
+	else{$('.writing').show();}
+	
+	
 	var index;
 	for(var i=1; i<=5 ;i++){
 		$('#star'+i).click(function(){

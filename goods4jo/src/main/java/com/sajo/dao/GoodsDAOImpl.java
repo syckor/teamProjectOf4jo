@@ -1,5 +1,6 @@
 package com.sajo.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -55,6 +56,23 @@ public class GoodsDAOImpl implements GoodsDAO{
 	public List<GoodsVO> selectAll() {
 		System.out.println("===> GoodsMapper selectAll 호출");
 		return mybatis.selectList("GoodsDAO.selectAll");
+	}
+
+	@Override
+	public int getTotalCount(String brend) {
+		System.out.println("===> GoodsMapper getTotalCount 호출");
+		HashMap<String, String> m=new HashMap<String, String>();
+		m.put("brend", brend);
+		return mybatis.selectOne("GoodsDAO.getTotalCount",brend);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getBrendList(String brend, int firstRow, int endRow) {
+		HashMap m=new HashMap();
+		m.put("brend",brend);
+		m.put("first",firstRow);
+		m.put("end", endRow);
+		return mybatis.selectList("GoodsDAO.getBrendList",m);
 	}
 	
 	

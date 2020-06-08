@@ -9,6 +9,6 @@ public class MainController {
 	@RequestMapping("main.sajo")
 	public String main() {
 		
-		return "main";
+		return "redirect:/products.sajo?where=main";
 	}
 }

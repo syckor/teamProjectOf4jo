@@ -14,7 +14,6 @@ public class ReviewController {
 	
 	@RequestMapping("/insertReview.sajo")
 	public String insertReview(ReviewVO vo) {
-		
 		reviewService.insertReview(vo);
 		
 		return "redirect:/detailGoods.sajo?gid="+vo.getGid();

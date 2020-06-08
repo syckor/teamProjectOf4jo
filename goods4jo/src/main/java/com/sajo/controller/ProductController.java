@@ -1,4 +1,4 @@
-package com.sajo.controller;
+ package com.sajo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,7 @@ import com.sajo.domain.GoodsVO;
 import com.sajo.domain.ImageVO;
 import com.sajo.service.GoodsService;
 import com.sajo.service.ImageService;
+import com.sajo.service.ReviewService;
 
 @Controller
 public class ProductController {
@@ -19,9 +20,15 @@ public class ProductController {
 	private GoodsService service;
 	@Autowired
 	private ImageService imgservice;
-
-	@RequestMapping("/products1.sajo")
-	public String product(Model m) {
+	@Autowired
+	private ReviewService reservice;
+	
+	@RequestMapping("/products.sajo")
+	public String product(Model m,String where) {
+		String result="goods/products";
+		if(where !=null) {
+			result="main";
+		}
 		// 카카오 카테고리 아이템
 		List<GoodsVO> kakao = service.selectKakao();
 		m.addAttribute("kakao", kakao);
@@ -34,12 +41,16 @@ public class ProductController {
 			if(vo.getFname1() !=null) {file.add(vo.getFname1());}
 			if(vo.getFname2() !=null) {file.add(vo.getFname2());}
 			if(vo.getFname3() !=null) {file.add(vo.getFname3());}
+			System.out.println("1= "+vo.getFname1() + "  2= "+vo.getFname2() + "  3= "+vo.getFname3());
+			
+			
 			m.addAttribute("k_file"+i,file);
 			//src파일
 			ArrayList src=new ArrayList();
-			src.add(vo.getSource1());
-			src.add(vo.getSource2());
-			src.add(vo.getSource3());
+			if(vo.getSource1() !=null) {src.add(vo.getSource1());}
+			if(vo.getSource2() !=null) {src.add(vo.getSource2());}
+			if(vo.getSource3() !=null) {src.add(vo.getSource3());}
+			
 			m.addAttribute("k_src"+i,src);		}
 
 		// 라인 카테고리 아이템
@@ -57,10 +68,9 @@ public class ProductController {
 			m.addAttribute("l_file"+i,file);
 			//src파일
 			ArrayList src=new ArrayList();
-			src.add(vo.getSource1());
-			src.add(vo.getSource2());
-			src.add(vo.getSource3());
-			System.out.println("l_src"+i+"????????????????????????????????????????");
+			if(vo.getSource1() !=null) {src.add(vo.getSource1());}
+			if(vo.getSource2() !=null) {src.add(vo.getSource2());}
+			if(vo.getSource3() !=null) {src.add(vo.getSource3());}
 			m.addAttribute("l_src"+i,src);		}
 
 		// 일반 카테고리 아이템
@@ -78,12 +88,15 @@ public class ProductController {
 			m.addAttribute("g_file"+i,file);
 			//src파일
 			ArrayList src=new ArrayList();
-			src.add(vo.getSource1());
-			src.add(vo.getSource2());
-			src.add(vo.getSource3());
+			if(vo.getSource1() !=null) {src.add(vo.getSource1());}
+			if(vo.getSource2() !=null) {src.add(vo.getSource2());}
+			if(vo.getSource3() !=null) {src.add(vo.getSource3());}
 			m.addAttribute("g_src"+i,src);		}
-		return "goods/products1";
+		return result;
 	}
+	
+
+
 
 	// 상품등록 작성페이지로
 	@RequestMapping("/gregist.sajo")
@@ -115,16 +128,63 @@ public class ProductController {
 
 	// 상품 상세페이지로 이동
 	@RequestMapping("/detailGoods.sajo")
-	public String detailGoods(String gid, Model model) {
+	public String detailGoods(String gid,String bno, Model model) {
 		// gid로 집어넣은 이미지 정보랑 goods 정보 select해서 model로 보내기
 		ImageVO imgvo = imgservice.selectByGid(gid);
 		// goods정보는 최근 바로 그 정보
 		GoodsVO goodsvo = service.selectByGid(gid);
-
+		//리뷰 정보 받아오기 gid로
+		
 		model.addAttribute("goods", goodsvo);
 		model.addAttribute("img", imgvo);
-
+		model.addAttribute("bno", bno);
+		model.addAttribute("review",reservice.selectByGid(gid));
 		return "goods/gdetail";
 	}
+	
+//	카카오페이지 보여주기 
 
+	@RequestMapping("/kakao.sajo")
+	public String selectKakao(String pNum,Model m)
+	{
+		String pageNum="1";
+		if(pNum != null) {
+			pageNum=pNum;
+		}
+		//kakao goods의 total페이지
+		m.addAttribute("total", service.getTotalCount("k"));
+		//kakao 페이지별 리스트 가져오기
+		m.addAttribute("list",service.getBrendList("k",pageNum));
+		return "goods/kakao";
+	}
+//	라인페이지 보여주기 
+
+	@RequestMapping("/line.sajo")
+	public String selectLine(String pNum,Model m)
+	{
+		String pageNum="1";
+		if(pNum != null) {
+			pageNum=pNum;
+		}
+		//kakao goods의 total페이지
+		m.addAttribute("total", service.getTotalCount("l"));
+		//kakao 페이지별 리스트 가져오기
+		m.addAttribute("list",service.getBrendList("l",pageNum));
+		return "goods/line";
+	}
+//	카카오페이지 보여주기 
+
+	@RequestMapping("/general.sajo")
+	public String selectGeneral(String pNum,Model m)
+	{
+		String pageNum="1";
+		if(pNum != null) {
+			pageNum=pNum;
+		}
+		//kakao goods의 total페이지
+		m.addAttribute("total", service.getTotalCount("g"));
+		//kakao 페이지별 리스트 가져오기
+		m.addAttribute("list",service.getBrendList("g",pageNum));
+		return "goods/general";
+	}
 }

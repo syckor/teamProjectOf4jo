@@ -70,7 +70,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //end-smooth-scrolling -->
 </head>
 <body>
-	<!-- header modal -->   
+	   <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
       aria-hidden="true">
@@ -105,31 +105,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                        
                                     </form>   
                                                                      
-                                     <script type="text/javascript">  
-                                       //로그인 버튼 클릭시
-                                       $('#loginto').click(function(){ 
-                                          //처음 누를때는 왜 무조건 null값인지
-                                          var loginfail = "<%=(String)session.getAttribute("loginfail")%>";
-                                          <%System.out.println("세션값:"+(String)session.getAttribute("loginfail"));%>
-                                          
-                                          alert("javascript loginfail값 " + loginfail);
-                                          
-                                          if(loginfail=="fail"){    
-                                             alert("올바른 아이디와 비밀번호를 입력해주세요");  
-                                             <%String test1 = (String)session.getAttribute("loginfail");%>                                                                                        
-                                             <%session.removeAttribute("loginfail");%> 
-                                                
-                                             <%System.out.println("세션값:"+(String)session.getAttribute("loginfail"));%>                                             
-                                          }   
-
-                                          loginfail = null; 
-                                           
-                                          alert("javascript loginfail값 " + loginfail); 
-                                                                           
-                                       });     
-              
-                                    </script> 
-                                       
+                                     <c:if test='${not empty param.loginfail}'>
+                                        <script>
+                                          alert("가입된 회원이 아니거나 비밀번호가 틀렸습니다.");
+                                        </script>
+                                     </c:if>
+                                        
                          
                                  </div>  
                               </div> 
@@ -213,15 +194,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                        </div> 
                                         
                                     </form>
-                                    <script type="text/javascript"> 
-                                       $('#msubmit').click(function(){ 
-                                          var mregist = "<%=(String)session.getAttribute("mregist")%>";
-                                          if(mregist=="가입"){ 
-                                             alert("가입을 축하드립니다. \n로그인해주세요"); 
-                                          }
-                                          <%session.removeAttribute("mregist");%>       
-                                       });                
-                                    </script> 
+                                    <c:if test='${not empty param.insertsuc}'>
+                                        <script>
+                                          alert("가입이 완료되었습니다. 로그인 후 이용해주세요");
+                                        </script>
+                                     </c:if> 
                                  </div>
                               </div>
                            </div>    
@@ -279,21 +256,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                <div class="row">
                   <div class="col-md-8 modal_body_left modal_body_left1" style="border-right: 1px dotted #C2C2C2;padding-right:3em;">
                       <div class="sap_tabs">   
-                        <div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
+                        <div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;"> 
                            <ul>
-                              <li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
+                              <li class="resp-tab-item" aria-controls="tab_item-0"><a href='buylist.sajo' id='clicktobuylist'><span id='buylistcss' class='buylistcss'>구매내역</span></a></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
-                              <%if(vo.getMtype().equals("판매자")){%> 
+                              <%if(vo.getMtype().equals("판매자")){%>  
+                              
                                  <li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
-                                 <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
-                              <%}%>  
-                              <li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>                           
+                                 <li class="resp-tab-item" aria-controls="tab_item-3"><a href='sellList.sajo'>판매물품 조회</a></li>
+                                 <li class="resp-tab-item" aria-controls="tab_item-4"><span>사업자등록 철회</span></li> 
+                              <%}%>      
+                              <li class="resp-tab-item" aria-controls="tab_item-5"><a href='member/logout.sajo'>로그아웃</a></li>                           
                            </ul>      
-                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
-                              <div class="facts">
-                                 <div class="register"> 
-                                    
-                                 </div>
+                           <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                              <div class="facts"> 
+                                 <div class="register">  
+                                     
+                                 </div> 
                               </div>
                            </div>    
                            
@@ -349,29 +328,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                        </div>    
                                     </form>   
                                     
-                                    <script type="text/javascript"> 
-                                       $('#mmodify').click(function(){ 
-                                          var mmodify = "<%=(String)session.getAttribute("mmodify")%>";
-                                          if(mmodify=="수정"){ 
-                                             alert("회원정보 수정 완료"); 
-                                          }
-                                          <%session.removeAttribute("mmodify");%>       
-                                       });                
-                                    </script> 
+                                    <c:if test='${not empty param.insertsuc}'>
+                                        <script>
+                                          alert("회원정보가 수정되었습니다.");
+                                        </script>
+                                     </c:if> 
                                        <input type="button" value="회원탈퇴" id='dropoutmember'/>
                                        <br/>                                     
                                     <form action='member/deleteMember.sajo' name='deleteMember' id='mdelete'>
                                        <span id="idAttach"></span>   
                                     </form>      
-                                    <script type="text/javascript"> 
-                                       $('#mdelete').click(function(){ 
-                                          var mdelete = "<%=(String)session.getAttribute("mdelete")%>";
-                                          if(mdelete=="수정"){ 
-                                             alert("회원정보 수정 완료"); 
-                                          }
-                                          <%session.removeAttribute("mdelete");%>       
-                                       });   
-                                    </script>
+                                    <c:if test='${not empty param.mdelete}'> 
+                                        <script>
+                                          alert("회원 탈퇴가 완료되었습니다.");
+                                        </script>
+                                     </c:if> 
                                                          
                                  </div> 
                               </div> 
@@ -385,27 +356,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                               </div>
                            </div> 
                            
-                              
-                            
                            <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-3">
                               <div class="facts">
-                                 <div class="register">
+                                 <div class="register"> 
+                                    
+                                 </div> 
+                              </div>
+                           </div> 
+                           
+                              
+                            
+                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-4">
+                              <div class="facts">
+                                 <div class="register"> 
                                     <form action="member/checkPass.sajo" method="post" name='frmdropseller' id='frmdropseller'>
                                        비밀번호를 입력하세요<br/> 
                                           <input type='hidden' name='mid' value='<%=vo.getMid()%>'></input>
                                           <input type='password' name='checkpassword' id='checkpassword'></input>
                                           <input type="submit" value="확인" id='checkPass'/>
                                        </form> 
-                                       
-                                    <script type="text/javascript"> 
-                                       $('#sdelete').click(function(){ 
-                                          var sdelete = "<%=(String)session.getAttribute("sdelete")%>";
-                                          if(sdelete=="수정"){ 
-                                             alert("회원정보 수정 완료"); 
-                                          }
-                                          <%session.removeAttribute("sdelete");%>       
-                                       });    
-                                    </script>
+                                        
+                                    <c:if test='${not empty param.sdelete}'>
+                                        <script>
+                                          alert("셀러회원 탈퇴가 완료되었습니다. \n일반회원으로만 활동 가능합니다.");
+                                        </script>
+                                     </c:if> 
                                         
                                  </div> 
                               </div>
@@ -492,84 +467,84 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       </div>
    </div>
    <!-- //header -->
-	<!-- navigation -->
-	<div class="navigation">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header nav_2">
-					<button type="button"
-						class="navbar-toggle collapsed navbar-toggle1"
-						data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<ul class="nav navbar-nav">
-						<li><a href="main.sajo">Home</a></li>
-						<!-- Mega Menu -->
-						<li class="dropdown"><a href="#" class="dropdown-toggle act"
-							data-toggle="dropdown">Goods <b class="caret"></b></a>
-							<ul class="dropdown-menu multi-column columns-3">
-								<div class="row">
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Kakao</h6>
-											<li><a href="">라이언</a></li>
-											<li><a href="">어피치<span>New</span></a></li>
-											<li><a href="">무지</li>
-											<li><a href="">프로도</li>
-											<li><a href="">네오<span>New</span></a></li>
-											<li><a href="">튜브</li>
-											<li><a href="">제이지</li>
-											<li><a href="">콘</li>
-										</ul>
-									</div>
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Line</h6>
-											<li><a href="">브라운&프렌즈</a></li>
-											<li><a href="">BT21</a></li>
-											<li><a href="">브롤스타즈 <span>New</span></a></li>
-											<li><a href="gregist.sajo"><i>상품 등록</i></a></li>
-										</ul>
-									</div>
-									<div class="col-sm-2">
-										<ul class="multi-column-dropdown">
-											<h6>General</h6>
-											<li><a href="">인형</a></li>
-											<li><a href="">생필품</a></li>
-											<li><a href="">의류</a></li>
-											<li><a href="">그 외</a></li>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<div class="w3ls_products_pos">
-											<img src="resources/images/inCate1.jpg" alt=" "
-												class="img-responsive" />
-										</div>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</ul></li>
-						<li><a href="about.html">About Us</a></li>
-						<li><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Notice</a></li>
-						<li><a href="mail.html">Q&A</a></li>
+
+<!--    navigation -->
+	 <div class="navigation">
+      <div class="container">
+         <nav class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header nav_2">
+               <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+               </button>
+            </div> 
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+               <ul class="nav navbar-nav">
+                  <li><a href="main.sajo">Home</a></li>   
+                  <!-- Mega Menu -->
+                  <li class="dropdown">
+                     <a href="products.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
+                     <ul class="dropdown-menu multi-column columns-3">
+                        <div class="row">
+                           <div class="col-sm-3">
+                              <ul class="multi-column-dropdown">
+                                 <h6><a href="kakao.sajo">Kakao</a></h6>
+                                 <li><a href="products.sajo">라이언</a></li>
+                                 <li><a href="products.sajo">어피치<span>New</span></a></li> 
+                                 <li><a href="products.sajo">무지</li>
+                                 <li><a href="products.sajo">프로도</li>
+                                 <li><a href="products.sajo">네오<span>New</span></a></li>
+                                 <li><a href="products.sajo">튜브</li>
+                                 <li><a href="products.sajo">제이지</li>
+                                 <li><a href="products.sajo">콘</li>
+                              </ul>
+                           </div>
+                           <div class="col-sm-3">
+                              <ul class="multi-column-dropdown">
+                                 <h6><a href="line.sajo">Line</a></h6>
+                                 <li><a href="products.sajo">브라운&프렌즈</a></li>
+                                 <li><a href="products.sajo">BT21</a></li>
+                                 <li><a href="products.sajo">브롤스타즈 <span>New</span></a></li>
+<!-- 								<li><a href="gregist.sajo"><i>상품 등록</i></a></li> -->
+                              </ul>
+                           </div>
+                           <div class="col-sm-2">
+                              <ul class="multi-column-dropdown">
+                                 <h6><a href="general.sajo">General</a></h6>
+                                 <li><a href="products.sajo">인형</a></li>
+                                 <li><a href="products.sajo">생필품</a></li>
+                                 <li><a href="products.sajo">의류</a></li>
+                                 <li><a href="products.sajo">그 외</a></li>
+                              </ul>
+                           </div>
+                           <div class="col-sm-4">
+                              <div class="w3ls_products_pos">
+                                 <img src="resources/images/inCate1.jpg" alt=" " class="img-responsive" />
+                              </div>
+                           </div>
+                           <div class="clearfix"></div>
+                        </div>
+                     </ul></li>
+                  <li><a href="about.sajo">About Us</a></li>
+                  <li><a href="notice.sajo">Notice</a></li>
+                  <li><a href="mail.sajo" id = 'qna'>Q&A</a></li>
+						
 					</ul>
-				</div>
-			</nav>
-		</div>
-	</div>
-	<!-- //navigation -->
+            </div>
+         </nav>
+      </div>
+   </div>
+<!--    navigation 끝 -->
 	<!-- banner -->
-	<div class="banner banner2">
+	<div class="banner banner10">
 		<div class="container">
+			<h2>Goods 판매 </h2>
 		</div>
 	</div>
+	<!-- //banner -->
 	<!-- breadcrumbs -->
 	<div class="breadcrumb_dress">
 		<div class="container">
@@ -689,11 +664,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="w3ls_mobiles_grid_left_grid_sub">
 							<div class="ecommerce_color ecommerce_size">
 								<ul>
-									<li><a href="#">Below $ 100</a></li>
-									<li><a href="#">$ 100-500</a></li>
-									<li><a href="#">$ 1k-10k</a></li>
-									<li><a href="#">$ 10k-20k</a></li>
-									<li><a href="#">$ Above 20k</a></li>
+									<li><a href="#">10,000 이하</a></li>
+									<li><a href="#">10,000~20,000</a></li>
+									<li><a href="#">20,000이상</a></li>
 								</ul>
 							</div>
 						</div>
@@ -704,22 +677,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-6 w3ls_mobiles_grid_right_left">
 						<div class="w3ls_mobiles_grid_right_grid1">
 							<img
-								src="https://t1.daumcdn.net/friends/prod/product/20200526170034713_8809721501771_AW_00.jpg?type=thumb&opt=R255x255@2xa"
+								src="https://item.kakaocdn.net/do/7100fd9ddb4f8f7e8a8eafcb81a974f4f43ad912ad8dd55b04db6a64cddaf76d"
 								alt=" " class="img-responsive" />
 							<div class="w3ls_mobiles_grid_right_grid1_pos1">
-								<h3>
-									Attractive<span> New</span> Wrist Watches
-								</h3>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6 w3ls_mobiles_grid_right_left">
 						<div class="w3ls_mobiles_grid_right_grid1">
-							<img src="resources/images/49.jpg" alt=" " class="img-responsive" />
+							<img src="https://i.pinimg.com/originals/cf/ed/8e/cfed8eac99510be03fa144a2a09600c2.gif" alt=" " class="img-responsive" />
 							<div class="w3ls_mobiles_grid_right_grid1_pos">
-								<h3>
-									Best Prices On<span> Laptop</span>Upto 50% Off
-								</h3>
 							</div>
 						</div>
 					</div>
@@ -752,12 +719,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<c:when test="${status.count eq 1}">
 												<c:forEach items="${k_file1 }" var="k_file">
 													<c:if test="${not empty k_file }">
-													<img src="resources/upload/${k_file}" alt=" "class="img-responsive">
+													<img src="resources/upload/${k_file}" width="500px" height="500px" alt=" "class="img-responsive">
 													</c:if>
 												</c:forEach>
 												<c:forEach items="${k_src1 }" var="k_src">
 													<img src="${k_src}" alt=" " class="img-responsive">
-													<br />
 												</c:forEach>
 											</c:when>
 											<c:when test="${status.count eq 2}">
@@ -768,7 +734,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												</c:forEach>
 												<c:forEach items="${k_src2 }" var="k_src">
 													<img src="${k_src}" alt=" " class="img-responsive">
-													<br />
 												</c:forEach>
 											</c:when>
 											<c:otherwise>
@@ -788,7 +753,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</h5>
 									<div class="simpleCart_shelfItem">
 										<p>
-											<i class="item_price">${kakao.price }</i>
+											<i class="item_price">${kakao.price }원</i>
 										</p>
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" /> <input
@@ -837,7 +802,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														class="img-responsive">
 														</c:if>
 												</c:forEach>
+												<c:forEach items="${l_src1}" var="l_src">
 													<img src="${l_src}" alt=" " class="img-responsive">
+													</c:forEach>
 											</c:when>
 											<c:when test="${status.count eq 2}">
 												<c:forEach items="${l_file2 }" var="l_file">
@@ -866,7 +833,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										</c:choose>
 									</div>
 									<h5>
-										<a href="detailGoods.sajo?gid=${line.gid }">${line.gname }</a>
+										<a href="detailGoods.sajo?gid=${line.gid }&bno=5">${line.gname }</a>
 									</h5>
 									<div class="simpleCart_shelfItem">
 										<p>

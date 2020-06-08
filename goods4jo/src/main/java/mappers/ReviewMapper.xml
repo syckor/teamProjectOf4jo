@@ -6,7 +6,14 @@
 
 <!-- 	sid+img 추후 추가  + gid 설정-->
 	<insert id="insertReview" parameterType="review">
-		INSERT INTO review(rno,rcontent,gid,score)
-		VALUES(rno_seq.nextval,#{rcontent},#{gid},#{score})
+		INSERT INTO review(rno,rcontent,gid,score,bno)
+		VALUES(rno_seq.nextval,#{rcontent},#{gid},#{score},#{bno})
 		</insert>
+		
+<!-- gid로 리뷰 리스트 검색 -->
+<select id="selectByGid" parameterType="String" resultType="hashmap">
+select r.score as score, r.rcontent as rcontent, r.bno as bno , r.rno as  rno , r.gid as gid ,b.mid as mid 
+from review r , buy b 
+where r.bno=b.bno and r.gid=#{gid}
+</select>
 </mapper>

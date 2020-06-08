@@ -1,5 +1,8 @@
 package com.sajo.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +16,12 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Override
 	public int insertReview(ReviewVO vo) {
-		reviewDao.insertReview(vo);
-		return 0;
+		return reviewDao.insertReview(vo);
+	}
+
+	@Override
+	public List<HashMap> selectByGid(String gid) {
+		return reviewDao.selectByGid(gid);
 	}
 
 }

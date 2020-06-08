@@ -1,5 +1,6 @@
 package com.sajo.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.sajo.domain.GoodsVO;
@@ -13,4 +14,6 @@ public interface GoodsService {
 	public List<GoodsVO> selectLine();
 	public List<GoodsVO> selectGeneral();
 	public List<GoodsVO> selectAll();
+	public int getTotalCount(String brend);
+	public List<HashMap<String, Object>> getBrendList(String brend,String pNum);
 }
