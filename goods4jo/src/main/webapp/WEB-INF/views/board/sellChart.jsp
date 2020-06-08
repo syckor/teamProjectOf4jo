@@ -1,13 +1,29 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-
-<%@ page import="com.sajo.domain.MemberVO" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page import="com.sajo.domain.MemberVO"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<link rel="stylesheet" href="/resources/popup.css">
+<script src="/resources/js/jquery-3.1.1.min.js"></script>
+<script src="/resources/js/jquery.bpopup.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
 <title>Goods4jo, All thing of goods!!!</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,74 +33,12 @@
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript">
 	
-		
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } 
 
+
 </script>
-
-
-<!-- google fonts -->
-<link
-	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700'
-	rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700'
-	rel='stylesheet' type='text/css'>
-
-<!-- files -->
-<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-<link href="assets/css/magnific-popup.css" rel="stylesheet">
-<link href="assets/css/owl.carousel.css" rel="stylesheet">
-<link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
-<link href="assets/css/ionicons.css" rel="stylesheet">
-<link href="assets/css/main.css" rel="stylesheet">
-
-
-<style>
-#container {
-	width: 960px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.tab {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
-/* Float the list items side by side */
-.tab li {
-	float: left;
-}
-/* Style the links inside the list items */
-.tab li a {
-	display: inline-block;
-	color: white;
-	text-align: center;
-	text-decoration: none;
-	padding: 14px 16px;
-	font-size: 20px;
-	transition: 0.3s;
-}
-/* Style the tab content */
-.tabcontent {
-	display: none;
-	background-color: #EBA823;
-	padding: 6px 12px;
-	color: #fff;
-}
-
-ul.tab li.current {
-	background-color: #EBA823;
-	color: #151515;
-}
-
-.tabcontent.current {
-	display: block;
-}
-</style>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
 <link href="resources/css/bootstrap.css" rel="stylesheet"
@@ -111,7 +65,7 @@ ul.tab li.current {
 <!-- start-smooth-scrolling -->
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$(".scroll").click(function() {
+		$(".scroll").click(function(event) {
 			event.preventDefault();
 			$('html,body').animate({
 				scrollTop : $(this.hash).offset().top
@@ -119,11 +73,98 @@ ul.tab li.current {
 		});
 	});
 </script>
+
 <!-- //end-smooth-scrolling -->
-<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
+<style>
+.goodsbutton {
+	position: relative;
+	border: 1px solid #ddd;
+}
+
+.goodsbutton img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.blur {
+	position: <x> absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.blur:hover {
+	box-shadow: inset 0 0 250px rgba(0, 0, 0, 0.8);
+}
+
+table.redTable {
+	border: 2px solid #EBA823;
+	background-color: #EEE7DB;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+table.redTable td, table.redTable th {
+	border: 1px solid #AAAAAA;
+	padding: 3px 2px;
+}
+
+table.redTable tbody td {
+	font-size: 15px;
+}
+
+table.redTable tr:nth-child(even) {
+	background: #F5C8BF;
+}
+
+table.redTable thead {
+	background: #EBA823;
+}
+
+table.redTable thead th {
+	font-size: 19px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	border-left: 2px solid #EBA823;
+}
+
+table.redTable thead th:first-child {
+	border-left: none;
+}
+
+table.redTable tfoot {
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: #EBA823;
+}
+
+table.redTable tfoot td {
+	font-size: 13px;
+}
+
+table.redTable tfoot .links {
+	text-align: right;
+}
+
+table.redTable tfoot .links a {
+	display: inline-block;
+	background: #FFFFFF;
+	color: #3975ED;
+	padding: 2px 8px;
+	border-radius: 5px;
+}
+</style>
+<%
+	MemberVO vo = (MemberVO) session.getAttribute("member");
+%>
 </head>
 <body>
-	        <!-- header modal -->   
+	   <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
       aria-hidden="true">
@@ -590,10 +631,11 @@ ul.tab li.current {
       </div>
    </div>
    <!-- //navigation -->
+
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">
-			<h2>Q&A</h2>
+			<h2>Sell Chart</h2>
 		</div>
 	</div>
 	<!-- //banner -->
@@ -601,126 +643,67 @@ ul.tab li.current {
 	<div class="breadcrumb_dress">
 		<div class="container">
 			<ul>
-				<li><a href="index.html"><span
+				<li><a href="main.sajo"><span
 						class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
-				<li>Q&A</li>
+				<li>Sell Chart</li>
 			</ul>
 		</div>
 	</div>
 	<!-- //breadcrumbs -->
-	<!-- mail -->
-	<div class="mail">
+
+	<!-- sellChart -->
+
+	<div class="typo codes">
 		<div class="container">
-			<h3>우리가 답해드릴게요</h3>
-			<div class="agile_mail_grids">
-				<div class="col-md-12 contact-left">
-					<h4>Q&A 내용</h4>
-					<form action="deleteQna.sajo?qno=${qna.qno }&qpassword=${qna.qpassword}" method="post">
-						<input type="hidden" name="qno" value="${qna.qno }">
-						<input type="text"  name="qtitle" value="${qna.qtitle }" style="width: 1000px; height: 40px;"/> 						 
-						<textarea name="qcontent">${qna.qcontent }</textarea>						
-						<input type="text" name="qpassword" placeholder="Your Password" required=""/> 
-						<input type="submit" value="삭제하기" style="width: 500px; height: 40px;">
-					</form>
-					<br />
-					<br />	
-					<h4>답변을 달아보아요</h4>
-						<form action="answerQna.sajo?qno=${qna.qno }" method="post">
-						<textarea name="qanswer" required=""> </textarea>
-						<input type="submit" value="답변달기" style="width: 500px; height: 40px;">
-						</form>
-					<br /> 
-					<br />
+			<h3 class="agileits-title">Sell Chart</h3>
+			<div class="item" style="width: 98%; height: 80%;">
+				<canvas id="myChart" style="width: 50%; height: 50%;"></canvas>
 				
+				<script type="text/javascript">
+					var ctx = document.getElementById("myChart").getContext(
+							'2d');
+					var myChart = new Chart(ctx, {
+						type : 'bar',
+						data : {
+							labels : [ "현금", "카드" ],
+							datasets : [ {
+								label : '결제수단',
+								data : [ '${cashCount}', '${cardCount}' ], //컨트롤러에서 모델로 받아온다.
+								backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
+										'rgba(54, 162, 235, 0.2)'
+
+								],
+								borderColor : [ 'rgba(255,99,132,1)',
+										'rgba(54, 162, 235, 1)'
+
+								],
+								borderWidth : 1
+							} ]
+						},
+						options : {
+							scales : {
+								yAxes : [ {
+									ticks : {
+										beginAtZero : true
+									}
+								} ]
+							}
+						}
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+	<!-- //sellChart -->
 
 
-					<div id="container2">
-						<ul class="tab">
-							<li class="current" data-tab="tab1"><a href="#">상품문의</a></li>
-							<li data-tab="tab2"><a href="#">배송문의</a></li>
-							<li data-tab="tab3"><a href="#">반품/교환/환불</a></li>
-							<li data-tab="tab4"><a href="#">주문결제</a></li>
-							<li data-tab="tab5"><a href="#">회원서비스</a></li>
-							<li data-tab="tab6"><a href="#">기타문의</a></li>
-
-						</ul>
-
-						<div id="tab1" class="tabcontent current">
-							<h3>상품문의</h3>
-							<p>
-								상품구매는 어떻게 하나요?<br /> 
-								구매 가능 쇼핑몰의 상품 상세 페이지 에서 옵션 및 기타 선택사항을 선택한
-								후 <br /> '[장바구니]' 버튼(혹은 구매하기 버튼)을 클릭해 주세요.
-							</p>
-						</div>
-
-						<div id="tab2" class="tabcontent">
-							<h3>배송문의</h3>
-							<p>
-								배송이 지연되는 사유는 아래와 같습니다.<br /> 1) 구매자의 주문정보 입력오류: 주문 시 수령자의 연락처,
-								주소를 잘못 기재한 경우<br /> 2) 판매자 배송처리 지연<br /> - 재고파악 또는 재고확보에 시일이
-								걸리는 경우<br /> - 연휴 및 휴가로 인해 처리가 지연되는 경우<br /> - 판매자 실수로 인한 택배
-								오발송 <br /> 3) 택배사 배송지연<br /> - 연휴로 인한 택배 물량 과다로 택배 운송이 지연되는 경우<br />
-								- 배송물품의 분실, 파손으로 배송이 지연되는 경우
-							</p>
-						</div>
-
-						<div id="tab3" class="tabcontent">
-							<h3>반품/교환/환불</h3>
-							<p>
-								I반품 상품을 판매자에게 발송하였으나 환불이 지연되는 경우에는<br /> 판매자에게 직접 연락하여 반품상품 수령
-								여부를 확인 후 환불승인 처리를 요청하시면 됩니다.
-							</p>
-						</div>
-
-						<div id="tab4" class="tabcontent">
-							<h3>주문결제</h3>
-							<p>
-								결제 하고 환불은 어떻게 받나요? 신용카드로 결제한 주문내역은 취소 즉시 자동으로 카드 승인취소 처리됩니다.<br />
-
-								단, 카드사에서의 승인취소 확인은 카드사와 VAN사의 확인 절차를 거치는 관계로 주문 취소일로부터<br />
-								3~5영업일 후 해당 카드사에서 취소내역을 확인하실 수 있습니다.
-							</p>
-						</div>
-						<div id="tab5" class="tabcontent">
-							<h3>회원서비스</h3>
-							<p>
-								재가입은 어떻게 하나요?<br /> 네이버페이 이용약관 철회 후, 30일간 재가입에 제한이 있습니다.<br />
-								30일이 지난 뒤에는 네이버페이 이용약관에 동의하시면 이용하실 수 있으니 참고해 주세요.
-							</p>
-						</div>
-						<div id="tab6" class="tabcontent">
-							<h3>기타문의</h3>
-							<p>
-								굿즈사조는 무엇인가요?<br /> 굿즈사조는 대한민국 대표 쇼핑 서비스로 온/오프라인을 아우르는 다양한 쇼핑
-								정보를<br /> 한 번에 제공하고 있습니다.<br /> 1. 세상의 모든 상품정보와 최신의 핫한 쇼핑트렌드
-								정보를 알려드립니다.<br /> 백화점, 아울렛, 홍대, 가로수길 최신 상품부터 핸드메이드, 산지직송, 지역명물
-								상품까지 오프라인과 온라인을<br /> 아우르는 굿즈의 모든 상품을 한 공간에서 탐색할 수 있습니다.
-							</p>
-						</div>
-
-					</div>
-					<br/>
-					<br/>
-					<script>
-						$(function() {
-							$('ul.tab li').click(function() {
-								var activeTab = $(this).attr('data-tab');
-								$('ul.tab li').removeClass('current');
-								$('.tabcontent').removeClass('current');
-								$(this).addClass('current');
-								$('#' + activeTab).addClass('current');
-							})
-						});
-					</script>
-					</div>
-					</div>
-					</div>
-					</div>
-				
-	<!-- //mail -->
-
-		<!-- footer -->
+	<div id="layer_popup" class="button_style">
+		<span class="layer_close"><span>X</span></span>
+		<div class="content">
+			<div id="chart_div"></div>
+		</div>
+	</div>
+	<!-- footer -->
 	<div class="footer">
 		<div class="container">
 			<div class="w3_footer_grids">
@@ -759,13 +742,15 @@ ul.tab li.current {
 						<li><a href="main.sajo">Home</a></li>
 						<li><a href="products1.sajo">Today's NEW</a></li>
 					</ul>
-					<h4>For Share </h4>
+					<h4>For Share</h4>
 					<div class="agileits_social_button">
 						<ul>
-							<li><a href="http://www.facebook.com" class="facebook"> </a></li>
+							<li><a href="http://www.facebook.com" class="facebook">
+							</a></li>
 							<li><a href="http://www.twitter.com" class="twitter"> </a></li>
 							<li><a href="http://www.google.com" class="google"> </a></li>
-							<li><a href="http://www.pinterest.co.kr" class="pinterest"> </a></li>
+							<li><a href="http://www.pinterest.co.kr" class="pinterest">
+							</a></li>
 						</ul>
 					</div>
 				</div>
@@ -805,13 +790,5 @@ ul.tab li.current {
 		});
 	</script>
 	<!-- //cart-js -->
-	<!-- Scripts -->
-	<script src="resources/js/jquery-1.12.3.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/js/owl.carousel.min.js"></script>
-	<script src="resources/js/script.js"></script>
-
-
 </body>
 </html>

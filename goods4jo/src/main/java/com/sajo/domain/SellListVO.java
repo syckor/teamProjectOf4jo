@@ -5,9 +5,16 @@ public class SellListVO {
 	String bdate;
 	String gname;
 	String mid;
+	String sid;			
 	int bcount;
 	String pay;
 	
+	public String getSid() {
+		return sid;
+	}
+	public void setSid(String sid) {
+		this.sid = sid;
+	}
 	public String getBdate() {
 		return bdate;
 	}

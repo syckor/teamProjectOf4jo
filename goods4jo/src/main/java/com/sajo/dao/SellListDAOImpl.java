@@ -2,6 +2,7 @@ package com.sajo.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,17 @@ public class SellListDAOImpl implements SellListDAO {
 		return mybatis.selectList("SellListDAO.getSellList", sellerid);
 	}
 
+	@Override
+	public int getCashChart(String sellerid) {
+		System.out.println("===> Mybatis getCashChart() 호출");
+		return mybatis.selectOne("SellListDAO.getCashChart", sellerid);
+	}
+
+	@Override
+	public int getCardChart(String sellerid) {
+		System.out.println("===> Mybatis getCardChart() 호출");
+		return mybatis.selectOne("SellListDAO.getCardChart", sellerid);
+	}
 
 
 	

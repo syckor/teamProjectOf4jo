@@ -7,6 +7,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
+
 <title>Goods4jo, All thing of goods!!!</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,8 +44,12 @@
 <!-- for bootstrap working -->
 <script type="text/javascript" src="resources/js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <!-- start-smooth-scrolling -->
 <script type="text/javascript">
+
+
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
 			event.preventDefault();
@@ -51,6 +58,7 @@
 			}, 1000);
 		});
 	});
+
 </script>
 <!-- //end-smooth-scrolling -->
 <style>
@@ -125,7 +133,7 @@ table.redTable tfoot .links a {
 <%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
 </head>
 <body>
-	       <!-- header modal -->   
+	         <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
       aria-hidden="true">
@@ -311,22 +319,23 @@ table.redTable tfoot .links a {
                <div class="row">
                   <div class="col-md-8 modal_body_left modal_body_left1" style="border-right: 1px dotted #C2C2C2;padding-right:3em;">
                       <div class="sap_tabs">   
-                        <div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
+                        <div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;"> 
                            <ul>
-                              <li class="resp-tab-item" aria-controls="tab_item-0"><a href='buylist.sajo'><span>구매내역</span></a></li>
+                              <li class="resp-tab-item" aria-controls="tab_item-0"><a href='buylist.sajo' id='clicktobuylist'><span id='buylistcss' class='buylistcss'>구매내역</span></a></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
                               <%if(vo.getMtype().equals("판매자")){%>  
+                              
                                  <li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
-                                 <li class="resp-tab-item" aria-controls="tab_item-4"><a href='sellList.sajo'>판매물품 조회</a></li>
-                                 <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li> 
-                              <%}%>     
+                                 <li class="resp-tab-item" aria-controls="tab_item-3"><a href='sellList.sajo'>판매물품 조회</a></li>
+                                 <li class="resp-tab-item" aria-controls="tab_item-4"><span>사업자등록 철회</span></li> 
+                              <%}%>      
                               <li class="resp-tab-item" aria-controls="tab_item-5"><a href='member/logout.sajo'>로그아웃</a></li>                           
                            </ul>      
-                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0"> 
-                              <div class="facts">
-                                 <div class="register"> 
-                                    
-                                 </div>
+                           <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                              <div class="facts"> 
+                                 <div class="register">  
+                                     
+                                 </div> 
                               </div>
                            </div>    
                            
@@ -410,11 +419,19 @@ table.redTable tfoot .links a {
                               </div>
                            </div> 
                            
-                              
-                            
                            <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-3">
                               <div class="facts">
-                                 <div class="register">
+                                 <div class="register"> 
+                                    
+                                 </div> 
+                              </div>
+                           </div> 
+                           
+                              
+                            
+                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-4">
+                              <div class="facts">
+                                 <div class="register"> 
                                     <form action="member/checkPass.sajo" method="post" name='frmdropseller' id='frmdropseller'>
                                        비밀번호를 입력하세요<br/> 
                                           <input type='hidden' name='mid' value='<%=vo.getMid()%>'></input>
@@ -575,7 +592,8 @@ table.redTable tfoot .links a {
                      </ul></li>
                   <li><a href="about.sajo">About Us</a></li>
                   <li><a href="notice.sajo">Notice</a></li>
-                  <li><a href="mail.sajo">Q&A</a></li>  
+                  <li><a href="mail.sajo" id = 'qna'>Q&A</a></li>
+                  
                </ul>
             </div>
          </nav>
@@ -602,15 +620,20 @@ table.redTable tfoot .links a {
 	</div>
 	<!-- //breadcrumbs -->
 	<!-- sellList -->
-	<!-- short codes -->
+	<!-- redTable  -->
 	<div class="typo codes">
 		<div class="container">
 		<h3 class="agileits-title">Sell List</h3>
-		<div class="col-sm-2 goodsbutton">	
+		<div class="col-sm-1 goodsbutton">	
 		<a href="gregist.sajo"><img src="resources/images/goodsbutton.jpg" alt=" " class="img-responsive" /> </a>
 			<div class="blur"></div>
 			</div>	
-
+		<div class="col-sm-1 goodsbutton">	
+		<a href="chart.sajo"><img src="resources/images/goodsbutton.jpg" alt=" " class="img-responsive" /> </a>
+			<div class="blur"></div>
+			</div>	
+		
+		
 			<div class="col-sm-10 right">	
 			<table class="redTable">
 				<thead>
@@ -650,6 +673,9 @@ table.redTable tfoot .links a {
 		</div>
 	</div>
 </div>
+	<!-- //redTable  -->
+
+
 	<!-- footer -->
 	<div class="footer">
 		<div class="container">

@@ -1,6 +1,8 @@
 package com.sajo.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,13 +23,32 @@ public class SellListController {
 
 	
 	
-	@RequestMapping("sellList.sajo")
+	@RequestMapping("/sellList.sajo")
 	public String getSellList(HttpSession session, Model model) {
 		
 		SellerVO vo=(SellerVO)session.getAttribute("seller");
 		String sellerid=String.valueOf(vo.getSid());
 		model.addAttribute("List", service.getSellList(sellerid));
+		
+		
 		return "board/sellList";
 		
 	}
+
+	@RequestMapping("/chart.sajo")
+	public String getChart(HttpSession session, Model model) {
+		
+		SellerVO vo=(SellerVO)session.getAttribute("seller");
+		String sellerid=String.valueOf(vo.getSid());
+		
+		int cashCount = service.getCashChart(sellerid);
+		int cardCount = service.getCardChart(sellerid);
+
+  		model.addAttribute("cashCount", cashCount);
+  		model.addAttribute("cardCount", cardCount);
+		
+		return "board/sellChart";
+		
+	}
+
 }
