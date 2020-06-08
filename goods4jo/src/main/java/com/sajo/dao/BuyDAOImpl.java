@@ -16,18 +16,21 @@ public class BuyDAOImpl implements BuyDAO{
 	
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	 
+	  
 	@Override
 	public void insertBuy() {
             
-	}
+	} 
 	 
-	public List<BuyVO> buyList(MemberVO vo) {
+	public List<BuyVO> buyList(BuyVO bvo) {
 		System.out.println("===> BuyMapper buyList 호출");
-		return mybatis.selectList("BuyDAO.buyList", vo);  
+		return mybatis.selectList("BuyDAO.buyList", bvo);   
 	}
    
-	 
+	public List<BuyVO> buyListforPage(BuyVO bvo){
+		System.out.println("===> BuyMapper buyList 호출"); 
+		return mybatis.selectList("BuyDAO.buyListforPage", bvo); 
+	}
 
 	
 

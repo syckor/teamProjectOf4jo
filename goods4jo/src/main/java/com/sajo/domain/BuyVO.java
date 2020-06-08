@@ -11,11 +11,26 @@ public class BuyVO {
 	private String gid;
 	private int bcount=0;
 	private String bname;
-	private String delivery;
+	private String delivery; 
 	private String deliveryfee;
 	private String totalorderprice;
 	private String gname;
+	private String startlist;
+	private String lastlist;
 	
+	
+	public String getStartlist() {
+		return startlist;
+	}
+	public void setStartlist(int startlist) {
+		this.startlist = String.valueOf(startlist);
+	}
+	public String getLastlist() {
+		return lastlist; 
+	}
+	public void setLastlist(int lastlist) {
+		this.lastlist = String.valueOf(lastlist);
+	}
 	public String getGname() {
 		return gname;
 	}

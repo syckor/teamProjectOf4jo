@@ -16,18 +16,22 @@ public class BuyServiceImpl implements BuyService{
 	
 	@Autowired
 	private BuyDAOImpl buyDAO;
-
+ 
 	@Override
-	public void insertBuy() {
+	public void insertBuy() { 
 		buyDAO.insertBuy();
 
 		  
-		 
-	}  
-	public List<BuyVO> buyList(MemberVO vo) {
-		System.out.println("buyList service 호출");
-		return buyDAO.buyList(vo); 
 		  
+	}  
+	public List<BuyVO> buyList(BuyVO bvo) {
+		System.out.println("buyList service 호출");
+		return buyDAO.buyList(bvo);  
+		  
+	}
+	public List<BuyVO> buyListforPage(BuyVO bvo){
+		System.out.println("buyList service 호출");
+		return buyDAO.buyListforPage(bvo); 
 	}
 
 	

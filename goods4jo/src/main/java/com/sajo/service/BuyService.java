@@ -7,6 +7,8 @@ import com.sajo.domain.MemberVO;
 
 public interface BuyService {
 	public void insertBuy(); 
-	public List<BuyVO> buyList(MemberVO vo); 
+	public List<BuyVO> buyList(BuyVO bvo);  
+	public List<BuyVO> buyListforPage(BuyVO bvo);
 	
 }
+ 

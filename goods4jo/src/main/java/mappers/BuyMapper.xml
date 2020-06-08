@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="BuyDAO">
 
 <insert id="selectBuy" parameterType="buy">
@@ -8,12 +9,25 @@ insert into BUY (BNO, BDATE, PAY, TOTALPRICE, MID, GID, BCOUNT)
 value(#{BNO},#{BDATE},#{PAY},#{TOTALPRICE},#{MID},#{GID},#{BCOUNT}) 
 </insert>
 
-
-<select id="buyList" parameterType="member" resultType="buy">
+ 
+<select id="buyListforPage" parameterType="buy" resultType="buy">
 select b.gid gid, b.bdate bdate, g.gname gname, b.bcount bcount, b.totalprice totalgoodspay, b.pay pay, g.delivery delivery, g.dcost deliveryfee, (g.dcost+b.totalprice) totalorderprice
      from buy b, goods g 
-      where b.gid=g.gid and b.mid=#{mid}
+      where b.gid=g.gid and b.mid=#{mid} 
       order by b.bdate desc
+</select>    
+ 
+<select id="buyList" parameterType="buy" resultType="buy">  
+<![CDATA[ 
+select X.rnum,x.gid gid,  x.bdate bdate, x.gname gname, x.bcount bcount, x.totalprice totalgoodspay, x.pay pay, x.delivery delivery, x.dcost deliveryfee, (x.dcost+x.totalprice) totalorderprice
+from ( select rownum as rnum,a.gid, a.bdate, a.gname, a.bcount, a.totalprice, a.pay, a.delivery, a.dcost, (a.dcost+a.totalprice)
+from (select b.gid gid, b.bdate , g.gname , b.bcount , b.totalprice , b.pay , g.delivery , g.dcost , (g.dcost+b.totalprice)
+from buy b, goods g
+where b.gid=g.gid and b.mid=#{mid}
+order by b.bdate desc) a 
+where rownum <= ${lastlist}) X 
+where X.rnum >= ${startlist} 
+]]>
 </select> 
 
 </mapper>
