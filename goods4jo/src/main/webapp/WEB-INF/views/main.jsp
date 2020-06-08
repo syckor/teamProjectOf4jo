@@ -98,31 +98,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													
 												</form>	
 																							
-										 		<script type="text/javascript">  
-													//로그인 버튼 클릭시
-													$('#loginto').click(function(){ 
-														//처음 누를때는 왜 무조건 null값인지
-														var loginfail = "<%=(String)session.getAttribute("loginfail")%>";
-														<%System.out.println("세션값:"+(String)session.getAttribute("loginfail"));%>
-														
-														alert("javascript loginfail값 " + loginfail);
-														
-														if(loginfail=="fail"){    
-															alert("올바른 아이디와 비밀번호를 입력해주세요");  
-															<%String test1 = (String)session.getAttribute("loginfail");%>																	 												
-															<%session.removeAttribute("loginfail");%> 
-																
-															<%System.out.println("세션값:"+(String)session.getAttribute("loginfail"));%>															
-														}	
-
-														loginfail = null; 
-														 
-														alert("javascript loginfail값 " + loginfail); 
-															  								    
-													});	  
-				  
-												</script> 
-													
+										 		<c:if test='${not empty param.loginfail}'>
+										 			<script>
+														alert("가입된 회원이 아니거나 비밀번호가 틀렸습니다.");
+										 			</script>
+										 		</c:if>
+													 
 								 
 											</div>  
 										</div> 
@@ -206,15 +187,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													</div> 
 													 
 												</form>
-												<script type="text/javascript"> 
-													$('#msubmit').click(function(){ 
-														var mregist = "<%=(String)session.getAttribute("mregist")%>";
-														if(mregist=="가입"){ 
-															alert("가입을 축하드립니다. \n로그인해주세요"); 
-														}
-														<%session.removeAttribute("mregist");%>  	  
-													});		 			
-												</script> 
+												<c:if test='${not empty param.insertsuc}'>
+										 			<script>
+														alert("가입이 완료되었습니다. 로그인 후 이용해주세요");
+										 			</script>
+										 		</c:if> 
 											</div>
 										</div>
 									</div> 	
@@ -342,29 +319,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													</div> 	
 												</form>	
 												
-												<script type="text/javascript"> 
-													$('#mmodify').click(function(){ 
-														var mmodify = "<%=(String)session.getAttribute("mmodify")%>";
-														if(mmodify=="수정"){ 
-															alert("회원정보 수정 완료"); 
-														}
-														<%session.removeAttribute("mmodify");%>  	  
-													});		 			
-												</script> 
+												<c:if test='${not empty param.insertsuc}'>
+										 			<script>
+														alert("회원정보가 수정되었습니다.");
+										 			</script>
+										 		</c:if> 
 													<input type="button" value="회원탈퇴" id='dropoutmember'/>
 													<br/> 												
 												<form action='member/deleteMember.sajo' name='deleteMember' id='mdelete'>
 													<span id="idAttach"></span>   
 												</form>		
-												<script type="text/javascript"> 
-													$('#mdelete').click(function(){ 
-														var mdelete = "<%=(String)session.getAttribute("mdelete")%>";
-														if(mdelete=="수정"){ 
-															alert("회원정보 수정 완료"); 
-														}
-														<%session.removeAttribute("mdelete");%>  	  
-													});	
-												</script>
+												<c:if test='${not empty param.mdelete}'> 
+										 			<script>
+														alert("회원 탈퇴가 완료되었습니다.");
+										 			</script>
+										 		</c:if> 
 																			
 											</div> 
 										</div> 
@@ -389,16 +358,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<input type='password' name='checkpassword' id='checkpassword'></input>
 														<input type="submit" value="확인" id='checkPass'/>
 													</form> 
-													
-												<script type="text/javascript"> 
-													$('#sdelete').click(function(){ 
-														var sdelete = "<%=(String)session.getAttribute("sdelete")%>";
-														if(sdelete=="수정"){ 
-															alert("회원정보 수정 완료"); 
-														}
-														<%session.removeAttribute("sdelete");%>  	  
-													});	 
-												</script>
+													 
+												<c:if test='${not empty param.sdelete}'>
+										 			<script>
+														alert("셀러회원 탈퇴가 완료되었습니다. \n일반회원으로만 활동 가능합니다.");
+										 			</script>
+										 		</c:if> 
 													 
 											</div> 
 										</div>

@@ -33,7 +33,7 @@ public class MemberController {
 	 *회원가입 메소드
 	 */	
 	@RequestMapping("/memberInsert.sajo")
-	public String insert(MemberVO vo, SellerVO svo, HttpServletRequest request, HttpSession session,  
+	public ModelAndView insert(MemberVO vo, SellerVO svo, HttpServletRequest request, HttpSession session,  
 			@RequestParam(value = "year") String year,
 			@RequestParam(value = "month") String month, 
 			@RequestParam(value = "day") String day,
@@ -42,6 +42,7 @@ public class MemberController {
 			@RequestParam(value = "detailofaddr", required=false, defaultValue="0") String detailofaddr
 			)   
 	{  
+		ModelAndView mv = new ModelAndView();
 		
 		String seller = request.getParameter("seller");
 
@@ -57,28 +58,30 @@ public class MemberController {
 		
 		//회원가입이 완료되면 결과행을 result에 담는다
 		int result = memberService.memberInsert(vo);
-		System.out.println(result); 
+		mv.addObject("insertsuc","succ");
+		mv.setViewName("redirect:/main.sajo");  
 		//seller가 판매자일 경우에만 seller테이블에 Insert실행
 		if(seller.equals("판매자")) {
 			memberService.sellerInsert(svo);
 		}
 		//결과값이1이면 회원가입이 잘 된것이므로 알림을 띄우기 위해 세션에 저장
 		if(result==1) {
-			session.setAttribute("mregist", "가입");
+			
 		}		
-		return "redirect:/main.sajo ";   
+		return mv;   
 	} 
 	
 	/*
 	 *회원정보 수정
 	 */	
 	@RequestMapping("/memberModify.sajo")
-	public String modifyMember(MemberVO vo, SellerVO svo, HttpServletRequest request, HttpSession session, 
+	public ModelAndView modifyMember(MemberVO vo, SellerVO svo, HttpServletRequest request, HttpSession session, 
 			@RequestParam(value = "loadaddr1", required=false, defaultValue="0") String loadaddr,  
 			@RequestParam(value = "postnumber1", required=false, defaultValue="0") String postnumber,
 			@RequestParam(value = "detailofaddr1", required=false, defaultValue="0") String detailofaddr
 			)    
 	{   
+		ModelAndView mv = new ModelAndView();
 		String message = "";
 		int result = 0;
 		int result1= 0;
@@ -103,9 +106,11 @@ public class MemberController {
 			result = memberService.sellerInsert(svo);
 		}	
 		if(result==1&result1==1) {
-			session.setAttribute("updateresult", "수정"); 
+			mv.addObject("modisuc","succ");
 		}
-		return "redirect:/main.sajo ";    	
+		
+		mv.setViewName("redirect:/main.sajo"); 
+		return mv;    	
 	}
 	
 	
@@ -144,19 +149,23 @@ public class MemberController {
 	 * 
 	 */
 	@RequestMapping("/login.sajo")
-	public String login(MemberVO vo, SellerVO svo, HttpSession session) {//spring에서의 세션 사용법
+	public ModelAndView login(MemberVO vo, SellerVO svo, HttpSession session) {//spring에서의 세션 사용법
 		MemberVO result = memberService.idCheck_Login(vo);
+		ModelAndView mv = new ModelAndView();
+		
 		if(result==null) {   //로그인에 실패하면 result==null 
-			session.setAttribute("loginfail", "fail");		
+			mv.addObject("loginfail", "fail");
+			
 		}else {   			//로그인에 성공 후 
-			session.setAttribute("member", result);  //세션에 결과를 저장		 	 
+			session.setAttribute("member", result);
 			if(result.getMtype().equals("판매자")) {  //회원타입이 판매자라면
 				SellerVO rsSeller = memberService.getSellerInfo(svo); //세션에 셀러정보 저장
-				session.setAttribute("mtype", result.getMtype()); 
-				session.setAttribute("seller", rsSeller);
-			}    
-		} 		 
-		return "redirect:/main.sajo";  
+				session.setAttribute("member", rsSeller);
+				 
+			}     
+		} 	
+		mv.setViewName("redirect:/main.sajo"); 
+		return mv;   
 	} 	
 	
 	/*
@@ -166,16 +175,17 @@ public class MemberController {
 	
 	@RequestMapping("/logout.sajo") 
 	public String logout(HttpSession session) {//spring에서의 세션 사용법		
-			session.removeAttribute("member");	 
+			session.invalidate();	 
 		return "redirect:/main.sajo";  
 	} 
  
 	/*
-	 * 팝업창에서 받은 비밀번호를 확인 후 같으면 셀러회원 탈퇴
+	 *  비밀번호를 확인 후 같으면 셀러회원 탈퇴
 	 */
 	@RequestMapping("/checkPass.sajo") 
-	public String checkPass( HttpServletRequest request, HttpSession session, MemberVO vo,
+	public ModelAndView checkPass( HttpServletRequest request, HttpSession session, MemberVO vo,
 			@RequestParam(value = "checkpassword") String pass) {
+		ModelAndView mv = new ModelAndView();
 		 int result1=0;
 		 int result2=0;
 		 String message="";
@@ -191,19 +201,21 @@ public class MemberController {
 			 result2 = memberService.changeMtype(vo);			 
 		} 
 		if(result1==1&result2==1) {
-			session.setAttribute("sdelete", "셀러탈퇴");
+			mv.addObject("sdelete", "sdelete");
 			
 		}
+		mv.setViewName("redirect:/main.sajo"); 
 		vo.setDelete(message);
-		return "redirect:/main.sajo";        
+		return mv;         
 	}  
 	
-	/*
-	 * 팝업창에서 받은 비밀번호를 확인 후 같으면 일반회원 탈퇴
-	 */
+	/* 
+	 *  비밀번호를 확인 후 같으면 일반회원 탈퇴
+	 */ 
 	@RequestMapping("/deleteMember.sajo") 
 	public String deleteMember( HttpServletRequest request, HttpSession session, MemberVO vo,
 			@RequestParam(value = "pwfordelete") String pass) {
+		ModelAndView mv = new ModelAndView();
 		vo = (MemberVO)session.getAttribute("member");
 		System.out.println(pass); 
 		System.out.println(vo.getMpassword()); 
@@ -217,11 +229,11 @@ public class MemberController {
 			 System.out.println(result);
 			 System.out.println(result1); 
 			 if(result1==1) {
-				 session.removeAttribute("member");  
-				 session.removeAttribute("seller");   
-				 session.setAttribute("mdelete", "회원탈퇴"); 
+				 session.invalidate();		
+				 mv.addObject("mdelete","mdelete"); 
 			 } 	 
-		}  
+		} 
+		mv.setViewName("redirect:/main.sajo"); 
 		return "redirect:/main.sajo";        
 	}  
 }
