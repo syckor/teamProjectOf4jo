@@ -21,64 +21,65 @@
 </script>
 
 <style>
+
 table.blueTable {
-  font-family: Verdana, Geneva, sans-serif;
-  border: 2px solid #1B72A4;
-  background-color: #EEEEEE;
-  width: 100%;
-  text-align: center;
-  border-collapse: collapse;
+	border: 2px solid #EBA823;
+	background-color: #EEE7DB;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
 }
+
 table.blueTable td, table.blueTable th {
-  border: 2px solid #AAAAAA;
-  padding: 5px 2px;
+	border: 1px solid #AAAAAA;
+	padding: 3px 2px;
 }
+
 table.blueTable tbody td {
-  font-size: 15px;
+	font-size: 15px;
 }
+
 table.blueTable tr:nth-child(even) {
-  background: #F5F3F1;
+	background: #F5C8BF;
 }
+
 table.blueTable thead {
-  background: #899CA4;
-  background: -moz-linear-gradient(top, #a6b5bb 0%, #94a6ad 66%, #899CA4 100%);
-  background: -webkit-linear-gradient(top, #a6b5bb 0%, #94a6ad 66%, #899CA4 100%);
-  background: linear-gradient(to bottom, #a6b5bb 0%, #94a6ad 66%, #899CA4 100%);
-  border-bottom: 2px solid #444444;
+	background: #EBA823;
 }
+
 table.blueTable thead th {
-  font-size: 15px;
-  font-weight: bold;
-  color: #FFFEFE;
-  text-align: center;
-  border-left: 2px solid #3FA44F;
+	font-size: 19px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	border-left: 2px solid #EBA823;
 }
+
 table.blueTable thead th:first-child {
-  border-left: none;
+	border-left: none;
 }
 
 table.blueTable tfoot {
-  font-size: 9px;
-  font-weight: bold;
-  color: #98FF8C;
-  background: #D3E9F5;
-  background: -moz-linear-gradient(top, #deeef7 0%, #d7ebf6 66%, #D3E9F5 100%);
-  background: -webkit-linear-gradient(top, #deeef7 0%, #d7ebf6 66%, #D3E9F5 100%);
-  background: linear-gradient(to bottom, #deeef7 0%, #d7ebf6 66%, #D3E9F5 100%);
-  border-top: 2px solid #444444;
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: #EBA823;
 }
+
 table.blueTable tfoot td {
-  font-size: 9px;
+	font-size: 13px;
 }
+
 table.blueTable tfoot .links {
-  text-align: right;
+	text-align: right;
 }
-table.blueTable tfoot .links a{
-  display: inline-block;
-  background: #3FA44F;
-  color: #FFFFFF;
-  padding: 2px 8px;
-  border-radius: 5px;
+
+table.blueTable tfoot .links a {
+	display: inline-block;
+	background: #FFFFFF;
+	color: #3975ED;
+	padding: 2px 8px;
+	border-radius: 5px;
 }
 #container {
 	width: 960px;
@@ -103,20 +104,20 @@ table.blueTable tfoot .links a{
 	text-align: center;
 	text-decoration: none;
 	padding: 14px 16px;
-	font-size: 17px;
+	font-size: 20px;
 	transition: 0.3s;
 }
 /* Style the tab content */
 .tabcontent {
 	display: none;
-	background-color: rgb(0, 154, 200);
+	background-color: #EBA823;
 	padding: 6px 12px;
 	color: #fff;
 }
 
 ul.tab li.current {
-	background-color: rgb(0, 154, 200);
-	color: #222;
+	background-color: #EBA823;
+	color: #151515;
 }
 
 .tabcontent.current {
@@ -159,9 +160,10 @@ ul.tab li.current {
 	});
 </script>
 <!-- //end-smooth-scrolling -->
+<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
 </head>
 <body>
-	  <!-- header modal -->   
+      <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
       aria-hidden="true">
@@ -182,17 +184,28 @@ ul.tab li.current {
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원가입</span></li>                           
                            </ul>      
                            
+                           
                            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                               <div class="facts">
                                  <div class="register">
                                     <form action="member/login.sajo" method="post">         
                                        <input name="mid" placeholder="Id" type="text" required="">                  
-                                       <input name="mpassword" placeholder="Password" type="password" required="">                              
+                                       <input name="mpassword" placeholder="Password" type="password" required="">   
+                                       <span id="loginResult" style="width:150px;color:red"></span>                           
                                        <div class="sign-up"> 
-                                           <input type="submit" value="로그인"/>
-                                       </div>
-                                    </form>
-                                 </div> 
+                                           <input type="submit" value="로그인" id='loginto'/>
+                                       </div> 
+                                       
+                                    </form>   
+                                                                     
+                                     <c:if test='${not empty param.loginfail}'>
+                                        <script>
+                                          alert("가입된 회원이 아니거나 비밀번호가 틀렸습니다.");
+                                        </script>
+                                     </c:if>
+                                        
+                         
+                                 </div>  
                               </div> 
                            </div>
                         <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
@@ -272,16 +285,13 @@ ul.tab li.current {
                                        <div class="sign-up"> 
                                           <input type="submit" value="회원가입완료" disabled id='msubmit'/>  
                                        </div> 
-                                       ${sessionScope.loginresult}
-                                       
-                                       <c:if test="${sessionScope.insertresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원가입이 완료되었습니다. \n로그인해주세요");
-                                          </script> 
-                                          <%session.removeAttribute("insertresult"); %>   
-                                       </c:if>
+                                        
                                     </form>
-                                    
+                                    <c:if test='${not empty param.insertsuc}'>
+                                        <script>
+                                          alert("가입이 완료되었습니다. 로그인 후 이용해주세요");
+                                        </script>
+                                     </c:if> 
                                  </div>
                               </div>
                            </div>    
@@ -324,7 +334,7 @@ ul.tab li.current {
    
    <!-- 로그인 상태일때 뜨는 팝업 -->
    <!-- 로그인상태가 아니면 이 창이 뜨지않게 막아준다 -->
-   <%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
+   
    <%if(vo!=null){ %>
     <div class="modal fade" id="myModal77" tabindex="-1" role="dialog" aria-labelledby="myModal77"
       aria-hidden="true">
@@ -338,18 +348,19 @@ ul.tab li.current {
             <div class="modal-body modal-body-sub">
                <div class="row">
                   <div class="col-md-8 modal_body_left modal_body_left1" style="border-right: 1px dotted #C2C2C2;padding-right:3em;">
-                     <div class="sap_tabs">   
+                      <div class="sap_tabs">   
                         <div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
                            <ul>
-                              <li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
+                              <li class="resp-tab-item" aria-controls="tab_item-0"><a href='buylist.sajo'><span>구매내역</span></a></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
-                              <%if(vo.getMtype().equals("판매자")){%> 
+                              <%if(vo.getMtype().equals("판매자")){%>  
                                  <li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
-                                 <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
-                              <%}%>  
-                              <li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>                           
+                                 <li class="resp-tab-item" aria-controls="tab_item-4"><a href='sellList.sajo'>판매물품 조회</a></li>
+                                 <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li> 
+                              <%}%>     
+                              <li class="resp-tab-item" aria-controls="tab_item-5"><a href='member/logout.sajo'>로그아웃</a></li>                           
                            </ul>      
-                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
+                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0"> 
                               <div class="facts">
                                  <div class="register"> 
                                     
@@ -373,9 +384,11 @@ ul.tab li.current {
                                           </div>                                    
                                        <input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >                                       
                                        <br/>
+                                       <div id='sellerbutton'>
                                        <%if(vo.getMtype().equals("소비자")){%> 
                                           <div>판매자 등록하기</div><input type="checkbox" name="addseller" id='addseller'>
-                                       <%}%>   
+                                       <%}%>    
+                                       </div>
                                        <div id='sellerfrm' style="display: none;">                                  
                                           <input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text">
                                           <br/>은행선택   
@@ -403,28 +416,26 @@ ul.tab li.current {
                                        <br/>
                                        <br/> 
                                        <div class="modify" id='hiddenbybutton'> 
-                                          <input type="submit" value="정보수정하기"/>  
+                                          <input type="submit" value="정보수정하기" id='mmodify'/>  
                                        </div>    
                                     </form>   
-                                       <input type="button" value="회원탈퇴" id='dropoutmember'/>
-                                       <br/> 
-                                       
-                                    <c:if test="${sessionScope.updateresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원정보가 수정 되었습니다"); 
-                                          </script>
-                                          <%session.removeAttribute("updateresult"); %>    
-                                    </c:if>   
                                     
-                                    <form action='member/deleteMember.sajo' name='deleteMember'>
+                                    <c:if test='${not empty param.insertsuc}'>
+                                        <script>
+                                          alert("회원정보가 수정되었습니다.");
+                                        </script>
+                                     </c:if> 
+                                       <input type="button" value="회원탈퇴" id='dropoutmember'/>
+                                       <br/>                                     
+                                    <form action='member/deleteMember.sajo' name='deleteMember' id='mdelete'>
                                        <span id="idAttach"></span>   
-                                    </form>
-                                    <c:if test="${sessionScope.mdeleteresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원탈퇴 되셨습니다."); 
-                                          </script>
-                                          <%session.removeAttribute("mdeleteresult"); %>        
-                                    </c:if>   
+                                    </form>      
+                                    <c:if test='${not empty param.mdelete}'> 
+                                        <script>
+                                          alert("회원 탈퇴가 완료되었습니다.");
+                                        </script>
+                                     </c:if> 
+                                                         
                                  </div> 
                               </div> 
                            </div>
@@ -448,11 +459,13 @@ ul.tab li.current {
                                           <input type='password' name='checkpassword' id='checkpassword'></input>
                                           <input type="submit" value="확인" id='checkPass'/>
                                        </form> 
-                                       <c:if test="${sessionScope.sdeleteresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원탈퇴 되셨습니다."); 
-                                          </script>   
-                                    </c:if>    
+                                        
+                                    <c:if test='${not empty param.sdelete}'>
+                                        <script>
+                                          alert("셀러회원 탈퇴가 완료되었습니다. \n일반회원으로만 활동 가능합니다.");
+                                        </script>
+                                     </c:if> 
+                                        
                                  </div> 
                               </div>
                            </div>    
@@ -638,8 +651,8 @@ ul.tab li.current {
 					<form action="saveQna.sajo" method="post"> 
 						<input	type="hidden" name="mid" required=""value="<%=memberId%>">
 						<input 	type="text" name="qtitle" placeholder="Your Title" required="">
-						<input  type="text" name="qpassword" placeholder="Your Password"
-							required=""> <select type="text" name="qtype" required=""
+						<input  type="text" name="qpassword" placeholder="Your Password" required=""> 
+							<select type="text" name="qtype" required=""
 							class="qtype" id='qtype' style="width: 380px; height: 40px;">
 							<option value='상품문의'>상품문의</option>
 							<option value='배송문의'>배송문의</option>
@@ -648,9 +661,9 @@ ul.tab li.current {
 							<option value='회원서비스'>회원서비스</option>
 							<option value='기타문의'>기타문의</option>
 						</select> 
-						<textarea name="qcontent" required="">
+						<textarea name="qcontent"  placeholder="Your Content" required="">
 						</textarea>
-						<input type="submit" align="center" placeholder="Your Content" value="보내기">
+						<input type="submit" align="center"  value="보내기">
 					</form>
 					<br /> <br />
 
@@ -734,25 +747,26 @@ ul.tab li.current {
 							})
 						});
 					</script>
-					<table cellspacing="0" border="1" class="blueTable">
+					</div>
+					</div>
+					<table  border="1" class="blueTable" id="report">
 
 						<colgroup>
 							<col width="60">
 							<col width="100">
-							<col width="330">
 							<col width="100">
-							<col width="110">
+							<col width="100">
+							<col width="330">
 						</colgroup>
 						<thead class="blind">
 							<tr>
 								<th scope="col">글번호</th>
 								<th scope="col">구분</th>
-								<th scope="col">제목</th>
 								<th scope="col">작성자</th>
 								<th scope="col">등록일</th>
+								<th scope="col">글제목</th>
 							</tr>
 						</thead>
-
 <tfoot>
 <tr>
 <td colspan="5">
@@ -765,12 +779,19 @@ ul.tab li.current {
 							<tbody>
 							<tr>
 								<td>${qna.qno }</td>		
-								<td>${qna.qtype }</td>								
-								<td><a href="getQna.sajo?qno=${qna.qno }"
-									onclick="clickcr(this, 'not*g.list', 200012883, 1, event);">${qna.qtitle }
-								</a></td>
+								<td>${qna.qtype }</td>
 								<td>${qna.mid }</td>
-								<td >${qna.qdate }" </td>
+								<td>
+								<fmt:parseDate value='${qna.qdate}' var='qdate' pattern='yyyymmdd'/>
+								<fmt:formatDate pattern="yyyy-MM-dd" value="${qdate }" /></td>				
+								<td>${qna.qtitle }								
+									<c:if test="${qna.qanswer == null}"><a href="getQna.sajo?qno=${qna.qno }"
+									onclick="clickcr(this, 'not*g.list', 200012883, 1, event);">[답변달기] </a></c:if></td>
+									</tr>
+									<tr> 
+									<td></td><td></td><td></td><td></td>							
+									<td>${qna.qanswer }</td>											
+								
 								</tr>
 							</tbody>
 						</c:forEach>
@@ -778,7 +799,23 @@ ul.tab li.current {
 					</table>
 				</div>
 			</div>
-		</div>
+
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+							<script type="text/javascript">
+							$(document).ready(function(){
+
+						        $("#report tr:even").addClass("even");
+						        $("#report tr:not(.even)").hide(); 
+						        $("#report tr:first-child").show(); //열머리글 보여주기
+
+						        $("#report tr.even").click(function(){
+						            $(this).next("tr").toggle();
+						            $(this).find(".arrow").toggleClass("up");
+
+						        });
+						    });
+											
+							</script>
 	</div>
 	<!-- //mail -->
 

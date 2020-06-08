@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page import="com.sajo.domain.MemberVO"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +54,14 @@
 </script>
 <!-- //end-smooth-scrolling -->
 <style>
+.goodsbutton { position: relative; border:1px solid #ddd;}
+.goodsbutton img {display: block; width: 100%; height: 100%; }
+.blur {position:<x> absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.blur:hover {box-shadow: inset 0 0 250px rgba(0, 0, 0, 0.8); }
+
+
+
+
 table.redTable {
 	border: 2px solid #EBA823;
 	background-color: #EEE7DB;
@@ -113,9 +122,10 @@ table.redTable tfoot .links a {
 	border-radius: 5px;
 }
 </style>
+<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
 </head>
 <body>
-	  <!-- header modal -->   
+	       <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
       aria-hidden="true">
@@ -136,17 +146,28 @@ table.redTable tfoot .links a {
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원가입</span></li>                           
                            </ul>      
                            
+                           
                            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                               <div class="facts">
                                  <div class="register">
                                     <form action="member/login.sajo" method="post">         
                                        <input name="mid" placeholder="Id" type="text" required="">                  
-                                       <input name="mpassword" placeholder="Password" type="password" required="">                              
+                                       <input name="mpassword" placeholder="Password" type="password" required="">   
+                                       <span id="loginResult" style="width:150px;color:red"></span>                           
                                        <div class="sign-up"> 
-                                           <input type="submit" value="로그인"/>
-                                       </div>
-                                    </form>
-                                 </div> 
+                                           <input type="submit" value="로그인" id='loginto'/>
+                                       </div> 
+                                       
+                                    </form>   
+                                                                     
+                                     <c:if test='${not empty param.loginfail}'>
+                                        <script>
+                                          alert("가입된 회원이 아니거나 비밀번호가 틀렸습니다.");
+                                        </script>
+                                     </c:if>
+                                        
+                         
+                                 </div>  
                               </div> 
                            </div>
                         <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
@@ -226,16 +247,13 @@ table.redTable tfoot .links a {
                                        <div class="sign-up"> 
                                           <input type="submit" value="회원가입완료" disabled id='msubmit'/>  
                                        </div> 
-                                       ${sessionScope.loginresult}
-                                       
-                                       <c:if test="${sessionScope.insertresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원가입이 완료되었습니다. \n로그인해주세요");
-                                          </script> 
-                                          <%session.removeAttribute("insertresult"); %>   
-                                       </c:if>
+                                        
                                     </form>
-                                    
+                                    <c:if test='${not empty param.insertsuc}'>
+                                        <script>
+                                          alert("가입이 완료되었습니다. 로그인 후 이용해주세요");
+                                        </script>
+                                     </c:if> 
                                  </div>
                               </div>
                            </div>    
@@ -278,7 +296,7 @@ table.redTable tfoot .links a {
    
    <!-- 로그인 상태일때 뜨는 팝업 -->
    <!-- 로그인상태가 아니면 이 창이 뜨지않게 막아준다 -->
-   <%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
+   
    <%if(vo!=null){ %>
     <div class="modal fade" id="myModal77" tabindex="-1" role="dialog" aria-labelledby="myModal77"
       aria-hidden="true">
@@ -292,18 +310,19 @@ table.redTable tfoot .links a {
             <div class="modal-body modal-body-sub">
                <div class="row">
                   <div class="col-md-8 modal_body_left modal_body_left1" style="border-right: 1px dotted #C2C2C2;padding-right:3em;">
-                     <div class="sap_tabs">   
+                      <div class="sap_tabs">   
                         <div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
                            <ul>
-                              <li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
+                              <li class="resp-tab-item" aria-controls="tab_item-0"><a href='buylist.sajo'><span>구매내역</span></a></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
-                              <%if(vo.getMtype().equals("판매자")){%> 
+                              <%if(vo.getMtype().equals("판매자")){%>  
                                  <li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
-                                 <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
-                              <%}%>  
-                              <li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>                           
+                                 <li class="resp-tab-item" aria-controls="tab_item-4"><a href='sellList.sajo'>판매물품 조회</a></li>
+                                 <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li> 
+                              <%}%>     
+                              <li class="resp-tab-item" aria-controls="tab_item-5"><a href='member/logout.sajo'>로그아웃</a></li>                           
                            </ul>      
-                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
+                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0"> 
                               <div class="facts">
                                  <div class="register"> 
                                     
@@ -327,9 +346,11 @@ table.redTable tfoot .links a {
                                           </div>                                    
                                        <input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >                                       
                                        <br/>
+                                       <div id='sellerbutton'>
                                        <%if(vo.getMtype().equals("소비자")){%> 
                                           <div>판매자 등록하기</div><input type="checkbox" name="addseller" id='addseller'>
-                                       <%}%>   
+                                       <%}%>    
+                                       </div>
                                        <div id='sellerfrm' style="display: none;">                                  
                                           <input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text">
                                           <br/>은행선택   
@@ -357,28 +378,26 @@ table.redTable tfoot .links a {
                                        <br/>
                                        <br/> 
                                        <div class="modify" id='hiddenbybutton'> 
-                                          <input type="submit" value="정보수정하기"/>  
+                                          <input type="submit" value="정보수정하기" id='mmodify'/>  
                                        </div>    
                                     </form>   
-                                       <input type="button" value="회원탈퇴" id='dropoutmember'/>
-                                       <br/> 
-                                       
-                                    <c:if test="${sessionScope.updateresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원정보가 수정 되었습니다"); 
-                                          </script>
-                                          <%session.removeAttribute("updateresult"); %>    
-                                    </c:if>   
                                     
-                                    <form action='member/deleteMember.sajo' name='deleteMember'>
+                                    <c:if test='${not empty param.insertsuc}'>
+                                        <script>
+                                          alert("회원정보가 수정되었습니다.");
+                                        </script>
+                                     </c:if> 
+                                       <input type="button" value="회원탈퇴" id='dropoutmember'/>
+                                       <br/>                                     
+                                    <form action='member/deleteMember.sajo' name='deleteMember' id='mdelete'>
                                        <span id="idAttach"></span>   
-                                    </form>
-                                    <c:if test="${sessionScope.mdeleteresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원탈퇴 되셨습니다."); 
-                                          </script>
-                                          <%session.removeAttribute("mdeleteresult"); %>        
-                                    </c:if>   
+                                    </form>      
+                                    <c:if test='${not empty param.mdelete}'> 
+                                        <script>
+                                          alert("회원 탈퇴가 완료되었습니다.");
+                                        </script>
+                                     </c:if> 
+                                                         
                                  </div> 
                               </div> 
                            </div>
@@ -402,11 +421,13 @@ table.redTable tfoot .links a {
                                           <input type='password' name='checkpassword' id='checkpassword'></input>
                                           <input type="submit" value="확인" id='checkPass'/>
                                        </form> 
-                                       <c:if test="${sessionScope.sdeleteresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원탈퇴 되셨습니다."); 
-                                          </script>   
-                                    </c:if>    
+                                        
+                                    <c:if test='${not empty param.sdelete}'>
+                                        <script>
+                                          alert("셀러회원 탈퇴가 완료되었습니다. \n일반회원으로만 활동 가능합니다.");
+                                        </script>
+                                     </c:if> 
+                                        
                                  </div> 
                               </div>
                            </div>    
@@ -584,7 +605,13 @@ table.redTable tfoot .links a {
 	<!-- short codes -->
 	<div class="typo codes">
 		<div class="container">
-		<h3 class="agileits-title">Sell List</h3>			
+		<h3 class="agileits-title">Sell List</h3>
+		<div class="col-sm-2 goodsbutton">	
+		<a href="gregist.sajo"><img src="resources/images/goodsbutton.jpg" alt=" " class="img-responsive" /> </a>
+			<div class="blur"></div>
+			</div>	
+
+			<div class="col-sm-10 right">	
 			<table class="redTable">
 				<thead>
 					<tr>
@@ -595,9 +622,23 @@ table.redTable tfoot .links a {
 						<th>구매수단</th>
 					</tr>
 				</thead>
-				<tfoot>
+				
+				<tbody>
+				<c:forEach items="${List }" var="getSellList">
 					<tr>
-						<td colspan="3">
+						<td>
+							<fmt:parseDate value='${getSellList.bdate }' var='bdate' pattern='yyyymmdd'/>
+							<fmt:formatDate pattern="yyyy-MM-dd" value="${bdate }" /></td>
+						<td>${getSellList.gname }</td>
+						<td>${getSellList.mid }</td>
+						<td>${getSellList.bcount }</td>
+						<td>${getSellList.pay }</td>
+					</tr>
+					</c:forEach>
+					</tbody>
+					<tfoot>
+					<tr>
+						<td colspan="5">
 							<div class="links">
 								<a href="#">&laquo;</a> <a class="active" href="#">1</a> <a
 									href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a>
@@ -605,21 +646,10 @@ table.redTable tfoot .links a {
 						</td>
 					</tr>
 				</tfoot>
-				<tbody>
-				<c:forEach items="${sellList }" var="sellList">
-					<tr>
-						<td>${sellList.bdate }</td>
-						<td>${sellList.gname }</td>
-						<td>${sellList.mid }</td>
-						<td>${sellList.bcount }</td>
-						<td>${sellList.pay }</td>
-					</tr>
-					</c:forEach>
-					</tbody>
 			</table>
 		</div>
 	</div>
-
+</div>
 	<!-- footer -->
 	<div class="footer">
 		<div class="container">

@@ -3,6 +3,8 @@ package com.sajo.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,18 +42,26 @@ public class QnaController {
 	}
 	//QNA 세부 보여주기
 	@RequestMapping("/getQna.sajo")
-	public String getQna(QnaVO vo, Model model) {
+	public String getQna(QnaVO vo, HttpSession session, Model model) {
 		QnaVO result = qnaService.getQna(vo);
 		model.addAttribute("qna",result);
 		System.out.println("--------------------"+result.getQcontent());
-		return "board/getQna";
+		if(result.getQanswer()!=null) {
+		String message = "답변은 다음과 같습니다^^ : "+ result.getQanswer();
+		session.setAttribute("showAnswer", message);
+	}	return "board/getQna";
 	}
 	//QNA 삭제
 	@RequestMapping("/deleteQna.sajo")
-	public String deleteQn(String qno,String qpassword) {
+	public String deleteQna(String qno,String qpassword) {
+		try {
 		int no=Integer.parseInt(qno);
 		int pass=Integer.parseInt(qpassword);
 		qnaService.deleteQna(no,pass);
+		}catch(NumberFormatException e) {
+			
+		}
+		
 		return "redirect:/mail.sajo";
 	}
 	//답변 달기

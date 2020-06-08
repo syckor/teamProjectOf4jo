@@ -11,9 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class HomeController {
 	
@@ -28,8 +28,11 @@ public class HomeController {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
 		String formattedDate = dateFormat.format(date);
+		
+		// lombok slf4j
+		log.info("slf4j lombok :{}", formattedDate);
+		
 		
 		model.addAttribute("serverTime", formattedDate );
 		

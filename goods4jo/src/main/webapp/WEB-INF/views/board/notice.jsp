@@ -25,6 +25,25 @@
 
 
 </script>
+<style>
+
+table.report{
+	border: 2px solid #EBA823;
+	background-color: #EEE7DB;
+	text-align: center;
+	border-collapse: collapse;
+	font-family:Arial, Helvetica, Sans-Serif;
+	
+}
+ 	#report{width: 1150px;}
+        #report td { none repeat-x scroll center left; color:#848484; padding:7px 15px; }
+        #report tr.odd td {background:#EEE7DB; border: 2px solid #F7F8E0;  color: #848484; text-align:center;}      
+        #report tr.even td { background:#F7D358; border: 2px solid #F7D358;color:#151515; cursor:pointer; }
+        #report div.arrow { background:transparent url(arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
+        #report div.up { background-position:0px 0px;}
+
+
+</style>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
 <link href="resources/css/bootstrap.css" rel="stylesheet"
@@ -60,9 +79,10 @@
 	});
 </script>
 <!-- //end-smooth-scrolling -->
+<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
 </head>
 <body>
-	  <!-- header modal -->   
+	       <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
       aria-hidden="true">
@@ -83,17 +103,28 @@
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원가입</span></li>                           
                            </ul>      
                            
+                           
                            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                               <div class="facts">
                                  <div class="register">
                                     <form action="member/login.sajo" method="post">         
                                        <input name="mid" placeholder="Id" type="text" required="">                  
-                                       <input name="mpassword" placeholder="Password" type="password" required="">                              
+                                       <input name="mpassword" placeholder="Password" type="password" required="">   
+                                       <span id="loginResult" style="width:150px;color:red"></span>                           
                                        <div class="sign-up"> 
-                                           <input type="submit" value="로그인"/>
-                                       </div>
-                                    </form>
-                                 </div> 
+                                           <input type="submit" value="로그인" id='loginto'/>
+                                       </div> 
+                                       
+                                    </form>   
+                                                                     
+                                     <c:if test='${not empty param.loginfail}'>
+                                        <script>
+                                          alert("가입된 회원이 아니거나 비밀번호가 틀렸습니다.");
+                                        </script>
+                                     </c:if>
+                                        
+                         
+                                 </div>  
                               </div> 
                            </div>
                         <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
@@ -173,16 +204,13 @@
                                        <div class="sign-up"> 
                                           <input type="submit" value="회원가입완료" disabled id='msubmit'/>  
                                        </div> 
-                                       ${sessionScope.loginresult}
-                                       
-                                       <c:if test="${sessionScope.insertresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원가입이 완료되었습니다. \n로그인해주세요");
-                                          </script> 
-                                          <%session.removeAttribute("insertresult"); %>   
-                                       </c:if>
+                                        
                                     </form>
-                                    
+                                    <c:if test='${not empty param.insertsuc}'>
+                                        <script>
+                                          alert("가입이 완료되었습니다. 로그인 후 이용해주세요");
+                                        </script>
+                                     </c:if> 
                                  </div>
                               </div>
                            </div>    
@@ -225,7 +253,7 @@
    
    <!-- 로그인 상태일때 뜨는 팝업 -->
    <!-- 로그인상태가 아니면 이 창이 뜨지않게 막아준다 -->
-   <%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
+   
    <%if(vo!=null){ %>
     <div class="modal fade" id="myModal77" tabindex="-1" role="dialog" aria-labelledby="myModal77"
       aria-hidden="true">
@@ -239,18 +267,19 @@
             <div class="modal-body modal-body-sub">
                <div class="row">
                   <div class="col-md-8 modal_body_left modal_body_left1" style="border-right: 1px dotted #C2C2C2;padding-right:3em;">
-                     <div class="sap_tabs">   
+                      <div class="sap_tabs">   
                         <div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
                            <ul>
-                              <li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
+                              <li class="resp-tab-item" aria-controls="tab_item-0"><a href='buylist.sajo'><span>구매내역</span></a></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
-                              <%if(vo.getMtype().equals("판매자")){%> 
+                              <%if(vo.getMtype().equals("판매자")){%>  
                                  <li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
-                                 <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
-                              <%}%>  
-                              <li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>                           
+                                 <li class="resp-tab-item" aria-controls="tab_item-4"><a href='sellList.sajo'>판매물품 조회</a></li>
+                                 <li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li> 
+                              <%}%>     
+                              <li class="resp-tab-item" aria-controls="tab_item-5"><a href='member/logout.sajo'>로그아웃</a></li>                           
                            </ul>      
-                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
+                           <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0"> 
                               <div class="facts">
                                  <div class="register"> 
                                     
@@ -274,9 +303,11 @@
                                           </div>                                    
                                        <input placeholder="전화번호 (-)없이 입력" name="mtel" type="text" id='modifytel' value='<%=vo.getMtel()%>' required="" >                                       
                                        <br/>
+                                       <div id='sellerbutton'>
                                        <%if(vo.getMtype().equals("소비자")){%> 
                                           <div>판매자 등록하기</div><input type="checkbox" name="addseller" id='addseller'>
-                                       <%}%>   
+                                       <%}%>    
+                                       </div>
                                        <div id='sellerfrm' style="display: none;">                                  
                                           <input placeholder="판매자명(회사이름)" name="sname" id='sname1' type="text">
                                           <br/>은행선택   
@@ -304,28 +335,26 @@
                                        <br/>
                                        <br/> 
                                        <div class="modify" id='hiddenbybutton'> 
-                                          <input type="submit" value="정보수정하기"/>  
+                                          <input type="submit" value="정보수정하기" id='mmodify'/>  
                                        </div>    
                                     </form>   
-                                       <input type="button" value="회원탈퇴" id='dropoutmember'/>
-                                       <br/> 
-                                       
-                                    <c:if test="${sessionScope.updateresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원정보가 수정 되었습니다"); 
-                                          </script>
-                                          <%session.removeAttribute("updateresult"); %>    
-                                    </c:if>   
                                     
-                                    <form action='member/deleteMember.sajo' name='deleteMember'>
+                                    <c:if test='${not empty param.insertsuc}'>
+                                        <script>
+                                          alert("회원정보가 수정되었습니다.");
+                                        </script>
+                                     </c:if> 
+                                       <input type="button" value="회원탈퇴" id='dropoutmember'/>
+                                       <br/>                                     
+                                    <form action='member/deleteMember.sajo' name='deleteMember' id='mdelete'>
                                        <span id="idAttach"></span>   
-                                    </form>
-                                    <c:if test="${sessionScope.mdeleteresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원탈퇴 되셨습니다."); 
-                                          </script>
-                                          <%session.removeAttribute("mdeleteresult"); %>        
-                                    </c:if>   
+                                    </form>      
+                                    <c:if test='${not empty param.mdelete}'> 
+                                        <script>
+                                          alert("회원 탈퇴가 완료되었습니다.");
+                                        </script>
+                                     </c:if> 
+                                                         
                                  </div> 
                               </div> 
                            </div>
@@ -349,11 +378,13 @@
                                           <input type='password' name='checkpassword' id='checkpassword'></input>
                                           <input type="submit" value="확인" id='checkPass'/>
                                        </form> 
-                                       <c:if test="${sessionScope.sdeleteresult != null}">                                      
-                                          <script type="text/javascript"> 
-                                             alert("회원탈퇴 되셨습니다."); 
-                                          </script>   
-                                    </c:if>    
+                                        
+                                    <c:if test='${not empty param.sdelete}'>
+                                        <script>
+                                          alert("셀러회원 탈퇴가 완료되었습니다. \n일반회원으로만 활동 가능합니다.");
+                                        </script>
+                                     </c:if> 
+                                        
                                  </div> 
                               </div>
                            </div>    
@@ -532,33 +563,45 @@
 		<div class="container" id="hoTab">
 			<div class="row">
 				<div class="main_choose sections">
-					<div class="col-sm-12">
 						<div class="head_title">
-							<h3>굿즈사조의</h3>
+						<br />
 							<br />
-							<h3>다양한 소식을 알려드려요!</h3>
+							<h1>굿즈사조의</h1>
+							<br />
+							<h1>다양한 소식을 알려드려요!</h1>
+							<br />
+						
+							<table id= "report">
 							<c:forEach items="${notice }" var="notice">
-							<dl class="accordion">
-							<dt>${notice.ntitle } </dt>
-							<dd>${notice.ncontent } </dd>
-							</dl>
+							<tr>
+	
+							<td><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></td><td style="font-size:30px;">${notice.ntitle } </td>							
+							</tr>
+							<tr>
+							<td></td><td style="font-size:20px;">${notice.ncontent } </td>							
+							</tr>
 							</c:forEach>
+							</table>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<script src="resources/js/easyResponsiveTabs.js"
-								type="text/javascript"></script>
+
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 							<script type="text/javascript">
-								$(document).ready(function() {
-									$('#hoTab').easyResponsiveTabs({
-										type : ' accordion', //Types: default, vertical, accordion           
-										width : 'auto', //auto or any width like 600px
-										fit : true
-									// 100% fit in a container
-									});
-								});
+							$(document).ready(function(){
+
+						        $("#report tr:even").addClass("even");
+						        $("#report tr:not(.even)").hide(); 
+						        $("#report tr:first-child").show(); //열머리글 보여주기
+
+						        $("#report tr.even").click(function(){
+						            $(this).next("tr").toggle();
+						            $(this).find(".arrow").toggleClass("up");
+
+						        });
+						    });
+											
 							</script>
 	</section>
 
