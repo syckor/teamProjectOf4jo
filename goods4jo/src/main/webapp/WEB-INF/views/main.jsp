@@ -33,6 +33,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="resources/js/jquery.min.js"></script>  
 <script src='resources/js/member.js' type="text/javascript"></script>
 
+ 
 <script src='resources/js/jquery.validate.min.js' type="text/javascript"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -251,15 +252,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			 				<div class="sap_tabs">	
 								<div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
 									<ul>
-										<li class="resp-tab-item" aria-controls="tab_item-0"><span>구매내역</span></li>
+										<li class="resp-tab-item" aria-controls="tab_item-0"><a href='buylist.sajo'><span>구매내역</span></a></li>
 										<li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보 수정하기</span></li>
-										<%if(vo.getMtype().equals("판매자")){%> 
+										<%if(vo.getMtype().equals("판매자")){%>  
 											<li class="resp-tab-item" aria-controls="tab_item-2"><a href='gregist.sajo'>판매물품 등록</a></li>
-											<li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li>
-										<%}%>  
-										<li class="resp-tab-item" aria-controls="tab_item-4"><a href='member/logout.sajo'>로그아웃</a></li>									
+											<li class="resp-tab-item" aria-controls="tab_item-4"><a href='sellList.sajo'>판매물품 조회</a></li>
+											<li class="resp-tab-item" aria-controls="tab_item-3"><span>사업자등록 철회</span></li> 
+										<%}%>     
+										<li class="resp-tab-item" aria-controls="tab_item-5"><a href='member/logout.sajo'>로그아웃</a></li>									
 									</ul>		
-									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0">
+									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-0"> 
 										<div class="facts">
 											<div class="register"> 
 												
