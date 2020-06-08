@@ -7,14 +7,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html, body{
     font-size: 100%;
 	background:	#fff;
-	font-family:'Arial', sans-serif;
+	font-family:'Open Sans', sans-serif;
 }
 p{
 	margin:0;
 	font-size:14px;
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Arial';
+	font-family: 'Glegoo', serif;
 	margin:0;
 }
 ul,label{
@@ -30,6 +30,10 @@ input[type="submit"],.panel-body ul li a,.checkout-right-basket a,.additional_in
 	-webkit-transition:.5s ease-in-out;
 	-moz-transition:.5s ease-in-out;
 	-o-transition:.5s ease-in-out;
+}
+.buylistcss{  
+	color:#000000; 
+	
 }
 .header {
     padding: 2em 0 0;
@@ -129,6 +133,8 @@ label.icon-search {
 .search_box{
 	visibility: hidden;
 }
+
+
 .search_box:checked~.search_form{
     width: 500px;
     height: 62px;
@@ -508,7 +514,7 @@ li.w3pages .dropdown-menu > li > a:hover{
 	text-align: left;
 }
 .banner.banner1{
-	background:url(../images/bg1.jpg) no-repeat center;
+	background:url(../images/maingoods5.jpg) no-repeat center;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -516,7 +522,7 @@ li.w3pages .dropdown-menu > li > a:hover{
 	-ms-background-size:cover; 
 }
 .banner.banner2{
-	background:url(../images/bg2.jpg) no-repeat center;
+	background:url(../images/maingoods5.jpg) no-repeat center;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -1500,6 +1506,35 @@ div#horizontalTab ul {
 .register input[type="submit"]:hover{
 	background:#3975ed;
 }
+
+#dropoutmember{
+	outline:none;
+	border:none;
+	background:#212121;
+	padding:10px 0;
+	color:#fff;
+	width:40%;
+	font-size:1em;
+	text-transform:uppercase;
+	margin:2em 0 0;
+}
+#dropoutmember:hover{
+	background:#3975ed; 
+}
+#cancelout{
+	outline:none;
+	border:none;
+	background:#212121;
+	padding:10px 0;
+	color:#fff;
+	width:40%;
+	font-size:1em;
+	text-transform:uppercase;
+	margin:2em 0 0;
+}
+#cancelout{
+	background:#3975ed; 
+} 
 div#OR {
     height: 30px;
     width: 30px;

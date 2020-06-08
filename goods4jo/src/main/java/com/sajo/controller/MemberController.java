@@ -201,7 +201,8 @@ public class MemberController {
 			 result2 = memberService.changeMtype(vo);			 
 		} 
 		if(result1==1&result2==1) {
-			mv.addObject("sdelete", "sdelete");
+			mv.addObject("sdelete", "sdelete"); 
+			session.removeAttribute("seller");
 			
 		}
 		mv.setViewName("redirect:/main.sajo"); 
