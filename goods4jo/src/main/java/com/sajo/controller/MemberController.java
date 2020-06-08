@@ -160,8 +160,8 @@ public class MemberController {
 			session.setAttribute("member", result);
 			if(result.getMtype().equals("판매자")) {  //회원타입이 판매자라면
 				SellerVO rsSeller = memberService.getSellerInfo(svo); //세션에 셀러정보 저장
-				session.setAttribute("member", rsSeller);
-				 
+				session.setAttribute("seller", rsSeller); 
+				  
 			}     
 		} 	
 		mv.setViewName("redirect:/main.sajo"); 
