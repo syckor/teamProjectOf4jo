@@ -534,9 +534,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    </div>
 <!--    navigation 끝 -->
 	<!-- banner -->
-	<div class="banner">
+<!-- 	<div class="banner"> -->
 	
-	</div> 
+<!-- 	</div>  -->
 	<!-- //banner --> 
 	<!-- banner-bottom -->
 
@@ -545,270 +545,300 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<h2>Main</h2>
 			<div class="w3agile_special_deals_grids">
 
-			<div class="col-md-5 wthree_banner_bottom_left">
-				<div class="container"> 
-		 
-    	<br/><br/><br/>
-    	<!-- 1.캐러셀 슬라이드 지정 -->
-        <div id="carousel-example-generic" class='carousel slide'>
-        	
-            <!-- Indicators -->
-            <ol class='carousel-indicators'>
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2" ></li>
-               <li data-target="#carousel-example-generic" data-slide-to="3" ></li>
-            </ol>
-             
-             <!-- Carousel items -->
-             <div class="carousel-inner" role="listbox">
-                <div class="item active"> 
-                   <img src="resources/images/maingoods1.jpg" alt="First slide">
-                </div>
-                <div class="item">
-                   <img src="resources/images/maingoods2.jpg" alt="Second slide">               
-                </div>
-                <div class="item"> 
-                   <img src="resources/images/maingoods3.jpg" alt="Third slide">                 
-                </div>
-                <div class="item"> 
-                   <img src="resources/images/maingoods4.jpg" alt="Fourth slide">                 
-                </div>
-             </div>
-             
-            <!-- Controls -->
-              <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="icon-prev"></span>
-              </a>
-              <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="icon-next"></span>
-              </a>
-          </div>
-  </div>
-  <script>
+				<div class="col-md-5 wthree_banner_bottom_left">
+					<div class="container">
+
+						<br /> <br /> <br />
+						<!-- 1.캐러셀 슬라이드 지정 -->
+						<div id="carousel-example-generic" class='carousel slide'>
+
+							<!-- Indicators -->
+							<ol class='carousel-indicators'>
+								<li data-target="#carousel-example-generic" data-slide-to="0"
+									class="active"></li>
+								<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+								<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+								<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+							</ol>
+
+							<!-- Carousel items -->
+							<div class="carousel-inner" role="listbox">
+								<div class="item active">
+									<img src="resources/images/maingoods1.jpg" alt="First slide">
+								</div>
+								<div class="item">
+									<img src="resources/images/maingoods2.jpg" alt="Second slide">
+								</div>
+								<div class="item">
+									<img src="resources/images/maingoods3.jpg" alt="Third slide">
+								</div>
+								<div class="item">
+									<img src="resources/images/maingoods4.jpg" alt="Fourth slide">
+								</div>
+							</div>
+
+							<!-- Controls -->
+							<a class="left carousel-control" href="#carousel-example-generic"
+								data-slide="prev"> <span class="icon-prev"></span>
+							</a> <a class="right carousel-control"
+								href="#carousel-example-generic" data-slide="next"> <span
+								class="icon-next"></span>
+							</a>
+						</div>
+					</div>
+					<script>
       $('.carousel').carousel({
     	  interval:2000 
     	  
       })
     </script>
+				</div>
 			</div>
 			<div class="col-md-7 wthree_banner_bottom_right">
-				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+				<div class="bs-example bs-example-tabs" role="tabpanel"
+					data-example-id="togglable-tabs">
 					<ul id="myTab" class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home">Kakao Friends</a></li>
-						<li role="presentation"><a href="#audio" role="tab" id="audio-tab" data-toggle="tab" aria-controls="audio">Line Friends</a></li>
-						<li role="presentation"><a href="#video" role="tab" id="video-tab" data-toggle="tab" aria-controls="video">General</a></li>
+						<li role="presentation" class="active"><a href="#home"
+							id="home-tab" role="tab" data-toggle="tab" aria-controls="home">Kakao
+								Friends</a></li>
+						<li role="presentation"><a href="#audio" role="tab"
+							id="audio-tab" data-toggle="tab" aria-controls="audio">Line
+								Friends</a></li>
+						<li role="presentation"><a href="#video" role="tab"
+							id="video-tab" data-toggle="tab" aria-controls="video">General</a></li>
 					</ul>
-<!-- 					카카오탭 -->
+					<!-- 					카카오탭 -->
 					<div id="myTabContent" class="tab-content">
-						<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
+						<div role="tabpanel" class="tab-pane fade active in" id="home"
+							aria-labelledby="home-tab">
 							<div class="agile_ecommerce_tabs">
 								<c:forEach items="${kakao }" var="kakao" varStatus="status">
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<c:choose>
-											<c:when test="${status.count eq 1}">
-												<c:forEach items="${k_file1 }" var="k_file">
-													<c:if test="${not empty k_file }">
-													<img src="resources/upload/${k_file}" width="500px" height="500px" alt=" "class="img-responsive">
-													</c:if>
-												</c:forEach>
-												<c:forEach items="${k_src1 }" var="k_src">
-													<img src="${k_src}" alt=" " class="img-responsive">
-												</c:forEach>
-											</c:when>
-											<c:when test="${status.count eq 2}">
-												<c:forEach items="${k_file2 }" var="k_file">
-												<c:if test="${not empty k_file }">
-													<img src="resources/upload/${k_file}" alt=" "class="img-responsive">
-												</c:if>
-												</c:forEach>
-												<c:forEach items="${k_src2 }" var="k_src">
-													<img src="${k_src}" alt=" " class="img-responsive">
-												</c:forEach>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${k_file3 }" var="k_file">
-												<c:if test="${not empty k_file }">
-													<img src="resources/upload/${k_file}" alt=" "class="img-responsive">
+									<div class="col-md-4 agile_ecommerce_tab_left">
+										<div class="hs-wrapper">
+											<c:choose>
+												<c:when test="${status.count eq 1}">
+													<c:forEach items="${k_file1 }" var="k_file">
+														<c:if test="${not empty k_file }">
+															<img src="resources/upload/${k_file}" width="500px"
+																height="500px" alt=" " class="img-responsive">
 														</c:if>
-												</c:forEach>
-												<c:forEach items="${k_src3 }" var="k_src">
-													<img src="${k_src}" alt=" " class="img-responsive">
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
-									</div> 
-									<h5><a href="detailGoods.sajo?gid=${kakao.gid }">${kakao.gname }</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><i class="item_price">${kakao.price }원</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="${kakao.gname }" /> 
-											<input type="hidden" name="amount" value="${kakao.price }" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>  
-									</div>
-								</div>
-								</c:forEach>
-						<div class="clearfix"> </div>
-						</div>
-						</div>
-<!-- 						라인 탭 -->
-						<div role="tabpanel" class="tab-pane fade" id="audio" aria-labelledby="audio-tab">
-							<div class="agile_ecommerce_tabs">
-							<c:forEach items="${line }" var="line" varStatus="status">
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<c:choose>
-											<c:when test="${status.count eq 1}">
-												<c:forEach items="${l_file1 }" var="l_file">
-												<c:if test="${not empty l_file }">
-													<img src="resources/upload/${l_file}" alt=" "
-														class="img-responsive">
-														</c:if>
-												</c:forEach>
-												<c:forEach items="${l_src1}" var="l_src">
-													<img src="${l_src}" alt=" " class="img-responsive">
 													</c:forEach>
-											</c:when>
-											<c:when test="${status.count eq 2}">
-												<c:forEach items="${l_file2 }" var="l_file">
-												<c:if test="${not empty l_file }">
-													<img src="resources/upload/${l_file}" alt=" "
-														class="img-responsive">
+													<c:forEach items="${k_src1 }" var="k_src">
+														<img src="${k_src}" alt=" " class="img-responsive">
+													</c:forEach>
+												</c:when>
+												<c:when test="${status.count eq 2}">
+													<c:forEach items="${k_file2 }" var="k_file">
+														<c:if test="${not empty k_file }">
+															<img src="resources/upload/${k_file}" alt=" "
+																class="img-responsive">
 														</c:if>
-												</c:forEach>
-												<c:forEach items="${l_src2 }" var="l_src">
-													<img src="${l_src}" alt=" " class="img-responsive">
-												</c:forEach>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${l_file3 }" var="l_file">
-												<c:if test="${not empty l_file }">
-													<img src="resources/upload/${l_file}" alt=" "
-														class="img-responsive">
+													</c:forEach>
+													<c:forEach items="${k_src2 }" var="k_src">
+														<img src="${k_src}" alt=" " class="img-responsive">
+													</c:forEach>
+												</c:when>
+												<c:otherwise>
+													<c:forEach items="${k_file3 }" var="k_file">
+														<c:if test="${not empty k_file }">
+															<img src="resources/upload/${k_file}" alt=" "
+																class="img-responsive">
 														</c:if>
-												</c:forEach>
-												<c:forEach items="${l_src3 }" var="l_src">
-														<c:if test="${not empty l_src }">
-													<img src="${l_src}" alt=" " class="img-responsive">
-													</c:if>
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
+													</c:forEach>
+													<c:forEach items="${k_src3 }" var="k_src">
+														<img src="${k_src}" alt=" " class="img-responsive">
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
+										</div>
+										<h5>
+											<a href="detailGoods.sajo?gid=${kakao.gid }">${kakao.gname }</a>
+										</h5>
+										<div class="simpleCart_shelfItem">
+											<p>
+												<i class="item_price">${kakao.price }원</i>
+											</p>
+											<form action="#" method="post">
+												<input type="hidden" name="cmd" value="_cart" /> <input
+													type="hidden" name="add" value="1" /> <input type="hidden"
+													name="w3ls_item" value="${kakao.gname }" /> <input
+													type="hidden" name="amount" value="${kakao.price }" />
+												<button type="submit" class="w3ls-cart">Add to cart</button>
+											</form>
+										</div>
 									</div>
-									<h5><a href="detailGoods.sajo?gid=${line.gid }">${line.gname }</a></h5>
-										<p><i class="item_price">${line.price }</i></p>
-									<div class="simpleCart_shelfItem">
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="${line.gname }" /> 
-											<input type="hidden" name="amount" value="${line.price }" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
 								</c:forEach>
-							<div class="clearfix"> </div>
+								<div class="clearfix"></div>
+							</div>
 						</div>
-						</div>
-<!-- 								일반 -->
-						<div role="tabpanel" class="tab-pane fade" id="video" aria-labelledby="video-tab">
+						<!-- 						라인 탭 -->
+						<div role="tabpanel" class="tab-pane fade" id="audio"
+							aria-labelledby="audio-tab">
 							<div class="agile_ecommerce_tabs">
-							<c:forEach items="${general }" var="general" varStatus="status">
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<c:choose>
-											<c:when test="${status.count eq 1}">
-												<c:forEach items="${g_file1 }" var="g_file">
-												<c:if test="${not empty g_file }">
-													<img src="resources/upload/${g_file}" alt=" "class="img-responsive">
+								<c:forEach items="${line }" var="line" varStatus="status">
+									<div class="col-md-4 agile_ecommerce_tab_left">
+										<div class="hs-wrapper">
+											<c:choose>
+												<c:when test="${status.count eq 1}">
+													<c:forEach items="${l_file1 }" var="l_file">
+														<c:if test="${not empty l_file }">
+															<img src="resources/upload/${l_file}" alt=" "
+																class="img-responsive">
 														</c:if>
-												</c:forEach>
-												<c:forEach items="${g_src1 }" var="g_src">
-													<c:if test="${not empty g_src }">
-													<img src="${g_src}" alt=" " class="img-responsive">
-													</c:if>
-												</c:forEach>
-											</c:when>
-											<c:when test="${status.count eq 2}">
-												<c:forEach items="${g_file2 }" var="g_file">
-												<c:if test="${not empty g_file }">
-													<img src="resources/upload/${g_file}" alt=" "class="img-responsive">
+													</c:forEach>
+													<c:forEach items="${l_src1}" var="l_src">
+														<img src="${l_src}" alt=" " class="img-responsive">
+													</c:forEach>
+												</c:when>
+												<c:when test="${status.count eq 2}">
+													<c:forEach items="${l_file2 }" var="l_file">
+														<c:if test="${not empty l_file }">
+															<img src="resources/upload/${l_file}" alt=" "
+																class="img-responsive">
 														</c:if>
-												</c:forEach>
-												<c:forEach items="${g_src2 }" var="g_src">
-												<c:if test="${not empty g_src }">
-													<img src="${g_src}" alt=" " class="img-responsive">
-													</c:if>
-												</c:forEach>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${g_file3 }" var="g_file">
-												<c:if test="${not empty g_file }">
-													<img src="resources/upload/${g_file}" alt=" "class="img-responsive">
+													</c:forEach>
+													<c:forEach items="${l_src2 }" var="l_src">
+														<img src="${l_src}" alt=" " class="img-responsive">
+													</c:forEach>
+												</c:when>
+												<c:otherwise>
+													<c:forEach items="${l_file3 }" var="l_file">
+														<c:if test="${not empty l_file }">
+															<img src="resources/upload/${l_file}" alt=" "
+																class="img-responsive">
 														</c:if>
-												</c:forEach>
-												<c:forEach items="${g_src3 }" var="g_src">
-												<c:if test="${not empty g_src }">
-													<img src="${g_src}" alt=" " class="img-responsive">
-													</c:if>
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
+													</c:forEach>
+													<c:forEach items="${l_src3 }" var="l_src">
+														<c:if test="${not empty l_src }">
+															<img src="${l_src}" alt=" " class="img-responsive">
+														</c:if>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
+										</div>
+										<h5>
+											<a href="detailGoods.sajo?gid=${line.gid }">${line.gname }</a>
+										</h5>
+										<p>
+											<i class="item_price">${line.price }</i>
+										</p>
+										<div class="simpleCart_shelfItem">
+											<form action="#" method="post">
+												<input type="hidden" name="cmd" value="_cart" /> <input
+													type="hidden" name="add" value="1" /> <input type="hidden"
+													name="w3ls_item" value="${line.gname }" /> <input
+													type="hidden" name="amount" value="${line.price }" />
+												<button type="submit" class="w3ls-cart">Add to cart</button>
+											</form>
+										</div>
 									</div>
-									<h5><a href="detailGoods.sajo?gid=${general.gid }">${general.gname }</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><i class="item_price">${general.price }</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="${general.gname }" /> 
-											<input type="hidden" name="amount" value="${general.price }" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
 								</c:forEach>
-								<div class="clearfix">
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- 								일반 -->
+						<div role="tabpanel" class="tab-pane fade" id="video"
+							aria-labelledby="video-tab">
+							<div class="agile_ecommerce_tabs">
+								<c:forEach items="${general }" var="general" varStatus="status">
+									<div class="col-md-4 agile_ecommerce_tab_left">
+										<div class="hs-wrapper">
+											<c:choose>
+												<c:when test="${status.count eq 1}">
+													<c:forEach items="${g_file1 }" var="g_file">
+														<c:if test="${not empty g_file }">
+															<img src="resources/upload/${g_file}" alt=" "
+																class="img-responsive">
+														</c:if>
+													</c:forEach>
+													<c:forEach items="${g_src1 }" var="g_src">
+														<c:if test="${not empty g_src }">
+															<img src="${g_src}" alt=" " class="img-responsive">
+														</c:if>
+													</c:forEach>
+												</c:when>
+												<c:when test="${status.count eq 2}">
+													<c:forEach items="${g_file2 }" var="g_file">
+														<c:if test="${not empty g_file }">
+															<img src="resources/upload/${g_file}" alt=" "
+																class="img-responsive">
+														</c:if>
+													</c:forEach>
+													<c:forEach items="${g_src2 }" var="g_src">
+														<c:if test="${not empty g_src }">
+															<img src="${g_src}" alt=" " class="img-responsive">
+														</c:if>
+													</c:forEach>
+												</c:when>
+												<c:otherwise>
+													<c:forEach items="${g_file3 }" var="g_file">
+														<c:if test="${not empty g_file }">
+															<img src="resources/upload/${g_file}" alt=" "
+																class="img-responsive">
+														</c:if>
+													</c:forEach>
+													<c:forEach items="${g_src3 }" var="g_src">
+														<c:if test="${not empty g_src }">
+															<img src="${g_src}" alt=" " class="img-responsive">
+														</c:if>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
+										</div>
+										<h5>
+											<a href="detailGoods.sajo?gid=${general.gid }">${general.gname }</a>
+										</h5>
+										<div class="simpleCart_shelfItem">
+											<p>
+												<i class="item_price">${general.price }</i>
+											</p>
+											<form action="#" method="post">
+												<input type="hidden" name="cmd" value="_cart" /> <input
+													type="hidden" name="add" value="1" /> <input type="hidden"
+													name="w3ls_item" value="${general.gname }" /> <input
+													type="hidden" name="amount" value="${general.price }" />
+												<button type="submit" class="w3ls-cart">Add to cart</button>
+											</form>
+										</div>
+									</div>
+								</c:forEach>
+								<div class="clearfix"></div>
 							</div>
 						</div>
 					</div>
-					</div>
 				</div>
-			<div class="clearfix"> </div>
+				<div class="clearfix"></div>
+			</div>
 		</div>
 	</div>
-	<!-- top-brands -->
+
+		<!-- top-brands -->
 	<div class="top-brands">
 		<div class="container">
 			<h3>Top Brands</h3>
 			<div class="sliderfig">
 				<ul id="flexiselDemo1">			
 					<li>
-						<img src="resources/images/tb1.jpg" alt=" " class="img-responsive" />
+						<img src="resources/images/kakaofriends.jpg" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="resources/images/tb2.jpg" alt=" " class="img-responsive" />
+						<img src="resources/images/linefriends.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="resources/images/tb3.jpg" alt=" " class="img-responsive" />
+						<img src="resources/images/1300k.jpg" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="resources/images/tb4.jpg" alt=" " class="img-responsive" />
+						<img src="resources/images/babosarang.jpg" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="images/tb5.jpg" alt=" " class="img-responsive" />
-					</li>
+						<img src="resources/images/7sung.jpg" alt=" " class="img-responsive" />
+					</li>									
 				</ul>
 			</div>
 			<script type="text/javascript">
 					$(window).load(function() {
 						$("#flexiselDemo1").flexisel({
-							visibleItems: 4,
+							visibleItems: 5,
 							animationSpeed: 1000,
 							autoPlay: true,
 							autoPlaySpeed: 3000,    		
@@ -825,7 +855,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								},
 								tablet: { 
 									changePoint:768,
-									visibleItems: 3
+									visibleItems: 0
 								}
 							}
 						});

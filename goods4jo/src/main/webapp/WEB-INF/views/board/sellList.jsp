@@ -8,8 +8,6 @@
 <html lang="en">
 <head>
 
-
-
 <title>Goods4jo, All thing of goods!!!</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
