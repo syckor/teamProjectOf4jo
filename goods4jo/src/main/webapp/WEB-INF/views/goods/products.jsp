@@ -451,8 +451,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <input class="search_box" type="checkbox" id="search_box">
             <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
             <div class="search_form">
-               <form action="#" method="post">
-                  <input type="text" name="Search" placeholder="Search...">
+               <form action="search.sajo" method="post">
+                  <input type="text" name="keyword" placeholder="Search...">
                   <input type="submit" value="Send">
                </form>
             </div>
@@ -645,21 +645,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 					</div>
 					<div class="w3ls_mobiles_grid_left_grid">
-						<h3>Color</h3>
-						<div class="w3ls_mobiles_grid_left_grid_sub">
-							<div class="ecommerce_color">
-								<ul>
-									<li><a href="#"><i></i> Red(5)</a></li>
-									<li><a href="#"><i></i> Brown(2)</a></li>
-									<li><a href="#"><i></i> Yellow(3)</a></li>
-									<li><a href="#"><i></i> Violet(6)</a></li>
-									<li><a href="#"><i></i> Orange(2)</a></li>
-									<li><a href="#"><i></i> Blue(1)</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="w3ls_mobiles_grid_left_grid">
 						<h3>Price</h3>
 						<div class="w3ls_mobiles_grid_left_grid_sub">
 							<div class="ecommerce_color ecommerce_size">
@@ -698,14 +683,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<h3>Kakao</h3>
 						</div>
 						<div class="w3ls_mobiles_grid_right_grid2_right">
-							<select name="select_item" class="select_item">
-								<option selected="selected">Default sorting</option>
-								<option>Sort by popularity</option>
-								<option>Sort by average rating</option>
-								<option>Sort by newness</option>
-								<option>Sort by price: low to high</option>
-								<option>Sort by price: high to low</option>
-							</select>
+							<a href="#">최신순|</a>
+							<a href="#">리뷰많은순|</a>
+							<a href="#">가격낮은순|</a>
+							<a href="#">가격높은순</a>
 						</div>
 						<div class="clearfix"></div>
 					</div>

@@ -30,7 +30,7 @@ public class GoodsDAOImpl implements GoodsDAO{
 
 	@Override
 	public GoodsVO selectByGid(String gid) {
-		System.out.println("===> GoodsMapper selectByGid 호출");
+		System.out.println("===> GoodsMapper selectByGid 호출"+gid);
 		return mybatis.selectOne("GoodsDAO.selectByGid",gid);
 	}
 
@@ -67,12 +67,31 @@ public class GoodsDAOImpl implements GoodsDAO{
 	}
 
 	@Override
-	public List<HashMap<String, Object>> getBrendList(String brend, int firstRow, int endRow) {
+	public List<HashMap<String, Object>> getBrendList(String brend,String sort, int firstRow, int endRow) {
+		System.out.println("===> GoodsMapper getBrendList 호출");
 		HashMap m=new HashMap();
 		m.put("brend",brend);
+		if(sort !=null)
+		{m.put("sort",sort);}
+		System.out.println(sort+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		m.put("first",firstRow);
 		m.put("end", endRow);
 		return mybatis.selectList("GoodsDAO.getBrendList",m);
+	}
+
+	@Override
+	public int getSearchTotal(String keyword) {
+		System.out.println("===> GoodsMapper getSearchTotal 호출");
+		return mybatis.selectOne("GoodsDAO.getSearchTotal", keyword);
+	}
+
+	@Override
+	public List<HashMap> getSearchList(String keyword, int firstRow, int endRow) {
+		HashMap m=new HashMap();
+		m.put("keyword",keyword);
+		m.put("first",firstRow);
+		m.put("end", endRow);
+		return mybatis.selectList("GoodsDAO.getSearchList",m);
 	}
 	
 	

@@ -51,6 +51,17 @@
 	<select id="getBrendList" resultType="hashmap" parameterType="hashmap">
 	select gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1 
 	from (select rownum as rnum,g.gid gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1 from goods g,image i  where g.gid=i.gid and g.gid like #{brend}||'%') 
-	where <![CDATA[rnum>=#{first} and rnum<=#{end}]]>
+	where <![CDATA[rnum>=#{first} and rnum<=#{end}]]> 
+	
 	</select>
-</mapper>
+	
+	<select id="getSearchTotal" resultType="int" parameterType="String">
+	select count(*) from goods where gname like '%'||#{keyword}||'%'
+	</select>
+	
+	<select id="getSearchList" resultType="hashmap" parameterType="hashmap">
+	select g.gid gid,g.gname gname,g.state state,g.price price,g.option1 option1,g.option2 option2 ,g.delivery delivery,g.dcost dcost,g.dtime dtime,g.count count,g.detail detail ,g.sid sid ,g.gdate gdate ,i.source1 source1,i.fname1 fname1
+	from (select rownum as rnum,gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate from goods  where gname like '%'||#{keyword}||'%') g,image i
+	where  g.gid=i.gid and <![CDATA[rnum>=#{first} and rnum<=#{end}]]>
+	</select>
+	</mapper>

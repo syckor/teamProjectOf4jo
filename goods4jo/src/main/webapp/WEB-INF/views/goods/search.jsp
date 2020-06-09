@@ -491,7 +491,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="row">
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
-                                 <h6><a href="kakao.sajo">Kakao</a></h6>
+                                 <h6>Kakao</h6>
                                  <li><a href="products.sajo">라이언</a></li>
                                  <li><a href="products.sajo">어피치<span>New</span></a></li> 
                                  <li><a href="products.sajo">무지</li>
@@ -646,6 +646,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 					</div>
 					<div class="w3ls_mobiles_grid_left_grid">
+						<h3>Color</h3>
+						<div class="w3ls_mobiles_grid_left_grid_sub">
+							<div class="ecommerce_color">
+								<ul>
+									<li><a href="#"><i></i> Red(5)</a></li>
+									<li><a href="#"><i></i> Brown(2)</a></li>
+									<li><a href="#"><i></i> Yellow(3)</a></li>
+									<li><a href="#"><i></i> Violet(6)</a></li>
+									<li><a href="#"><i></i> Orange(2)</a></li>
+									<li><a href="#"><i></i> Blue(1)</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="w3ls_mobiles_grid_left_grid">
 						<h3>Price</h3>
 						<div class="w3ls_mobiles_grid_left_grid_sub">
 							<div class="ecommerce_color ecommerce_size">
@@ -670,53 +685,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 					</div>
 					<div class="clearfix"></div>
+
 					<!-- 상품 보여주기 -->
-					<h1>Kakao Friends</h1><br/>
-					<div class="w3ls_mobiles_grid_right_grid2_right">
-							<a href='kakao.sajo?sort=gdate'>최신순|</a>
-							<a href="#">리뷰많은순|</a>
-							<a href="#">가격낮은순|</a>
-							<a href="#">가격높은순</a>
-						</div>
-						<br/>
+					<h1>Search Goods</h1><br/>
+					</div>
+				<form>
 				<c:forEach items="${list }" var="goods">
-				<div class="w3ls_mobiles_grid_right_grid3">
-							<div
-								class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
-								<div class="agile_ecommerce_tab_left mobiles_grid">
-										<c:if test="${empty goods.FNAME1 }"><a><img src="${goods.SOURCE1 }" alt="" width="300px" height="300px"></a></c:if>
-										<c:if test="${empty goods.SOURCE1 }"><a><img src="resources/upload/${goods.FNAME1 }" alt="" width="300px" height="300px"></a></c:if>
-									<h5>
-										<a href="detailGoods.sajo?gid=${goods.GID }">${goods.GNAME}</a>
-									</h5>
-									<div class="simpleCart_shelfItem">
-										<p>
-											<i class="item_price">${goods.PRICE }원</i>
-										</p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" /> <input
-												type="hidden" name="add" value="1" /> <input type="hidden"
-												name="w3ls_item" value="${goods.GNAME }" /> <input
-												type="hidden" name="amount" value="${goods.PRICE}" />
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-<!-- 									<div class="mobiles_grid_pos"> -->
-<!-- 																			<h6>New</h6> -->
-<!-- 									</div> -->
-								</div>
-							</div>
-							</div>
+				<h4><a href="detailGoods.sajo?gid=${goods.GID }">${goods.GNAME }</a></h4><br/>
+				<c:if test="${empty goods.FNAME1 }"><a><img src="${goods.SOURCE1 }" alt="" width="300px" height="300px"></a></c:if>
+				<c:if test="${empty goods.SOURCE1 }"><a><img src="resources/upload/${goods.FNAME1 }" alt="" width="300px" height="300px"></a></c:if><br/>
+				<h4>${goods.PRICE }</h4>
 				</c:forEach>
-				<hr/>
-				</div>
-				
+				</form>
 <!-- 					페이징 부분 -->
 					<c:forEach var="i" begin="1" end="${total }">
-					<h2><a href="kakao.sajo?pNum=${i }">[${i }]</a></h2>
+					<a href="search.sajo?keyword=${keyword }&pNum=${i }">[${i }]</a>
 					</c:forEach>
 <!-- 					col-md-8 부분 닫기 -->
 					</div>
+					
+					
+					
+					
+					
+					
+					
+					
 		   <!-- footer -->
    <div class="footer">
       <div class="container">

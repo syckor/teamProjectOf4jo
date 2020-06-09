@@ -13,7 +13,7 @@ import com.sajo.domain.GoodsVO;
 public class GoodsServiceImpl  implements GoodsService{
 	private int totalRecCount;		// 전체 레코드 수	
 	private int pageTotalCount;		// 전체 페이지 수
-	private int countPerPage = 3;	// 한페이지당 레코드 수
+	private int countPerPage = 6;	// 한페이지당 레코드 수
 	
 	
 	@Autowired
@@ -70,7 +70,7 @@ public class GoodsServiceImpl  implements GoodsService{
 
 
 	@Override
-	public List<HashMap<String, Object>> getBrendList(String brend,String pNum) {
+	public List<HashMap<String, Object>> getBrendList(String brend,String pNum,String sort) {
 
 		int pageNum=1;
 		if(pNum != null) pageNum = Integer.parseInt(pNum);
@@ -79,7 +79,31 @@ public class GoodsServiceImpl  implements GoodsService{
 		int endRow=pageNum*countPerPage;
 		
 		// 페이지 당 레코드를 검색해 온다면
-		List <HashMap<String, Object>> List = dao.getBrendList(brend,firstRow, endRow);		
+		List <HashMap<String, Object>> List = dao.getBrendList(brend,sort,firstRow, endRow);		
+		return List;
+	}
+
+
+	@Override
+	public int getSearchTotal(String keyword) {
+		totalRecCount=dao.getSearchTotal(keyword);
+		pageTotalCount=totalRecCount/countPerPage;
+		if(totalRecCount % countPerPage>0) pageTotalCount++;
+		return pageTotalCount;
+	}
+
+
+	@Override
+	public List<HashMap> getSearchList(String keyword, String pNum) {
+
+		int pageNum=1;
+		if(pNum != null) pageNum = Integer.parseInt(pNum);
+		
+		int firstRow = (pageNum-1)*countPerPage+1;
+		int endRow=pageNum*countPerPage;
+		
+		// 페이지 당 레코드를 검색해 온다면
+		List <HashMap> List = dao.getSearchList(keyword,firstRow, endRow);		
 		return List;
 	}
 

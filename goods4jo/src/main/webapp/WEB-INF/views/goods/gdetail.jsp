@@ -485,7 +485,7 @@ ul.tab li.current {
             <input class="search_box" type="checkbox" id="search_box">
             <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
             <div class="search_form">
-               <form action="#" method="post">
+               <form action="search.sajo" method="post">
                   <input type="text" name="Search" placeholder="Search...">
                   <input type="submit" value="Send">
                </form>
@@ -527,12 +527,12 @@ ul.tab li.current {
                                  <h6><a href="kakao.sajo">Kakao</a></h6>
                                  <li><a href="products.sajo">라이언</a></li>
                                  <li><a href="products.sajo">어피치<span>New</span></a></li> 
-                                 <li><a href="products.sajo">무지</li>
-                                 <li><a href="products.sajo">프로도</li>
+                                 <li><a href="products.sajo">무지</a></li>
+                                 <li><a href="products.sajo">프로도</a></li>
                                  <li><a href="products.sajo">네오<span>New</span></a></li>
-                                 <li><a href="products.sajo">튜브</li>
-                                 <li><a href="products.sajo">제이지</li>
-                                 <li><a href="products.sajo">콘</li>
+                                 <li><a href="products.sajo">튜브</a></li>
+                                 <li><a href="products.sajo">제이지</a></li>
+                                 <li><a href="products.sajo">콘</a></li>
                               </ul>
                            </div>
                            <div class="col-sm-3">
@@ -609,29 +609,44 @@ ul.tab li.current {
 							<a id="goods_name">${goods.gname}</a><br/>
 							<a id="goods_price">${goods.price }원</a><br/><hr/> 
 							<h2>${goods.detail }</h2>
-							<div class="rating">
-								<div class="rating-left">
-									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
+<!-- 							<div class="rating"> -->
+<!-- 								<div class="rating-left"> -->
+<!-- 									<img src="resources/images/star-.png" alt=" " class="img-responsive" /> -->
+<!-- 								</div> -->
+<!-- 								<div class="rating-left"> -->
+<!-- 									<img src="resources/images/star-.png" alt=" " class="img-responsive" /> -->
+<!-- 								</div> -->
+<!-- 								<div class="rating-left"> -->
+<!-- 									<img src="resources/images/star-.png" alt=" " class="img-responsive" /> -->
+<!-- 								</div> -->
+<!-- 								<div class="rating-left"> -->
+<!-- 									<img src="resources/images/star.png" alt=" " class="img-responsive" /> -->
+<!-- 								</div> -->
+<!-- 								<div class="rating-left"> -->
+<!-- 									<img src="resources/images/star.png" alt=" " class="img-responsive" /> -->
+<!-- 								</div> -->
+<!-- 								</div> -->
+								<div class="select_option1"> 
+								<h4>옵션 1  </h4>
+								<select name="option1" >
+								<c:forEach items="${option1 }" var ="option">
+								<option>${option }</option>
+								</c:forEach>
+								</select>
 								</div>
-								<div class="rating-left">
-									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
+								<div class="select_option2">
+								<h4>옵션 2  </h4>
+								<select name="option2">
+								<c:forEach items="${option2 }" var ="option">
+								<option>${option }</option>
+								</c:forEach>
+								</select>
 								</div>
-								<div class="rating-left">
-									<img src="resources/images/star-.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="rating-left">
-									<img src="resources/images/star.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="rating-left">
-									<img src="resources/images/star.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="clearfix"> </div>
-							</div><hr/>
+							<hr/>
 							<div class="DELIVERY">
 							<a id="delivery" class="not_import">택배사 : ${goods.delivery }</a><br/>
 							<a id="dcost" class="not_import">택배비용 : ${goods.dcost }</a><br/>
-							<a id="dtime" class="not_import">에상 배송시간 : ${goods.dtime }</a><br/><hr/>
-							
+							<a id="dtime" class="not_import">에상 배송기간 : ${goods.dtime }</a><br/><hr/>
 							</div>
 							<div class="modal_body_right_cart simpleCart_shelfItem">
 								<form action="#" method="post">
@@ -642,7 +657,8 @@ ul.tab li.current {
 									<button id="add_cart" type="submit" class="w3ls-cart" style="width= 100;height=100px ;">Add to cart</button>
 								</form>
 							</div> 
-					</div>	
+							</div>
+					</div>
 			</div>
 		</div>
 <!-- 		상품 상세보기  -->
