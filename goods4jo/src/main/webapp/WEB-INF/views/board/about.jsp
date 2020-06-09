@@ -426,7 +426,7 @@
             <input class="search_box" type="checkbox" id="search_box">
             <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
             <div class="search_form">
-               <form action="#" method="post">
+               <form action="search.sajo" method="post">
                   <input type="text" name="Search" placeholder="Search...">
                   <input type="submit" value="Send">
                </form>
@@ -460,38 +460,38 @@
                   <li><a href="main.sajo">Home</a></li>   
                   <!-- Mega Menu -->
                   <li class="dropdown">
-                     <a href="products1.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
+                     <a href="products.sajo" class="dropdown-toggle act" data-toggle="dropdown" >Goods <b class="caret"></b></a>
                      <ul class="dropdown-menu multi-column columns-3">
                         <div class="row">
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
-                                 <h6>Kakao</h6>
-                                 <li><a href="products1.sajo">라이언</a></li>
-                                 <li><a href="products1.sajo">어피치<span>New</span></a></li> 
-                                 <li><a href="products1.sajo">무지</li>
-                                 <li><a href="products1.sajo">프로도</li>
-                                 <li><a href="products1.sajo">네오<span>New</span></a></li>
-                                 <li><a href="products1.sajo">튜브</li>
-                                 <li><a href="products1.sajo">제이지</li>
-                                 <li><a href="products1.sajo">콘</li>
+                                 <h6><a href="kakao.sajo">Kakao</a></h6>
+                                 <li><a href="products.sajo">라이언</a></li>
+                                 <li><a href="products.sajo">어피치<span>New</span></a></li> 
+                                 <li><a href="products.sajo">무지</li>
+                                 <li><a href="products.sajo">프로도</li>
+                                 <li><a href="products.sajo">네오<span>New</span></a></li>
+                                 <li><a href="products.sajo">튜브</li>
+                                 <li><a href="products.sajo">제이지</li>
+                                 <li><a href="products.sajo">콘</li>
                               </ul>
                            </div>
                            <div class="col-sm-3">
                               <ul class="multi-column-dropdown">
-                                 <h6>Line</h6>
-                                 <li><a href="products1.sajo">브라운&프렌즈</a></li>
-                                 <li><a href="products1.sajo">BT21</a></li>
-                                 <li><a href="">브롤스타즈 <span>New</span></a></li>
-                        <li><a href="gregist.sajo"><i>상품 등록</i></a></li>
+                                 <h6><a href="line.sajo">Line</a></h6>
+                                 <li><a href="products.sajo">브라운&프렌즈</a></li>
+                                 <li><a href="products.sajo">BT21</a></li>
+                                 <li><a href="products.sajo">브롤스타즈 <span>New</span></a></li>
+<!--                         <li><a href="gregist.sajo"><i>상품 등록</i></a></li> -->
                               </ul>
                            </div>
                            <div class="col-sm-2">
                               <ul class="multi-column-dropdown">
-                                 <h6>General</h6>
-                                 <li><a href="">인형</a></li>
-                                 <li><a href="">생필품</a></li>
-                                 <li><a href="">의류</a></li>
-                                 <li><a href="">그 외</a></li>
+                                 <h6><a href="general.sajo">General</a></h6>
+                                 <li><a href="products.sajo">인형</a></li>
+                                 <li><a href="products.sajo">생필품</a></li>
+                                 <li><a href="products.sajo">의류</a></li>
+                                 <li><a href="products.sajo">그 외</a></li>
                               </ul>
                            </div>
                            <div class="col-sm-4">
@@ -511,7 +511,7 @@
          </nav>
       </div>
    </div>
-   <!-- //navigation -->
+<!--    navigation 끝 -->
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">

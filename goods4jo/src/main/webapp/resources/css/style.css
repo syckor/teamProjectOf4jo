@@ -569,7 +569,7 @@ li.w3pages .dropdown-menu > li > a:hover{
 }
 /*-- //banner --*/
 /*-- banner-bottom --*/
-.banner-bottom,.team,.checkout,.additional_info,.team-bottom,.single,.mail,.special-deals,.about,.faq,.typo,.new-products,.banner-bottom1,.top-brands,.mobiles,.w3l_related_products{
+.banner-bottom,.team,.checkout,.additional_info,.team-bottom,.single,.mail,.special-deals,.about,.faq,.typo,.new-products,.banner-bottom1,.top-brands, .pengsu, .mobiles,.w3l_related_products{
 	padding:5em 0;
 }
 .modal-body iframe {
@@ -904,14 +904,14 @@ li.w3pages .dropdown-menu > li > a:hover{
 }
 /*-- //banner-bottom --*/
 /*-- special-deals --*/
-.special-deals h2,.new-products h3,.top-brands h3,.w3l_related_products h3,.team h3,.mail h3,h3.agileits-title{
+.special-deals h2,.new-products h3,.top-brands h3,.pengsu h3,.w3l_related_products h3,.team h3,.mail h3,h3.agileits-title{
 	font-size:2em;
 	color:#212121;
 	position:relative;
 	padding-bottom:1em;
 	text-align:center;
 }
-.special-deals h2:before,.new-products h3:before,.top-brands h3:before,.w3l_related_products h3:before,.team h3:before,.mail h3:before,h3.agileits-title:before{
+.special-deals h2:before,.new-products h3:before,.top-brands h3:before,.pengsu h3:before,.w3l_related_products h3:before,.team h3:before,.mail h3:before,h3.agileits-title:before{
 	content: '';
     position: absolute;
     top: 27%;
@@ -920,7 +920,7 @@ li.w3pages .dropdown-menu > li > a:hover{
     height: 1px;
     width: 10%;
 }
-.special-deals h2:after,.new-products h3:after,.top-brands h3:after,.w3l_related_products h3:after,.team h3:after,.mail h3:after,h3.agileits-title:after{
+.special-deals h2:after,.new-products h3:after,.top-brands h3:after, .pengsu h3:after,.w3l_related_products h3:after,.team h3:after,.mail h3:after,h3.agileits-title:after{
 	content: '';
     position: absolute;
     bottom: 79%;
@@ -1518,6 +1518,49 @@ div#horizontalTab ul {
 	text-transform:uppercase;
 	margin:2em 0 0;
 }
+
+.goodsbutton{
+	background:#F7F2E0;
+}
+
+#chart{
+    margin: auto;
+    outline:none;
+	border-radius:50%;
+	background:#eba823;
+	padding:5px 0;
+	color:#fff;
+	width:100px;
+	font-size:1.5em;
+	margin:1em 0 0;	
+	text-align:center;
+	line-height:100px;
+	align :center;
+	margin-bottom: 20px;
+}
+
+#chart:hover{
+	background:#3975ed; 
+}
+
+#input{
+	margin: auto;
+	outline:none;
+	border-radius:50%;
+	background:#eba823;
+	padding:5px 0;
+	color:#fff;
+	width:100px;
+	font-size:1.5em;
+	margin:1em 0 0;	
+	text-align:center;
+	line-height:100px;
+}
+
+#input:hover{
+	background:#3975ed; 
+}
+
 #dropoutmember:hover{
 	background:#3975ed; 
 }
@@ -3122,7 +3165,7 @@ td.invert-image a img {
 	.agileinfo_banner_bottom1_grid_right h4 {
 		width: 30%;
 	}
-	.banner-bottom, .team, .checkout, .additional_info, .team-bottom, .single, .mail, .special-deals, .about, .faq, .typo, .new-products, .banner-bottom1, .top-brands, .mobiles, .w3l_related_products {
+	.banner-bottom, .team, .checkout, .additional_info, .team-bottom, .single, .mail, .special-deals, .pengsu, .about, .faq, .typo, .new-products, .banner-bottom1, .top-brands, .pengsu, .mobiles, .w3l_related_products {
 		padding: 4em 0;
 	}
 	.footer-copy-pos {
@@ -3195,13 +3238,13 @@ td.invert-image a img {
 	.w3agile_special_deals_grid_left_grid1 {
 		padding: 1em 1em 4.3em;
 	}
-	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before,h3.agileits-title:before{
+	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .pengsu h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before,h3.agileits-title:before{
 		left: 22%;
 		width: 15%;
 	}
-	.special-deals h2:after, .new-products h3:after, .top-brands h3:after, .w3l_related_products h3:after, .team h3:after, .mail h3:after,h3.agileits-title:after{
+	.special-deals h2:after, .new-products h3:after, .top-brands h3:after, .pengsu h3:after, .w3l_related_products h3:after, .team h3:after, .mail h3:after,h3.agileits-title:after{
 		right: 40%;
-		width: 13%;
+		width: 0%;
 	}
 	.agileinfo_new_products_grids {
 		margin: 2em 0 0;
@@ -3358,13 +3401,13 @@ td.invert-image a img {
 	.agileinfo_banner_bottom1_grid_right {
 		padding: 8.5em 0 0;
 	}
-	.banner-bottom, .team, .checkout, .additional_info, .team-bottom, .single, .mail, .special-deals, .about, .faq, .typo, .new-products, .banner-bottom1, .top-brands, .mobiles, .w3l_related_products {
+	.banner-bottom, .team, .checkout, .additional_info, .team-bottom, .single, .mail, .special-deals, .pengsu, .about, .faq, .typo, .new-products, .banner-bottom1, .top-brands, .pengsu, .mobiles, .w3l_related_products {
 		padding: 3em 0;
 	}
-	.special-deals h2, .new-products h3, .top-brands h3, .w3l_related_products h3, .team h3, .mail h3, h3.agileits-title{
+	.special-deals h2, .new-products h3, .top-brands h3, .pengsu h3, .w3l_related_products h3, .team h3, .mail h3, h3.agileits-title{
 		font-size: 1.8em;
 	}
-	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before, h3.agileits-title:before{
+	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .pengsu h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before, h3.agileits-title:before{
 		left: 18%;
 	}
 	.w3agile_special_deals_grids {
@@ -3945,13 +3988,13 @@ td.invert-image a img {
 	.agileinfo_banner_bottom1_grid_left {
 		background-position: -85px 0px;
 	}
-	.special-deals h2, .new-products h3, .top-brands h3, .w3l_related_products h3, .team h3, .mail h3, h3.agileits-title{
+	.special-deals h2, .new-products h3, .top-brands h3, .pengsu h3, .w3l_related_products h3, .team h3, .mail h3, h3.agileits-title{
 		font-size: 1.6em;
 	}
 	.w3agile_special_deals_grid_right {
 		width: 72%;
 	}
-	.banner-bottom, .team, .checkout, .additional_info, .team-bottom, .single, .mail, .special-deals, .about, .faq, .typo, .new-products, .banner-bottom1, .top-brands, .mobiles, .w3l_related_products {
+	.banner-bottom, .team, .checkout, .additional_info, .team-bottom, .single, .mail, .special-deals, .about, .faq, .typo, .new-products, .banner-bottom1, .top-brands, .pengsu, .mobiles, .w3l_related_products {
 		padding: 2em 0;
 	} 
 	.w3_hs_bottom_sub ul {
@@ -4041,7 +4084,7 @@ td.invert-image a img {
 	.w3ls_about_grid_right {
 		margin: 1em 0 0;
 	}
-	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before , h3.agileits-title:before{
+	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .pengsu h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before , h3.agileits-title:before{
 		left:18%;
 	}
 	.mail h3:before {
@@ -4258,11 +4301,11 @@ td.invert-image a img {
 	.agileinfo_banner_bottom1_grid_right h4 {
 		width: 30%;
 	}
-	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before, h3.agileits-title:before{
+	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .pengsu h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before, h3.agileits-title:before{
 		left: 7%;
 		width: 20%;
 	}
-	.special-deals h2:after, .new-products h3:after, .top-brands h3:after, .w3l_related_products h3:after, .team h3:after, .mail h3:after, h3.agileits-title:after{
+	.special-deals h2:after, .new-products h3:after, .top-brands h3:after, .pengsu h3:after, .w3l_related_products h3:after, .team h3:after, .mail h3:after, h3.agileits-title:after{
 		right: 36%;
 		width: 20%;
 	}
@@ -4564,7 +4607,7 @@ td.invert-image a img {
 	.w3agile_special_deals_grid_right_pos h4, .w3agile_special_deals_grid_right_pos h5 {
 		font-size: 1.5em;
 	}
-	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before, h3.agileits-title:before {
+	.special-deals h2:before, .new-products h3:before, .top-brands h3:before, .pengsu h3:before, .w3l_related_products h3:before, .team h3:before, .mail h3:before, h3.agileits-title:before {
 		left: 1%;
 	}
 	.w3agile_newsletter_right input[type="submit"] {
@@ -4664,7 +4707,7 @@ td.invert-image a img {
 	.banner.banner1, .banner.banner2, .banner.banner3{
 		min-height: 150px;
 	}
-	.special-deals h2, .new-products h3, .top-brands h3, .w3l_related_products h3, .team h3, .mail h3, h3.agileits-title {
+	.special-deals h2, .new-products h3, .top-brands h3, .pengsu h3, .w3l_related_products h3, .team h3, .mail h3, h3.agileits-title {
 		font-size: 1.4em;
 	}
 	.color-quality-left {
