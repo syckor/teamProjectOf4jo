@@ -34,9 +34,16 @@
 	<delete id="sellerDelete" parameterType="member">
 		DELETE FROM seller WHERE mid=#{mid} 		
 	</delete>      
-	<delete id="memberDelete" parameterType="member">
-		DELETE FROM member WHERE mid=#{mid} 		
-	</delete>      
+	<update id="setNullSeller" parameterType="member">
+		update seller SET mid=null where mid=#{mid};  		
+	</update>      
+	<update id="setNullBuy" parameterType="member">
+		update buy SET mid=null where mid=#{mid}; 		
+	</update>      
+	<update id="setNullQna" parameterType="member">
+		update qna SET mid=null where mid=#{mid}; 		
+	</update>       
+    
 	
 	<update id="changeMtype" parameterType="member">
 		UPDATE MEMBER SET MTYPE='소비자' WHERE mid=#{mid}		 

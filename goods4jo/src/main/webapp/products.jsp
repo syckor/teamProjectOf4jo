@@ -304,21 +304,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 					</div>
 					<div class="w3ls_mobiles_grid_left_grid">
-						<h3>Color</h3>
-						<div class="w3ls_mobiles_grid_left_grid_sub">
-							<div class="ecommerce_color">
-								<ul>
-									<li><a href="#"><i></i> Red(5)</a></li>
-									<li><a href="#"><i></i> Brown(2)</a></li>
-									<li><a href="#"><i></i> Yellow(3)</a></li>
-									<li><a href="#"><i></i> Violet(6)</a></li>
-									<li><a href="#"><i></i> Orange(2)</a></li>
-									<li><a href="#"><i></i> Blue(1)</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="w3ls_mobiles_grid_left_grid">
 						<h3>Price</h3>
 						<div class="w3ls_mobiles_grid_left_grid_sub">
 							<div class="ecommerce_color ecommerce_size">

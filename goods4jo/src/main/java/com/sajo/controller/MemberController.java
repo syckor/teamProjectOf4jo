@@ -198,8 +198,9 @@ public class MemberController {
 		//비밀번호 비교 
 		if(pass.equals(vo.getMpassword())){
 			 result1 = memberService.deleteSeller(vo);
-			 result2 = memberService.changeMtype(vo);			 
-		} 
+			 result2 = memberService.changeMtype(vo);
+		
+		}  
 		if(result1==1&result2==1) {
 			mv.addObject("sdelete", "sdelete"); 
 			session.removeAttribute("seller");
@@ -209,7 +210,7 @@ public class MemberController {
 		vo.setDelete(message);
 		return mv;         
 	}  
-	
+	 
 	/* 
 	 *  비밀번호를 확인 후 같으면 일반회원 탈퇴
 	 */ 

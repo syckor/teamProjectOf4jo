@@ -73,9 +73,12 @@ public class GoodsDAOImpl implements GoodsDAO{
 		m.put("brend",brend);
 		if(sort !=null)
 		{m.put("sort",sort);}
-		System.out.println(sort+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		else if(sort == null){
+		m.put("sort", "abc");
+		}
 		m.put("first",firstRow);
 		m.put("end", endRow);
+		System.out.println(">>>>"+ m.get("sort"));
 		return mybatis.selectList("GoodsDAO.getBrendList",m);
 	}
 

@@ -19,7 +19,7 @@
 		VALUES(SID_SEQ.nextval, #{sname}, #{account}, #{saddr}, #{mid}, #{bank}, #{postnumber})
 		]]>
 	</insert>  
-	
+	 
 	<select id="idCheck" parameterType="member" resultType="member">
 		SELECT* FROM member WHERE mid=#{mid}
 		<if test="mpassword!=null"> 
@@ -29,14 +29,35 @@
 	
 	<select id="telCheck" parameterType="member" resultType="member">
 		SELECT* FROM member WHERE mtel=#{mtel}		
-	</select>   
+	</select>    
 	  
-	<select id="sellerDelete" parameterType="member" resultType="integer">
+	<delete id="sellerDelete" parameterType="member">
 		DELETE FROM seller WHERE mid=#{mid} 		
-	</select>     
+	</delete>      
+	<update id="setNullSeller" parameterType="member">
+		update seller SET mid=null where mid=#{mid};  		
+	</update>      
+	<update id="setNullBuy" parameterType="member">
+		update buy SET mid=null where mid=#{mid}; 		
+	</update>      
+	<update id="setNullQna" parameterType="member">
+		update qna SET mid=null where mid=#{mid}; 		
+	</update>       
+    
 	
 	<update id="changeMtype" parameterType="member">
 		UPDATE MEMBER SET MTYPE='소비자' WHERE mid=#{mid}		 
-	</update>      
+	</update>   
+	<update id="changeMtypeToSeller" parameterType="member">
+		UPDATE MEMBER SET MTYPE='판매자' WHERE mid=#{mid}		 
+	</update>   
+	    
+	<update id="memberUpdate" parameterType="member">
+		UPDATE MEMBER SET mpassword=#{mpassword}, mail=#{mail}, mtel=#{mtel} WHERE mid=#{mid}	
+	</update>  
+	
+	<select id="getSellerInfo" parameterType="seller" resultType="seller">
+		SELECT* FROM seller WHERE mid=#{mid}		
+	</select>     
 
 </mapper>

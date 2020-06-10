@@ -50,9 +50,18 @@
 	
 	<select id="getBrendList" resultType="hashmap" parameterType="hashmap">
 	select gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1 
-	from (select rownum as rnum,g.gid gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1 from goods g,image i  where g.gid=i.gid and g.gid like #{brend}||'%') 
-	where <![CDATA[rnum>=#{first} and rnum<=#{end}]]> 
-	
+	from (select rownum as rnum,g.gid gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1 from goods g,image i  where g.gid=i.gid and g.gid like #{brend}||'%' <choose>
+	<when test='sort.equals("gdate")'>
+    order by gdate desc
+    </when>
+    <when test='sort.equals("highprice")'>
+    order by price desc
+    </when>
+    <when test='sort.equals("price")'>
+   	order by price 
+    </when>
+    </choose>) 
+	where <![CDATA[rnum>=#{first} and rnum<=#{end}]]>
 	</select>
 	
 	<select id="getSearchTotal" resultType="int" parameterType="String">
