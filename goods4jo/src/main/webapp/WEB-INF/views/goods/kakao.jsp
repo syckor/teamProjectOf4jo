@@ -14,7 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Goods 4JO</title>
+<title>Goods 4JO_kakao</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,21 +23,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript">
 	
-	
-	
-	
-	
-	
-	
-	
+
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
-
-
 
 
 </script>
@@ -637,9 +625,9 @@ if (vo == null) {%>
 	<div class="breadcrumb_dress">
 		<div class="container">
 			<ul>
-				<li><a href="index.html"><span
+				<li><a href="main.sajo"><span
 						class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
-				<li>Goods</li>
+				<li>KAKAO</li>
 			</ul>
 		</div>
 	</div>
@@ -670,14 +658,14 @@ if (vo == null) {%>
 									role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body panel_text">
 										<ul>
-											<li><a href="#">라이언</a></li>
-											<li><a href="#">어피치</a></li>
-											<li><a href="#">무지</a></li>
-											<li><a href="#">프로도</a></li>
-											<li><a href="#">네오</a></li>
-											<li><a href="#">튜브</a></li>
-											<li><a href="#">제이지</a></li>
-											<li><a href="#">콘</a></li>
+											<li><a href="products.sajo">라이언</a></li>
+											<li><a href="products.sajo">어피치</a></li>
+											<li><a href="products.sajo">무지</a></li>
+											<li><a href="products.sajo">프로도</a></li>
+											<li><a href="products.sajo">네오</a></li>
+											<li><a href="products.sajo">튜브</a></li>
+											<li><a href="products.sajo">제이지</a></li>
+											<li><a href="products.sajo">콘</a></li>
 										</ul>
 									</div>
 								</div>
@@ -698,9 +686,9 @@ if (vo == null) {%>
 									role="tabpanel" aria-labelledby="headingTwo">
 									<div class="panel-body panel_text">
 										<ul>
-											<li><a href="#">브라운&프렌즈</a></li>
-											<li><a href="#">BT21</a></li>
-											<li><a href="#">브롤스타즈</a></li>
+											<li><a href="products.sajo">브라운&프렌즈</a></li>
+											<li><a href="products.sajo">BT21</a></li>
+											<li><a href="products.sajo">브롤스타즈</a></li>
 										</ul>
 									</div>
 								</div>
@@ -760,10 +748,10 @@ if (vo == null) {%>
 				<div class="w3ls_mobiles_grid_right_grid2">
 					<!-- 오른쪽 하단 정렬기준태그 -->
 					<div class="w3ls_mobiles_grid_right_grid2_right" align="right">
-						<a href='kakao.sajo?orderby=gdate'>최신순|</a>
-                     <a href="kakao.sajo?orderby=rcnt">리뷰많은순|</a>
-                     <a href="kakao.sajo?orderby=price">가격낮은순|</a>
-                     <a href="kakao.sajo?orderby=highprice">가격높은순</a><br />
+						<a href='kakao.sajo?orderby=gdate'>최신순|</a> <a
+							href="kakao.sajo?orderby=rcnt">리뷰많은순|</a> <a
+							href="kakao.sajo?orderby=price">가격낮은순|</a> <a
+							href="kakao.sajo?orderby=highprice">가격높은순</a><br />
 					</div>
 
 				</div>
@@ -772,7 +760,8 @@ if (vo == null) {%>
 				<div class="w3ls_mobiles_grid_right_grid3">
 					<c:forEach items="${list }" var="goods">
 						<!-- 제품 1개씩 반복 -->
-						<div class="col-md-6 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
+						<div
+							class="col-md-6 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
 							<div class="agile_ecommerce_tab_left mobiles_grid">
 								<c:if test="${empty goods.FNAME1 }">
 									<a><img src="${goods.SOURCE1 }" alt="" width="300px"
@@ -796,15 +785,15 @@ if (vo == null) {%>
 											type="hidden" name="amount" value="${goods.PRICE}" />
 										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
 									</form>
-									<br/>
+									<br />
 								</div>
 								<!-- 									<div class="mobiles_grid_pos"> -->
 								<!-- 																			<h6>New</h6> -->
 								<!-- 									</div> -->
 							</div>
-						</div>						
+						</div>
 					</c:forEach>
-				
+
 				</div>
 				<div class="clearfix"></div>
 				<!--페이징 부분 -->
