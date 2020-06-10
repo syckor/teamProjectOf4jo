@@ -352,7 +352,7 @@ ul.tab li.current {
 									style="display: block; width: 100%; margin: 0px;">
 									<ul>
 										<li class="resp-tab-item" aria-controls="tab_item-0"><a
-											href='buylist.sajo' id='clicktobuylist'><span
+											href='buylist.sajo?pageno=1' id='clicktobuylist'><span
 												id='buylistcss' class='buylistcss'>구매내역</span></a></li>
 										<li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보
 												수정하기</span></li>
@@ -444,7 +444,8 @@ ul.tab li.current {
 													</div>
 													<br /> <br />
 													<div class="modify" id='hiddenbybutton'>
-														<input type="submit" value="정보수정하기" id='mmodify' />
+														<input type="submit" value="정보수정하기" id='mmodify' /> <input
+															type="button" value="회원탈퇴" id='dropoutmember' /> <br />
 													</div>
 												</form>
 
@@ -453,7 +454,7 @@ ul.tab li.current {
 														alert("회원정보가 수정되었습니다.");
 													</script>
 												</c:if>
-												<input type="button" value="회원탈퇴" id='dropoutmember' /> <br />
+
 												<form action='member/deleteMember.sajo' name='deleteMember'
 													id='mdelete'>
 													<span id="idAttach"></span>
@@ -608,6 +609,7 @@ if (vo == null) {%>
 		</div>
 	</div>
 	<!-- //header -->
+
 	<!-- navigation -->
 	<div class="navigation">
 		<div class="container">
@@ -654,7 +656,7 @@ if (vo == null) {%>
 											<li><a href="products.sajo">브라운&프렌즈</a></li>
 											<li><a href="products.sajo">BT21</a></li>
 											<li><a href="products.sajo">브롤스타즈 <span>New</span></a></li>
-											<!--                         <li><a href="gregist.sajo"><i>상품 등록</i></a></li> -->
+											<!-- 								<li><a href="gregist.sajo"><i>상품 등록</i></a></li> -->
 										</ul>
 									</div>
 									<div class="col-sm-2">
@@ -687,6 +689,7 @@ if (vo == null) {%>
 		</div>
 	</div>
 	<!--    navigation 끝 -->
+
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">

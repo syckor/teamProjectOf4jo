@@ -239,15 +239,16 @@ ul.tab li.current {
 													<input placeholder="아이디" name="mid" type="text" required=""
 														id='mid'><label for="mid"></label> <span
 														id="idCheckResult" style="width: 150px; color: red"></span>
-													<br /> <br /> <input placeholder="이름" name="mname"
-														type="text" required="" id='mname'><label
-														for="mname"></label> <input placeholder="비밀번호"
-														name="mpassword" type="password" id='mpassword'
-														required=""><label for="mpassword"></label> <input
-														placeholder="비밀번호 확인" name="passconf" type="password"
-														id='passconf' required=""><label for="passconf"></label>
-													<input placeholder="이메일" name="mail" type="email"
-														id='email' required=""><label for="email"></label>
+													<br />
+													<br /> <input placeholder="이름" name="mname" type="text"
+														required="" id='mname'><label for="mname"></label>
+													<input placeholder="비밀번호" name="mpassword" type="password"
+														id='mpassword' required=""><label for="mpassword"></label>
+													<input placeholder="비밀번호 확인" name="passconf"
+														type="password" id='passconf' required=""><label
+														for="passconf"></label> <input placeholder="이메일"
+														name="mail" type="email" id='email' required=""><label
+														for="email"></label>
 
 													<div>
 														<input type="radio" name="phone" /> SKT <input
@@ -267,8 +268,10 @@ ul.tab li.current {
 														class="gender">
 														<option value='남자'>남자</option>
 														<option value='여자'>여자</option>
-													</select> <br /> <br /> <br /> 판매자 등록<input type="checkbox"
-														name="seller" id='seller' value='seller'> <input
+													</select> <br />
+													<br />
+													<br /> 판매자 등록<input type="checkbox" name="seller"
+														id='seller' value='seller'> <input
 														placeholder="판매자명(회사이름)" name="sname" id='sname'
 														type="text" required="" disabled> <br />은행선택 <select
 														name="bank" type="text" required="" class="bank" id='bank'
@@ -301,13 +304,13 @@ ul.tab li.current {
 													<hr />
 													<div class="stats">
 														* 모든 항목에 동의해야 합니다.<br /> <input class='agree' id='agree1'
-															name="agree1" type="checkbox" />Goods 4조 이용약관(필수)<br />
-														<input class='agree' id='agree2' name="agree2"
-															type="checkbox" /><a href="#" id="shopContract">전자상거래
-															이용약관(필수)</a><br /> <input class='agree' id='agree3'
-															name="agree3" type="checkbox" /><a href="#" id='private'>제
-															3자 정보제공(필수)</a><br /> <input class='agree' id='agree4'
-															name="agree4" type="checkbox" />혜택성 정보 수신 동의(선택)<br />
+															name="agree1" type="checkbox" />Goods 4조 이용약관(필수)<br /> <input
+															class='agree' id='agree2' name="agree2" type="checkbox" /><a
+															href="#" id="shopContract">전자상거래 이용약관(필수)</a><br /> <input
+															class='agree' id='agree3' name="agree3" type="checkbox" /><a
+															href="#" id='private'>제 3자 정보제공(필수)</a><br /> <input
+															class='agree' id='agree4' name="agree4" type="checkbox" />혜택성
+														정보 수신 동의(선택)<br />
 														<hr />
 														<input class="check-all" name="agree" type="checkbox" /><span>위
 															조항 모두 체크하기</span> <br />
@@ -395,7 +398,7 @@ ul.tab li.current {
 									style="display: block; width: 100%; margin: 0px;">
 									<ul>
 										<li class="resp-tab-item" aria-controls="tab_item-0"><a
-											href='buylist.sajo' id='clicktobuylist'><span
+											href='buylist.sajo?pageno=1' id='clicktobuylist'><span
 												id='buylistcss' class='buylistcss'>구매내역</span></a></li>
 										<li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보
 												수정하기</span></li>
@@ -409,9 +412,7 @@ ul.tab li.current {
 											href='sellList.sajo'>판매물품 조회</a></li>
 										<li class="resp-tab-item" aria-controls="tab_item-4"><span>사업자등록
 												철회</span></li>
-										<%
-											}
-										%>
+										<%}%>
 										<li class="resp-tab-item" aria-controls="tab_item-5"><a
 											href='member/logout.sajo'>로그아웃</a></li>
 									</ul>
@@ -429,16 +430,17 @@ ul.tab li.current {
 												<form action="member/memberModify.sajo" method="post"
 													name='frmModify' id='frmModify'>
 													<input placeholder="아이디" name="mid" type="text" required=""
-														id='modifyid' value='<%=vo.getMid()%>' disabled> <input
-														placeholder="이름" name="mname" type="text" required=""
-														id='modifyname' value='<%=vo.getMname()%>' disabled>
-													<input placeholder="비밀번호" name="mpassword" type="password"
-														id='modifypassword' value=<%=vo.getMpassword()%>
-														required=""> <input placeholder="비밀번호 확인"
-														name="passconf" type="password" id='modifypassconf'
+														id='modifyid' value='<%=vo.getMid()%>' disabled>
+													<input placeholder="이름" name="mname" type="text"
+														required="" id='modifyname' value='<%=vo.getMname()%>'
+														disabled> <input placeholder="비밀번호"
+														name="mpassword" type="password" id='modifypassword'
 														value=<%=vo.getMpassword()%> required=""> <input
-														placeholder="이메일" name="mail" type="email" id='modifymail'
-														value='<%=vo.getMail()%>' required="">
+														placeholder="비밀번호 확인" name="passconf" type="password"
+														id='modifypassconf' value=<%=vo.getMpassword()%>
+														required=""> <input placeholder="이메일" name="mail"
+														type="email" id='modifymail' value='<%=vo.getMail()%>'
+														required="">
 													<div id='telbrand'>
 														<input type="radio" name="phone" /> SKT <input
 															type="radio" name="phone" /> KT <input type="radio"
@@ -453,9 +455,7 @@ ul.tab li.current {
 														%>
 														<div>판매자 등록하기</div>
 														<input type="checkbox" name="addseller" id='addseller'>
-														<%
-															}
-														%>
+														<%}%>
 													</div>
 													<div id='sellerfrm' style="display: none;">
 														<input placeholder="판매자명(회사이름)" name="sname" id='sname1'
@@ -490,7 +490,8 @@ ul.tab li.current {
 													</div>
 													<br /> <br />
 													<div class="modify" id='hiddenbybutton'>
-														<input type="submit" value="정보수정하기" id='mmodify' />
+														<input type="submit" value="정보수정하기" id='mmodify' /> <input
+															type="button" value="회원탈퇴" id='dropoutmember' /> <br />
 													</div>
 												</form>
 
@@ -499,7 +500,7 @@ ul.tab li.current {
 														alert("회원정보가 수정되었습니다.");
 													</script>
 												</c:if>
-												<input type="button" value="회원탈퇴" id='dropoutmember' /> <br />
+
 												<form action='member/deleteMember.sajo' name='deleteMember'
 													id='mdelete'>
 													<span id="idAttach"></span>
@@ -623,9 +624,7 @@ if (vo == null) {%>
 				%>
 				<a href="#" data-toggle="modal" data-target="#myModal77"><span
 					class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
-				<%
-					}
-				%>
+				<%}%>
 			</div>
 			<div class="w3l_logo">
 				<h1>
@@ -656,6 +655,7 @@ if (vo == null) {%>
 		</div>
 	</div>
 	<!-- //header -->
+
 	<!-- navigation -->
 	<div class="navigation">
 		<div class="container">
@@ -702,7 +702,7 @@ if (vo == null) {%>
 											<li><a href="products.sajo">브라운&프렌즈</a></li>
 											<li><a href="products.sajo">BT21</a></li>
 											<li><a href="products.sajo">브롤스타즈 <span>New</span></a></li>
-											<!--                         <li><a href="gregist.sajo"><i>상품 등록</i></a></li> -->
+											<!-- 								<li><a href="gregist.sajo"><i>상품 등록</i></a></li> -->
 										</ul>
 									</div>
 									<div class="col-sm-2">
@@ -735,6 +735,7 @@ if (vo == null) {%>
 		</div>
 	</div>
 	<!--    navigation 끝 -->
+
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">
