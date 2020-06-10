@@ -7,16 +7,33 @@ height:80px;
 font-size: 20px;
 
 }
+
+#w3ls-cart{
+width: 300px;
+height:80px;
+font-size: 20px;
+
+}
+/* page 스타일 */
+#page{
+	font-family: sans-serif;
+	font-size:50px;
+	font-weight: bold;
+	margin:0;
+}
+
+
+
 /* goods이름 스타일  */
 #goods_name{
-    font-size: 40px;
+    font-size: 35px;
     font-weight: bold;
     color:black;
 /*     width: 380px; */
 }
 /* goods가격 스타일 */
 #goods_price{
-	font-size: 30px;
+	font-size: 20px;
 	color: grey;
 	font-weight: bold;
 	float: right;

@@ -4,6 +4,15 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+/* page 스타일 */
+#page{
+	font-family: sans-serif;
+	font-size:25px;
+	font-weight: bold;
+	margin:0;
+}
+
+
 html, body{
     font-size: 100%;
 	background:	#fff;
@@ -14,7 +23,7 @@ p{
 	font-size:14px;
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Glegoo', serif;
+	font-family: sans-serif;
 	margin:0;
 }
 ul,label{
@@ -637,7 +646,7 @@ li.w3pages .dropdown-menu > li > a:hover{
 .nav-tabs > li > a {
     font-size: 1em;
     color: #212121;
-    font-family: 'Glegoo', serif;
+    font-family: sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
 	border-radius: 0;
@@ -699,8 +708,8 @@ li.w3pages .dropdown-menu > li > a:hover{
 	font-style:normal;
 }
 .simpleCart_shelfItem button.w3ls-cart {
-    font-size: 14px;
-    color: #000;
+    font-size: 17px;
+    color: #3975ed;
     margin: 0;
     text-decoration: none;
     text-transform: capitalize;
@@ -1775,6 +1784,9 @@ h3.other-nw {
 .panel-heading {
     padding:5px 15px;
 }
+.panel-heading a {
+     font-size: 24px;
+}
 .panel-title,.panel_bottom li a{
     font-size: 1em;
     color:#3975ed;
@@ -1782,7 +1794,7 @@ h3.other-nw {
 	text-decoration: none;
 }
 .panel_bottom li a{
-	font-family: 'Glegoo', serif;
+	font-family: sans-serif;
 	font-size: .96em !important;
 }
 .panel_bottom li a:hover,.panel-title a:hover{	
@@ -1808,9 +1820,10 @@ h3.other-nw {
     margin-bottom: 1em;
     padding-left: 1.5em;
     background: url(../images/img-sp.png) no-repeat -13px -172px;
+    font-size: 20px;
 }
 .panel-body ul li a{
-    font-size: 14px;
+    font-size: 16px;
     color: #999;
 	text-decoration:none;
 }
