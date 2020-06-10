@@ -1,11 +1,10 @@
 
-$(document).ready(function(){
-	
 
-	var lastDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 	
 	window.onload = function(){
-		
+	var lastDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	
+
 		var frm = document.frm;	
 		
 		// 년 구하기
@@ -21,30 +20,51 @@ $(document).ready(function(){
 		frm.year.onchange = calc;
 		frm.month.onchange = calc;
 		
+//		frm.day.value = 1;
+		
 		//선택 월에 따른 일수 구하는 함수
 		function calc(){
 			var monthday = frm.month.value;
 			frm.day.options.length = 0;
-			for( var j=0;  j <= lastDays[monthday-1]; j++){
+			for( var j=1;  j <= lastDays[monthday-1]; j++){
 				frm.day.add( new Option(j, j));				
+			
 			}
 		}	 
 		
+	}
+	$(document).ready(function(){
 		//year가 바꼈을때 선택된 year의 value를 붙여준다.
 		$('#year').change(function(){
 			var year = $('#year').val();
-			$('#year').attr('value', year);
+			//$('#year').attr('value', year);
 		});	
 		$('#month').change(function(){
 			var month = $('#month').val();
-			$('#month').attr('value', month);
+			$('#day').val(1);
+			//$('#month').attr('value', month);
 		});
 		
 		$('#day').change(function(){
 			var day = $('#day').val();
+			if(day==0){
+				day++;
 			$('#day').attr('value', day);
+			}else if(day==null){
+				return 
+			}
 		}); 
-	}
+//		$("#msubmit").click(function(){
+//			alert('ok');
+//			var day=$('#day').val();
+//			if(day==0){
+//				alert(0);
+//				return ;
+//			}
+//			$("#frm").submit();
+//		})
+		
+		
 	
 	//셀러 체크박스 체크유무에 따라 셀러 가입양식 활성화/비활성화
 	$('#seller').change(function(){
@@ -159,7 +179,7 @@ $(document).ready(function(){
 				   },
 			email:{required:true,
 					email:true
-					}, 
+					}, 		
 			mpassword : {
 				required:true, 
 				minlength:8,

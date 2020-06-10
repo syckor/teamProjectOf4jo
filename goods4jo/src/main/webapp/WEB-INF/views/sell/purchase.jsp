@@ -1,21 +1,44 @@
 <%@page import="com.sajo.domain.MemberVO"%>
+<%@page import="com.sajo.domain.BuyVO"%>
 <%@page import="javax.swing.text.Document"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
     <% 
     
     String cmd = "";
     String w3ls_item="";
-    String quantity="";
+    String bcount="";
     String amount=""; 
-    
-    w3ls_item = request.getParameter("w3ls_item");
-    quantity = request.getParameter("quantity");
-    amount = request.getParameter("amount");
-    cmd=request.getParameter("cmd");
-    
+    int dcost=0;
+    String gid="";
+    int totalprice = 0;
+    //parameter값이 여러개가 될수 있으므로 list로 파라미터를 받아준다.
+    String []gnamelist;
+    gnamelist = request.getParameterValues("gname");
+    String []bcountlist;
+    bcountlist = request.getParameterValues("bcount");
+    String []totalpricelist;
+    totalpricelist = request.getParameterValues("totalprice");
+    String []dcostlist;
+    dcostlist = request.getParameterValues("dcost");
+    String []gidlist;
+    gidlist = request.getParameterValues("gid"); 
+  
+    w3ls_item = request.getParameter("w3ls_item"); 
 
-	
+    bcount = request.getParameter("bcount");
+    gid=request.getParameter("gid"); 
+    System.out.println(bcount);  
+    cmd=request.getParameter("cmd"); //원 =가격 
+    cmd=cmd.trim(); //소수점 밑으로 날린후 공백제거 
+    gid=gid.trim(); //공백제거?  
+    System.out.println(cmd);   
+    System.out.println(gid+"======================================================");  
+   	
+     
+    totalprice = Integer.parseInt(cmd);
+    dcost=Integer.parseInt(request.getParameter("dcost")); 	
     %>
 
 <!DOCTYPE html>
@@ -68,15 +91,15 @@
 	jQuery(document).ready(function($){
 /* 은행 보이기 숨기기  */
    $("#payType8").click(function(){
-         $("#rrrr").css('display','none')
-         
+         $("#rrrr").css('display','none')      
     	   alert("1")
-           }
-   
-           
+           }      
           )
 	 
-		
+	$('.type-selector-li').change(function(){
+		alert($(this).val());
+		$('.payway').prop("value", $(this).val())	 	 
+	}) 
 
 		$('.sample4_execDaumPostcode').click(function(){
 		       //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -478,66 +501,99 @@ li {
 
 <table border="2px">
 <p class="left"><b class=font>받는사람정보</b><input type="button" name='saddrbutton' id ='sample4_execDaumPostcode' class='sample4_execDaumPostcode' value="배송지 등록/변경"></p>
-<tr><td class=td>이름</td><td class=tr><%=vo.getMname()%></td></tr>
-<tr><td class=td>우편번호</td><td class=tr><span id="sample4_postcode"></span></td></tr> 
-<tr><td class=td>도로명주소</td><td class=tr><span id="sample4_roadAddress"></span></td></tr> 
-<tr><td class=td>상세주소</td><td class=tr><input class="dd" type="text" width="2000">   </td></tr>   
-<tr><td class=td>연략처</td><td class=tr><%=vo.getMtel()%></td></tr>
-<tr><td class=td>배송요청사항</td><td class=tr></td></tr> </p>
+<tr><td class='td'>이름</td><td class=tr><%=vo.getMname()%></td></tr>
+<tr><td class='td'>우편번호</td><td class=tr><span id="sample4_postcode"></span></td></tr> 
+<tr><td class='td'>도로명주소</td><td class=tr><span id="sample4_roadAddress"></span></td></tr> 
+<tr><td class='td'>상세주소</td><td class=tr><input class="dd" type="text" width="2000">   </td></tr>   
+<tr><td class='td'>연략처</td><td class=tr><%=vo.getMtel()%></td></tr>
+<tr><td class='td'>배송요청사항</td><td class=tr><input class="requestofbuyer" type="text" width="2000"></td></tr> </p>
 </table> 
 
 
-<form action="Payment.sajo">
+<form id="frm" action="completeBuying.sajo">
+
 <table border="2px">
 <p class="left"><b class=font>결제정보</b> </p>
 <tr><td class=td>총상품가격</td><td class=tr><%=cmd %></td></tr>
-<tr><td class=td>배송비</td><td class=tr></td></tr>
-<tr><td> <class=td/>총결제금액</td><td><input type ="text" name="totalprice" class=tr width="2000" value=""></td></tr>
-<tr><td class=td>결제방법</td><td class=tr>
+<tr><td class=td>배송비</td><td class=tr><%=dcost %></td></tr>
+<tr><td> <class=td/>총결제금액</td><td><%=dcost+totalprice %></td></tr>
+<tr><td class=td>결제방법</td><td>
 
 
-<div class="type-selector-list-wrapper">
-		<ul id="payTypeList" class="type-selector-list">
+<!-- <div class="type-selector-list-wrapper"> -->
+<!-- 		<ul id="payTypeList" class="type-selector-list"> -->
 
-			<li id="rocketPayBox" class="type-selector-li selected-pay-type">
-				<input class="type-selector-radio" type="radio" name="payType" id="payType8" value="ROCKET_BANK">
-				<label class="type-selector-label type-selector-label--bank" for="payType8" style="font-weight: bold;">
-					<span class="type-selector-label__text">계좌이체</span>
-				</label>
-			</li>
+<!-- 			<li id="rocketPayBox" class="type-selector-li" value="계좌이체"> -->
+<!-- 				<input class="type-selector-radio" type="radio" name="payType" id="payType1" value="계좌이체"> -->
+<!-- 				<label class="type-selector-label type-selector-label--bank" for="payType8" style="font-weight: bold;"> -->
+<!-- 					<span class="type-selector-label__text">계좌이체</span> -->
+<!-- 				</label> -->
+<!-- 			</li> -->
 
-				<li id="rocketPayCardBox" class="type-selector-li">
-					<input class="type-selector-radio" type="radio" name="payType" id="payType10" value="ROCKET_CARD">
-					<label class="type-selector-label type-selector-label--card" for="payType10" style="font-weight: normal;">
-						<span class="type-selector-label__text">신용/체크카드</span>
-						<img class="rpay-badge rpay-icon-instant-discount" src="https://image7.coupangcdn.com/image/rocketpay/order/icon_ccid_v2.png" width="66" height="14" alt="즉시 할인혜택">
-					</label>
-				</li>
+<!-- 				<li id="rocketPayCardBox" class="type-selector-li" value="카드"> -->
+<!-- 					<input class="type-selector-radio" type="radio" name="payType" id="payType2" value="카드"> -->
+<!-- 					<label class="type-selector-label type-selector-label--card" for="payType10" style="font-weight: normal;"> -->
+<!-- 						<span class="type-selector-label__text">신용/체크카드</span> -->
+<!-- 						<img class="rpay-badge rpay-icon-instant-discount" src="https://image7.coupangcdn.com/image/rocketpay/order/icon_ccid_v2.png" width="66" height="14" alt="즉시 할인혜택"> -->
+<!-- 					</label> -->
+<!-- 				</li>  -->
 
-					<li id="phonePayBox" class="type-selector-li">
-						<input class="type-selector-radio" type="radio" name="payType" id="payType6" value="PHONE">
-						<label class="type-selector-label" for="payType6" style="font-weight: normal;">
-							<span class="type-selector-label__text">휴대폰</span>
-						</label>
-					</li>
+<!-- 					<li id="phonePayBox" class="type-selector-li" value="휴대폰"> -->
+<!-- 						<input class="type-selector-radio" type="radio" name="payType" id="payType3" value="휴대폰"> -->
+<!-- 						<label class="type-selector-label" for="payType6" style="font-weight: normal;"> -->
+<!-- 							<span class="type-selector-label__text">휴대폰</span> -->
+<!-- 						</label> -->
+<!-- 					</li> -->
+				
 				
 			
-			<li id="virtualAccountPayBox" class="type-selector-li">
-				<input class="type-selector-radio" type="radio" name="payType" id="payType7" value="VIRTUALACCOUNT">
-				<label class="type-selector-label" for="payType7" style="font-weight: normal;">
-					<span class="type-selector-label__text">무통장입금(가상계좌)</span>
-				</label>
-			</li>
-		</ul>
-		<p class="validate-message" style="display: none;"></p>
-	</div>
+<!-- 			<li id="virtualAccountPayBox" class="type-selector-li" value="무통장입금"> -->
+<!-- 				<input class="type-selector-radio" type="radio" name="payType" id="payType4" value="무통장입금"> -->
+<!-- 				<label class="type-selector-label" for="payType7" style="font-weight: normal ;"> -->
+<!-- 					<span class="type-selector-label__text">무통장입금(가상계좌)</span> -->
+<!-- 				</label>  -->
+<!-- 			</li> -->
+<!-- 		</ul> -->
+<!-- 		<p class="validate-message" style="display: none;"></p> -->
+<!-- 	</div> -->
+<!-- 			라디오 버튼 빠밤! -->
+			<input type="radio" name="pay" value="현금">현금결제
+			<input type="radio" name="pay" value="카드">카드결제
 	</td></tr>
 	
 </table>
 <br/>
 <br/>
-<input type="submit" value="결제하기"/>
 
+				<% for(int i=0;i<gidlist.length;i++){ %>
+<input type="hidden" name="list[<%=i %>].gname" value="<%=gnamelist[i]%>"> 
+                        	<input type="hidden" name="list[<%=i %>].bcount" value="<%=bcountlist[i]%>">
+                            <input type="hidden" name="list[<%=i %>].totalprice" value="<%=totalpricelist[i]%>">
+                            <input type="hidden" name="list[<%=i %>].dcost" value="<%=dcostlist[i]%>">
+             				<input type="hidden" name="list[<%=i %>].gid" value="<%=gidlist[i]%>">
+<%-- <input type='hidden' name='list' value=${list }>  --%>
+<%} //for문 닫기 %>
+
+<input type="hidden" name="mid" value="<%=vo.getMid() %>">
+
+ <script src="resources/js/minicart.js"></script> 
+<input type="button" id="payment" value="결제하기"/>  
+<script type="text/javascript"> 
+	$("#payment").click(function(){
+		alert("1"); 
+ 
+   	 $("#frm").submit();
+ 		$(".sbmincart-item").remove();
+ 		alert("1");	 
+	})
+	
+	
+ </script>  
+<c:if test='${empty not soldout}'>
+	<script type="text/javascript">  
+		alert('구매하려는 상품의 재고가 부족합니다.');	
+	 </script>  
+</c:if>
 
 
 </form>
@@ -550,6 +606,27 @@ li {
 	<!-- newsletter -->
 
 	<!-- //newsletter -->
+	<!-- cart-js -->
+	<script src="resources/js/minicart.js"></script>
+	<script>  
+        w3ls.render();
+
+        w3ls.cart.on('w3sb_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+
+        		for (i = 0, len = items.length; i < len; i++) { 
+        		}
+        	} 
+        });
+   
+	
+}
+
+</script>
+	<!-- //cart-js -->   
 	<!-- footer -->
    <!-- footer -->
      <!-- footer -->
@@ -581,7 +658,7 @@ li {
                <h3>Category</h3>
                <ul class="info">
                   <li><a href="products1.sajo">KaKao</a></li>
-                  <li><a href="">Line</a></li>
+                  <li><a href="">Line</a></li> 
                   <li><a href="">General</a></li>
                </ul>
             </div>

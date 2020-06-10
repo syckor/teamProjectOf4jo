@@ -3,8 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.sajo.domain.MemberVO" %>	
-<%
-
+<%@page import="com.sajo.domain.BuyVO"%>
+<%@page import="java.util.List"%> 
+<%@page import="java.util.ArrayList"%>  
+<% 
+ 
 MemberVO result = (MemberVO)session.getAttribute("member"); 
 
 
@@ -14,7 +17,8 @@ String quantity[] = null;
 String amount[] = null;
 String cmd = "";
 int upload = 0;
-
+String dcost[]= null;
+String gid[] =null;
 request.setCharacterEncoding("utf-8");
 
 //  Form의 hidden값 넘겨받기
@@ -23,6 +27,8 @@ quantity = request.getParameterValues("quantity"); //수량
 amount = request.getParameterValues("amount"); //물건가격
 cmd = request.getParameter("cmd");// 물건총합가격
 upload = Integer.parseInt(request.getParameter("upload"));//리스트의 길이
+dcost = request.getParameterValues("dcost");
+gid = request.getParameterValues("gid");
 %>
 
 
@@ -138,6 +144,65 @@ upload = Integer.parseInt(request.getParameter("upload"));//리스트의 길이
 	});
 </script>
 <style type="text/css">
+
+
+table.redTable {
+   border: 2px solid #EBA823;
+   background-color: #EEE7DB;
+   width: 100%;
+   text-align: center;
+   border-collapse: collapse;
+}
+
+table.redTable td, table.redTable th {
+   border: 1px solid #AAAAAA;
+   padding: 3px 2px;
+}
+
+table.redTable tbody td {
+   font-size: 15px;
+}
+
+
+
+table.redTable thead {
+   background: #EBA823;
+}
+
+table.redTable thead th {
+   font-size: 19px;
+   font-weight: bold;
+   color: #FFFFFF;
+   text-align: center;
+   border-left: 2px solid #EBA823;
+}
+
+table.redTable thead th:first-child {
+   border-left: none;
+}
+
+table.redTable tfoot {
+   font-size: 13px;
+   font-weight: bold;
+   color: #FFFFFF;
+   background: #EBA823;
+}
+
+table.redTable tfoot td {
+   font-size: 13px;
+}
+
+table.redTable tfoot .links {
+   text-align: right;
+}
+ 
+table.redTable tfoot .links a {
+   display: inline-block;
+   background: #FFFFFF;
+   color: #3975ED;
+   padding: 2px 8px;
+   border-radius: 5px;
+}
 .align-center {
 	text-align: center;
 }
@@ -477,7 +542,7 @@ h1 {
 					<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
 				<%}else{ %>
 					<a href="#" data-toggle="modal" data-target="#myModal77"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>				
-				<%}%>
+				<%}%> 
 			</div>
 			<div class="w3l_logo">
 				<h1><a href="member/main.sajo">Goods 4jo<span>All of goods, in this world!</span></a></h1>
@@ -599,23 +664,24 @@ h1 {
 		<span style="color: red">장바구니</span>><span>구매하기</span>><span>결제완료</span>
 	</div>
 
-	 <form action="purchase.sajo">
-	 
+	 <form action="purchase.sajo" method="get">
+	  
 	
-		<table border="1">
+		<table border="1" class='redTable'> 
 
 
 
 			<tr>
-				<td width="300"><label><input type="checkbox"
-						id="checkAll" name="check" value="전체선택">전체선택</label></td>
-				<td width="300">상품정보</td>
-				<td whith="300">수량</td>
-				<td width="300">가격</td>
+				<th width="300"><label><input type="checkbox"
+						id="checkAll" name="check" value="전체선택">전체선택</label></th>
+				<th width="300">상품정보</th>
+				<th whith="300">수량</th>
+				<th width="300">가격</th>
+				<th width="50">삭제</th>
 			</tr>
 
 			<%
-				for (int i = 0; i < upload; i++) {
+				for (int i = 0; i <amount.length; i++) {
 			
 			%>
 
@@ -642,31 +708,47 @@ h1 {
 				<td><div class="sbmincart-details-price">
 						<input class="sbmincart-price" type="text" style="width: 50px"
 							value="<%=amount[i]%>" disabled />
-
+<%-- 						<div><%=dcost[i] %></div><%=gid[i] %> --%>
 					</div></td>
+					
 
 				<td><div class="sbmincart-details-remove">
 						<button type="button" class="sbmincart-remove"
 							data-sbmincart-idx="0">×</button>
-					</div></td>
-                     <input type="hidden" name="w3ls_item" value="<%=w3ls_item[i]%>" />
-                        <input type="hidden" name="quantity" value="<%=quantity[i]%>" />
-                           <input type="hidden" name="amount" value="<%=amount[i]%>" />
-             
+					</div>
+<!-- 							컨트롤러로 일단은 보내긴 하는데........ -->
+					 		<input type="hidden" name="list[<%=i %>].gname" value="<%=w3ls_item[i]%>"> 
+                        	<input type="hidden" name="list[<%=i %>].bcount" value="<%=quantity[i]%>">
+                            <input type="hidden" name="list[<%=i %>].totalprice" value="<%=amount[i]%>">
+                            <input type="hidden" name="list[<%=i %>].dcost" value="<%=dcost[i]%>">
+             				<input type="hidden" name="list[<%=i %>].gid" value="<%=gid[i]%>">
+             				
+<!--              				일단 purchase실행 하게하기위해 작성하긴 하는데 -->
+             				<input type="hidden" name="gname" value="<%=w3ls_item[i]%>"> 
+                        	<input type="hidden" name="bcount" value="<%=quantity[i]%>">
+                            <input type="hidden" name="totalprice" value="<%=amount[i]%>">
+                            <input type="hidden" name="dcost" value="<%=dcost[i]%>">
+             				<input type="hidden" name="gid" value="<%=gid[i]%>"> 						 						
+					</td>   
+                       
 			</tr>
+			
 			<%
-				}
+				} 
 			%>
 		</table>
-
-
-
-
+		
+		
+ 
+		<br/>
+		<br/>
+		<input type="hidden" name="cmd" value="<%=cmd%>"> 
 		<div class="sbmincart-footer">
 			총 결제 금액 <input class="sbmincart-subtotal" type="text"
 				value="<%=cmd%>" >
-		</div>
-		<input type="hidden" name="cmd" value="<%=cmd%>"> 
+		</div> 
+		<br/>
+		<br/>
 		
        
    		<%if(vo==null){ %> 
@@ -688,8 +770,28 @@ h1 {
 	<!-- newsletter -->
 
 	<!-- //newsletter -->
-	<!-- footer -->
-   <!-- footer -->
+	<!-- cart-js -->
+	<script src="resources/js/minicart.js"></script>
+	<script>  
+        w3ls.render();
+
+        w3ls.cart.on('w3sb_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+ 
+        		for (i = 0, len = items.length; i < len; i++) { 
+        		} 		
+        	}      	
+        }); 
+
+        document.getElementById('ppp').onclick = function(){
+			alert("1"); 
+			items=null; 
+		}  
+   </script>  
+	<!-- //cart-js --> 
      <!-- footer -->
    <div class="footer">
       <div class="container">

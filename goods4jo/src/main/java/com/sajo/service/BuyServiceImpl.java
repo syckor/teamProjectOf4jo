@@ -13,28 +13,41 @@ import com.sajo.domain.MemberVO;
 
 @Service("buyService") 
 public class BuyServiceImpl implements BuyService{
-	
-	@Autowired
-	private BuyDAOImpl buyDAO;
- 
-	@Override
-	public void insertBuy() { 
-		buyDAO.insertBuy();
+    
+   @Autowired
+   private BuyDAOImpl buyDAO;
+   
+   @Override
+   public void insertBuy() {
+      buyDAO.insertBuy();
 
-		  
-		  
-	}  
-	public List<BuyVO> buyList(BuyVO bvo) {
-		System.out.println("buyList service 호출");
-		return buyDAO.buyList(bvo);  
-		  
-	}
-	public List<BuyVO> buyListforPage(BuyVO bvo){
-		System.out.println("buyList service 호출");
+         
+       
+   }  
+   public List<BuyVO> buyList(BuyVO bvo) {
+      System.out.println("buyList service 호출");
+      return buyDAO.buyList(bvo); 
+        
+   }
+
+   public int searchDfee(String gname) {
+	   System.out.println("buyList service 호출");
+	   return buyDAO.searchDfee(gname); 
+   }
+   public List<BuyVO> buyListforPage(BuyVO bvo){
+		System.out.println("buyList service 호출"); 
 		return buyDAO.buyListforPage(bvo); 
 	}
+   public int buyingComplete(BuyVO bvo) {
+	   System.out.println("buyList service 호출");
+	   return buyDAO.buyingComplete(bvo);    
+   }   
+   public String checkGoodsCount(BuyVO bvo){
+	   System.out.println("checkGoodsCount service 호출"); 
+	   return buyDAO.checkGoodsCount(bvo);   
+   } 
 
-	
-	
+   
+   
 
 }

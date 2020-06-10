@@ -9,19 +9,27 @@ insert into BUY (BNO, BDATE, PAY, TOTALPRICE, MID, GID, BCOUNT)
 value(#{BNO},#{BDATE},#{PAY},#{TOTALPRICE},#{MID},#{GID},#{BCOUNT}) 
 </insert>
 
- 
+<insert id="buyingComplete" parameterType="buy">
+INSERT INTO buy (BNO, BDATE, PAY, TOTALPRICE, MID, GID , BCOUNT) 
+VALUES (BNO_SEQ.nextval, sysdate, #{pay}, #{totalprice}, #{mid}, #{gid}, #{bcount}) 
+</insert> 
+  
+  
 <select id="buyListforPage" parameterType="buy" resultType="buy">
-select b.gid gid, b.bdate bdate, g.gname gname, b.bcount bcount, b.totalprice totalgoodspay, b.pay pay, g.delivery delivery, g.dcost deliveryfee, (g.dcost+b.totalprice) totalorderprice
+select b.gid gid, b.bdate bdate, g.gname gname, b.bcount bcount, b.totalprice totalprice, b.pay pay, g.delivery delivery, g.dcost dcost, (g.dcost+b.totalprice) totalorderprice
      from buy b, goods g 
       where b.gid=g.gid and b.mid=#{mid} 
-      order by b.bdate desc
+      order by b.bdate desc 
+</select>    
+<select id="checkGoodsCount" parameterType="buy" resultType="String">
+SELECT count FROM GOODS where gid=#{gid}   
 </select>    
  
 <select id="buyList" parameterType="buy" resultType="buy">  
-<![CDATA[ 
-select X.rnum,x.gid gid,  x.bdate bdate, x.gname gname, x.bcount bcount, x.totalprice totalgoodspay, x.pay pay, x.delivery delivery, x.dcost deliveryfee, (x.dcost+x.totalprice) totalorderprice
+<![CDATA[  
+select X.rnum,x.gid gid,  x.bdate bdate, x.gname gname, x.bcount bcount, x.totalprice totalprice, x.pay pay, x.delivery delivery, x.dcost deliveryfee, (x.dcost+x.totalprice) totalorderprice
 from ( select rownum as rnum,a.gid, a.bdate, a.gname, a.bcount, a.totalprice, a.pay, a.delivery, a.dcost, (a.dcost+a.totalprice)
-from (select b.gid gid, b.bdate , g.gname , b.bcount , b.totalprice , b.pay , g.delivery , g.dcost , (g.dcost+b.totalprice)
+from (select b.gid gid, b.bdate , g.gname , b.bcount , b.totalprice , b.pay , g.delivery , g.dcost , (g.dcost+b.totalprice) 
 from buy b, goods g
 where b.gid=g.gid and b.mid=#{mid}
 order by b.bdate desc) a 
@@ -29,5 +37,12 @@ where rownum <= ${lastlist}) X
 where X.rnum >= ${startlist} 
 ]]>
 </select> 
+<select id="searchDfee" parameterType="String" resultType="int">
+SELECT DCOST FROM GOODS WHERE GNAME=#{gname}; 
+</select>
+
+<update id="updateComplete" parameterType="String" >
+update goods set count=count-1 where gid=#{gid}
+</update>
 
 </mapper>

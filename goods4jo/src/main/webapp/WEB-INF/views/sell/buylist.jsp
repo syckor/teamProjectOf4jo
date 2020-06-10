@@ -591,30 +591,6 @@ table.redTable tfoot .links a {
 		<div class="container">
 		<h3 class="agileits-title">Buy List</h3>	
 		
-		 <div>
-                    <c:if test="${pagination.curRange ne 1 }">
-                        <a href="#" onClick="fn_paging(1)">[처음]</a> 
-                    </c:if>
-                    <c:if test="${pagination.curPage ne 1}">
-                        <a href="#" onClick="fn_paging('${pagination.prevPage }')">[이전]</a> 
-                    </c:if>
-                    <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
-                        <c:choose>
-                            <c:when test="${pageNum eq  pagination.curPage}">
-                                <span style="font-weight: bold;"><a href="#" onClick="fn_paging('${pageNum }')">${pageNum }</a></span> 
-                            </c:when>
-                            <c:otherwise>
-                                <a href="#" onClick="fn_paging('${pageNum }')">${pageNum }</a> 
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                    <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
-                        <a href="#" onClick="fn_paging('${pagination.nextPage }')">[다음]</a> 
-                    </c:if>
-                    <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
-                        <a href="#" onClick="fn_paging('${pagination.pageCnt }')">[끝]</a> 
-                    </c:if>
-             </div>		
 			<table class="redTable">
 				<thead>
 					<tr>
@@ -652,16 +628,16 @@ table.redTable tfoot .links a {
 						        </c:otherwise>
 						    </c:choose> 
 						</td>
-					</tr>
+					</tr> 
 				</tfoot>
-				<tbody>
+				<tbody> 
 				<c:forEach items="${buyList }" var="buyList">
 					<tr>
 						<td>${buyList.bdate }</td>					
-						<td><a href='detailGoods.sajo?gid=${buyList.gid }'>${buyList.gname }</a></td>						 
-						<td>${buyList.bcount }</td>  
-						<td>${buyList.totalgoodspay }</td> 
-						<td>${buyList.pay }</td>  
+						<td><a href='detailGoods.sajo?gid=${buyList.gid }&bno=${buyList.bno}'>${buyList.gname }</a></td>						 
+						<td>${buyList.bcount }</td>   
+						<td>${buyList.totalprice }</td> 
+						<td>${buyList.pay }</td>   
 						<td>${buyList.delivery }</td>
 						<td>${buyList.deliveryfee }</td>
 						<td>${buyList.totalorderprice }</td>
