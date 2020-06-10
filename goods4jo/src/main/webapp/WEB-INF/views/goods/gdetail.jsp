@@ -732,12 +732,18 @@ ul.tab li.current {
 				</td></tr>
 				</table>
 				</c:forEach><br/><br/>
+<!-- 				리뷰 리스트 페이징 -->
+				<div class="page" id="page" align="center">
+					<c:forEach var="i" begin="1" end="${total }">
+						<a href="detailGoods.sajo?gid=${goods.gid }pNum=${i }">[${i }]</a>
+					</c:forEach>
+				</div>
 <!-- 				리뷰 리스트 끝난 부분 -->
 				<div class="review_write">
 				<!-- 리뷰 작성 하는 부분 -->
 				<a class="middle_import">리뷰 작성하기 </a><br/><br/>
-				<c:if test="${empty param.bno }"><c:set var="bno" value=""/></c:if>
-						<c:if test="${not empty param.bno }"><c:set var="bno" value="${param.bno }"/></c:if>
+				<c:if test="${empty bno }"><c:set var="bno" value=""/></c:if>
+						<c:if test="${not empty bno }"><c:set var="bno" value="${bno }"/></c:if>
 				<form action="insertReview.sajo" method="post" id="writing"> 
 				<table class="blueTable">
 				<tr><td>

@@ -19,8 +19,23 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public List<HashMap> selectByGid(String gid) {
-		return mybatis.selectList("ReviewDAO.selectByGid",gid);
+	public List<HashMap> selectByGid(String gid,int StartRow,int endRow) {
+		HashMap m=new HashMap();
+		m.put("gid",gid);
+		m.put("first",StartRow);
+		m.put("end", endRow);
+		
+		return mybatis.selectList("ReviewDAO.selectByGid",m);
+	}
+
+	@Override
+	public int getBnoReviewCnt(int bno) {
+		return mybatis.selectOne("ReviewDAO.getBnoReviewCnt",bno);
+	}
+
+	@Override
+	public int getTotalCount(String gid) {
+		return mybatis.selectOne("ReviewDAO.getTotalCount",gid);
 	}
 
 }

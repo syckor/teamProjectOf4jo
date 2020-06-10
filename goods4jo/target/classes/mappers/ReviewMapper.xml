@@ -11,9 +11,17 @@
 		</insert>
 		
 <!-- gid로 리뷰 리스트 검색 -->
-<select id="selectByGid" parameterType="String" resultType="hashmap">
-select r.score as score, r.rcontent as rcontent, r.bno as bno , r.rno as  rno , r.gid as gid ,b.mid as mid 
+<select id="selectByGid" parameterType="hashmap" resultType="hashmap">
+select * from (select rownum as rnum, r.score as score, r.rcontent as rcontent, r.bno as bno , r.rno as  rno , r.gid as gid ,b.mid as mid 
 from review r , buy b 
-where r.bno=b.bno and r.gid=#{gid}
+where r.bno=b.bno and r.gid=#{gid}) where <![CDATA[rnum>=#{first} and rnum<=#{end}]]>
+</select>
+
+<select id="getBnoReviewCnt" parameterType="int" resultType="int">
+select nvl(count(*),0) as cnt from review where bno=#{bno}
+</select>
+
+<select id="getTotalCount" parameterType="String" resultType="int">
+select count(*) from review where gid = #{gid}
 </select>
 </mapper>

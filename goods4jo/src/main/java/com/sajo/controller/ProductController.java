@@ -164,7 +164,21 @@ public class ProductController {
 
 	// 상품 상세페이지로 이동
 	@RequestMapping("/detailGoods.sajo")
-	public String detailGoods(String gid, String bno, Model model) {
+	public String detailGoods(String gid, String bno,String pNum ,Model model) {
+//		리뷰 페이지 처리 
+		String pageNum = "1";
+		if (pNum != null) {
+			pageNum = pNum;
+		}
+		//구매 한번 당 리뷰 한 번 처리
+		int bnocnt=0;//select 해서 bno의 리뷰 수 
+		if(bno !=null)
+		{bnocnt=reservice.getBnoReviewCnt(Integer.parseInt(bno));}
+		String Bno=bno;
+		if(bnocnt >0) {
+			System.out.println("이거 출력되면 bno로 리뷰 작성한적 있다는 건데 ..........--------------------------------------------------");
+			Bno=null;
+		}
 		// gid로 집어넣은 이미지 정보랑 goods 정보 select해서 model로 보내기
 		ImageVO imgvo = imgservice.selectByGid(gid);
 		// goods정보는 최근 바로 그 정보
@@ -193,14 +207,17 @@ public class ProductController {
 		model.addAttribute("option2", option2);
 		model.addAttribute("goods", goodsvo);
 		model.addAttribute("img", imgvo);
-		model.addAttribute("bno", bno);
-		// 리뷰 정보 받아오기 gid로
-		model.addAttribute("review", reservice.selectByGid(gid));
+		model.addAttribute("bno", Bno);
+		// 리뷰 정보 받아오기 gid로 페이지 처리합니다.
+		model.addAttribute("review", reservice.selectByGid(gid,pageNum));
+		// 리뷰의의 total페이지
+		model.addAttribute("total", reservice.getTotalCount(gid));
+		//현재  페이지 그대로 넘기기
+		model.addAttribute("pNum",pageNum);
 		return "goods/gdetail";
 	}
-
+	
 //	카카오페이지 보여주기 
-
 	@RequestMapping("/kakao.sajo")
 	public String selectKakao(String pNum,String orderby, Model m) {
 		String pageNum = "1";
