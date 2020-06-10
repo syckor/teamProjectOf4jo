@@ -48,4 +48,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return pageTotalCount;
 	}
 
+	@Override
+	public int getReviewCount(String gid) {
+		return reviewDao.getTotalCount(gid);
+	}
+
 }

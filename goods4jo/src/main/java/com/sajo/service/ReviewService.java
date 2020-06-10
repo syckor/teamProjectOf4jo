@@ -11,4 +11,5 @@ public interface ReviewService {
 	public List<HashMap> selectByGid(String gid,String pNum);
 	public int getBnoReviewCnt(int bno);
 	public int getTotalCount(String gid);
+	public int getReviewCount(String gid);
 }

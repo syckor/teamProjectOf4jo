@@ -212,6 +212,8 @@ public class ProductController {
 		model.addAttribute("review", reservice.selectByGid(gid,pageNum));
 		// 리뷰의의 total페이지
 		model.addAttribute("total", reservice.getTotalCount(gid));
+		// 리뷰 갯수 
+		model.addAttribute("reCount",reservice.getReviewCount(gid));
 		//현재  페이지 그대로 넘기기
 		model.addAttribute("pNum",pageNum);
 		return "goods/gdetail";
