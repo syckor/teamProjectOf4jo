@@ -59,7 +59,8 @@ public class MemberController {
 		//회원가입이 완료되면 결과행을 result에 담는다
 		int result = memberService.memberInsert(vo);
 		mv.addObject("insertsuc","succ");
-		mv.setViewName("redirect:/main.sajo");  
+		mv.addObject("where", "main");
+		mv.setViewName("redirect:/products.sajo");  
 		//seller가 판매자일 경우에만 seller테이블에 Insert실행
 		if(seller.equals("판매자")) {
 			memberService.sellerInsert(svo);
@@ -85,8 +86,9 @@ public class MemberController {
 		String message = "";
 		int result = 0;
 		int result1= 0;
-		MemberVO mvo = (MemberVO)session.getAttribute("member"); 
-		String seller = request.getParameter("addseller");
+		
+		MemberVO mvo = (MemberVO)session.getAttribute("member"); //로그인 되어있는 회원정보 가져옴
+		String seller = request.getParameter("addseller");//
 		vo.setMid(mvo.getMid()); 
 		System.out.println(vo.getMid());
 		if (seller == null) { 
@@ -108,8 +110,10 @@ public class MemberController {
 		if(result==1&result1==1) {
 			mv.addObject("modisuc","succ");
 		}
-		
-		mv.setViewName("redirect:/main.sajo"); 
+		MemberVO newvo = memberService.idCheck_Login(vo);//업데이트 완료후 회원정보를 조회해와서
+		session.setAttribute("member", newvo);//업데이트된 회원정보를 다시 member세션에 저장
+		mv.addObject("where", "main");
+		mv.setViewName("redirect:/products.sajo");   
 		return mv;    	
 	}
 	
@@ -164,8 +168,9 @@ public class MemberController {
 				  
 			}     
 		} 	
-		mv.setViewName("redirect:/main.sajo"); 
-		return mv;   
+		mv.addObject("where", "main");
+		mv.setViewName("redirect:/products.sajo");  
+		return mv;    
 	} 	
 	
 	/*
@@ -187,14 +192,11 @@ public class MemberController {
 			@RequestParam(value = "checkpassword") String pass) {
 		ModelAndView mv = new ModelAndView();
 		 int result1=0;
-		 int result2=0;
+		 int result2=0; 
 		 String message="";
 		
 		vo = (MemberVO)session.getAttribute("member");
-		System.out.println(pass); 
-		System.out.println(vo.getMpassword()); 
-		System.out.println(vo.getMid());
-		
+			
 		//비밀번호 비교 
 		if(pass.equals(vo.getMpassword())){
 			 result1 = memberService.deleteSeller(vo);
@@ -205,8 +207,11 @@ public class MemberController {
 			session.removeAttribute("seller");
 			
 		}
-		mv.setViewName("redirect:/main.sajo"); 
+		mv.addObject("where", "main");
+		mv.setViewName("redirect:/products.sajo"); 
 		vo.setDelete(message);
+		MemberVO newvo = memberService.idCheck_Login(vo);//업데이트 완료후 회원정보를 조회해와서
+		session.setAttribute("member", newvo);//업데이트된 회원정보를 다시 member세션에 저장
 		return mv;         
 	}  
 	
@@ -214,7 +219,7 @@ public class MemberController {
 	 *  비밀번호를 확인 후 같으면 일반회원 탈퇴
 	 */ 
 	@RequestMapping("/deleteMember.sajo") 
-	public String deleteMember( HttpServletRequest request, HttpSession session, MemberVO vo,
+	public ModelAndView deleteMember( HttpServletRequest request, HttpSession session, MemberVO vo,
 			@RequestParam(value = "pwfordelete") String pass) {
 		ModelAndView mv = new ModelAndView();
 		vo = (MemberVO)session.getAttribute("member");
@@ -234,7 +239,8 @@ public class MemberController {
 				 mv.addObject("mdelete","mdelete"); 
 			 } 	 
 		} 
-		mv.setViewName("redirect:/main.sajo"); 
-		return "redirect:/main.sajo";        
+		mv.addObject("where", "main");
+		mv.setViewName("redirect:/products.sajo"); 
+		return mv;        
 	}  
 }
