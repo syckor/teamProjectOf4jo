@@ -27,9 +27,9 @@ SELECT count FROM GOODS where gid=#{gid}
  
 <select id="buyList" parameterType="buy" resultType="buy">  
 <![CDATA[  
-select X.rnum,x.gid gid,  x.bdate bdate, x.gname gname, x.bcount bcount, x.totalprice totalprice, x.pay pay, x.delivery delivery, x.dcost deliveryfee, (x.dcost+x.totalprice) totalorderprice
-from ( select rownum as rnum,a.gid, a.bdate, a.gname, a.bcount, a.totalprice, a.pay, a.delivery, a.dcost, (a.dcost+a.totalprice)
-from (select b.gid gid, b.bdate , g.gname , b.bcount , b.totalprice , b.pay , g.delivery , g.dcost , (g.dcost+b.totalprice) 
+select X.rnum,x.gid gid,x.bno bno,  x.bdate bdate, x.gname gname, x.bcount bcount, x.totalprice totalprice, x.pay pay, x.delivery delivery, x.dcost deliveryfee, (x.dcost+x.totalprice) totalorderprice
+from ( select rownum as rnum,a.gid,a.bno, a.bdate, a.gname, a.bcount, a.totalprice, a.pay, a.delivery, a.dcost, (a.dcost+a.totalprice)
+from (select b.gid gid,b.bno, b.bdate , g.gname , b.bcount , b.totalprice , b.pay , g.delivery , g.dcost , (g.dcost+b.totalprice) 
 from buy b, goods g
 where b.gid=g.gid and b.mid=#{mid}
 order by b.bdate desc) a 
