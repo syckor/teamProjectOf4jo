@@ -103,6 +103,8 @@ ul.tab li.current {
 		});
 	});
 </script>
+	</head>
+	<body>
 <!-- header modal -->   
    <!-- 로그아웃 상태일때 뜨는 팝업 -->
    <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
@@ -123,8 +125,7 @@ ul.tab li.current {
                               <li class="resp-tab-item" aria-controls="tab_item-0"><span>로그인</span></li>
                               <li class="resp-tab-item" aria-controls="tab_item-1"><span>회원가입</span></li>                           
                            </ul>      
-                           
-                           
+                                                      
                            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                               <div class="facts">
                                  <div class="register">
@@ -596,7 +597,7 @@ ul.tab li.current {
 		<div class="detail">
 			<div class="container">
 				<div class="col-md-5 contact-left">
-					<c:choose>
+						<c:choose>
 					    <c:when test="${(img.fsize1 eq 0) and (empty img.source1) }">사진 없음</c:when>
 					    <c:when test="${img.fsize1 ne 0 }"><img src="resources/upload/${img.fname1}" alt=" " class="img-responsive"  /></c:when>
 					    <c:otherwise>
@@ -605,44 +606,28 @@ ul.tab li.current {
 					 </c:choose>
 						</div>
 						<div class="col-md-7 contact-right">
-							<a id="goods_gid" class="not_import">상품 등록번호 : ${goods.gid }</a><br/>
-							<a id="goods_name">${goods.gname}</a><br/>
-							<a id="goods_price">${goods.price }원</a><br/><hr/> 
-							<h2>${goods.detail }</h2>
-<!-- 							<div class="rating"> -->
-<!-- 								<div class="rating-left"> -->
-<!-- 									<img src="resources/images/star-.png" alt=" " class="img-responsive" /> -->
-<!-- 								</div> -->
-<!-- 								<div class="rating-left"> -->
-<!-- 									<img src="resources/images/star-.png" alt=" " class="img-responsive" /> -->
-<!-- 								</div> -->
-<!-- 								<div class="rating-left"> -->
-<!-- 									<img src="resources/images/star-.png" alt=" " class="img-responsive" /> -->
-<!-- 								</div> -->
-<!-- 								<div class="rating-left"> -->
-<!-- 									<img src="resources/images/star.png" alt=" " class="img-responsive" /> -->
-<!-- 								</div> -->
-<!-- 								<div class="rating-left"> -->
-<!-- 									<img src="resources/images/star.png" alt=" " class="img-responsive" /> -->
-<!-- 								</div> -->
-<!-- 								</div> -->
-								<div class="select_option1"> 
-								<h4>옵션 1  </h4>
+							<a id="goods_gid" class="not_import">상품 등록번호 : ${goods.gid }</a><br/><br/>							
+							<a id="goods_name">${goods.gname}</a><br/><br/>
+							<a id="goods_review" >리뷰 : ${reCount} 개</a>
+							<a id="goods_price">${goods.price }원</a><br/><br/>
+							<a id="goods_detail">${goods.detail }</a><br/><br/>
+							<br/><hr/>
+
+							<div class= "select_option">
+								<a id="option">옵션 1  </a>
 								<select name="option1" >
 								<c:forEach items="${option1 }" var ="option">
 								<option>${option }</option>
 								</c:forEach>
-								</select>
-								</div>
-								<div class="select_option2">
-								<h4>옵션 2  </h4>
+								</select>								
+								<a id="option">옵션 2  </a>
 								<select name="option2">
 								<c:forEach items="${option2 }" var ="option">
 								<option>${option }</option>
 								</c:forEach>
 								</select>
-								</div>
-							<hr/>
+							</div>								
+							<br/><hr/>
 							<div class="DELIVERY">
 							<a id="delivery" class="not_import">택배사 : ${goods.delivery }</a><br/>
 							<a id="dcost" class="not_import">택배비용 : ${goods.dcost }</a><br/>
@@ -654,7 +639,7 @@ ul.tab li.current {
 									<input type="hidden" name="add" value="1" /> 
 									<input type="hidden" name="w3ls_item" value="${goods.gname }" /> 
 									<input type="hidden" name="amount" value="${goods.price }"/>   
-									<button id="add_cart" type="submit" class="w3ls-cart" style="width= 100;height=100px ;">Add to cart</button>
+									<button id="add_cart" type="submit" class="w3ls-cart" style="width= 100;height=100px ;">장바구니 담기</button>
 								</form>
 							</div> 
 							</div>
@@ -710,9 +695,7 @@ ul.tab li.current {
 <!-- 			mail.jsp의 qna 스타일가져오고 싶어서 아래div2개를 설정해 줬습니다. -->
 			<div class="agile_mail_grids">
 				<div class="col-md-12 ">
-				<!-- 리뷰가 몇개는지  -->
-				<a class="middle_import">리뷰 n개 </a>
-				<br/><br/>
+
 				<!-- 				리뷰 리스트  -->
 				<c:forEach items="${review }" var="review">
 				<table class="redTable">
@@ -763,6 +746,7 @@ ul.tab li.current {
 	</div>
 	</div>
 	</div>
+
 <!-- 	리뷰 끝 -->
 	  <!-- footer -->
    <div class="footer">
@@ -850,4 +834,4 @@ ul.tab li.current {
     </script>  
 	<!-- //cart-js -->   
 </body>
-</jsp>
+</html>

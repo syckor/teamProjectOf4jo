@@ -17,13 +17,17 @@ font-size: 20px;
 /* page 스타일 */
 #page{
 	font-family: sans-serif;
-	font-size:50px;
+	font-size:30px;
 	font-weight: bold;
 	margin:0;
 }
-
-
-
+/* goods번호 스타일  */
+#goods_gid{
+	font-size: 20px;
+	color: #127681;
+	font-weight: bold;
+	float: left;
+	}
 /* goods이름 스타일  */
 #goods_name{
     font-size: 35px;
@@ -33,11 +37,33 @@ font-size: 20px;
 }
 /* goods가격 스타일 */
 #goods_price{
-	font-size: 20px;
-	color: grey;
+	font-size: 30px;
+	color: #127681;
 	font-weight: bold;
 	float: right;
 }
+/* goods_review 스타일 */
+#goods_review{
+	font-size: 20px;
+	color: #f3c623;
+	font-weight: bold;
+	float: left;
+}
+/* "goods_detail" 스타일 */
+#goods_detail{
+	font-size: 20px;
+	color: #10375C;
+	float: right;
+}
+
+/* "goods_detail" 스타일 */
+#option{
+	font-size: 16px;
+	color: 127681;
+	
+}
+
+
 /* goods 자세히 보기 이미지 배열스타일 */
 #detail-image{
 	text-align: center;
