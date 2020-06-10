@@ -689,6 +689,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<!-- 상품 보여주기 -->
 					<h1>General Friends</h1><br/>
 					</div>
+					
+					<div class="w3ls_mobiles_grid_right_grid2">
+					<!-- 오른쪽 하단 정렬기준태그 -->
+					<div class="w3ls_mobiles_grid_right_grid2_right" align="right">
+						  <a href='general.sajo?orderby=gdate'>최신순|</a>
+                     <a href="general.sajo?orderby=rcnt">리뷰많은순|</a>
+                     <a href="general.sajo?orderby=price">가격낮은순|</a>
+                     <a href="general.sajo?orderby=highprice">가격높은순</a><br />
+					</div>
+
+				</div>
 				<form>
 				<c:forEach items="${list }" var="goods">
 				<h4><a href="detailGoods.sajo?gid=${goods.GID }">${goods.GNAME }</a></h4><br/>
