@@ -760,8 +760,8 @@ if (vo == null) {%>
 				<div class="w3ls_mobiles_grid_right_grid2">
 					<!-- 오른쪽 하단 정렬기준태그 -->
 					<div class="w3ls_mobiles_grid_right_grid2_right" align="right">
-						<a href='kakao.sajo?sort=gdate'>최신순|</a> <a href="#">리뷰많은순|</a> <a
-							href="#">가격낮은순|</a> <a href="#">가격높은순</a> <br />
+						<a href='kakao.sajo?sort=gdate'>최신순|</a> <a href="general.sajo?orderby=rcnt">리뷰많은순|</a> <a
+							href="general.sajo?orderby=price">가격낮은순|</a> <a href="general.sajo?orderby=highprice">가격높은순</a> <br />
 					</div>
 
 				</div>
