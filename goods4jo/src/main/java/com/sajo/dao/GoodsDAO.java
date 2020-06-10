@@ -17,5 +17,5 @@ public interface GoodsDAO {
 	public int getTotalCount(String brend);
 	public List<HashMap<String, Object>> getBrendList(String brend,String sort,int firstRow, int endRow);
 	public int getSearchTotal(String keyword);
-	public List<HashMap> getSearchList(String keyword,int firstRow, int endRow);
+	public List<HashMap> getSearchList(String orderby,int firstRow, int endRow);
 }

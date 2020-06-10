@@ -67,18 +67,18 @@ public class GoodsDAOImpl implements GoodsDAO{
 	}
 
 	@Override
-	public List<HashMap<String, Object>> getBrendList(String brend,String sort, int firstRow, int endRow) {
+	public List<HashMap<String, Object>> getBrendList(String brend,String orderby, int firstRow, int endRow) {
 		System.out.println("===> GoodsMapper getBrendList 호출");
 		HashMap m=new HashMap();
 		m.put("brend",brend);
-		if(sort !=null)
-		{m.put("sort",sort);}
-		else if(sort == null){
-		m.put("sort", "abc");
+		if(orderby !=null)
+		{m.put("orderby",orderby);}
+		else if(orderby == null){
+		m.put("orderby", "abc");
 		}
 		m.put("first",firstRow);
 		m.put("end", endRow);
-		System.out.println(">>>>"+ m.get("sort"));
+		System.out.println(">>>>"+ m.get("orderby"));
 		return mybatis.selectList("GoodsDAO.getBrendList",m);
 	}
 

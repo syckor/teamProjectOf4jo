@@ -49,18 +49,26 @@
 	</select>
 	
 	<select id="getBrendList" resultType="hashmap" parameterType="hashmap">
-	select gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1 
-	from (select rownum as rnum,g.gid gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1 from goods g,image i  where g.gid=i.gid and g.gid like #{brend}||'%' <choose>
-	<when test='sort.equals("gdate")'>
+	select * from (select rownum rnum,gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1,rcnt
+	from (select g.gid gid,gname,state,price,option1,option2,delivery,dcost,dtime,count,detail,sid,gdate,source1,fname1,nvl(re.rcnt ,0)rcnt  
+    from goods g,image i,(select count(gid) rcnt, gid from review group by gid) re  
+    where g.gid=i.gid and g.gid=re.gid(+) and g.gid like #{brend}||'%' <choose>
+	<when test='orderby.equals("gdate")'>
     order by gdate desc
     </when>
-    <when test='sort.equals("highprice")'>
+    <when test='orderby.equals("highprice")'>
     order by price desc
     </when>
-    <when test='sort.equals("price")'>
+    <when test='orderby.equals("price")'>
    	order by price 
     </when>
-    </choose>) 
+    <when test='orderby.equals("rcnt")'>
+    order by rcnt desc
+    </when>
+    <otherwise>
+    order by gdate desc
+    </otherwise>
+    </choose>)) 
 	where <![CDATA[rnum>=#{first} and rnum<=#{end}]]>
 	</select>
 	

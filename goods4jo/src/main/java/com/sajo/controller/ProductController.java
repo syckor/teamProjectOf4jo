@@ -202,26 +202,25 @@ public class ProductController {
 //	카카오페이지 보여주기 
 
 	@RequestMapping("/kakao.sajo")
-	public String selectKakao(String pNum,String sort, Model m) {
+	public String selectKakao(String pNum,String orderby, Model m) {
 		String pageNum = "1";
 		if (pNum != null) {
 			pageNum = pNum;
 		}
-		System.out.println("##################################################################"+sort);
 		// kakao goods의 total페이지
 		m.addAttribute("total", service.getTotalCount("k"));
 		// kakao 페이지별 리스트 가져오기
-		m.addAttribute("list", service.getBrendList("k", pageNum,sort));
+		m.addAttribute("list", service.getBrendList("k", pageNum,orderby));
 		//현재  페이지 그대로 넘기기
 		m.addAttribute("pNum",pageNum);
 		//현재 정렬 상태그대로 넘기기
-		m.addAttribute("sort",sort);
+		m.addAttribute("orderby",orderby);
 		return "goods/kakao";
 	}
 //	라인페이지 보여주기 
 
 	@RequestMapping("/line.sajo")
-	public String selectLine(String pNum,String sort, Model m) {
+	public String selectLine(String pNum,String orderby, Model m) {
 		String pageNum = "1";
 		if (pNum != null) {
 			pageNum = pNum;
@@ -229,15 +228,17 @@ public class ProductController {
 		// kakao goods의 total페이지
 		m.addAttribute("total", service.getTotalCount("l"));
 		// kakao 페이지별 리스트 가져오기
-		m.addAttribute("list", service.getBrendList("l", pageNum,sort));
+		m.addAttribute("list", service.getBrendList("l", pageNum,orderby));
 		//현재  페이지 그대로 넘기기
 				m.addAttribute("pNum",pNum);
+				//현재 정렬 상태그대로 넘기기
+				m.addAttribute("orderby",orderby);
 		return "goods/line";
 	}
 //	카카오페이지 보여주기 
 
 	@RequestMapping("/general.sajo")
-	public String selectGeneral(String pNum,String sort, Model m) {
+	public String selectGeneral(String pNum,String orderby, Model m) {
 		String pageNum = "1";
 		if (pNum != null) {
 			pageNum = pNum;
@@ -245,9 +246,11 @@ public class ProductController {
 		// general goods의 total페이지
 		m.addAttribute("total", service.getTotalCount("g"));
 		// kakgeneralao 페이지별 리스트 가져오기
-		m.addAttribute("list", service.getBrendList("g", pageNum,sort));
+		m.addAttribute("list", service.getBrendList("g", pageNum,orderby));
 		//현재  페이지 그대로 넘기기
-				m.addAttribute("pNum",pNum);
+		m.addAttribute("pNum",pNum);
+				//현재 정렬 상태그대로 넘기기
+		m.addAttribute("orderby",orderby);
 		return "goods/general";
 	}
 

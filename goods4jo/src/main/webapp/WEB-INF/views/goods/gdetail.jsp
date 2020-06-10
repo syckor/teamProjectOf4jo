@@ -721,10 +721,10 @@ ul.tab li.current {
 				<td>ID : ${review.MID }</td>				
 				<td>
 				<c:forEach var="star" begin="1" end="${review.SCORE }" step="1" varStatus="status">
-				<a id="star${status.count }" value=${status.count }><img id="img${status.count }" src="resources/images/review_star_1.jpg"></a>
+				<a  value=${status.count }><img  src="resources/images/review_star_1.jpg"></a>
 				</c:forEach>
 				<c:forEach var="star" begin="${review.SCORE }" end="4" step="1" varStatus="status">
-				<a id="star${status.count }" value=${status.count }><img id="img${status.count }" src="resources/images/review_star_0.jpg"></a>
+				<a  value=${status.count }><img  src="resources/images/review_star_0.jpg"></a>
 				</c:forEach></td>
 				</tr>
 				<tr><td colspan="3">

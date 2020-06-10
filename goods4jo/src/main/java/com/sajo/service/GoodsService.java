@@ -15,7 +15,7 @@ public interface GoodsService {
 	public List<GoodsVO> selectGeneral();
 	public List<GoodsVO> selectAll();
 	public int getTotalCount(String brend);
-	public List<HashMap<String, Object>> getBrendList(String brend,String pNum,String sort);
+	public List<HashMap<String, Object>> getBrendList(String brend,String pNum,String orderby);
 	public int getSearchTotal(String keyword);
 	public List<HashMap> getSearchList(String keyword,String pNum);
 }

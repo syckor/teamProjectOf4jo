@@ -70,7 +70,7 @@ public class GoodsServiceImpl  implements GoodsService{
 
 
 	@Override
-	public List<HashMap<String, Object>> getBrendList(String brend,String pNum,String sort) {
+	public List<HashMap<String, Object>> getBrendList(String brend,String pNum,String orderby) {
 
 		int pageNum=1;
 		if(pNum != null) pageNum = Integer.parseInt(pNum);
@@ -79,7 +79,7 @@ public class GoodsServiceImpl  implements GoodsService{
 		int endRow=pageNum*countPerPage;
 		
 		// 페이지 당 레코드를 검색해 온다면
-		List <HashMap<String, Object>> List = dao.getBrendList(brend,sort,firstRow, endRow);		
+		List <HashMap<String, Object>> List = dao.getBrendList(brend,orderby,firstRow, endRow);		
 		return List;
 	}
 
