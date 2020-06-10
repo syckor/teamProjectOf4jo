@@ -42,8 +42,11 @@
 	</update>      
 	<update id="setNullQna" parameterType="member">
 		update qna SET mid=null where mid=#{mid}; 		
-	</update>       
-    
+	</update>  
+	      
+    <delete id="memberDelete" parameterType="member">
+		DELETE FROM member WHERE mid=#{mid} 		
+	</delete>      
 	
 	<update id="changeMtype" parameterType="member">
 		UPDATE MEMBER SET MTYPE='소비자' WHERE mid=#{mid}		 
