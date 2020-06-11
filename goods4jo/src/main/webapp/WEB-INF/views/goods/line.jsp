@@ -519,7 +519,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		
 	<%//vo가 null이면 로그인화면 띄우고 null이 아니면 로그인이 있다는 얘기임    
 if (vo == null) {%>
-		$('#myModal88').modal('show');
+		$('#myModal88').modal('hide');
 	<%} else {%>
 		$('#myModal88').modal('hide');
 	<%}%>
@@ -554,7 +554,7 @@ if (vo == null) {%>
 					class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
 				<div class="search_form">
 					<form action="search.sajo" method="post">
-						<input type="text" name="Search" placeholder="Search...">
+						<input type="text" name="keyword" placeholder="Search...">
 						<input type="submit" value="Send">
 					</form>
 				</div>
@@ -820,8 +820,9 @@ if (vo == null) {%>
 										type="hidden" name="add" value="1" /> <input type="hidden"
 										name="w3ls_item" value="${goods.GNAME }" /> <input
 										type="hidden" name="amount" value="${goods.PRICE}" />
-									<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
-								</form>
+<c:if test="${goods.COUNT gt 0 }" >
+										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
+											</c:if>								</form>
 								<br />
 							</div>
 							</div>

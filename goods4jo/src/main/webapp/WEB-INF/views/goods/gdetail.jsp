@@ -563,7 +563,7 @@ if (vo == null) {%>
 					class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
 				<div class="search_form">
 					<form action="search.sajo" method="post">
-						<input type="text" name="Search" placeholder="Search...">
+						<input type="text" name="keyword" placeholder="Search...">
 						<input type="submit" value="Send">
 					</form>
 				</div>

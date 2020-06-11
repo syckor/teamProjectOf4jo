@@ -563,7 +563,7 @@ if (vo == null) {%>
 					class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
 				<div class="search_form">
 					<form action="search.sajo" method="post">
-						<input type="text" name="Search" placeholder="Search...">
+						<input type="text" name="keyword" placeholder="Search...">
 						<input type="submit" value="Send">
 					</form>
 				</div>
@@ -660,8 +660,13 @@ if (vo == null) {%>
 		</div>
 	</div>
 	<!--    navigation 끝 -->
-
-	<!-- banner-bottom -->
+<!-- banner -->
+   <div class="banner banner10">
+      <div class="container">
+         <h2></h2>
+      </div>
+   </div>
+   <!-- banner-bottom -->
 
 	<div class="special-deals">
 		<div class="container">
@@ -786,8 +791,9 @@ if (vo == null) {%>
 													type="hidden" name="add" value="1" /> <input type="hidden"
 													name="w3ls_item" value="${kakao.gname }" /> <input
 													type="hidden" name="amount" value="${kakao.price }" />
-												<button type="submit" class="w3ls-cart">Add to cart</button>
-											</form>
+														<c:if test="${kakao.count gt 0 }" >
+										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
+											</c:if>											</form>
 										</div>
 												<c:if test="${kakao.count le 10 }">
 								<div class="mobile_grid_goods" >
@@ -870,8 +876,9 @@ if (vo == null) {%>
 													type="hidden" name="add" value="1" /> <input type="hidden"
 													name="w3ls_item" value="${line.gname }" /> <input
 													type="hidden" name="amount" value="${line.price }" />
-												<button type="submit" class="w3ls-cart">Add to cart</button>
-											</form>
+												<c:if test="${line.count gt 0 }" >
+										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
+											</c:if>											</form>
 										</div>
 												<c:if test="${line.count le 10 }">
 								<div class="mobile_grid_goods" >
@@ -958,10 +965,11 @@ if (vo == null) {%>
 													type="hidden" name="add" value="1" /> <input type="hidden"
 													name="w3ls_item" value="${general.gname }" /> <input
 													type="hidden" name="amount" value="${general.price }" />
-												<button type="submit" class="w3ls-cart">Add to cart</button>
-											</form>
+<c:if test="${general.count gt 0 }" >
+										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
+											</c:if>											</form>
 										</div>
-										<c:if test="${general.count le 500 }">
+										<c:if test="${general.count le 10 }">
 								<div class="mobile_grid_goods" >
 									<span><img  src="resources/images/majin.jpg"/></span>
 								</div>
