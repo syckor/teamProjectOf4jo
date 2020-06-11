@@ -741,14 +741,13 @@ ul.tab li.current {
 				
 				</form>
 				</div>
-
 		</div>
 	</div>
 	</div>
 	</div>
 
 <!-- 	리뷰 끝 -->
-	  <!-- footer -->
+	 <!-- footer -->
    <div class="footer">
       <div class="container">
          <div class="w3_footer_grids">
@@ -759,7 +758,7 @@ ul.tab li.current {
                   <li><i class="glyphicon glyphicon-map-marker"
                      aria-hidden="true"></i>서울시 금천구 가산동 426-5 <span>대한민국</span></li>
                   <li><i class="glyphicon glyphicon-envelope"
-                     aria-hidden="true"></i><a href="mailto:info@example.com">admin@goods4jo.com</a></li>
+                     aria-hidden="true"></i><a href="mailto:admin@goods4jo.com">admin@goods4jo.com</a></li>
                   <li><i class="glyphicon glyphicon-earphone"
                      aria-hidden="true"></i>+82 4444 4444</li>
                </ul>
@@ -776,16 +775,16 @@ ul.tab li.current {
             <div class="col-md-3 w3_footer_grid">
                <h3>Category</h3>
                <ul class="info">
-                  <li><a href="products1.sajo">KaKao</a></li>
-                  <li><a href="">Line</a></li>
-                  <li><a href="">General</a></li>
+                  <li><a href="kakao.sajo">KaKao</a></li>
+                  <li><a href="line.sajo">Line</a></li>
+                  <li><a href="general.sajo">General</a></li>
                </ul>
             </div>
             <div class="col-md-3 w3_footer_grid">
                <h3>Profile</h3>
                <ul class="info">
                   <li><a href="main.sajo">Home</a></li>
-                  <li><a href="products1.sajo">Today's NEW</a></li>
+                  <li><a href="products.sajo">Today's NEW</a></li>
                </ul>
                <h4>For Share </h4>
                <div class="agileits_social_button">
@@ -815,7 +814,7 @@ ul.tab li.current {
          </div>
       </div>
    </div>
-   <!-- //footer -->
+   <!-- //footer --> 
 	<!-- cart-js -->
 	<script src="resources/js/minicart.js"></script>
 	<script>

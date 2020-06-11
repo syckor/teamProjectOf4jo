@@ -11,6 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%
 	MemberVO vo = (MemberVO) session.getAttribute("member");
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,19 +23,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
-	
-	
-	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
-
 </script>
+<style type="text/css">
+/* 품절임박 */
+.mobile_grid_goods > span > img {
+	position: absolute;
+    top: 43%;
+    right: 5%;
+    width: 70px;
+    height: 55px;
+    z-index: 100;
+}
+</style>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
 <link href="resources/css/bootstrap.css" rel="stylesheet"
@@ -577,7 +579,7 @@ if (vo == null) {%>
 												<a href="kakao.sajo">Kakao</a>
 											</h6>
 											<li><a href="products.sajo">라이언</a></li>
-											<li><a href="products.sajo">어피치<span>New</span></a></li>
+											<li><a href="products.sajo">어피치</a></li>
 											<li><a href="products.sajo">무지</li>
 											<li><a href="products.sajo">프로도</li>
 											<li><a href="products.sajo">네오<span>New</span></a></li>
@@ -594,7 +596,6 @@ if (vo == null) {%>
 											<li><a href="products.sajo">브라운&프렌즈</a></li>
 											<li><a href="products.sajo">BT21</a></li>
 											<li><a href="products.sajo">브롤스타즈 <span>New</span></a></li>
-											<!-- 								<li><a href="gregist.sajo"><i>상품 등록</i></a></li> -->
 										</ul>
 									</div>
 									<div class="col-sm-2">
@@ -821,6 +822,11 @@ if (vo == null) {%>
 										<button type="submit" class="w3ls-cart">장바구니담기</button>
 									</form>
 								</div>
+								<c:if test="${kakao.count le 10 }">
+								<div class="mobile_grid_goods" >
+									<span><img  src="resources/images/majin.jpg"/></span>
+								</div>
+								</c:if>
 							</div>
 						</div>
 					</div>
@@ -892,6 +898,11 @@ if (vo == null) {%>
 										<button type="submit" class="w3ls-cart">장바구니담기</button>
 									</form>
 								</div>
+								<c:if test="${line.count le 10 }">
+								<div class="mobile_grid_goods" >
+									<span><img  src="resources/images/majin.jpg"/></span>
+								</div>
+							</c:if>
 							</div>
 						</div>
 					</div>
@@ -968,6 +979,11 @@ if (vo == null) {%>
 										<button type="submit" class="w3ls-cart">장바구니담기</button>
 									</form>
 								</div>
+								<c:if test="${general.count le 10 }">
+								<div class="mobile_grid_goods" >
+									<span><img  src="resources/images/majin.jpg"/></span>
+								</div>
+								</c:if>
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -1010,7 +1026,74 @@ if (vo == null) {%>
 	</div>
 	</div>
 	<!-- //Related Products -->
-	<!-- //footer -->
+	<!-- footer -->
+   <div class="footer">
+      <div class="container">
+         <div class="w3_footer_grids">
+            <div class="col-md-3 w3_footer_grid">
+               <h3>Contact</h3>
+               <p>굿즈4조는 보다 나은 굿즈를 제공하기 위해 노력합니다.</p>
+               <ul class="address">
+                  <li><i class="glyphicon glyphicon-map-marker"
+                     aria-hidden="true"></i>서울시 금천구 가산동 426-5 <span>대한민국</span></li>
+                  <li><i class="glyphicon glyphicon-envelope"
+                     aria-hidden="true"></i><a href="mailto:admin@goods4jo.com">admin@goods4jo.com</a></li>
+                  <li><i class="glyphicon glyphicon-earphone"
+                     aria-hidden="true"></i>+82 4444 4444</li>
+               </ul>
+            </div>
+            <div class="col-md-3 w3_footer_grid">
+               <h3>Information</h3>
+               <ul class="info">
+                  <li><a href="about.sajo">About Us</a></li>
+                  <li><a href="notice.sajo">Notice</a></li>
+                  <li><a href="mail.sajo">FAQ's</a></li>
+                  <li><a href="products1.sajo">Special Products</a></li>
+               </ul>
+            </div>
+            <div class="col-md-3 w3_footer_grid">
+               <h3>Category</h3>
+               <ul class="info">
+                  <li><a href="kakao.sajo">KaKao</a></li>
+                  <li><a href="line.sajo">Line</a></li>
+                  <li><a href="general.sajo">General</a></li>
+               </ul>
+            </div>
+            <div class="col-md-3 w3_footer_grid">
+               <h3>Profile</h3>
+               <ul class="info">
+                  <li><a href="main.sajo">Home</a></li>
+                  <li><a href="products.sajo">Today's NEW</a></li>
+               </ul>
+               <h4>For Share </h4>
+               <div class="agileits_social_button">
+                  <ul>
+                     <li><a href="http://www.facebook.com" class="facebook"> </a></li>
+                     <li><a href="http://www.twitter.com" class="twitter"> </a></li>
+                     <li><a href="http://www.google.com" class="google"> </a></li>
+                     <li><a href="http://www.pinterest.co.kr" class="pinterest"> </a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+         </div>
+      </div>
+      <div class="footer-copy">
+         <div class="footer-copy1">
+            <div class="footer-copy-pos">
+               <a href="#home1" class="scroll"><img
+                  src="resources/images/arrow.png" alt=" " class="img-responsive" /></a>
+            </div>
+         </div>
+         <div class="container">
+            <p>
+               &copy; 2020 Goods Store. All rights reserved | Design by <a
+                  href="http://w3layouts.com/">16me</a>
+            </p>
+         </div>
+      </div>
+   </div>
+   <!-- //footer --> 
 	<!-- cart-js -->
 	<script src="resources/js/minicart.js"></script>
 	<script>

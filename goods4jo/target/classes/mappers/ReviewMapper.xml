@@ -22,6 +22,6 @@ select nvl(count(*),0) as cnt from review where bno=#{bno}
 </select>
 
 <select id="getTotalCount" parameterType="String" resultType="int">
-select count(*) from review where gid = #{gid}
+select count(*) cnt from review where gid = #{gid}
 </select>
 </mapper>

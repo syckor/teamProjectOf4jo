@@ -20,17 +20,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords"
 	content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<style type="text/css">
+/* 품절임박 */
+.mobile_grid_goods > span > img {
+	position: absolute;
+    top: 43%;
+    right: 5%;
+    width: 70px;
+    height: 55px;
+    z-index: 100;
+}
+</style>
 <script type="application/x-javascript">
-	
-	
-	
-	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
 </script>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->
@@ -176,7 +179,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                        <input type="text" name='loadaddr' id="sample4_roadAddress" placeholder="도로명주소"  disabled>
                                        <span id="guide" style="color:#999;display:none"></span> 
                                        <input type="text" name='detailofaddr' id="sample4_detailAddress" placeholder="상세주소"  disabled>
-                                        
                                        <hr/>
                                        <div class="stats">
                                               * 모든 항목에 동의해야 합니다.<br/>
@@ -689,14 +691,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<!-- 상품 보여주기 -->
 					<h1>Search Goods</h1><br/>
 					</div>
+					<c:forEach items="${list }" var="goods">
 				<form>
-				<c:forEach items="${list }" var="goods">
 				<h4><a href="detailGoods.sajo?gid=${goods.GID }">${goods.GNAME }</a></h4><br/>
 				<c:if test="${empty goods.FNAME1 }"><a><img src="${goods.SOURCE1 }" alt="" width="300px" height="300px"></a></c:if>
 				<c:if test="${empty goods.SOURCE1 }"><a><img src="resources/upload/${goods.FNAME1 }" alt="" width="300px" height="300px"></a></c:if><br/>
 				<h4>${goods.PRICE }</h4>
-				</c:forEach>
 				</form>
+				</c:forEach>
 <!-- 					페이징 부분 -->
 					<c:forEach var="i" begin="1" end="${total }">
 					<a href="search.sajo?keyword=${keyword }&pNum=${i }">[${i }]</a>
@@ -705,13 +707,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					
 					
-					
-					
-					
-					
-					
-					
-		   <!-- footer -->
+	<!-- footer -->
    <div class="footer">
       <div class="container">
          <div class="w3_footer_grids">
@@ -722,7 +718,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   <li><i class="glyphicon glyphicon-map-marker"
                      aria-hidden="true"></i>서울시 금천구 가산동 426-5 <span>대한민국</span></li>
                   <li><i class="glyphicon glyphicon-envelope"
-                     aria-hidden="true"></i><a href="mailto:info@example.com">admin@goods4jo.com</a></li>
+                     aria-hidden="true"></i><a href="mailto:admin@goods4jo.com">admin@goods4jo.com</a></li>
                   <li><i class="glyphicon glyphicon-earphone"
                      aria-hidden="true"></i>+82 4444 4444</li>
                </ul>
@@ -739,16 +735,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-md-3 w3_footer_grid">
                <h3>Category</h3>
                <ul class="info">
-                  <li><a href="products1.sajo">KaKao</a></li>
-                  <li><a href="">Line</a></li>
-                  <li><a href="">General</a></li>
+                  <li><a href="kakao.sajo">KaKao</a></li>
+                  <li><a href="line.sajo">Line</a></li>
+                  <li><a href="general.sajo">General</a></li>
                </ul>
             </div>
             <div class="col-md-3 w3_footer_grid">
                <h3>Profile</h3>
                <ul class="info">
                   <li><a href="main.sajo">Home</a></li>
-                  <li><a href="products1.sajo">Today's NEW</a></li>
+                  <li><a href="products.sajo">Today's NEW</a></li>
                </ul>
                <h4>For Share </h4>
                <div class="agileits_social_button">
@@ -778,7 +774,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
          </div>
       </div>
    </div>
-   <!-- //footer -->			
+   <!-- //footer --> 		
 					
 		<!-- cart-js -->
 		<script src="resources/js/minicart.js"></script>
