@@ -159,7 +159,7 @@ public class MemberController {
 		
 		if(result==null) {   //로그인에 실패하면 result==null 
 			mv.addObject("loginfail", "fail");
-			
+			 
 		}else {   			//로그인에 성공 후 
 			session.setAttribute("member", result);
 			if(result.getMtype().equals("판매자")) {  //회원타입이 판매자라면
