@@ -724,7 +724,9 @@ if (vo == null) {%>
 								<form action="#" method="post">
 									<input type="hidden" name="cmd" value="_cart" />
 									<input type="hidden" name="add" value="1" /> 
-									<input type="hidden" name="w3ls_item" value="${goods.gname }" /> 
+									<input type="hidden" name="w3ls_item" value="${goods.gname }" />
+									<input type="hidden" name="gid" value="${goods.gid }"/>
+											<input type="hidden" name="dcost" value="${goods.dcost }"/> 
 									<input type="hidden" name="amount" value="${goods.price }"/>   
 <c:if test="${goods.count gt 0 }" >
 										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>

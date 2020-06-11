@@ -830,8 +830,10 @@ if (vo == null) {%>
 									<form action="#" method="post">
 										<input type="hidden" name="cmd" value="_cart" /> <input
 											type="hidden" name="add" value="1" /> <input type="hidden"
-											name="w3ls_item" value="${kakao.gname }" /> <input
-											type="hidden" name="amount" value="${kakao.price }" />
+											name="w3ls_item" value="${kakao.gname }" /> 
+											<input type="hidden" name="gid" value="${kakao.gid }"/>
+											<input type="hidden" name="dcost" value="${kakao.dcost }"/>
+											<input type="hidden" name="amount" value="${kakao.price }" />
 <c:if test="${kakao.count gt 0 }" >
 										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
 											</c:if>									</form>
@@ -921,7 +923,10 @@ if (vo == null) {%>
 									<form action="#" method="post">
 										<input type="hidden" name="cmd" value="_cart" /> <input
 											type="hidden" name="add" value="1" /> <input type="hidden"
-											name="w3ls_item" value="${line.gname }" /> <input
+											name="w3ls_item" value="${line.gname }" /> 
+											<input type="hidden" name="gid" value="${line.gid }"/>
+											<input type="hidden" name="dcost" value="${line.dcost }"/>
+											<input
 											type="hidden" name="amount" value="${line.price }" />
 <c:if test="${line.count gt 0 }" >
 										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
@@ -1017,7 +1022,10 @@ if (vo == null) {%>
 									<form action="#" method="post">
 										<input type="hidden" name="cmd" value="_cart" /> <input
 											type="hidden" name="add" value="1" /> <input type="hidden"
-											name="w3ls_item" value="${general.gname }" /> <input
+											name="w3ls_item" value="${general.gname }" /> 
+											<input type="hidden" name="gid" value="${general.gid }"/>
+											<input type="hidden" name="dcost" value="${general.dcost }"/>
+											<input
 											type="hidden" name="amount" value="${general.price }" />
 <c:if test="${general.count gt 0 }" >
 										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>

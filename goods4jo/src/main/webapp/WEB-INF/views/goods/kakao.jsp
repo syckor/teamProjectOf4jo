@@ -814,6 +814,8 @@ if (vo == null) {%>
 											type="hidden" name="add" value="1" /> <input type="hidden"
 											name="w3ls_item" value="${goods.GNAME }" /> <input
 											type="hidden" name="amount" value="${goods.PRICE}" />
+											<input type="hidden" name="gid" value="${goods.GID }"/>
+											<input type="hidden" name="dcost" value="${goods.DCOST }"/> 
 										<c:if test="${goods.COUNT gt 0 }" >
 										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
 											</c:if>
