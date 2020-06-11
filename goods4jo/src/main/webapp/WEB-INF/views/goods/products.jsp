@@ -75,7 +75,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //end-smooth-scrolling -->
 </head>
 <body>
-	<!-- header modal -->
+<!-- header modal -->
 	<!-- 로그아웃 상태일때 뜨는 팝업 -->
 	<div class="modal fade" id="myModal88" tabindex="-1" role="dialog"
 		aria-labelledby="myModal88" aria-hidden="true">
@@ -293,7 +293,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									style="display: block; width: 100%; margin: 0px;">
 									<ul>
 										<li class="resp-tab-item" aria-controls="tab_item-0"><a
-											href='buylist.sajo' id='clicktobuylist'><span
+											href='buylist.sajo?pageno=1' id='clicktobuylist'><span
 												id='buylistcss' class='buylistcss'>구매내역</span></a></li>
 										<li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보
 												수정하기</span></li>
@@ -385,7 +385,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													</div>
 													<br /> <br />
 													<div class="modify" id='hiddenbybutton'>
-														<input type="submit" value="정보수정하기" id='mmodify' />
+														<input type="submit" value="정보수정하기" id='mmodify' /> <input
+															type="button" value="회원탈퇴" id='dropoutmember' /> <br />
 													</div>
 												</form>
 
@@ -394,7 +395,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														alert("회원정보가 수정되었습니다.");
 													</script>
 												</c:if>
-												<input type="button" value="회원탈퇴" id='dropoutmember' /> <br />
+
 												<form action='member/deleteMember.sajo' name='deleteMember'
 													id='mdelete'>
 													<span id="idAttach"></span>
@@ -532,7 +533,7 @@ if (vo == null) {%>
 					class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
 				<div class="search_form">
 					<form action="search.sajo" method="post">
-						<input type="text" name="keyword" placeholder="Search...">
+						<input type="text" name="Search" placeholder="Search...">
 						<input type="submit" value="Send">
 					</form>
 				</div>
@@ -550,7 +551,7 @@ if (vo == null) {%>
 	</div>
 	<!-- //header -->
 
-	<!--    navigation -->
+	<!-- navigation -->
 	<div class="navigation">
 		<div class="container">
 			<nav class="navbar navbar-default">
@@ -579,7 +580,7 @@ if (vo == null) {%>
 												<a href="kakao.sajo">Kakao</a>
 											</h6>
 											<li><a href="products.sajo">라이언</a></li>
-											<li><a href="products.sajo">어피치</a></li>
+											<li><a href="products.sajo">어피치<span>New</span></a></li>
 											<li><a href="products.sajo">무지</li>
 											<li><a href="products.sajo">프로도</li>
 											<li><a href="products.sajo">네오<span>New</span></a></li>
@@ -596,6 +597,7 @@ if (vo == null) {%>
 											<li><a href="products.sajo">브라운&프렌즈</a></li>
 											<li><a href="products.sajo">BT21</a></li>
 											<li><a href="products.sajo">브롤스타즈 <span>New</span></a></li>
+											<!-- 								<li><a href="gregist.sajo"><i>상품 등록</i></a></li> -->
 										</ul>
 									</div>
 									<div class="col-sm-2">
