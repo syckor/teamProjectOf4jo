@@ -85,7 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //end-smooth-scrolling -->
 </head>
 <body>
-	<!-- header modal -->
+<!-- header modal -->
 	<!-- 로그아웃 상태일때 뜨는 팝업 -->
 	<div class="modal fade" id="myModal88" tabindex="-1" role="dialog"
 		aria-labelledby="myModal88" aria-hidden="true">
@@ -303,7 +303,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									style="display: block; width: 100%; margin: 0px;">
 									<ul>
 										<li class="resp-tab-item" aria-controls="tab_item-0"><a
-											href='buylist.sajo' id='clicktobuylist'><span
+											href='buylist.sajo?pageno=1' id='clicktobuylist'><span
 												id='buylistcss' class='buylistcss'>구매내역</span></a></li>
 										<li class="resp-tab-item" aria-controls="tab_item-1"><span>회원정보
 												수정하기</span></li>
@@ -395,7 +395,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													</div>
 													<br /> <br />
 													<div class="modify" id='hiddenbybutton'>
-														<input type="submit" value="정보수정하기" id='mmodify' />
+														<input type="submit" value="정보수정하기" id='mmodify' /> <input
+															type="button" value="회원탈퇴" id='dropoutmember' /> <br />
 													</div>
 												</form>
 
@@ -404,7 +405,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														alert("회원정보가 수정되었습니다.");
 													</script>
 												</c:if>
-												<input type="button" value="회원탈퇴" id='dropoutmember' /> <br />
+
 												<form action='member/deleteMember.sajo' name='deleteMember'
 													id='mdelete'>
 													<span id="idAttach"></span>
@@ -560,7 +561,7 @@ if (vo == null) {%>
 	</div>
 	<!-- //header -->
 
-	<!--    navigation -->
+	<!-- navigation -->
 	<div class="navigation">
 		<div class="container">
 			<nav class="navbar navbar-default">
@@ -639,7 +640,6 @@ if (vo == null) {%>
 		</div>
 	</div>
 	<!--    navigation 끝 -->
-	<!-- banner -->
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">
