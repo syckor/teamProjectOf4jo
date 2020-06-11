@@ -4,10 +4,12 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.sajo.domain.MemberVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	MemberVO vo = (MemberVO) session.getAttribute("member");
 %>
@@ -24,7 +26,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     top: 43%;
     right: 5%;
     width: 70px;
-    height: 55px;
+    height: 40px;
+    z-index: 100;
+}
+/* 신상 */
+.mobile_grid_new > span > img {
+	position: absolute;
+    top: 2%;
+    right: 62%;
+    width: 70px;
+    height: 40px;
     z-index: 100;
 }
 </style>
@@ -819,6 +830,20 @@ if (vo == null) {%>
 									<span><img  src="resources/images/majin.jpg"/></span>
 								</div>
 								</c:if>
+								<!-- new -->
+									<fmt:formatDate value="${currTime}" var="now" pattern="yyyy-MM-dd"/> <br>
+								<!-- 날짜 계산  -->
+								<fmt:parseDate var="goods_date" value="${goods.GDATE }" pattern="yyyy-MM-dd"/>
+								
+								<fmt:parseNumber var="now_N" value="${date.time/(1000*60*60*24) }" integerOnly="true"/>
+								<fmt:parseNumber var="goods_date_N" value="${goods_date.time/(1000*60*60*24) }" integerOnly="true"/>
+									
+									<c:if test="${(not_N-goods_date_N) le 2 }">
+								<div class="mobile_grid_new" >
+									<span><img  src="resources/images/new.jpg"/></span>
+								</div>
+								</c:if>
+								<!-- new끝 -->
 						</div>
 					</div>
 				</c:forEach>

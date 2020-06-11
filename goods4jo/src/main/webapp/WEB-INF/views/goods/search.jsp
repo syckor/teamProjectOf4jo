@@ -27,7 +27,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     top: 43%;
     right: 5%;
     width: 70px;
-    height: 55px;
+    height: 40px;
+    z-index: 100;
+}
+/* 신상 */
+.mobile_grid_new > span > img {
+	position: absolute;
+    top: 2%;
+    right: 62%;
+    width: 70px;
+    height: 40px;
     z-index: 100;
 }
 </style>
@@ -631,7 +640,7 @@ if (vo == null) {%>
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">
-			<h2>Goods 판매 </h2>
+			<h2>Search </h2>
 		</div>
 	</div>
 	<!-- //banner -->

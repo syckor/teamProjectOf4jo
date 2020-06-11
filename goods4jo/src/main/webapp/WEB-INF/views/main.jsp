@@ -5,10 +5,12 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE jsp>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.sajo.domain.MemberVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp lang="en">
 <head>
 <title>Goods4jo, All thing of goods!!!</title>
@@ -25,7 +27,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     top: 43%;
     right: 5%;
     width: 70px;
-    height: 55px;
+    height: 40px;
+    z-index: 100;
+}
+/* 신상 */
+.mobile_grid_new > span > img {
+	position: absolute;
+    top: 2%;
+    right: 62%;
+    width: 70px;
+    height: 40px;
     z-index: 100;
 }
 </style>
@@ -783,6 +794,20 @@ if (vo == null) {%>
 									<span><img  src="resources/images/majin.jpg"/></span>
 								</div>
 								</c:if>
+								<!-- new -->
+									<fmt:formatDate value="${currTime}" var="now" pattern="yyyy-MM-dd"/> <br>
+								<!-- 날짜 계산  -->
+								<fmt:parseDate var="goods_date" value="${kakao.gdate }" pattern="yyyy-MM-dd"/>
+								
+								<fmt:parseNumber var="now_N" value="${date.time/(1000*60*60*24) }" integerOnly="true"/>
+								<fmt:parseNumber var="goods_date_N" value="${goods_date.time/(1000*60*60*24) }" integerOnly="true"/>
+									
+									<c:if test="${(not_N-goods_date_N) le 2 }">
+								<div class="mobile_grid_new" >
+									<span><img  src="resources/images/new.jpg"/></span>
+								</div>
+								</c:if>
+								<!-- new끝 -->
 									</div>
 								</c:forEach>
 								<div class="clearfix"></div>
@@ -853,6 +878,20 @@ if (vo == null) {%>
 									<span><img  src="resources/images/majin.jpg"/></span>
 								</div>
 								</c:if>
+								<!-- new -->
+									<fmt:formatDate value="${currTime}" var="now" pattern="yyyy-MM-dd"/> <br>
+								<!-- 날짜 계산  -->
+								<fmt:parseDate var="goods_date" value="${line.gdate }" pattern="yyyy-MM-dd"/>
+								
+								<fmt:parseNumber var="now_N" value="${date.time/(1000*60*60*24) }" integerOnly="true"/>
+								<fmt:parseNumber var="goods_date_N" value="${goods_date.time/(1000*60*60*24) }" integerOnly="true"/>
+									
+									<c:if test="${(not_N-goods_date_N) le 2 }">
+								<div class="mobile_grid_new" >
+									<span><img  src="resources/images/new.jpg"/></span>
+								</div>
+								</c:if>
+								<!-- new끝 -->
 									</div>
 								</c:forEach>
 								<div class="clearfix"></div>
@@ -922,11 +961,25 @@ if (vo == null) {%>
 												<button type="submit" class="w3ls-cart">Add to cart</button>
 											</form>
 										</div>
-										<c:if test="${general.count le 10 }">
+										<c:if test="${general.count le 500 }">
 								<div class="mobile_grid_goods" >
 									<span><img  src="resources/images/majin.jpg"/></span>
 								</div>
 								</c:if>
+								<!-- new -->
+									<fmt:formatDate value="${currTime}" var="now" pattern="yyyy-MM-dd"/> <br>
+								<!-- 날짜 계산  -->
+								<fmt:parseDate var="goods_date" value="${general.gdate }" pattern="yyyy-MM-dd"/>
+								
+								<fmt:parseNumber var="now_N" value="${date.time/(1000*60*60*24) }" integerOnly="true"/>
+								<fmt:parseNumber var="goods_date_N" value="${goods_date.time/(1000*60*60*24) }" integerOnly="true"/>
+									
+									<c:if test="${(not_N-goods_date_N) le 2 }">
+								<div class="mobile_grid_new" >
+									<span><img  src="resources/images/new.jpg"/></span>
+								</div>
+								</c:if>
+								<!-- new끝 -->
 									</div>
 								</c:forEach>
 								<div class="clearfix"></div>
