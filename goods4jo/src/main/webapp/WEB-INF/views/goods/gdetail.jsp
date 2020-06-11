@@ -726,8 +726,9 @@ if (vo == null) {%>
 									<input type="hidden" name="add" value="1" /> 
 									<input type="hidden" name="w3ls_item" value="${goods.gname }" /> 
 									<input type="hidden" name="amount" value="${goods.price }"/>   
-									<button id="add_cart" type="submit" class="w3ls-cart" style="width= 100;height=100px ;">장바구니 담기</button>
-								</form>
+<c:if test="${goods.count gt 0 }" >
+										<button type="submit" class="w3ls-cart" align="bottom">장바구니담기</button>
+											</c:if>											</form>
 							</div> 
 							</div>
 					</div>
