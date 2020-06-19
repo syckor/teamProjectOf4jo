@@ -22,7 +22,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 /* 품절임박 */
 .mobile_grid_goods > span > img {
 	position: absolute;
-    top: 43%;
+    top: 58%;
     right: 5%;
     width: 70px;
     height: 40px;

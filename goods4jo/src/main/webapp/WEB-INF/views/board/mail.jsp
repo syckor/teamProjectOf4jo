@@ -27,14 +27,6 @@
 
 
 </script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('jsp,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
-</script>
 
 <style>
 table.blueTable {
@@ -139,6 +131,7 @@ ul.tab li.current {
 	display: block;
 }
 </style>
+
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <!-- //for-mobile-apps -->
 <!-- Custom Theme files -->

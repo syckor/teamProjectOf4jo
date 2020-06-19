@@ -581,7 +581,7 @@ table.redTable tfoot .links a {
 	<!-- banner -->
 	<div class="banner banner10">
 		<div class="container">
-			<h2>Sell List</h2>
+			<h2>Buy List</h2>
 		</div>
 	</div>
 	<!-- //banner -->

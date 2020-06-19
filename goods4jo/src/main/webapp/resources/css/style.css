@@ -1975,7 +1975,7 @@ select.select_item {
     right: 5%;
     width: 55px;
     height: 55px;
-    background: #3975ed;
+    background: #f3c623;
     z-index: 100;
     border-radius: 60px;
 	-webkit-border-radius: 60px;
@@ -1984,7 +1984,7 @@ select.select_item {
 	-ms-border-radius: 60px;
 }
 .mobiles_grid_pos h6{
-	font-size:1em;
+	font-size:0.5em;
 	color:#fff;
 	line-height:3.5em;
 }

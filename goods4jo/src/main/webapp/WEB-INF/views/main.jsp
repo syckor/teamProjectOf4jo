@@ -893,7 +893,7 @@ if (vo == null) {%>
 								<fmt:parseNumber var="now_N" value="${date.time/(1000*60*60*24) }" integerOnly="true"/>
 								<fmt:parseNumber var="goods_date_N" value="${goods_date.time/(1000*60*60*24) }" integerOnly="true"/>
 									
-									<c:if test="${(not_N-goods_date_N) le 2 }">
+									<c:if test="${(now_N-goods_date_N) le 2 }">
 								<div class="mobile_grid_new" >
 									<span><img  src="resources/images/new.jpg"/></span>
 								</div>
